@@ -1,7 +1,7 @@
 # Plan de mejora — Biblioteca HTML & CSS
 
 > Documento vivo. Cada fase que se termina se registra en [`CHANGELOG.md`](../../CHANGELOG.md).
-> Última actualización: 2026-09-26. **Fases 0 a 8 completadas.**
+> Última actualización: 2026-09-26. **Fases 0 a 9 completadas.**
 
 ## Resultado
 
@@ -16,13 +16,13 @@
 | 6 | ZIP comprimido + investigación de procedencia | ✅ |
 | 7 | SEO y pulido | ✅ |
 | 8 | Verificación final | ✅ |
+| 9 | `CreacionesNuevas/` integrada (116 → 364 demos) | ✅ |
 
 Balancie: la web carga un 89 % menos de catálogo, monta 3 previews en vez de 15,
-describe los 116 componentes en dos idiomas, comprime los ZIP (y arregla un
-`RangeError` que los impedía crear) y tiene la procedencia documentada al
-100 %. Los 116 demos **no** se pueden redistribuir: su repositorio de origen no
-declara licencia, y el botón ZIP sigue deshabilitado por diseño.
-Queda fuera del plan integrar los **248 demos** de `CreacionesNuevas/`.
+describe los 364 componentes en dos idiomas y tiene metadatos y tarjeta social.
+Los **248 demos propios** tienen descarga ZIP funcionando y verificada; los **116
+de terceros** siguen bloqueados porque su repositorio de origen no declara
+licencia, y eso es intencionado.
 
 
 ## Contexto
@@ -266,13 +266,42 @@ correctamente al compartir y no compiten en el índice.
 copiar, tema, idioma y «volver» → ✅. Previews con CDNs anotadas → ninguna
 falla ✅. `git status` sin artefactos ✅. README sin contradicciones ✅.
 
-> ⚠️ **Pendiente fuera del plan:** `CreacionesNuevas/` contiene **248 demos
-> nuevos** del autor que el catálogo **no incluye** (el generador solo recorre
-> `BibliotecaDeHtml_CSS/`). Integrarlos requiere una fase propia: mover o
-> referenciar la carpeta, redactar 248 descripciones EN/ES, y decidir su licencia
-> (al ser creaciones propias sí podrían autorizarse para ZIP).
+> ℹ️ Este pendiente se resolvió en la **Fase 9**: `CreacionesNuevas/` ya está
+> integrada en el catálogo, que pasa de 116 a **364** componentes, y 248 de ellos
+> quedan autorizados para descarga ZIP con licencia MIT.
 
 ---
+
+### Fase 9 — `CreacionesNuevas/` integrada ✅ (2026-09-26)
+
+- [x] `generate-catalog.mjs` recorre **varias raíces**
+      (`BibliotecaDeHtml_CSS` y `CreacionesNuevas`) en vez de una sola, y cada
+      componente incluye un campo `root` con la carpeta de la que procede.
+- [x] Las comprobaciones de referencias locales (`getLocalReferences` y
+      `getMissingReferences`) usan **la raíz del propio componente**, no una
+      constante global: si no, las hojas de estilo y scripts de los demos
+      nuevos se habrían descartado por estar fuera de `BibliotecaDeHtml_CSS/`.
+- [x] `build-site.mjs` localiza y copia cada demo desde `component.root` y falla
+      con un error claro si la raíz no existe. El artefacto conserva el nombre de
+      la raíz para que las previews sigan resolviendo.
+- [x] **0 colisiones de ID** entre las dos colecciones (116 + 248 = **364** IDs
+      únicos), comprobado antes de tocar nada.
+- [x] `LICENSE` MIT en las **248 carpetas** de `CreacionesNuevas/`, y la
+      `LICENSE` raíz ampliada para cubrirlas.
+- [x] **496 descripciones nuevas** (248 EN + 248 ES) redactadas a partir del
+      `<title>` de cada demo, con el mismo criterio que en la Fase 5.
+- [x] Las 248 entradas de `component-overrides.json` con `description`,
+      `descriptionEs`, `source`, `license: "MIT"`, `licenseFile: "LICENSE"` y
+      `redistributable: true`.
+- [x] README, `Web/README.md`, `THIRD_PARTY_NOTICES.md` y este plan actualizados
+      a 364 componentes y a las dos situaciones de licencia.
+
+**Resultado:** de 116 a **364 componentes**, y por primera vez **248 descargas
+ZIP habilitadas y verificadas** (CRC correctos, `LICENSE` y `ATTRIBUTION.txt`
+dentro del archivo).
+
+**Hecho cuando:** los demos de `CreacionesNuevas/` aparecen en la web con su
+descripción en ambos idiomas y su botón ZIP descarga un archivo válido. ✅
 
 ## Fuera de alcance (por ahora)
 

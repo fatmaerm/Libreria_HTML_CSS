@@ -5,7 +5,10 @@ import { toIndexEntry, writeSources } from "./catalog-format.mjs";
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryDirectory = path.resolve(scriptDirectory, "../..");
-const libraryDirectory = path.join(repositoryDirectory, "BibliotecaDeHtml_CSS");
+const libraryRoots = ["BibliotecaDeHtml_CSS", "CreacionesNuevas"].map((name) => ({
+  name,
+  directory: path.join(repositoryDirectory, name),
+}));
 const catalogFile = path.join(repositoryDirectory, "Web", "data", "catalog.json");
 const catalogScriptFile = path.join(repositoryDirectory, "Web", "data", "catalog.js");
 const sourcesDirectory = path.join(repositoryDirectory, "Web", "data", "sources");
@@ -98,7 +101,7 @@ function getInlineBlocks(html, tagName, shouldInclude) {
   return blocks.filter(Boolean);
 }
 
-async function getLocalReferences(html, pageDirectory, tagName, referenceAttribute, includeTag) {
+async function getLocalReferences(html, pageDirectory, rootDirectory, tagName, referenceAttribute, includeTag) {
   const references = [];
   const tagPattern = new RegExp(String.raw`<${tagName}\b[^>]*>`, "gi");
 
@@ -111,7 +114,7 @@ async function getLocalReferences(html, pageDirectory, tagName, referenceAttribu
     const referencePath = suffixIndex < 0 ? reference : reference.slice(0, suffixIndex);
     const referenceSuffix = suffixIndex < 0 ? "" : reference.slice(suffixIndex);
     const resolvedPath = path.resolve(pageDirectory, decodeURIComponent(referencePath));
-    if (!resolvedPath.startsWith(`${libraryDirectory}${path.sep}`)) continue;
+    if (!resolvedPath.startsWith(`${rootDirectory}${path.sep}`)) continue;
 
     try {
       if ((await stat(resolvedPath)).isFile()) {
@@ -130,7 +133,7 @@ async function getLocalReferences(html, pageDirectory, tagName, referenceAttribu
   return [...new Map(references.map((reference) => [reference.path, reference])).values()];
 }
 
-async function getMissingReferences(html, pageDirectory) {
+async function getMissingReferences(html, pageDirectory, rootDirectory) {
   const missing = [];
   const tagPattern = /<(script|link|img|source|video|audio)\b[^<>]*>/gi;
 
@@ -146,7 +149,7 @@ async function getMissingReferences(html, pageDirectory) {
       missing.push(reference);
       continue;
     }
-    if (!resolvedPath.startsWith(`${libraryDirectory}${path.sep}`)) continue;
+    if (!resolvedPath.startsWith(`${rootDirectory}${path.sep}`)) continue;
 
     try {
       if (!(await stat(resolvedPath)).isFile()) missing.push(reference);
@@ -185,10 +188,10 @@ async function collectComponentFiles(componentDirectory, componentId, currentDir
   return files;
 }
 
-async function createComponent(pagePath) {
+async function createComponent(root, pagePath) {
   const html = await readFile(pagePath, "utf8");
   const pageDirectory = path.dirname(pagePath);
-  const folderPath = path.relative(libraryDirectory, pageDirectory).split(path.sep).join("/");
+  const folderPath = path.relative(root.directory, pageDirectory).split(path.sep).join("/");
   const directoryName = path.basename(pageDirectory);
   const titleMatch = html.match(/<title\b[^>]*>([\s\S]*?)<\/title\s*>/i);
   const rawTitle = cleanText(titleMatch?.[1] ?? "");
@@ -205,7 +208,7 @@ async function createComponent(pagePath) {
     : `Standalone ${descriptionType} demo from the component collection.`);
   const descriptionEs = override.descriptionEs ?? null;
   const previewPath = path.relative(repositoryDirectory, pagePath).split(path.sep).join("/");
-  const missingReferences = await getMissingReferences(html, pageDirectory);
+  const missingReferences = await getMissingReferences(html, pageDirectory, root.directory);
   const files = await collectComponentFiles(pageDirectory, id);
   const license = override.license ?? "Unverified";
   const source = override.source ?? "Unverified";
@@ -226,17 +229,19 @@ async function createComponent(pagePath) {
     description,
     ...(descriptionEs ? { descriptionEs } : {}),
     tags: override.tags ?? getTags(directoryName, name, category),
+    root: root.name,
     folder: folderPath,
     preview: `../${previewPath}`,
     html: await readFile(pagePath, "utf8"),
     stylesheets: await getLocalReferences(
       html,
       pageDirectory,
+      root.directory,
       "link",
       "href",
       (tag) => /\brel\s*=\s*["'][^"']*\bstylesheet\b/i.test(tag),
     ),
-    scripts: await getLocalReferences(html, pageDirectory, "script", "src", () => true),
+    scripts: await getLocalReferences(html, pageDirectory, root.directory, "script", "src", () => true),
     missingReferences,
     inlineCss: getInlineBlocks(html, "style", () => true),
     inlineJavaScript: getInlineBlocks(
@@ -259,8 +264,13 @@ try {
   if (error.code !== "ENOENT") throw error;
 }
 
-const pages = (await findHtmlPages(libraryDirectory)).sort((first, second) => first.localeCompare(second));
-const components = await Promise.all(pages.map(createComponent));
+const pages = (await Promise.all(
+  libraryRoots.map(async (root) => ({
+    root,
+    files: (await findHtmlPages(root.directory)).sort((first, second) => first.localeCompare(second)),
+  })),
+)).flatMap(({ root, files }) => files.map((page) => ({ root, page })));
+const components = await Promise.all(pages.map(({ root, page }) => createComponent(root, page)));
 const duplicateIds = components.filter((component, index) => components.findIndex((entry) => entry.id === component.id) !== index);
 
 if (duplicateIds.length) {

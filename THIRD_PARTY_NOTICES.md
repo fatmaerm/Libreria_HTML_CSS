@@ -2,7 +2,21 @@
 
 ## Estado de distribución
 
-La `LICENSE` de la raíz se aplica únicamente al código original de la aplicación y a la documentación creados para este repositorio por `kindred-98`. No concede derechos sobre los demos existentes ni sobre recursos de terceros de `BibliotecaDeHtml_CSS/`.
+La `LICENSE` de la raíz se aplica al código original de la aplicación y a la documentación creados para este repositorio por `kindred-98`, **y también a los demos originales de `CreacionesNuevas/`**, cada uno de los cuales incluye además su propio archivo `LICENSE`. No concede derechos sobre los demos de terceros de `BibliotecaDeHtml_CSS/` ni sobre recursos de terceros.
+
+## Las dos colecciones
+
+| Carpeta | Componentes | Autoría | Licencia | ZIP |
+|---|---:|---|---|---|
+| `CreacionesNuevas/` | **248** | `kindred-98`, creations originales | MIT (archivo `LICENSE` en cada carpeta) | **Habilitado** |
+| `BibliotecaDeHtml_CSS/` | **116** | Gevendra Sahu (`gevendra2004`) | **Ninguna declarada** | Deshabilitado |
+| **Total** | **364** | | | 248 de 364 |
+
+## Estado de distribución
+
+Los 248 componentes de `CreacionesNuevas/` están autorizados: el catálogo los marca con `license: "MIT"`, `redistributable: true`, `licenseFile: "LICENSE"` y `source` apuntando a este repositorio. Sus descargas ZIP incluyen el `LICENSE` del componente y un `ATTRIBUTION.txt` generado en el momento de la descarga.
+
+Sobre los 116 componentes de `BibliotecaDeHtml_CSS/`, ver la investigación completa que sigue.
 
 ## Resultado de la investigación de procedencia (2026-09-26)
 
@@ -49,9 +63,9 @@ Los archivos locales, como `Movie-Card-UI/pngwing.png`, y las imágenes, fuentes
 
 ## Consecuencias asumidas en el proyecto
 
-- El botón **ZIP permanece deshabilitado** en los 116 componentes. No es un bug pendiente: es el estado correcto.
-- `node Web/scripts/build-site.mjs` genera deliberadamente un artefacto **vacío** (`Prepared 0 cleared component(s)`, `catalog.json` con `[]`). **No se debe usar como build command de Vercel**: el sitio se despliega sirviendo la raíz del repositorio.
-- La atribución de origen se muestra en el detalle de cada componente («Source: …») para que el visitante pueda rastrearla.
+- El botón **ZIP está deshabilitado en los 116 componentes de terceros** y **habilitado en los 248 propios**. No es un bug pendiente: es el estado correcto según los derechos de cada grupo.
+- `node Web/scripts/build-site.mjs` genera un artefacto con **248 componentes** (los autorizados) y excluye los 116 sin licencia. **No se recomienda usarlo como build command de Vercel**: el sitio se despliega mejor sirviendo la raíz del repositorio, que muestra los 364 componentes y evita que las previews de `BibliotecaDeHtml_CSS/` den 404.
+- La atribución de origen se muestra en el detalle de cada componente («Source: …»), tanto si está verificado como si no.
 
 ## Autorizar un componente
 

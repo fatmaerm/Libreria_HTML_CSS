@@ -7,6 +7,101 @@ Formato: [Keep a Changelog](https://keepachangelog.com/es/1.1.0/).
 Cada fase terminada se registra aquí con su fecha. Las fases están definidas en
 [`Docs/Opencode/Plan.md`](./Docs/Opencode/Plan.md).
 
+## [Fase 9 — `CreacionesNuevas/` integrada] — 2026-09-26
+
+### Contexto
+
+`CreacionesNuevas/` contenía **248 demos** del autor que el catálogo ignoraba:
+`generate-catalog.mjs` solo recorría `BibliotecaDeHtml_CSS/`. Pasan a formar
+parte de la biblioteca, con sus descripciones en los dos idiomas y con descarga
+ZIP habilitada por ser creaciones originales con licencia propia.
+
+### Hecho — el generador admite varias colecciones
+
+- `Web/scripts/generate-catalog.mjs`:
+  - `libraryRoots` sustituye a la constante `libraryDirectory`: ahora son
+    `BibliotecaDeHtml_CSS` y `CreacionesNuevas`.
+  - Cada componente incluye un campo nuevo **`root`** con la carpeta de la que
+    procede, y `folder` sigue siendo la ruta relativa **dentro** de ella. No
+    cambia ningún `id`, así que las URLs `?component=` existentes no se rompen.
+  - `getLocalReferences()` y `getMissingReferences()` reciben la raíz del
+    componente. **Este era el punto delicado**: ambas filtraban por
+    `libraryDirectory`, así que sin este cambio las hojas de estilo y los scripts
+    de los 248 demos nuevos se habrían descartado por estar fuera de
+    `BibliotecaDeHtml_CSS/`. Verificado: los 248 detectan su CSS y sus scripts.
+  - `build-site.mjs` localiza y copia cada demo desde `component.root` y lanza un
+    error explícito si la raíz no existe; el artefacto conserva el nombre de la
+    raíz para que las previews sigan resolviendo.
+- Comprobado **antes** de tocar código: **0 colisiones de ID** entre las dos
+  colecciones (116 + 248 = 364 IDs únicos), y los 248 son de primer nivel.
+
+### Hecho — licencia y descripciones
+
+- **`LICENSE` MIT creada en las 248 carpetas** de `CreacionesNuevas/`, con una
+  cláusula de alcance que excluye los recursos de terceros que la demo referencie.
+- **`LICENSE` raíz ampliada**: su alcance ahora cubre también los demos
+  originales de `CreacionesNuevas/`, y sigue excluyendo `BibliotecaDeHtml_CSS/`.
+- **`Web/data/component-overrides.json`**: 248 entradas nuevas (364 en total) con
+  `description`, `descriptionEs`, `source` (este repositorio), `license: "MIT"`,
+  `licenseFile: "LICENSE"` y `redistributable: true`.
+- **496 descripciones escritas** (248 en inglés y 248 en español) a partir del
+  `<title>` de cada demo, con el mismo criterio que en la Fase 5: una frase
+  corta y factual, sin inventar funcionalidades.
+
+### Hecho — documentación
+
+- `README.md`: introduce las dos colecciones y sus reglas de licencia; actualiza
+  la *Estructura* y **reescribe el aviso de `build-site.mjs`**, que ha cambiado
+  de sentido (ya no publica 0 componentes, publica 248).
+- `Web/README.md`: 364 componentes y las dos situaciones de licencia.
+- `THIRD_PARTY_NOTICES.md`: tabla con las dos colecciones y su estado de ZIP.
+- `Docs/Opencode/Plan.md`: **Fase 9** añadida y el pendiente que la bloqueaba
+  marcado como resuelto.
+
+### Verificado
+
+| Métrica | Antes | Después |
+|---|---:|---:|
+| Componentes en el catálogo | 116 | **364** |
+| Descripciones EN + ES propias | 116 | **364** |
+| Componentes con ZIP habilitado | 0 | **248** |
+| `build-site.mjs` → cleared components | 0 | **248** |
+
+- `node --check` en `generate-catalog.mjs` y `build-site.mjs` → 0.
+- Catálogo: 364 entradas y 364 ficheros en `sources/`; 116 + 248 por raíz;
+  **0** descripciones genéricas en EN o ES; **0** componentes sin `descriptionEs`;
+  **0** overrides huérfanos; **0** referencias locales ausentes en los 248.
+  El índice pasa de 99,7 KB a **331 KB** por duplicar componentes y descripciones,
+  pero sigue siendo **menos de la mitad** que el `catalog.js` original (733 KB), y
+  el detalle se sigue pagando bajo demanda en `sources/`.
+- `build-site.mjs` **dos veces seguidas** → `Prepared 248 cleared component(s)` en
+  ambas y exit 0, con `CreacionesNuevas/` (248 carpetas), `sources/` (248) y
+  `catalog.json` (248) en el artefacto. Por fin genera contenido real.
+- **ZIP real de extremo a extremo**: desde el navegador se descargó
+  `ascii-art-generator` (toast «Component ZIP downloaded») y el mismo archivo
+  generado en memoria se validó con `zipfile` de Python → `testzip()` sin
+  errores (CRC correctos), 5 entradas (690 + 1272 + 3176 + 936 + 26 B = 6100 B
+  → **2248 B**, 37 %), con `LICENSE` dentro y `ATTRIBUTION.txt` con la fuente y la
+  licencia. Los ficheros de texto van con método 8 (deflate).
+- **Chrome headless (CDP), detalle de un demo nuevo** (10/10): `<h1>` correcto,
+  descripción propia en inglés y en español, **botón ZIP habilitado**
+  (`Download ZIP` / `Descargar ZIP`), procedencia «Redistribution cleared ·
+  Source: …/Libreria_HTML_CSS · License: MIT», 3 bloques de código con 3710
+  caracteres, preview `ready` y 0 errores de consola.
+- **Smoke funcional completo con 364 componentes**: **24/24** y 0 errores de
+  consola o de red.
+
+### Pendiente / limitaciones
+
+- Las 496 descripciones están redactadas a partir del nombre y el `<title>` de
+  cada demo. Conviene revisarlas al pasar por la interfaz: es lo mismo que se
+  hizo con las 116 de la Fase 5.
+- Los 116 demos de terceros siguen **sin descarga ZIP**, y el motivo no ha
+  cambiado: su repositorio de origen no declara licencia.
+- Con `build-site.mjs` el sitio publica 248 componentes y sin él, 364. Para Vercel
+  se sigue recomendando servir la raíz del repositorio (ya está en los README y
+  en `vercel.json`).
+
 ## [Fase 8 — Verificación final] — 2026-09-26
 
 ### Hecho

@@ -5,7 +5,10 @@ import { readSource, toIndexEntry, writeSources } from "./catalog-format.mjs";
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryDirectory = path.resolve(scriptDirectory, "../..");
-const libraryDirectory = path.join(repositoryDirectory, "BibliotecaDeHtml_CSS");
+const libraryRoots = ["BibliotecaDeHtml_CSS", "CreacionesNuevas"].map((name) => ({
+  name,
+  directory: path.join(repositoryDirectory, name),
+}));
 const catalogFile = path.join(repositoryDirectory, "Web", "data", "catalog.json");
 const sourcesDirectory = path.join(repositoryDirectory, "Web", "data", "sources");
 const outputDirectory = path.resolve(repositoryDirectory, process.argv[2] ?? ".github-pages-site");
@@ -28,11 +31,15 @@ await cp(path.join(repositoryDirectory, "LICENSE"), path.join(outputDirectory, "
 await cp(path.join(repositoryDirectory, "THIRD_PARTY_NOTICES.md"), path.join(outputDirectory, "THIRD_PARTY_NOTICES.md"));
 
 for (const component of approvedComponents) {
-  const sourceDirectory = path.resolve(libraryDirectory, ...component.folder.split("/"));
-  if (!sourceDirectory.startsWith(`${libraryDirectory}${path.sep}`)) {
+  const root = libraryRoots.find((candidate) => candidate.name === component.root);
+  if (!root) {
+    throw new Error(`Unknown library root for ${component.id}: ${component.root}`);
+  }
+  const sourceDirectory = path.resolve(root.directory, ...component.folder.split("/"));
+  if (!sourceDirectory.startsWith(`${root.directory}${path.sep}`)) {
     throw new Error(`Component path escapes the library: ${component.id}`);
   }
-  const destinationDirectory = path.join(outputDirectory, "BibliotecaDeHtml_CSS", ...component.folder.split("/"));
+  const destinationDirectory = path.join(outputDirectory, component.root, ...component.folder.split("/"));
   await mkdir(path.dirname(destinationDirectory), { recursive: true });
   await cp(sourceDirectory, destinationDirectory, { recursive: true });
 }

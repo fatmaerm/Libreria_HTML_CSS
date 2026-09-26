@@ -1,6 +1,9 @@
 # Biblioteca HTML y CSS
 
-Biblioteca estática y con búsqueda de demos independientes de interfaces hechos con HTML, CSS y JavaScript. El repositorio contiene actualmente **116 páginas de demos** de botones, tarjetas, navegación, formularios, loaders, galerías, controles y efectos visuales.
+Biblioteca estática y con búsqueda de demos independientes de interfaces hechos con HTML, CSS y JavaScript. El repositorio contiene actualmente **364 páginas de demos** repartidas en dos colecciones:
+
+- `BibliotecaDeHtml_CSS/` — **116 demos** de terceros (botones, tarjetas, navegación, formularios, loaders, galerías, controles y efectos visuales). Ver *Procedencia y licencias*: su repositorio de origen no declara licencia, así que **no se pueden redistribuir**.
+- `CreacionesNuevas/` — **248 demos** originales creados para este repositorio, cada uno con su propio archivo `LICENSE` MIT y **descarga ZIP habilitada**.
 
 La aplicación web está separada en `Web/`; los demos originales permanecen en `BibliotecaDeHtml_CSS/` y se cargan directamente para mostrar vistas previas reales.
 
@@ -41,7 +44,8 @@ Node.js 18 o posterior solo hace falta para regenerar el catálogo. El sitio uti
 
 ```text
 .
-|-- BibliotecaDeHtml_CSS/       # Demos originales independientes y sus recursos
+|-- BibliotecaDeHtml_CSS/       # 116 demos de terceros (sin licencia: ZIP deshabilitado)
+|-- CreacionesNuevas/           # 248 creaciones propias del autor (MIT, ZIP habilitado)
 |-- Web/
 |   |-- data/
 |   |   |-- catalog.json        # Índice ligero generado (sin código fuente)
@@ -107,9 +111,12 @@ Se repararon las cinco referencias locales que estaban rotas: se eliminaron o re
 
 La MIT de la raíz se limita al código original de la aplicación y a la documentación de `kindred-98`; no cubre los demos ni recursos de terceros.
 
-La procedencia **sí está investigada**: los **116 demos** proceden del repositorio público [`gevendra2004/gevstack`](https://github.com/gevendra2004/gevstack) (106 coincidencias exactas de carpeta y 8 por erratas del propio repositorio de origen). Ese repositorio **no tiene licencia** —`LICENSE` devuelve 404, la API de GitHub responde `"license": null` y el `README.md` no incluye términos—, así que **no se puede redistribuir**. Por eso el catálogo mantiene `license: "Unverified"` y `redistributable: false` en los 116, y el botón ZIP está deshabilitado en todos. La fuente queda registrada en `source` de cada entrada. El detalle y el inventario completo están en [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Hay dos situaciones distintas en la colección:
 
-Para desbloquear las descargas ZIP hay que obtener una **autorización escrita** del autor o que añada una licencia a su repositorio. Una URL de origen o un repositorio público no constituyen por sí mismos una licencia de redistribución.
+- **`CreacionesNuevas/` (248 demos del autor).** Son creaciones originales de este repositorio, cada una con un `LICENSE` MIT propio. El catálogo los marca con `license: "MIT"`, `redistributable: true` y `source` apuntando a este repositorio, así que **el botón ZIP está activo** y el ZIP incluye el `LICENSE` y un `ATTRIBUTION.txt` con la fuente y la licencia.
+- **`BibliotecaDeHtml_CSS/` (116 demos de terceros).** Su procedencia **sí está investigada**: los 116 proceden del repositorio público [`gevendra2004/gevstack`](https://github.com/gevendra2004/gevstack) (106 coincidencias exactas de carpeta y 8 por erratas del propio repositorio de origen). Ese repositorio **no tiene licencia** —`LICENSE` devuelve 404, la API de GitHub responde `"license": null` y el `README.md` no incluye términos—, así que **no se puede redistribuir**. Por eso mantienen `license: "Unverified"` y `redistributable: false`, y su botón ZIP está deshabilitado.
+
+El inventario completo está en [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Para desbloquear las descargas de los 116 de terceros hace falta una **autorización escrita** del autor o que añada una licencia a su repositorio; una URL de origen o un repositorio público no constituyen por sí mismos una licencia de redistribución.
 
 Antes de publicar o distribuir un demo, verifica su procedencia y las condiciones de su código, imágenes, fuentes, iconos y dependencias. Conserva los avisos necesarios, solicita permiso cuando corresponda o excluye el material cuyos derechos no estén claros.
 
@@ -123,7 +130,7 @@ El repositorio incluye [`vercel.json`](./vercel.json) y [`.vercelignore`](./verc
 
 Se despliega **la raíz del repositorio**, no un subdirectorio: las vistas previas cargan `../BibliotecaDeHtml_CSS/...`, así que esa carpeta tiene que publicarse también. `vercel.json` redirige `/` → `/Web/` y `/Web` → `/Web/` (sin barra final rompería las rutas relativas) y añade cabeceras de seguridad.
 
-> ⚠️ **No** uses `node Web/scripts/build-site.mjs` como build command de Vercel. Ese script filtra los demos por licencia y, con los metadatos actuales, publicaría **0 de 116** componentes: catálogo vacío y previews en 404. Solo tiene sentido cuando haya componentes con `redistributable: true` (ver *Procedencia y licencias*).
+> ℹ️ `node Web/scripts/build-site.mjs` ahora produce un artefacto **útil**: publica los **248 componentes autorizados** de `CreacionesNuevas/` (con su código, su `LICENSE` y sus fuentes) y **excluye los 116 de terceros**, que no tienen permiso de redistribución. Sigue sin ser la opción recomendada para Vercel, porque el sitio se despliega mejor sirviendo la raíz del repositorio: así se muestran los **364** componentes y las previews de `BibliotecaDeHtml_CSS/` no dan 404. Úsalo solo si quieres publicar únicamente lo que se puede redistribuir.
 
 ### GitHub Pages
 

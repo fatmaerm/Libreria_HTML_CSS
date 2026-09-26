@@ -33,7 +33,7 @@ El generador requiere Node.js 18 o posterior. La aplicación usa HTML, CSS, mód
 - La interfaz ofrece inglés y español; guarda el idioma en `localStorage` con la clave `component-field-language`, separada de `component-field-theme`.
 - Las vistas previas cargan el `index.html` original en un `iframe`. El detalle muestra ese HTML y lee los archivos CSS y JavaScript locales para poder copiarlos.
 
-El catálogo local detecta actualmente 116 páginas de demos. Las categorías se infieren de los nombres de carpetas y páginas. Las referencias locales faltantes se muestran en el detalle. La procedencia de los 116 está trazada al repositorio `gevendra2004/gevstack`, que **no declara licencia**, así que ninguno está autorizado todavía para redistribución y el artefacto público no incluye su código. Consulta [`../THIRD_PARTY_NOTICES.md`](../THIRD_PARTY_NOTICES.md).
+El catálogo local detecta actualmente 364 páginas de demos en dos colecciones: los 248 de `CreacionesNuevas/` (creaciones del autor, con `LICENSE` MIT propia y **ZIP habilitado**) y los 116 de `BibliotecaDeHtml_CSS/` (terceros, trazados a `gevendra2004/gevstack`, que **no declara licencia**, por lo que su ZIP sigue deshabilitado y el constructor los excluye). Las categorías se infieren de los nombres de carpetas y páginas. Las referencias locales faltantes se muestran en el detalle. Consulta [`../THIRD_PARTY_NOTICES.md`](../THIRD_PARTY_NOTICES.md).
 
 ## Añadir un componente
 

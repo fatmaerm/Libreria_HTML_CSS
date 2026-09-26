@@ -67,9 +67,10 @@ Node.js 18 o posterior solo hace falta para regenerar el catálogo. El sitio uti
 |-- .github/workflows/          # Despliegue con GitHub Pages
 |-- Docs/Opencode/Plan.md       # Plan de mejora por fases
 |-- CHANGELOG.md
+|-- Docs/Legalizacion/
+|   `-- THIRD_PARTY_NOTICES.md   # Procedencia y licencias de los componentes
 |-- index.html                  # Entrada a la aplicación web
 |-- LICENSE
-|-- THIRD_PARTY_NOTICES.md
 `-- README.md
 ```
 
@@ -116,7 +117,7 @@ Hay dos situaciones distintas en la colección:
 - **`CreacionesNuevas/` (248 demos del autor).** Son creaciones originales de este repositorio, cada una con un `LICENSE` MIT propio. El catálogo los marca con `license: "MIT"`, `redistributable: true` y `source` apuntando a este repositorio, así que **el botón ZIP está activo** y el ZIP incluye el `LICENSE` y un `ATTRIBUTION.txt` con la fuente y la licencia.
 - **`BibliotecaDeHtml_CSS/` (116 demos de terceros).** Su procedencia **sí está investigada**: los 116 proceden del repositorio público [`gevendra2004/gevstack`](https://github.com/gevendra2004/gevstack) (106 coincidencias exactas de carpeta y 8 por erratas del propio repositorio de origen). Ese repositorio **no tiene licencia** —`LICENSE` devuelve 404, la API de GitHub responde `"license": null` y el `README.md` no incluye términos—, así que **no se puede redistribuir**. Por eso mantienen `license: "Unverified"` y `redistributable: false`, y su botón ZIP está deshabilitado.
 
-El inventario completo está en [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Para desbloquear las descargas de los 116 de terceros hace falta una **autorización escrita** del autor o que añada una licencia a su repositorio; una URL de origen o un repositorio público no constituyen por sí mismos una licencia de redistribución.
+El inventario completo está en [Docs/Legalizacion/THIRD_PARTY_NOTICES.md](Docs/Legalizacion/THIRD_PARTY_NOTICES.md). Para desbloquear las descargas de los 116 de terceros hace falta una **autorización escrita** del autor o que añada una licencia a su repositorio; una URL de origen o un repositorio público no constituyen por sí mismos una licencia de redistribución.
 
 Antes de publicar o distribuir un demo, verifica su procedencia y las condiciones de su código, imágenes, fuentes, iconos y dependencias. Conserva los avisos necesarios, solicita permiso cuando corresponda o excluye el material cuyos derechos no estén claros.
 

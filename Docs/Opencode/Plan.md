@@ -17,6 +17,7 @@
 | 7 | SEO y pulido | ✅ |
 | 8 | Verificación final | ✅ |
 | 9 | `CreacionesNuevas/` integrada (116 → 364 demos) | ✅ |
+| 10 | Clasificación de componentes y previews en producción | ✅ |
 
 Balancie: la web carga un 89 % menos de catálogo, monta 3 previews en vez de 15,
 describe los 364 componentes en dos idiomas y tiene metadatos y tarjeta social.
@@ -271,6 +272,23 @@ falla ✅. `git status` sin artefactos ✅. README sin contradicciones ✅.
 > quedan autorizados para descarga ZIP con licencia MIT.
 
 ---
+
+### Fase 10 — Clasificación y previews en producción ✅ (2026-09-27)
+
+- [x] **Previews rotas en el despliegue.** 93 de las 114 carpetas de
+      `BibliotecaDeHtml_CSS/` tenían distinta capitalización en git que en disco.
+      El catálogo usa la ruta del disco, así que en Linux/Vercel la preview no
+      encontraba el archivo. `core.ignorecase=false` + 93 renombrados en el índice.
+- [x] **Barras de scroll** dentro de las previews: `scrolling="no"` en los iframes.
+- [x] `getCategory()` reescrito como tabla ordenada con nueve categorías
+      (antes: 8 regex en cadena con `Animations` al final).
+- [x] **114 categorías explícitas** en `component-overrides.json` para lo que el
+      heurístico no decide por nombre.
+
+**Resultado:** «Other» pasa de **136 a 40** componentes y «Animations» de **14 a 68**.
+
+**Hecho cuando:** ninguna categoría concentra una proporción anómala y las
+previews se ven igual en local que en producción. ✅
 
 ### Fase 9 — `CreacionesNuevas/` integrada ✅ (2026-09-26)
 

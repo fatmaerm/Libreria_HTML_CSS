@@ -65,17 +65,23 @@ function createSlug(value) {
     .replace(/^-|-$/g, "");
 }
 
+const categoryRules = [
+  ["Loaders", /loader|loading|preloader|skeleton|spinner|shimmer|placeholder|progress/],
+  ["Forms", /form|input|email|login|log-in|signin|sign-in|signup|sign-up|dropzone|upload|subscribe|subscription|contact|reservation|reserve|booking|otp|captcha|validation|checklist/],
+  ["Navigation", /navbar|nav-|navigation|breadcrumb|pagination|tab-|tabs|menu|footer|header|sidebar|side-bar|dock|command-palette|scroll-spy|mega-menu|marquee|ticker|breadcrumb/],
+  ["Galleries", /gallery|carousel|slider|photo|image-grid|image-gallery|lightbox|thumbnail/],
+  ["Buttons", /button|btn|submit|fab|chip|badge|pill|tag|stepper/],
+  ["Cards", /card|pricing|tier|testimonial|profile|product|movie|stat-card/],
+  ["Controls", /toggle|switch|range|slider|knob|dial|rotary|volume|checkbox|radio|slider|picker|selector|select|lever|gauge|meter|clock|timer|calendar|lock|safe|compass|joystick|scrub/],
+  ["Effects", /gradient|glow|blur|shadow|glass|glassmorphic|frost|neumorph|hover|reveal|glitch|mask|liquid|neon|chrome|metaball|particle|3d|cube|depth|reflect|holograph|prism|caustic|aurora|plasma|vapor|steam|smoke|frost/],
+  ["Animations", /animation|animated|animate|morph|spin|float|drift|pulse|flicker|bounce|shake|orbit|fall|rise|swing|flip|unfold|confetti|firework|rain|meteor|snow|trail|draw|scribble|typewriter|blink|cascade|tumble|twist|ripple|wave|parallax|countdown|boot|reveal-text/],
+];
+
 function getCategory(value) {
   const name = value.toLowerCase();
-  if (/loader|preloader|skeleton/.test(name)) return "Loaders";
-  if (/button|submit|checkbox/.test(name)) return "Buttons";
-  if (/card|testimonial|profile|product|movie/.test(name)) return "Cards";
-  if (/navbar|navigation|breadcrumb|pagination|tab-menu|menu|footer/.test(name)) return "Navigation";
-  if (/gallery|carousel|image-slider|photo-gallery/.test(name)) return "Galleries";
-  if (/toggle|switch|range-slider|slider-bar/.test(name)) return "Controls";
-  if (/form|input|email|login|dropzone|subscription|contact|reservation/.test(name)) return "Forms";
-  if (/text|cursor|hover|reveal|glitch|scroll|background|liquid|image-effect/.test(name)) return "Effects";
-  if (/animation|animated|morph/.test(name)) return "Animations";
+  for (const [category, pattern] of categoryRules) {
+    if (pattern.test(name)) return category;
+  }
   return "Other";
 }
 

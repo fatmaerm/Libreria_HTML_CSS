@@ -60,12 +60,12 @@
   {
     "id": "animated-gradient-underglow",
     "name": "Animated Gradient Underglow",
-    "category": "Animations",
+    "category": "Effects",
     "featured": false,
     "description": "A card-like surface with a coloured underglow that sweeps through the spectrum.",
     "descriptionEs": "Superficie tipo tarjeta con un resplandor inferior que recorre el espectro de colores.",
     "tags": [
-      "animations",
+      "effects",
       "animated",
       "gradient",
       "underglow"
@@ -531,12 +531,12 @@
   {
     "id": "circular-text-animation",
     "name": "Circular Text Animation",
-    "category": "Effects",
+    "category": "Animations",
     "featured": false,
     "description": "Text laid out along a circular path that rotates continuously.",
     "descriptionEs": "Texto dispuesto sobre una trayectoria circular que gira de forma continua.",
     "tags": [
-      "effects",
+      "animations",
       "circular",
       "text",
       "animation"
@@ -654,12 +654,12 @@
   {
     "id": "css-tab-indicator",
     "name": "CSS Tab Indicator",
-    "category": "Other",
+    "category": "Navigation",
     "featured": false,
     "description": "A tab strip whose moving indicator is animated with CSS alone.",
     "descriptionEs": "Barra de pestañas cuyo indicador móvil se anima solo con CSS.",
     "tags": [
-      "other",
+      "navigation",
       "css",
       "tab",
       "indicator"
@@ -863,12 +863,12 @@
   {
     "id": "dark-text-animation",
     "name": "Dark Text Animation",
-    "category": "Effects",
+    "category": "Animations",
     "featured": false,
     "description": "An animated text treatment designed for dark backgrounds.",
     "descriptionEs": "Tratamiento de texto animado pensado para fondos oscuros.",
     "tags": [
-      "effects",
+      "animations",
       "dark",
       "text",
       "animation"
@@ -1112,12 +1112,12 @@
   {
     "id": "emerging-tooltip",
     "name": "Emerging Tooltip",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "A tooltip that emerges from beneath its trigger on hover.",
     "descriptionEs": "Globo de ayuda que emerge por debajo de su disparador al pasar el cursor.",
     "tags": [
-      "other",
+      "effects",
       "emerging",
       "tooltip"
     ],
@@ -1169,12 +1169,12 @@
   {
     "id": "facebook-emoji-reactions",
     "name": "Facebook Emoji Reactions",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "A row of Facebook-style emoji reactions that animate when selected.",
     "descriptionEs": "Fila de reacciones con emojis al estilo de Facebook que se animan al seleccionarlas.",
     "tags": [
-      "other",
+      "effects",
       "facebook",
       "emoji",
       "reactions"
@@ -1203,12 +1203,12 @@
   {
     "id": "fade-in-text-animation",
     "name": "Fade In Text Animation",
-    "category": "Effects",
+    "category": "Animations",
     "featured": false,
     "description": "Text that fades in gradually as it enters the page.",
     "descriptionEs": "Texto que aparece desvaneciéndose gradualmente al entrar en la página.",
     "tags": [
-      "effects",
+      "animations",
       "fade",
       "in",
       "text",
@@ -1329,12 +1329,12 @@
   {
     "id": "ghost-text-animation",
     "name": "Ghost Text Animation",
-    "category": "Effects",
+    "category": "Animations",
     "featured": false,
     "description": "Text with a translucent, flickering reveal animation.",
     "descriptionEs": "Texto con una animación de aparición translúcida y parpadeante.",
     "tags": [
-      "effects",
+      "animations",
       "ghost",
       "text",
       "animation"
@@ -1449,12 +1449,12 @@
   {
     "id": "hello-world-text-roller",
     "name": "Hello World Text Roller",
-    "category": "Effects",
+    "category": "Animations",
     "featured": false,
     "description": "A text roller that flips through phrases, starting with Hello World.",
     "descriptionEs": "Rodillo de texto que pasa de una frase a otra, empezando por Hello World.",
     "tags": [
-      "effects",
+      "animations",
       "hello",
       "world",
       "text",
@@ -2117,12 +2117,12 @@
   {
     "id": "notify-me-email-button",
     "name": "Notify Me Email Button",
-    "category": "Buttons",
+    "category": "Forms",
     "featured": false,
     "description": "A button for signing up with an email address to receive notifications.",
     "descriptionEs": "Botón para apuntarse con un correo electrónico y recibir avisos.",
     "tags": [
-      "buttons",
+      "forms",
       "notify",
       "me",
       "email",
@@ -2443,12 +2443,12 @@
   {
     "id": "rays-background-animation",
     "name": "Rays Background Animation",
-    "category": "Effects",
+    "category": "Animations",
     "featured": false,
     "description": "A background of light rays that sweep across the page.",
     "descriptionEs": "Fondo de rayos de luz que barren la página.",
     "tags": [
-      "effects",
+      "animations",
       "rays",
       "background",
       "animation"
@@ -2650,12 +2650,12 @@
   {
     "id": "simple-tooltip",
     "name": "Simple Tooltip",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "A minimal tooltip that appears when you hover its trigger.",
     "descriptionEs": "Globo de ayuda minimalista que aparece al pasar el cursor sobre su disparador.",
     "tags": [
-      "other",
+      "effects",
       "simple",
       "tooltip"
     ],
@@ -2950,12 +2950,12 @@
   {
     "id": "spotlight-text-animation",
     "name": "Spotlight Text Animation",
-    "category": "Effects",
+    "category": "Animations",
     "featured": false,
     "description": "Text lit by a spotlight that sweeps across the letters.",
     "descriptionEs": "Texto iluminado por un foco que barre las letras.",
     "tags": [
-      "effects",
+      "animations",
       "spotlight",
       "text",
       "animation"
@@ -3008,12 +3008,12 @@
   {
     "id": "stretching-text-animation",
     "name": "Stretching Text Animation",
-    "category": "Effects",
+    "category": "Animations",
     "featured": false,
     "description": "Text that stretches horizontally as part of the animation.",
     "descriptionEs": "Texto que se estira horizontalmente como parte de la animación.",
     "tags": [
-      "effects",
+      "animations",
       "stretching",
       "text",
       "animation"
@@ -3130,12 +3130,12 @@
   {
     "id": "table-reservation-button",
     "name": "Table Reservation Button",
-    "category": "Buttons",
+    "category": "Forms",
     "featured": false,
     "description": "A call-to-action button for booking a table.",
     "descriptionEs": "Botón de llamada a la acción para reservar una mesa.",
     "tags": [
-      "buttons",
+      "forms",
       "table",
       "reservation",
       "button"
@@ -3192,12 +3192,12 @@
   {
     "id": "text-changing-animation",
     "name": "Text Changing Animation",
-    "category": "Effects",
+    "category": "Animations",
     "featured": false,
     "description": "Text that swaps between phrases in a continuous animation.",
     "descriptionEs": "Texto que alterna frases en una animación continua.",
     "tags": [
-      "effects",
+      "animations",
       "text",
       "changing",
       "animation"
@@ -3347,12 +3347,12 @@
   {
     "id": "to-do-checkbox",
     "name": "To Do Checkbox",
-    "category": "Buttons",
+    "category": "Controls",
     "featured": false,
     "description": "A to-do checkbox that marks a task as done with a check animation.",
     "descriptionEs": "Casilla de tareas que marca una tarea como hecha con una animación de visto.",
     "tags": [
-      "buttons",
+      "controls",
       "to",
       "do",
       "checkbox"
@@ -3471,12 +3471,12 @@
   {
     "id": "3d-cube-rubiks-twist",
     "name": "3D Cube Rubiks Twist",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "A 3D Rubik's cube whose faces twist and scramble with the drag.",
     "descriptionEs": "Cubo de Rubik 3D cuyas caras giran y se desordenan al arrastrar.",
     "tags": [
-      "other",
+      "effects",
       "3d",
       "cube",
       "rubiks",
@@ -3535,12 +3535,12 @@
   {
     "id": "3d-split-flap-board",
     "name": "3D Split Flap Board",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "A departure board whose letters flip like a real split-flap display.",
     "descriptionEs": "Tablero de salidas cuyas letras giran como un display(split-flap real.",
     "tags": [
-      "other",
+      "effects",
       "3d",
       "split",
       "flap",
@@ -3669,12 +3669,12 @@
   {
     "id": "animated-gradient-border",
     "name": "Animated Gradient Border",
-    "category": "Animations",
+    "category": "Effects",
     "featured": false,
     "description": "A card border that cycles through a moving colour gradient.",
     "descriptionEs": "Borde de tarjeta que recorre un degradado de color en movimiento.",
     "tags": [
-      "animations",
+      "effects",
       "animated",
       "gradient",
       "border"
@@ -3821,12 +3821,12 @@
   {
     "id": "aurora-borealis-mountain-sky",
     "name": "Aurora Borealis Mountain Sky",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "Northern lights drifting over a silhouetted mountain range.",
     "descriptionEs": "Auroras boreales desplazándose sobre una silueta de montañas.",
     "tags": [
-      "other",
+      "effects",
       "aurora",
       "borealis",
       "mountain",
@@ -3880,12 +3880,12 @@
   {
     "id": "autumn-leaf-wind-drift",
     "name": "Autumn Leaf Wind Drift",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "Autumn leaves that drift and tumble across the screen on the wind.",
     "descriptionEs": "Hojas de otoño que giran y se arrastran por la pantalla con el viento.",
     "tags": [
-      "other",
+      "animations",
       "autumn",
       "leaf",
       "wind",
@@ -3939,12 +3939,12 @@
   {
     "id": "battery-lightning-charge",
     "name": "Battery Lightning Charge",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A battery level that fills with crackling lightning as it charges.",
     "descriptionEs": "Batería que se llena de chispas eléctricas mientras carga.",
     "tags": [
-      "other",
+      "animations",
       "battery",
       "lightning",
       "charge"
@@ -3968,12 +3968,12 @@
   {
     "id": "bioluminescent-jellyfish-glow",
     "name": "Bioluminescent Jellyfish Glow",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "Jellyfish pulsing with a soft bioluminescent glow.",
     "descriptionEs": "Medusas que laten con un suave brillo bioluminiscente.",
     "tags": [
-      "other",
+      "effects",
       "bioluminescent",
       "jellyfish",
       "glow"
@@ -3997,12 +3997,12 @@
   {
     "id": "biometric-iris-auth-scan",
     "name": "Biometric Iris Auth Scan",
-    "category": "Other",
+    "category": "Forms",
     "featured": false,
     "description": "An iris scanner that unlocks after reading your eye.",
     "descriptionEs": "Escáner de iris que se desbloquea tras leer tu ojo.",
     "tags": [
-      "other",
+      "forms",
       "biometric",
       "iris",
       "auth",
@@ -4113,12 +4113,12 @@
   {
     "id": "campfire-embers-floating",
     "name": "Campfire Embers Floating",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A campfire with embers drifting upward into the dark.",
     "descriptionEs": "Hoguera con ascuas que suben flotando hacia la oscuridad.",
     "tags": [
-      "other",
+      "animations",
       "campfire",
       "embers",
       "floating"
@@ -4142,12 +4142,12 @@
   {
     "id": "candle-flame-flicker",
     "name": "Candle Flame Flicker",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A candle flame that flickers and sways realistically.",
     "descriptionEs": "Llama de vela que parpadea y oscila de forma realista.",
     "tags": [
-      "other",
+      "animations",
       "candle",
       "flame",
       "flicker"
@@ -4270,12 +4270,12 @@
   {
     "id": "circuit-board-energy-pulse",
     "name": "Circuit Board Energy Pulse",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "Circuit traces lighting up as an energy pulse travels across them.",
     "descriptionEs": "Pistas de circuito que se encienden al recorrerlas un pulso de energía.",
     "tags": [
-      "other",
+      "animations",
       "circuit",
       "board",
       "energy",
@@ -4300,12 +4300,12 @@
   {
     "id": "circular-activity-rings-fitness",
     "name": "Circular Activity Rings Fitness",
-    "category": "Other",
+    "category": "Controls",
     "featured": false,
     "description": "Overlapping activity rings that fill as you log each goal.",
     "descriptionEs": "Anillos de actividad superpuestos que se rellenan según cada objetivo.",
     "tags": [
-      "other",
+      "controls",
       "circular",
       "activity",
       "rings",
@@ -4359,12 +4359,12 @@
   {
     "id": "code-diff-slider-preview",
     "name": "Code Diff Slider Preview",
-    "category": "Other",
+    "category": "Controls",
     "featured": false,
     "description": "A slider that wipes between the before and after of a code change.",
     "descriptionEs": "Control deslizante que revela el antes y el después de un cambio de código.",
     "tags": [
-      "other",
+      "controls",
       "code",
       "diff",
       "slider",
@@ -4424,12 +4424,12 @@
   {
     "id": "color-hex-picker-dropper",
     "name": "Color Hex Picker Dropper",
-    "category": "Other",
+    "category": "Controls",
     "featured": false,
     "description": "A colour picker with a dropper that reads any pixel on the page.",
     "descriptionEs": "Selector de color con conta gotas que lee cualquier píxel de la página.",
     "tags": [
-      "other",
+      "controls",
       "color",
       "hex",
       "picker",
@@ -4527,12 +4527,12 @@
   {
     "id": "command-palette-hud",
     "name": "Command Palette HUD",
-    "category": "Other",
+    "category": "Navigation",
     "featured": false,
     "description": "A command palette that filters actions as you type.",
     "descriptionEs": "Paleta de comandos que filtra acciones mientras escribes.",
     "tags": [
-      "other",
+      "navigation",
       "command",
       "palette",
       "hud"
@@ -4561,12 +4561,12 @@
   {
     "id": "confetti-burst-badge",
     "name": "Confetti Burst Badge",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A badge that celebrates with a burst of confetti.",
     "descriptionEs": "Insignia que celebra con una explosión de confeti.",
     "tags": [
-      "other",
+      "animations",
       "confetti",
       "burst",
       "badge"
@@ -4629,12 +4629,12 @@
   {
     "id": "copy-code-success-burst",
     "name": "Copy Code Success Burst",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A copy button that celebrates the moment the code is copied.",
     "descriptionEs": "Botón de copiar que celebra en el instante en que se copia el código.",
     "tags": [
-      "other",
+      "animations",
       "copy",
       "code",
       "success",
@@ -4733,12 +4733,12 @@
   {
     "id": "crt-green-terminal-boot",
     "name": "CRT Green Terminal Boot",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A green phosphor terminal that boots up line by line.",
     "descriptionEs": "Terminal de fósforo verde que arranca línea a línea.",
     "tags": [
-      "other",
+      "animations",
       "crt",
       "green",
       "terminal",
@@ -4792,12 +4792,12 @@
   {
     "id": "cryo-stasis-chamber-pod",
     "name": "Cryo Stasis Chamber Pod",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A cryogenic pod with frosted glass and a slow blinking readout.",
     "descriptionEs": "Cápsula criogénica de cristal esmerilado con lectura parpadeante.",
     "tags": [
-      "other",
+      "animations",
       "cryo",
       "stasis",
       "chamber",
@@ -4822,12 +4822,12 @@
   {
     "id": "crystal-geode-sparkle-cave",
     "name": "Crystal Geode Sparkle Cave",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "Sparkling crystal geodes glowing inside a dark cave.",
     "descriptionEs": "Geodas de cristal que brillan dentro de una cueva oscura.",
     "tags": [
-      "other",
+      "animations",
       "crystal",
       "geode",
       "sparkle",
@@ -4946,12 +4946,12 @@
   {
     "id": "css-typewriter-line",
     "name": "CSS Typewriter Line",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A line of text that types itself out letter by letter.",
     "descriptionEs": "Línea de texto que se escribe letra a letra.",
     "tags": [
-      "other",
+      "animations",
       "css",
       "typewriter",
       "line"
@@ -5039,12 +5039,12 @@
   {
     "id": "cyber-matrix-rain",
     "name": "Cyber Matrix Rain",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "Falling code of the classic green digital rain.",
     "descriptionEs": "Código en caída de la lluvia digital verde clásica.",
     "tags": [
-      "other",
+      "animations",
       "cyber",
       "matrix",
       "rain"
@@ -5073,12 +5073,12 @@
   {
     "id": "cyber-retrowave-sun",
     "name": "Cyber Retrowave Sun",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A retrowave sun setting over a glowing wireframe grid.",
     "descriptionEs": "Sol retrowave poniéndose sobre una cuadrícula de rejilla luminosa.",
     "tags": [
-      "other",
+      "animations",
       "cyber",
       "retrowave",
       "sun"
@@ -5102,12 +5102,12 @@
   {
     "id": "cyber-shield-passcode-keypad",
     "name": "Cyber Shield Passcode Keypad",
-    "category": "Other",
+    "category": "Forms",
     "featured": false,
     "description": "A passcode keypad guarded by a pulsing cyber shield.",
     "descriptionEs": "Teclado de código protegido por un escudo cyber que late.",
     "tags": [
-      "other",
+      "forms",
       "cyber",
       "shield",
       "passcode",
@@ -5226,12 +5226,12 @@
   {
     "id": "deep-abyss-submarine-porthole",
     "name": "Deep Abyss Submarine Porthole",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A submarine porthole looking down into the dark abyss.",
     "descriptionEs": "Portilla de submarino que mira al abismo oscuro.",
     "tags": [
-      "other",
+      "animations",
       "deep",
       "abyss",
       "submarine",
@@ -5256,12 +5256,12 @@
   {
     "id": "desert-dune-heat-haze",
     "name": "Desert Dune Heat Haze",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "Desert dunes rippling with heat haze under a burning sun.",
     "descriptionEs": "Dunas del desierto que ondulan con el calor bajo un sol ardiente.",
     "tags": [
-      "other",
+      "animations",
       "desert",
       "dune",
       "heat",
@@ -5321,12 +5321,12 @@
   {
     "id": "dna-double-helix",
     "name": "DNA Double Helix",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A DNA double helix turning slowly against the dark.",
     "descriptionEs": "Doble hélice de ADN girando despacio sobre el fondo oscuro.",
     "tags": [
-      "other",
+      "animations",
       "dna",
       "double",
       "helix"
@@ -5443,12 +5443,12 @@
   {
     "id": "elastic-gooey-fab",
     "name": "Elastic Gooey FAB",
-    "category": "Other",
+    "category": "Buttons",
     "featured": false,
     "description": "A floating action button that stretches elastically when pressed.",
     "descriptionEs": "Botón de acción flotante que se estira elásticamente al pulsarlo.",
     "tags": [
-      "other",
+      "buttons",
       "elastic",
       "gooey",
       "fab"
@@ -5610,12 +5610,12 @@
   {
     "id": "fireworks-celebration-burst",
     "name": "Fireworks Celebration Burst",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "Fireworks that burst across the night sky to celebrate.",
     "descriptionEs": "Fuegos artificiales que estallan en el cielo nocturno para celebrar.",
     "tags": [
-      "other",
+      "animations",
       "fireworks",
       "celebration",
       "burst"
@@ -5673,12 +5673,12 @@
   {
     "id": "flip-segment-clock",
     "name": "Flip Segment Clock",
-    "category": "Other",
+    "category": "Controls",
     "featured": false,
     "description": "A clock whose digits flip over like a departure board.",
     "descriptionEs": "Reloj cuyos dígitos giran como los de un tablero de salidas.",
     "tags": [
-      "other",
+      "controls",
       "flip",
       "segment",
       "clock"
@@ -5707,12 +5707,12 @@
   {
     "id": "floating-astronaut-visor",
     "name": "Floating Astronaut Visor",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "An astronaut drifting with light glinting on the visor.",
     "descriptionEs": "Astronauta a la deriva con reflejos de luz en el visor.",
     "tags": [
-      "other",
+      "animations",
       "floating",
       "astronaut",
       "visor"
@@ -5736,12 +5736,12 @@
   {
     "id": "floating-glass-action-dock",
     "name": "Floating Glass Action Dock",
-    "category": "Other",
+    "category": "Navigation",
     "featured": false,
     "description": "A dock of glass action buttons that floats over the page.",
     "descriptionEs": "Dock de botones de cristal que flota sobre la página.",
     "tags": [
-      "other",
+      "navigation",
       "floating",
       "glass",
       "action",
@@ -5766,12 +5766,12 @@
   {
     "id": "floating-gradient-orbs",
     "name": "Floating Gradient Orbs",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "Soft gradient orbs floating slowly in the background.",
     "descriptionEs": "Orbes de degradado suaves que flotan despacio al fondo.",
     "tags": [
-      "other",
+      "effects",
       "floating",
       "gradient",
       "orbs"
@@ -5858,12 +5858,12 @@
   {
     "id": "floppy-disk-save-prompt",
     "name": "Floppy Disk Save Prompt",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "A retro save prompt that slides a floppy disk into the drive.",
     "descriptionEs": "Aviso de guardado retro que introduce un disquete en la unidad.",
     "tags": [
-      "other",
+      "effects",
       "floppy",
       "disk",
       "save",
@@ -5888,12 +5888,12 @@
   {
     "id": "fluid-tab-morph-indicator",
     "name": "Fluid Tab Morph Indicator",
-    "category": "Animations",
+    "category": "Navigation",
     "featured": false,
     "description": "A tab indicator that morphs fluidly into the active tab.",
     "descriptionEs": "Indicador de pestañas que se transforma con suavidad en la activa.",
     "tags": [
-      "animations",
+      "navigation",
       "fluid",
       "tab",
       "morph",
@@ -5923,12 +5923,12 @@
   {
     "id": "fluid-wave-radio-tuner",
     "name": "Fluid Wave Radio Tuner",
-    "category": "Other",
+    "category": "Controls",
     "featured": false,
     "description": "A retro radio tuner whose needle ripples with sound.",
     "descriptionEs": "Sintonizador de radio retro cuya aguja se ondula con el sonido.",
     "tags": [
-      "other",
+      "controls",
       "fluid",
       "wave",
       "radio",
@@ -5987,12 +5987,12 @@
   {
     "id": "frost-crystal-freeze-window",
     "name": "Frost Crystal Freeze Window",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "Frost crystals creeping across a window as it freezes over.",
     "descriptionEs": "Cristales de hielo que avanzan por una ventana al congelarse.",
     "tags": [
-      "other",
+      "effects",
       "frost",
       "crystal",
       "freeze",
@@ -6017,12 +6017,12 @@
   {
     "id": "frosted-glass-pricing-tier",
     "name": "Frosted Glass Pricing Tier",
-    "category": "Other",
+    "category": "Cards",
     "featured": false,
     "description": "A frosted glass pricing card that lifts on hover.",
     "descriptionEs": "Tarjeta de precios de cristal esmerilado que se eleva al pasar el cursor.",
     "tags": [
-      "other",
+      "cards",
       "frosted",
       "glass",
       "pricing",
@@ -6143,12 +6143,12 @@
   {
     "id": "glassmorphic-calendar-widget",
     "name": "Glassmorphic Calendar Widget",
-    "category": "Animations",
+    "category": "Controls",
     "featured": false,
     "description": "A frosted glass calendar showing a month at a glance.",
     "descriptionEs": "Calendario de cristal esmerilado que muestra un mes de un vistazo.",
     "tags": [
-      "animations",
+      "controls",
       "glassmorphic",
       "calendar",
       "widget"
@@ -6290,12 +6290,12 @@
   {
     "id": "gravitational-wormhole-vortex",
     "name": "Gravitational Wormhole Vortex",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A wormhole that bends light and swirls everything around it.",
     "descriptionEs": "Agujero de gusano que curva la luz y hace girar todo a su alrededor.",
     "tags": [
-      "other",
+      "animations",
       "gravitational",
       "wormhole",
       "vortex"
@@ -6319,12 +6319,12 @@
   {
     "id": "gravity-black-hole",
     "name": "Gravity Black Hole",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A black hole pulling light and matter into its event horizon.",
     "descriptionEs": "Agujero negro que atrae luz y materia hacia su horizonte de sucesos.",
     "tags": [
-      "other",
+      "animations",
       "gravity",
       "black",
       "hole"
@@ -6416,12 +6416,12 @@
   {
     "id": "haptic-checkbox-toggle",
     "name": "Haptic Checkbox Toggle",
-    "category": "Buttons",
+    "category": "Controls",
     "featured": false,
     "description": "A checkbox that presses in as if it were a physical switch.",
     "descriptionEs": "Casilla que se hunde como si fuera un interruptor físico.",
     "tags": [
-      "buttons",
+      "controls",
       "haptic",
       "checkbox",
       "toggle"
@@ -6445,12 +6445,12 @@
   {
     "id": "hex-honeycomb-pulse",
     "name": "Hex Honeycomb Pulse",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A honeycomb of hexagons pulsing like a living beehive.",
     "descriptionEs": "Panal de hexágonos que late como una colmena viva.",
     "tags": [
-      "other",
+      "animations",
       "hex",
       "honeycomb",
       "pulse"
@@ -6474,12 +6474,12 @@
   {
     "id": "holographic-data-prism",
     "name": "Holographic Data Prism",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "A prism that splits a beam of light into its colours.",
     "descriptionEs": "Prisma que divide un haz de luz en sus colores.",
     "tags": [
-      "other",
+      "effects",
       "holographic",
       "data",
       "prism"
@@ -6537,12 +6537,12 @@
   {
     "id": "holographic-wrist-watch",
     "name": "Holographic Wrist Watch",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "A wrist watch rendered in holographic projection lines.",
     "descriptionEs": "Reloj de muñeca dibujado con líneas de proyección holográfica.",
     "tags": [
-      "other",
+      "effects",
       "holographic",
       "wrist",
       "watch"
@@ -6624,12 +6624,12 @@
   {
     "id": "hyperspace-speedometer-gauge",
     "name": "Hyperspace Speedometer Gauge",
-    "category": "Other",
+    "category": "Controls",
     "featured": false,
     "description": "A hyperspace speedometer that swings past the red line.",
     "descriptionEs": "Velocímetro de hiperespacio que pasa de la línea roja.",
     "tags": [
-      "other",
+      "controls",
       "hyperspace",
       "speedometer",
       "gauge"
@@ -6751,12 +6751,12 @@
   {
     "id": "infinite-marquee-pill-tags",
     "name": "Infinite Marquee Pill Tags",
-    "category": "Other",
+    "category": "Navigation",
     "featured": false,
     "description": "Pill-shaped tags scrolling endlessly in both directions.",
     "descriptionEs": "Etiquetas con forma de píldora que se desplazan sin fin en ambos sentidos.",
     "tags": [
-      "other",
+      "navigation",
       "infinite",
       "marquee",
       "pill",
@@ -6781,12 +6781,12 @@
   {
     "id": "ink-drop-water-diffusion",
     "name": "Ink Drop Water Diffusion",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A drop of ink diffusing slowly through clear water.",
     "descriptionEs": "Gota de tinta que se difunde despacio en agua cristalina.",
     "tags": [
-      "other",
+      "animations",
       "ink",
       "drop",
       "water",
@@ -6880,12 +6880,12 @@
   {
     "id": "isometric-city-night",
     "name": "Isometric City Night",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "An isometric city block glowing with lights at night.",
     "descriptionEs": "Manzana de ciudad isométrica iluminada de noche.",
     "tags": [
-      "other",
+      "animations",
       "isometric",
       "city",
       "night"
@@ -6909,12 +6909,12 @@
   {
     "id": "isometric-cube-spinner",
     "name": "Isometric Cube Spinner",
-    "category": "Other",
+    "category": "Loaders",
     "featured": false,
     "description": "A stack of isometric cubes that spins as a loader.",
     "descriptionEs": "Pila de cubos isométricos que gira como indicador de carga.",
     "tags": [
-      "other",
+      "loaders",
       "isometric",
       "cube",
       "spinner"
@@ -6973,12 +6973,12 @@
   {
     "id": "kaleidoscope-mandala-spin",
     "name": "Kaleidoscope Mandala Spin",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A kaleidoscopic mandala that rotates and reshapes itself.",
     "descriptionEs": "Mandala calidoscópico que gira y se reconfigura solo.",
     "tags": [
-      "other",
+      "animations",
       "kaleidoscope",
       "mandala",
       "spin"
@@ -7036,12 +7036,12 @@
   {
     "id": "kinetic-fluid-slider",
     "name": "Kinetic Fluid Slider",
-    "category": "Other",
+    "category": "Controls",
     "featured": false,
     "description": "A slider that leaves a fluid trail behind its handle.",
     "descriptionEs": "Control deslizante que deja un rastro líquido tras su tirador.",
     "tags": [
-      "other",
+      "controls",
       "kinetic",
       "fluid",
       "slider"
@@ -7104,12 +7104,12 @@
   {
     "id": "lava-metaballs-lamp",
     "name": "Lava Metaballs Lamp",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "Metaballs of lava that bulge and merge like a lamp.",
     "descriptionEs": "Metaballs de lava que se abomban y se funden como una lámpara.",
     "tags": [
-      "other",
+      "animations",
       "lava",
       "metaballs",
       "lamp"
@@ -7260,12 +7260,12 @@
   {
     "id": "liquid-hourglass-timer",
     "name": "Liquid Hourglass Timer",
-    "category": "Effects",
+    "category": "Controls",
     "featured": false,
     "description": "A countdown timer shaped as a liquid hourglass.",
     "descriptionEs": "Temporizador de cuenta atrás con forma de reloj de arena líquido.",
     "tags": [
-      "effects",
+      "controls",
       "liquid",
       "hourglass",
       "timer"
@@ -7352,12 +7352,12 @@
   {
     "id": "liquid-morph-blob-animation",
     "name": "Liquid Morph Blob Animation",
-    "category": "Effects",
+    "category": "Animations",
     "featured": false,
     "description": "A blob that flows between shapes in a continuous loop.",
     "descriptionEs": "Gota que fluye entre formas en un bucle continuo.",
     "tags": [
-      "effects",
+      "animations",
       "liquid",
       "morph",
       "blob",
@@ -7382,12 +7382,12 @@
   {
     "id": "liquid-pull-to-refresh-spinner",
     "name": "Liquid Pull to Refresh Spinner",
-    "category": "Effects",
+    "category": "Loaders",
     "featured": false,
     "description": "A pull-to-refresh spinner whose arc stretches like liquid.",
     "descriptionEs": "Indicador de «tira para actualizar» cuyo arco se estira como líquido.",
     "tags": [
-      "effects",
+      "loaders",
       "liquid",
       "pull",
       "to",
@@ -7413,12 +7413,12 @@
   {
     "id": "liquid-tab-counter-badge",
     "name": "Liquid Tab Counter Badge",
-    "category": "Effects",
+    "category": "Navigation",
     "featured": false,
     "description": "A tab with a counter badge that moves like a drop of liquid.",
     "descriptionEs": "Pestaña con contador que se mueve como una gota de líquido.",
     "tags": [
-      "effects",
+      "navigation",
       "liquid",
       "tab",
       "counter",
@@ -7443,12 +7443,12 @@
   {
     "id": "live-crypto-ticker-ribbon",
     "name": "Live Crypto Ticker Ribbon",
-    "category": "Other",
+    "category": "Navigation",
     "featured": false,
     "description": "A ticker ribbon scrolling live cryptocurrency prices.",
     "descriptionEs": "Cinta que desliza precios de criptomonedas en vivo.",
     "tags": [
-      "other",
+      "navigation",
       "live",
       "crypto",
       "ticker",
@@ -7502,12 +7502,12 @@
   {
     "id": "lunar-phases-cycle-disc",
     "name": "Lunar Phases Cycle Disc",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A disc that cycles through every phase of the moon.",
     "descriptionEs": "Disco que recorre todas las fases de la luna.",
     "tags": [
-      "other",
+      "animations",
       "lunar",
       "phases",
       "cycle",
@@ -7532,12 +7532,12 @@
   {
     "id": "magma-volcano-crack-surface",
     "name": "Magma Volcano Crack Surface",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A crust of rock cracking open over glowing magma.",
     "descriptionEs": "Costra de roca que se agrieta sobre magma incandescente.",
     "tags": [
-      "other",
+      "animations",
       "magma",
       "volcano",
       "crack",
@@ -7562,12 +7562,12 @@
   {
     "id": "magnetic-ball-newton-cradle",
     "name": "Magnetic Ball Newton Cradle",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A Newton's cradle of magnetic balls that swing and collide.",
     "descriptionEs": "Péndulo de Newton con bolas magnéticas que chocan entre sí.",
     "tags": [
-      "other",
+      "animations",
       "magnetic",
       "ball",
       "newton",
@@ -7592,12 +7592,12 @@
   {
     "id": "magnetic-compass-rose",
     "name": "Magnetic Compass Rose",
-    "category": "Other",
+    "category": "Controls",
     "featured": false,
     "description": "A compass rose that swings to point the way north.",
     "descriptionEs": "Rosa de los vientos que gira hasta señalar el norte.",
     "tags": [
-      "other",
+      "controls",
       "magnetic",
       "compass",
       "rose"
@@ -7729,12 +7729,12 @@
   {
     "id": "magnetic-social-dock-cluster",
     "name": "Magnetic Social Dock Cluster",
-    "category": "Other",
+    "category": "Navigation",
     "featured": false,
     "description": "Social icons that cluster and separate magnetically on hover.",
     "descriptionEs": "Iconos sociales que se agrupan y separan magnéticamente al pasar el cursor.",
     "tags": [
-      "other",
+      "navigation",
       "magnetic",
       "social",
       "dock",
@@ -7861,12 +7861,12 @@
   {
     "id": "material-ripple-surface",
     "name": "Material Ripple Surface",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "A surface that sends a ripple out from each touch.",
     "descriptionEs": "Superficie que lanza una onda desde cada toque.",
     "tags": [
-      "other",
+      "effects",
       "material",
       "ripple",
       "surface"
@@ -7925,12 +7925,12 @@
   {
     "id": "mechanical-gear-clockwork-train",
     "name": "Mechanical Gear Clockwork Train",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "Interlocking gears turning like a clockwork mechanism.",
     "descriptionEs": "Engranajes acoplados que giran como un mecanismo de reloj.",
     "tags": [
-      "other",
+      "animations",
       "mechanical",
       "gear",
       "clockwork",
@@ -8071,12 +8071,12 @@
   {
     "id": "meteor-cosmic-shower",
     "name": "Meteor Cosmic Shower",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A shower of meteors streaking across the night sky.",
     "descriptionEs": "Lluvia de meteoros cruzando el cielo nocturno.",
     "tags": [
-      "other",
+      "animations",
       "meteor",
       "cosmic",
       "shower"
@@ -8129,12 +8129,12 @@
   {
     "id": "morphing-blob-bg",
     "name": "Morphing Blob Background",
-    "category": "Effects",
+    "category": "Animations",
     "featured": false,
     "description": "A background of blobs that morph and drift out of sight.",
     "descriptionEs": "Fondo de gotas que se deforman y se van de la vista.",
     "tags": [
-      "effects",
+      "animations",
       "morphing",
       "blob",
       "bg",
@@ -8252,12 +8252,12 @@
   {
     "id": "neon-cassette-audio-visualizer",
     "name": "Neon Cassette Audio Visualizer",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "A neon cassette deck wrapped around an audio visualizer.",
     "descriptionEs": "Casete de neón envuelto alrededor de un visualizador de audio.",
     "tags": [
-      "other",
+      "effects",
       "neon",
       "cassette",
       "audio",
@@ -8311,12 +8311,12 @@
   {
     "id": "neon-sign-flicker",
     "name": "Neon Sign Flicker",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "A neon sign that flickers on with a starter's stutter.",
     "descriptionEs": "Rótulo de neón que parpadea al encenderse como un fluorescente.",
     "tags": [
-      "other",
+      "effects",
       "neon",
       "sign",
       "flicker"
@@ -8471,12 +8471,12 @@
   {
     "id": "nixie-tube-counter-clock",
     "name": "Nixie Tube Counter Clock",
-    "category": "Other",
+    "category": "Controls",
     "featured": false,
     "description": "A clock counting on glowing nixie tubes.",
     "descriptionEs": "Reloj que marca con tubos nixie brillantes.",
     "tags": [
-      "other",
+      "controls",
       "nixie",
       "tube",
       "counter",
@@ -8531,12 +8531,12 @@
   {
     "id": "notification-stack-expand",
     "name": "Notification Stack Expand",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "Notifications that stack up and expand when you click them.",
     "descriptionEs": "Notificaciones que se apilan y se despliegan al pulsarlas.",
     "tags": [
-      "other",
+      "animations",
       "notification",
       "stack",
       "expand"
@@ -8565,12 +8565,12 @@
   {
     "id": "notification-toast-system",
     "name": "Notification Toast System",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A toast system for showing notifications in the corner.",
     "descriptionEs": "Sistema de toasts para mostrar avisos en la esquina.",
     "tags": [
-      "other",
+      "animations",
       "notification",
       "toast",
       "system"
@@ -8658,12 +8658,12 @@
   {
     "id": "orbital-dot-ring",
     "name": "Orbital Dot Ring",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A ring of dots orbiting at different speeds.",
     "descriptionEs": "Anillo de puntos que orbitan a distintas velocidades.",
     "tags": [
-      "other",
+      "animations",
       "orbital",
       "dot",
       "ring"
@@ -8687,12 +8687,12 @@
   {
     "id": "origami-crane-wings",
     "name": "Origami Crane Wings",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "An origami crane whose wings fold and unfold.",
     "descriptionEs": "Grulla de papiro origami que pliega y despliega las alas.",
     "tags": [
-      "other",
+      "animations",
       "origami",
       "crane",
       "wings"
@@ -8716,12 +8716,12 @@
   {
     "id": "origami-fortune-teller-cootie",
     "name": "Origami Fortune Teller Cootie",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A paper fortune teller that opens and closes as you tap it.",
     "descriptionEs": "Papeleta de la suerte que se abre y se cierra al tocarla.",
     "tags": [
-      "other",
+      "animations",
       "origami",
       "fortune",
       "teller",
@@ -8879,12 +8879,12 @@
   {
     "id": "pearl-caustic-sphere",
     "name": "Pearl Caustic Sphere",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "A pearl-like sphere refracting caustics on its surface.",
     "descriptionEs": "Esfera perlada que refracta cáusticas en su superficie.",
     "tags": [
-      "other",
+      "effects",
       "pearl",
       "caustic",
       "sphere"
@@ -8908,12 +8908,12 @@
   {
     "id": "pendulum-sync-dots",
     "name": "Pendulum Sync Dots",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "Dots swinging in pendulum motion, in sync.",
     "descriptionEs": "Puntos que oscilan como péndulos, todos al mismo tiempo.",
     "tags": [
-      "other",
+      "animations",
       "pendulum",
       "sync",
       "dots"
@@ -8937,12 +8937,12 @@
   {
     "id": "plasma-arc-reactor",
     "name": "Plasma Arc Reactor",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "An arc reactor with a swirling plasma core.",
     "descriptionEs": "Reactor de arco con un núcleo de plasma en remolino.",
     "tags": [
-      "other",
+      "effects",
       "plasma",
       "arc",
       "reactor"
@@ -8966,12 +8966,12 @@
   {
     "id": "plasma-orb-touch-lightning",
     "name": "Plasma Orb Touch Lightning",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "A plasma orb that throws lightning at your touch.",
     "descriptionEs": "Orbe de plasma que lanza rayos al tocarlo.",
     "tags": [
-      "other",
+      "effects",
       "plasma",
       "orb",
       "touch",
@@ -9001,12 +9001,12 @@
   {
     "id": "plasma-shield-barrier",
     "name": "Plasma Shield Barrier",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "A shimmering barrier that a plasma shield projects.",
     "descriptionEs": "Barrera parpadeante que proyecta un escudo de plasma.",
     "tags": [
-      "other",
+      "effects",
       "plasma",
       "shield",
       "barrier"
@@ -9059,12 +9059,12 @@
   {
     "id": "pomodoro-timer-widget",
     "name": "Pomodoro Timer Widget",
-    "category": "Other",
+    "category": "Controls",
     "featured": false,
     "description": "A Pomodoro timer with a work and a break cycle.",
     "descriptionEs": "Temporizador Pomodoro con ciclo de trabajo y descanso.",
     "tags": [
-      "other",
+      "controls",
       "pomodoro",
       "timer",
       "widget"
@@ -9093,12 +9093,12 @@
   {
     "id": "prism-light-refraction",
     "name": "Prism Light Refraction",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "Light refracting through a prism into a rainbow.",
     "descriptionEs": "Luz que se refracta en un prisma y forma un arcoíris.",
     "tags": [
-      "other",
+      "effects",
       "prism",
       "light",
       "refraction"
@@ -9122,12 +9122,12 @@
   {
     "id": "prismatic-soap-bubble-float",
     "name": "Prismatic Soap Bubble Float",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "Soap bubbles floating with prismatic colour on their surface.",
     "descriptionEs": "Burbujas de jabón que flotan con colores prismáticos en su superficie.",
     "tags": [
-      "other",
+      "animations",
       "prismatic",
       "soap",
       "bubble",
@@ -9216,12 +9216,12 @@
   {
     "id": "pulsing-sonar-radar",
     "name": "Pulsing Sonar Radar",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A radar sweep with a pulse that lights up as it passes.",
     "descriptionEs": "Barrido de radar con un pulso que se enciende al pasar.",
     "tags": [
-      "other",
+      "animations",
       "pulsing",
       "sonar",
       "radar"
@@ -9338,12 +9338,12 @@
   {
     "id": "rainy-window-glass-droplets",
     "name": "Rainy Window Glass Droplets",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "Raindrops running down a window, blurring what is outside.",
     "descriptionEs": "Gotas de lluvia bajando por una ventana y difuminando el exterior.",
     "tags": [
-      "other",
+      "effects",
       "rainy",
       "window",
       "glass",
@@ -9467,12 +9467,12 @@
   {
     "id": "retro-arcade-coin-slot",
     "name": "Retro Arcade Coin Slot",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "An arcade coin slot that swallows the coin on click.",
     "descriptionEs": "Ranura de moneda de recreativa que se traga la moneda al pulsar.",
     "tags": [
-      "other",
+      "effects",
       "retro",
       "arcade",
       "coin",
@@ -9531,12 +9531,12 @@
   {
     "id": "rotary-combination-safe-lock",
     "name": "Rotary Combination Safe Lock",
-    "category": "Other",
+    "category": "Controls",
     "featured": false,
     "description": "A combination lock whose dial turns smoothly between numbers.",
     "descriptionEs": "Cerradura de combinación cuyo disco gira entre números con suavidad.",
     "tags": [
-      "other",
+      "controls",
       "rotary",
       "combination",
       "safe",
@@ -9566,12 +9566,12 @@
   {
     "id": "rotary-dial-number-picker",
     "name": "Rotary Dial Number Picker",
-    "category": "Other",
+    "category": "Controls",
     "featured": false,
     "description": "A rotary dial for picking a number one step at a time.",
     "descriptionEs": "Disco giratorio para elegir un número paso a paso.",
     "tags": [
-      "other",
+      "controls",
       "rotary",
       "dial",
       "number",
@@ -9601,12 +9601,12 @@
   {
     "id": "sand-zen-garden-rake",
     "name": "Sand Zen Garden Rake",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "Rake lines drawn through zen-garden sand that slowly fade.",
     "descriptionEs": "Surcos de rastrillo en la arena de un jardín zen que se borran despacio.",
     "tags": [
-      "other",
+      "animations",
       "sand",
       "zen",
       "garden",
@@ -9832,12 +9832,12 @@
   {
     "id": "skeleton-shimmer-developer-card",
     "name": "Skeleton Shimmer Developer Card",
-    "category": "Loaders",
+    "category": "Cards",
     "featured": false,
     "description": "A developer profile card shown as a shimmering skeleton.",
     "descriptionEs": "Tarjeta de perfil de desarrollador mostrada como esqueleto con brillo.",
     "tags": [
-      "loaders",
+      "cards",
       "skeleton",
       "shimmer",
       "developer",
@@ -9862,12 +9862,12 @@
   {
     "id": "skew-marquee-strip",
     "name": "Skew Marquee Strip",
-    "category": "Other",
+    "category": "Navigation",
     "featured": false,
     "description": "A skewed strip of text scrolling like a marquee.",
     "descriptionEs": "Franja de texto inclinada que se desplaza como un marquesín.",
     "tags": [
-      "other",
+      "navigation",
       "skew",
       "marquee",
       "strip"
@@ -9926,12 +9926,12 @@
   {
     "id": "slider-liquid-color-mixer",
     "name": "Slider Liquid Color Mixer",
-    "category": "Effects",
+    "category": "Controls",
     "featured": false,
     "description": "Sliders that mix liquid colours as you drag them.",
     "descriptionEs": "Mandos que mezclan colores líquidos según los arrastras.",
     "tags": [
-      "effects",
+      "controls",
       "slider",
       "liquid",
       "color",
@@ -9995,12 +9995,12 @@
   {
     "id": "solar-corona-eclipse",
     "name": "Solar Corona Eclipse",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A solar eclipse with the corona flaring around the moon.",
     "descriptionEs": "Eclipse solar con la corona brillando alrededor de la luna.",
     "tags": [
-      "other",
+      "animations",
       "solar",
       "corona",
       "eclipse"
@@ -10024,12 +10024,12 @@
   {
     "id": "solar-flare-prominence",
     "name": "Solar Flare Prominence",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A solar prominence arcing off the surface of the star.",
     "descriptionEs": "Protuberancia solar que se arquea desde la superficie de la estrella.",
     "tags": [
-      "other",
+      "animations",
       "solar",
       "flare",
       "prominence"
@@ -10274,12 +10274,12 @@
   {
     "id": "steampunk-pressure-manometer",
     "name": "Steampunk Pressure Manometer",
-    "category": "Other",
+    "category": "Controls",
     "featured": false,
     "description": "A steampunk pressure gauge with a swinging needle.",
     "descriptionEs": "Manómetro steampunk con una aguja que oscila.",
     "tags": [
-      "other",
+      "controls",
       "steampunk",
       "pressure",
       "manometer"
@@ -10303,12 +10303,12 @@
   {
     "id": "stripe-progress-bar",
     "name": "Stripe Progress Bar",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "A progress bar drawn as a moving stripe pattern.",
     "descriptionEs": "Barra de progreso dibujada con rayas en movimiento.",
     "tags": [
-      "other",
+      "effects",
       "stripe",
       "progress",
       "bar"
@@ -10332,12 +10332,12 @@
   {
     "id": "supernova-remnant-nebula",
     "name": "Supernova Remnant Nebula",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "The glowing remnant of a supernova in a nebula.",
     "descriptionEs": "El resto brillante de una supernova dentro de una nebulosa.",
     "tags": [
-      "other",
+      "animations",
       "supernova",
       "remnant",
       "nebula"
@@ -10431,12 +10431,12 @@
   {
     "id": "teletext-80s-weather-screen",
     "name": "Teletext 80s Weather Screen",
-    "category": "Effects",
+    "category": "Other",
     "featured": false,
     "description": "An 80s teletext weather screen with its blocky graphics.",
     "descriptionEs": "Pantalla meteorológica de teletexto de los 80 con sus gráficos de bloques.",
     "tags": [
-      "effects",
+      "other",
       "teletext",
       "80s",
       "weather",
@@ -10691,12 +10691,12 @@
   {
     "id": "thunderstorm-lightning-strike",
     "name": "Thunderstorm Lightning Strike",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "Lightning striking through a rolling thunderstorm.",
     "descriptionEs": "Rayo que cae a través de una tormenta en movimiento.",
     "tags": [
-      "other",
+      "animations",
       "thunderstorm",
       "lightning",
       "strike"
@@ -10812,12 +10812,12 @@
   {
     "id": "typewriter-mechanical-key-press",
     "name": "Typewriter Mechanical Key Press",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "A typewriter that presses each key as the text appears.",
     "descriptionEs": "Máquina de escribir que golpea cada tecla al aparecer el texto.",
     "tags": [
-      "other",
+      "animations",
       "typewriter",
       "mechanical",
       "key",
@@ -10912,12 +10912,12 @@
   {
     "id": "vertical-volume-slider",
     "name": "Vertical Volume Slider",
-    "category": "Other",
+    "category": "Controls",
     "featured": false,
     "description": "A volume control that slides up and down.",
     "descriptionEs": "Control de volumen que sube y baja.",
     "tags": [
-      "other",
+      "controls",
       "vertical",
       "volume",
       "slider"
@@ -10946,12 +10946,12 @@
   {
     "id": "vintage-film-projector-reel",
     "name": "Vintage Film Projector Reel",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "A film projector whose reels turn and flicker.",
     "descriptionEs": "Proyector de cine con las bobinas girando y parpadeando.",
     "tags": [
-      "other",
+      "effects",
       "vintage",
       "film",
       "projector",
@@ -10976,12 +10976,12 @@
   {
     "id": "vintage-meter-vu-audio",
     "name": "Vintage Meter VU Audio",
-    "category": "Other",
+    "category": "Effects",
     "featured": false,
     "description": "A VU meter whose needle swings with the audio level.",
     "descriptionEs": "Vúmetro cuya aguja se mueve con el nivel de audio.",
     "tags": [
-      "other",
+      "effects",
       "vintage",
       "meter",
       "vu",
@@ -11011,12 +11011,12 @@
   {
     "id": "warp-speed-star-hyperdrive",
     "name": "Warp Speed Star Hyperdrive",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "Stars stretching into streaks at warp speed.",
     "descriptionEs": "Estrellas estirándose en trazadas a velocidad impulso.",
     "tags": [
-      "other",
+      "animations",
       "warp",
       "speed",
       "star",
@@ -11046,12 +11046,12 @@
   {
     "id": "wave-accordion-stack",
     "name": "Wave Accordion Stack",
-    "category": "Other",
+    "category": "Animations",
     "featured": false,
     "description": "An accordion whose panels stack in a wave.",
     "descriptionEs": "Acordeón cuyos paneles se apilan en forma de ola.",
     "tags": [
-      "other",
+      "animations",
       "wave",
       "accordion",
       "stack"
@@ -11075,12 +11075,12 @@
   {
     "id": "wave-text-animation",
     "name": "Wave Text Animation",
-    "category": "Effects",
+    "category": "Animations",
     "featured": false,
     "description": "Text that undulates in a wave, letter by letter.",
     "descriptionEs": "Texto que ondea en forma de ola, letra a letra.",
     "tags": [
-      "effects",
+      "animations",
       "wave",
       "text",
       "animation"

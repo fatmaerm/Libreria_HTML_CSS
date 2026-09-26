@@ -2,10 +2,84 @@
 
 Formato: [Keep a Changelog](https://keepachangelog.com/es/1.1.0/).
 
-**Documentación relacionada**: [README](./README.md) · plan de fases ([`Docs/Opencode/Plan.md`](./Docs/Opencode/Plan.md)) · [Web/README.md](./Web/README.md) · [THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md).
+**Documentación relacionada**: [README](./README.md) · plan de fases ([`Docs/Opencode/Plan.md`](./Docs/Opencode/Plan.md)) · [Web/README.md](./Web/README.md) · [THIRD_PARTY_NOTICES.md](./Docs/Legalizacion/THIRD_PARTY_NOTICES.md).
 
 Cada fase terminada se registra aquí con su fecha. Las fases están definidas en
 [`Docs/Opencode/Plan.md`](./Docs/Opencode/Plan.md).
+
+## [Fase 10 — Clasificación de componentes y previews en producción] — 2026-09-27
+
+### Hecho — previews que se veían rotas
+
+La captura mostraba tarjetas sin estilos, imágenes rotas y barras de scroll.
+La causa era una discrepancia de **mayúsculas entre el disco y el índice de git**:
+
+| | En disco (Windows) | En git (lo que se despliega) |
+|---|---|---|
+| 404 | `404-page-not-found` | `404-Page-Not-Found` |
+| Among us | `among-us-button` | `Among-us-button` |
+| Gradient | `animated-gradient-underglow` | `Animated-Gradient-Underglow` |
+
+**93 de las 114 carpetas** de `BibliotecaDeHtml_CSS/` tenían la capitalización
+distinta. El catálogo construye la ruta de la preview desde el disco, así que
+buscaba `animated-gradient-underglow/`; al desplegar, Linux crea las carpetas
+con la capitalización de git y la preview no encontraba nada. En Windows no se
+notaba porque el sistema de archivos no distingue mayúsculas.
+
+- `git config core.ignorecase false`, para que git deje de tratar como la misma
+  dos carpetas que solo se diferencian en las mayúsculas.
+- 93 carpetas renombradas en el índice (git las registra como renombrado) para
+  que un clon en Linux reproduzca el árbol de trabajo actual.
+- `scrolling="no"` en los iframes de preview: los demos se diseñan a pantalla
+  completa y al recortarlos a 205 px aparecía la barra de scroll del iframe.
+- Caché de assets a `?v=20260926-5`.
+
+### Hecho — clasificación de componentes
+
+- **Antes:** **136 de 364** componentes (37 %) caían en «Other» y solo **14** en
+  «Animations». El clasificador era una lista corta de regex con
+  `animation|animated|morph` **al final**, así que casi todo se escapaba a
+  «Other».
+- `generate-catalog.mjs`: `getCategory()` se reescribe como una tabla ordenada
+  (`categoryRules`) con nueve categorías y muchos más términos, para que los
+  demos futuros se clasifiquen bien solos.
+- **114 correcciones explícitas** en `component-overrides.json` para lo que el
+  heurístico no puede decidir por nombre. Criterio aplicado:
+  - *Controls* = widgets que ajustan o eligen estado (toogles, sliders, diales,
+    cerraduras, relojes, temporizadores).
+  - *Forms* = todo lo que recibe datos, incluida la autenticación (OTP, teclado
+    de PIN, escáner de iris).
+  - *Effects* = tratamientos visuales y efectos (cristal, degradado, neón,
+    cursores, texto, superposiciones).
+  - *Animations* = movimiento en el tiempo, incluidos los ambientes y las secuencias.
+  - *Other* = lo que de verdad no es un patrón de UI: la página 404, el tres en
+    raya, los generadores, las herramientas de desarrollo y los paneles de datos.
+
+### Verificado
+
+| Categoría | Antes | Después |
+|---|---:|---:|
+| Animations | 14 | **68** |
+| Effects | 53 | 63 |
+| Controls | 22 | 41 |
+| Other | **136** | **40** |
+
+- `node --check generate-catalog.mjs` → 0; `generate-catalog.mjs` → 364 + 364.
+- 364/364 con categoría; 0 sin clasificar.
+- Smoke funcional **24/24** y 0 errores de consola: 10 categorías en los
+  filtros, el filtro «Buttons» muestra sus 23 componentes.
+- Capturas antes/después: las previews montadas se ven con sus estilos y sin
+  barra de scroll.
+
+### Pendiente / limitaciones
+
+- **Este cambio solo surte efecto al desplegar**: mientras tanto, en el equipo
+  sigue viéndose bien porque Windows no distingue mayúsculas.
+- Las 40 categorías «Other» restantes son intencionadas. Si prefieres que
+  alguna entre en Animations, se cambia en `component-overrides.json`
+  (campo `category`).
+- `core.ignorecase=false` queda activado en el repositorio. Es lo que evita que
+  el problema reaparezca, pero conviene saberlo.
 
 ## [Fase 9 — `CreacionesNuevas/` integrada] — 2026-09-26
 

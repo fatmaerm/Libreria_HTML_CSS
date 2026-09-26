@@ -2,7 +2,8 @@
 	"404-page-not-found": {
 		"description": "A stylised 404 page that announces a missing page in a minimal layout.",
 		"descriptionEs": "Página de error 404 con un diseño minimalista para anunciar que la página no existe.",
-		"source": "https://github.com/gevendra2004/gevstack"
+		"source": "https://github.com/gevendra2004/gevstack",
+		"category": "Other"
 	},
 	"among-us-button": {
 		"name": "Among Us Button Animation",
@@ -148,12 +149,14 @@
 	"cursors-cursor-interaction": {
 		"description": "A custom cursor that reacts to the elements it passes over.",
 		"descriptionEs": "Cursor personalizado que reacciona a los elementos por los que pasa.",
-		"source": "https://github.com/gevendra2004/gevstack"
+		"source": "https://github.com/gevendra2004/gevstack",
+		"category": "Effects"
 	},
 	"cursors-satisfying-curvy-cursor": {
 		"description": "A trailing cursor that draws a smooth curve as it moves.",
 		"descriptionEs": "Cursor con estela que dibuja una curva suave al desplazarse.",
-		"source": "https://github.com/gevendra2004/gevstack"
+		"source": "https://github.com/gevendra2004/gevstack",
+		"category": "Effects"
 	},
 	"custom-tooltip-animation": {
 		"description": "A tooltip that unfolds with a custom animation when you hover its trigger.",
@@ -193,7 +196,8 @@
 	"elastic-text-effect": {
 		"description": "Text that stretches and springs back like elastic when it animates.",
 		"descriptionEs": "Texto que se estira y vuelve a su sitio como si fuera elástico al animarse.",
-		"source": "https://github.com/gevendra2004/gevstack"
+		"source": "https://github.com/gevendra2004/gevstack",
+		"category": "Effects"
 	},
 	"elastic-toggle-switch": {
 		"description": "A switch whose thumb stretches elastically while it slides between states.",
@@ -213,7 +217,8 @@
 	"emerging-tooltip": {
 		"description": "A tooltip that emerges from beneath its trigger on hover.",
 		"descriptionEs": "Globo de ayuda que emerge por debajo de su disparador al pasar el cursor.",
-		"source": "https://github.com/gevendra2004/gevstack"
+		"source": "https://github.com/gevendra2004/gevstack",
+		"category": "Effects"
 	},
 	"engraved-theme-toggle": {
 		"description": "A light/dark switch drawn with an engraved, tactile look.",
@@ -223,7 +228,8 @@
 	"facebook-emoji-reactions": {
 		"description": "A row of Facebook-style emoji reactions that animate when selected.",
 		"descriptionEs": "Fila de reacciones con emojis al estilo de Facebook que se animan al seleccionarlas.",
-		"source": "https://github.com/gevendra2004/gevstack"
+		"source": "https://github.com/gevendra2004/gevstack",
+		"category": "Effects"
 	},
 	"fade-in-text-animation": {
 		"description": "Text that fades in gradually as it enters the page.",
@@ -263,12 +269,14 @@
 	"happy-diwali": {
 		"description": "A festive Diwali greeting page with decorative animated elements.",
 		"descriptionEs": "Página de felicitación por Diwali con elementos decorativos animados.",
-		"source": "https://github.com/gevendra2004/gevstack"
+		"source": "https://github.com/gevendra2004/gevstack",
+		"category": "Other"
 	},
 	"hello-world-text-roller": {
 		"description": "A text roller that flips through phrases, starting with Hello World.",
 		"descriptionEs": "Rodillo de texto que pasa de una frase a otra, empezando por Hello World.",
-		"source": "https://github.com/gevendra2004/gevstack"
+		"source": "https://github.com/gevendra2004/gevstack",
+		"category": "Animations"
 	},
 	"image-gallery": {
 		"description": "A straightforward grid gallery for a set of images.",
@@ -288,7 +296,8 @@
 	"image-reveal-animation": {
 		"description": "An image that uncovers itself with a masked reveal animation.",
 		"descriptionEs": "Imagen que se descubre con una animación de revelado enmascarada.",
-		"source": "https://github.com/gevendra2004/gevstack"
+		"source": "https://github.com/gevendra2004/gevstack",
+		"category": "Effects"
 	},
 	"infinite-autoplay-carousel": {
 		"description": "A carousel that loops forever and advances on its own.",
@@ -338,7 +347,8 @@
 	"modern-contact-card": {
 		"description": "A contact card with avatar, details and a modern visual treatment.",
 		"descriptionEs": "Tarjeta de contacto con avatar, datos y un acabado visual moderno.",
-		"source": "https://github.com/gevendra2004/gevstack"
+		"source": "https://github.com/gevendra2004/gevstack",
+		"category": "Cards"
 	},
 	"modern-navbar-part-01": {
 		"description": "A modern navigation bar, first part of the series.",
@@ -368,7 +378,8 @@
 	"neumorphic-range-slider": {
 		"description": "A range slider styled with soft neumorphic shadows.",
 		"descriptionEs": "Control de rango con estilo neumórfico y sombras suaves.",
-		"source": "https://github.com/gevendra2004/gevstack"
+		"source": "https://github.com/gevendra2004/gevstack",
+		"category": "Controls"
 	},
 	"neumorphism-switch": {
 		"description": "A switch styled with soft neumorphic surfaces and shadows.",
@@ -433,7 +444,8 @@
 	"random-color-palette-generator": {
 		"description": "A tool that generates a random colour palette on demand.",
 		"descriptionEs": "Herramienta que genera una paleta de colores al azar con un clic.",
-		"source": "https://github.com/gevendra2004/gevstack"
+		"source": "https://github.com/gevendra2004/gevstack",
+		"category": "Other"
 	},
 	"rays-background-animation": {
 		"description": "A background of light rays that sweep across the page.",
@@ -453,7 +465,8 @@
 	"scroll-effect": {
 		"description": "A scroll-driven effect that reacts as the page moves.",
 		"descriptionEs": "Efecto dirigido por el desplazamiento que reacciona al mover la página.",
-		"source": "https://github.com/gevendra2004/gevstack"
+		"source": "https://github.com/gevendra2004/gevstack",
+		"category": "Effects"
 	},
 	"shadow-offset-menu": {
 		"description": "A menu whose items shift with an offset shadow on hover.",
@@ -473,7 +486,8 @@
 	"simple-tooltip": {
 		"description": "A minimal tooltip that appears when you hover its trigger.",
 		"descriptionEs": "Globo de ayuda minimalista que aparece al pasar el cursor sobre su disparador.",
-		"source": "https://github.com/gevendra2004/gevstack"
+		"source": "https://github.com/gevendra2004/gevstack",
+		"category": "Effects"
 	},
 	"skeleton-loading-animation": {
 		"description": "A skeleton placeholder that shimmers while content loads.",
@@ -493,7 +507,8 @@
 	"slider-bar": {
 		"description": "A horizontal slider bar with a draggable value handle.",
 		"descriptionEs": "Barra deslizante horizontal con un tirador arrastrable para el valor.",
-		"source": "https://github.com/gevendra2004/gevstack"
+		"source": "https://github.com/gevendra2004/gevstack",
+		"category": "Controls"
 	},
 	"smooth-card-animation": {
 		"description": "A card that animates smoothly between its resting and active states.",
@@ -573,17 +588,20 @@
 	"text-sliced-effect": {
 		"description": "Text cut into slices that shift apart on interaction.",
 		"descriptionEs": "Texto cortado en rebanadas que se separan al interactuar.",
-		"source": "https://github.com/gevendra2004/gevstack"
+		"source": "https://github.com/gevendra2004/gevstack",
+		"category": "Effects"
 	},
 	"text-water-effect": {
 		"description": "Text with a rippling, water-like distortion.",
 		"descriptionEs": "Texto con una distorsión ondulante tipo agua.",
-		"source": "https://github.com/gevendra2004/gevstack"
+		"source": "https://github.com/gevendra2004/gevstack",
+		"category": "Effects"
 	},
 	"tic-tac-toe": {
 		"description": "A playable tic-tac-toe game running in the browser.",
 		"descriptionEs": "Juego de tres en raya jugable en el navegador.",
-		"source": "https://github.com/gevendra2004/gevstack"
+		"source": "https://github.com/gevendra2004/gevstack",
+		"category": "Other"
 	},
 	"to-do-checkbox": {
 		"description": "A to-do checkbox that marks a task as done with a check animation.",
@@ -619,7 +637,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Controls"
 	},
 	"3d-split-flap-board": {
 		"description": "A departure board whose letters flip like a real split-flap display.",
@@ -635,7 +654,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"alien-glyph-translator": {
 		"description": "A translator that renders your text as invented alien glyphs.",
@@ -643,7 +663,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"analog-crt-oscilloscope": {
 		"description": "An oscilloscope drawing a live waveform on a curved CRT screen.",
@@ -651,7 +672,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"animated-gradient-border": {
 		"description": "A card border that cycles through a moving colour gradient.",
@@ -667,7 +689,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"ascii-art-generator": {
 		"description": "A tool that turns a short text into ASCII art banners.",
@@ -675,7 +698,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"audio-cassette-synth": {
 		"description": "A retro cassette deck that plays as you press its keys.",
@@ -683,7 +707,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"audio-equalizer-music-pill": {
 		"description": "A small pill-shaped player with a live audio equalizer.",
@@ -691,7 +716,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"aurora-borealis-mountain-sky": {
 		"description": "Northern lights drifting over a silhouetted mountain range.",
@@ -731,7 +757,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"bioluminescent-jellyfish-glow": {
 		"description": "Jellyfish pulsing with a soft bioluminescent glow.",
@@ -747,7 +774,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Forms"
 	},
 	"border-draw-button": {
 		"description": "A button whose outline is drawn around it on hover.",
@@ -811,7 +839,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"circuit-board-energy-pulse": {
 		"description": "Circuit traces lighting up as an energy pulse travels across them.",
@@ -827,7 +856,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Controls"
 	},
 	"circular-progress-loader": {
 		"description": "A progress ring that fills smoothly as the task advances.",
@@ -843,7 +873,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Controls"
 	},
 	"code-snippet-terminal-badge": {
 		"description": "A terminal-styled badge that presents a snippet of code.",
@@ -851,7 +882,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"color-hex-picker-dropper": {
 		"description": "A colour picker with a dropper that reads any pixel on the page.",
@@ -859,7 +891,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Controls"
 	},
 	"color-palette-generator": {
 		"description": "A generator that builds a balanced palette from one base colour.",
@@ -867,7 +900,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"color-swatch-toggle": {
 		"description": "A toggle whose knob changes colour as it slides.",
@@ -891,7 +925,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"contact-form-animated": {
 		"description": "A contact form whose fields animate as you fill them in.",
@@ -907,7 +942,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"countdown-submit-button": {
 		"description": "A submit button that counts you down before it sends.",
@@ -923,7 +959,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"crt-green-terminal-boot": {
 		"description": "A green phosphor terminal that boots up line by line.",
@@ -947,7 +984,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"crystal-geode-sparkle-cave": {
 		"description": "Sparkling crystal geodes glowing inside a dark cave.",
@@ -955,7 +993,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"css-animated-counter": {
 		"description": "A counter that rolls up to its final value on its own.",
@@ -979,7 +1018,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"css-typewriter-line": {
 		"description": "A line of text that types itself out letter by letter.",
@@ -995,7 +1035,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Effects"
 	},
 	"cyber-hex-diagnostics-tile": {
 		"description": "A cyberpunk diagnostics tile with live hex readouts.",
@@ -1003,7 +1044,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"cyber-matrix-rain": {
 		"description": "Falling code of the classic green digital rain.",
@@ -1027,7 +1069,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Forms"
 	},
 	"cyberpunk-glitch-barcode": {
 		"description": "A barcode that keeps glitching between readable and corrupted.",
@@ -1051,7 +1094,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"deep-abyss-submarine-porthole": {
 		"description": "A submarine porthole looking down into the dark abyss.",
@@ -1059,7 +1103,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"desert-dune-heat-haze": {
 		"description": "Desert dunes rippling with heat haze under a burning sun.",
@@ -1067,7 +1112,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"dev-console-easter-egg": {
 		"description": "An easter egg you can trigger from the browser console.",
@@ -1075,7 +1121,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"dna-double-helix": {
 		"description": "A DNA double helix turning slowly against the dark.",
@@ -1083,7 +1130,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"dna-helix-loader": {
 		"description": "A loading indicator shaped as a turning DNA helix.",
@@ -1099,7 +1147,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"dot-step-pagination": {
 		"description": "Pagination where numbered dots show each step of the journey.",
@@ -1219,7 +1268,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Effects"
 	},
 	"fluid-tab-morph-indicator": {
 		"description": "A tab indicator that morphs fluidly into the active tab.",
@@ -1267,7 +1317,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"github-contribution-matrix-heat": {
 		"description": "A contribution heatmap where every cell shades by intensity.",
@@ -1275,7 +1326,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"glass-shimmer-card": {
 		"description": "A glass card with a shimmer of light sliding across it.",
@@ -1283,7 +1335,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Cards"
 	},
 	"glassmorphic-calendar-widget": {
 		"description": "A frosted glass calendar showing a month at a glance.",
@@ -1331,7 +1384,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"gravity-black-hole": {
 		"description": "A black hole pulling light and matter into its event horizon.",
@@ -1339,7 +1393,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"grid-image-slider": {
 		"description": "An image slider that reveals the next image in a grid.",
@@ -1435,7 +1490,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Effects"
 	},
 	"infinite-loader-animation": {
 		"description": "A looping loader that never shows the same frame twice in a row.",
@@ -1459,7 +1515,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"interactive-card-fan-deck": {
 		"description": "A deck of cards that fans out as you hover over it.",
@@ -1483,7 +1540,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"isometric-cube-spinner": {
 		"description": "A stack of isometric cubes that spins as a loader.",
@@ -1499,7 +1557,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"kaleidoscope-mandala-spin": {
 		"description": "A kaleidoscopic mandala that rotates and reshapes itself.",
@@ -1515,7 +1574,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"kinetic-fluid-slider": {
 		"description": "A slider that leaves a fluid trail behind its handle.",
@@ -1523,7 +1583,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Controls"
 	},
 	"knob-rotary-switch": {
 		"description": "A rotary knob you can drag or spin to change the value.",
@@ -1539,7 +1600,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"lightbox-image-slider": {
 		"description": "A gallery that opens its images in a full-screen lightbox.",
@@ -1571,7 +1633,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Buttons"
 	},
 	"liquid-hourglass-timer": {
 		"description": "A countdown timer shaped as a liquid hourglass.",
@@ -1603,7 +1666,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"liquid-pull-to-refresh-spinner": {
 		"description": "A pull-to-refresh spinner whose arc stretches like liquid.",
@@ -1643,7 +1707,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"magma-volcano-crack-surface": {
 		"description": "A crust of rock cracking open over glowing magma.",
@@ -1651,7 +1716,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"magnetic-ball-newton-cradle": {
 		"description": "A Newton's cradle of magnetic balls that swing and collide.",
@@ -1659,7 +1725,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"magnetic-compass-rose": {
 		"description": "A compass rose that swings to point the way north.",
@@ -1675,7 +1742,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Effects"
 	},
 	"magnetic-field-background": {
 		"description": "A background of magnetic field lines that bend around the content.",
@@ -1683,7 +1751,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Effects"
 	},
 	"magnetic-hover-button": {
 		"description": "A button that is magnetically drawn towards the pointer.",
@@ -1707,7 +1776,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"markdown-preview-live": {
 		"description": "A Markdown editor with a live preview beside the source.",
@@ -1715,7 +1785,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"masonry-photo-gallery": {
 		"description": "A masonry photo gallery that packs images with no gaps.",
@@ -1731,7 +1802,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Effects"
 	},
 	"mech-robot-hud-targeting": {
 		"description": "A mech targeting HUD that locks on as you aim.",
@@ -1739,7 +1811,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"mechanical-gear-clockwork-train": {
 		"description": "Interlocking gears turning like a clockwork mechanism.",
@@ -1747,7 +1820,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"mechanical-toggle-lever": {
 		"description": "A metal lever that flips between two positions.",
@@ -1771,7 +1845,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"metaball-skeleton-loader": {
 		"description": "A skeleton placeholder made of merging metaballs.",
@@ -1819,7 +1894,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Controls"
 	},
 	"neon-bar-equalizer-loader": {
 		"description": "A neon equalizer whose bars bounce while the page loads.",
@@ -1875,7 +1951,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"newsletter-subscription-form": {
 		"description": "A newsletter form that confirms the signup inline.",
@@ -1899,7 +1976,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Effects"
 	},
 	"notification-stack-expand": {
 		"description": "Notifications that stack up and expand when you click them.",
@@ -1907,7 +1985,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"notification-toast-system": {
 		"description": "A toast system for showing notifications in the corner.",
@@ -1915,7 +1994,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"npm-package-stat-card": {
 		"description": "A card with the stats of an npm package.",
@@ -1947,7 +2027,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"origami-fortune-teller-cootie": {
 		"description": "A paper fortune teller that opens and closes as you tap it.",
@@ -1955,7 +2036,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"otp-code-input-form": {
 		"description": "A one-time-code form with a box per digit.",
@@ -2003,7 +2085,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"plasma-arc-reactor": {
 		"description": "An arc reactor with a swirling plasma core.",
@@ -2059,7 +2142,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"progress-scroll-navbar": {
 		"description": "A navbar with a progress bar that follows the page scroll.",
@@ -2067,7 +2151,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Navigation"
 	},
 	"pulse-ring-sonar-loader": {
 		"description": "A sonar loader sending out expanding pulse rings.",
@@ -2083,7 +2168,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"quantum-entanglement-particles": {
 		"description": "Particles that stay linked however far apart they drift.",
@@ -2091,7 +2177,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"quantum-qubit-bloch-sphere": {
 		"description": "A qubit drawn on a Bloch sphere as its state rotates.",
@@ -2099,7 +2186,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"quantum-spin-loader": {
 		"description": "A loading indicator drawn as a spinning qubit.",
@@ -2131,7 +2219,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"reservation-form-modern": {
 		"description": "A modern booking form with date and guest selectors.",
@@ -2147,7 +2236,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Effects"
 	},
 	"ripple-ink-button": {
 		"description": "A button that releases a ripple of ink with each click.",
@@ -2179,7 +2269,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"satellite-telemetry-globe": {
 		"description": "A globe with satellites streaming telemetry around it.",
@@ -2187,7 +2278,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"scroll-reveal-text-effect": {
 		"description": "Text that reveals itself as you scroll down the page.",
@@ -2195,7 +2287,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Effects"
 	},
 	"scroll-spy-menu": {
 		"description": "A menu that highlights the section you are reading.",
@@ -2219,7 +2312,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"sidebar-icon-menu": {
 		"description": "A sidebar of icons with the active item marked.",
@@ -2235,7 +2329,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Cards"
 	},
 	"skew-marquee-strip": {
 		"description": "A skewed strip of text scrolling like a marquee.",
@@ -2251,7 +2346,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Controls"
 	},
 	"slider-liquid-color-mixer": {
 		"description": "Sliders that mix liquid colours as you drag them.",
@@ -2259,7 +2355,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Controls"
 	},
 	"smoke-particle-button": {
 		"description": "A button that puffs smoke when pressed.",
@@ -2275,7 +2372,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"solar-flare-prominence": {
 		"description": "A solar prominence arcing off the surface of the star.",
@@ -2283,7 +2381,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"split-color-hover-button": {
 		"description": "A button that wipes two colours in from opposite sides.",
@@ -2315,7 +2414,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"staircase-blocks-loader": {
 		"description": "A loader of blocks that stack like a staircase.",
@@ -2339,7 +2439,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"steampunk-pressure-manometer": {
 		"description": "A steampunk pressure gauge with a swinging needle.",
@@ -2355,7 +2456,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Effects"
 	},
 	"supernova-remnant-nebula": {
 		"description": "The glowing remnant of a supernova in a nebula.",
@@ -2363,7 +2465,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"tab-menu-neon-underline": {
 		"description": "A tab menu with a neon underline under the active tab.",
@@ -2387,7 +2490,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"terminal-code-matrix-decode": {
 		"description": "A terminal that decodes a stream of falling code.",
@@ -2395,7 +2499,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"terminal-cursor-loader": {
 		"description": "A loading indicator shaped as a blinking terminal cursor.",
@@ -2411,7 +2516,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"testimonial-quote-card": {
 		"description": "A testimonial card with a quote, an author and a photo.",
@@ -2435,7 +2541,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Effects"
 	},
 	"theme-switcher-multi": {
 		"description": "A switcher that moves between several themes at once.",
@@ -2451,7 +2558,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"tilt-perspective-card": {
 		"description": "A card that tilts in perspective as you move the pointer.",
@@ -2491,7 +2599,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"vcr-glitch-recording-osd": {
 		"description": "A VHS on-screen display with tracking glitches and timecode.",
@@ -2507,7 +2616,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Controls"
 	},
 	"vintage-film-projector-reel": {
 		"description": "A film projector whose reels turn and flicker.",
@@ -2515,7 +2625,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Effects"
 	},
 	"vintage-meter-vu-audio": {
 		"description": "A VU meter whose needle swings with the audio level.",
@@ -2523,7 +2634,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Effects"
 	},
 	"warp-speed-star-hyperdrive": {
 		"description": "Stars stretching into streaks at warp speed.",
@@ -2531,7 +2643,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Animations"
 	},
 	"wave-accordion-stack": {
 		"description": "An accordion whose panels stack in a wave.",
@@ -2563,7 +2676,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"websocket-handshake-anim": {
 		"description": "A WebSocket handshake shown step by step as it opens.",
@@ -2571,7 +2685,8 @@
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
 		"license": "MIT",
 		"licenseFile": "LICENSE",
-		"redistributable": true
+		"redistributable": true,
+		"category": "Other"
 	},
 	"wifi-signal-preloader": {
 		"description": "A loading indicator shaped like rising WiFi bars.",

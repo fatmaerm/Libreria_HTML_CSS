@@ -1,4 +1,5 @@
 import { cp, mkdir, readFile, writeFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { readSource, toIndexEntry, writeSources } from "./catalog-format.mjs";
@@ -24,11 +25,20 @@ for (const entry of approvedIndex) {
   approvedComponents.push({ ...entry, ...(await readSource(sourcesDirectory, entry.id)) });
 }
 
+const noticesCandidates = [
+  path.join(repositoryDirectory, "THIRD_PARTY_NOTICES.md"),
+  path.join(repositoryDirectory, "Docs", "Legalizacion", "THIRD_PARTY_NOTICES.md"),
+];
+const noticesSource = noticesCandidates.find((candidate) => existsSync(candidate));
+if (!noticesSource) {
+  throw new Error(`THIRD_PARTY_NOTICES.md not found. Looked in: ${noticesCandidates.join(", ")}`);
+}
+
 await mkdir(outputDirectory, { recursive: true });
 await cp(path.join(repositoryDirectory, "Web"), path.join(outputDirectory, "Web"), { recursive: true });
 await cp(path.join(repositoryDirectory, "index.html"), path.join(outputDirectory, "index.html"));
 await cp(path.join(repositoryDirectory, "LICENSE"), path.join(outputDirectory, "LICENSE"));
-await cp(path.join(repositoryDirectory, "THIRD_PARTY_NOTICES.md"), path.join(outputDirectory, "THIRD_PARTY_NOTICES.md"));
+await cp(noticesSource, path.join(outputDirectory, "THIRD_PARTY_NOTICES.md"));
 
 for (const component of approvedComponents) {
   const root = libraryRoots.find((candidate) => candidate.name === component.root);

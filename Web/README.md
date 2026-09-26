@@ -28,6 +28,7 @@ El generador requiere Node.js 18 o posterior. La aplicación usa HTML, CSS, mód
 - `scripts/zip.js` crea archivos ZIP en el navegador sin paquetes externos.
 - `scripts/build-site.mjs` excluye del artefacto de publicación todos los demos que no estén autorizados para redistribución.
 - `styles/site.css` contiene el tema y el diseño adaptable de la aplicación.
+- La interfaz ofrece inglés y español; guarda el idioma en `localStorage` con la clave `component-field-language`, separada de `component-field-theme`.
 - Las vistas previas cargan el `index.html` original en un `iframe`. El detalle muestra ese HTML y lee los archivos CSS y JavaScript locales para poder copiarlos.
 
 El catálogo local detecta actualmente 116 páginas de demos. Las categorías se infieren de los nombres de carpetas y páginas. Las referencias locales faltantes se muestran en el detalle. Ninguno de los demos está autorizado todavía para redistribución; por eso, el artefacto público no incluye su código hasta que se confirmen los derechos.

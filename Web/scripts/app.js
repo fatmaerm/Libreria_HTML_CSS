@@ -3,8 +3,208 @@ import { createStoredZip } from "./zip.js";
 const catalogPath = "./data/catalog.json";
 const previewRevision = "20260926-2";
 const pageSize = 12;
+const translations = {
+  en: {
+    categories: {
+      All: "All", Animations: "Animations", Buttons: "Buttons", Cards: "Cards", Controls: "Controls",
+      Effects: "Effects", Forms: "Forms", Galleries: "Galleries", Loaders: "Loaders", Navigation: "Navigation", Other: "Other",
+    },
+    brandHome: "HTML and CSS Library home",
+    mainNavigation: "Main navigation",
+    languageLabel: "Language",
+    navHome: "Home",
+    navComponents: "Components",
+    navCategories: "Categories",
+    switchToLight: "Switch to light theme",
+    switchToDark: "Switch to dark theme",
+    switchTheme: "Switch theme",
+    light: "Light",
+    dark: "Dark",
+    heroTitleFirst: "HTML & CSS",
+    heroTitleSecond: "Library",
+    publicationTitle: "Distribution review in progress.",
+    publicationText: "This published build includes only demos with verified redistribution rights. No component is cleared for release yet.",
+    heroEyebrow: "A working library of web experiments",
+    heroDescription: "A growing index of interface components, visual effects, and small experiments. Browse the original demos, inspect their source, and take the patterns into your next project.",
+    exploreComponents: "Explore components",
+    viewGitHub: "View on GitHub",
+    librarySummary: "Library summary",
+    collectionIndex: "COLLECTION INDEX",
+    heroAsideLineOne: "Small pieces.",
+    heroAsideLineTwo: "Useful details.",
+    experiments: "experiments",
+    categoriesLabel: "categories",
+    categoriesTitle: "Categories",
+    selectedComponents: "SELECTED COMPONENTS",
+    featuredTitle: "A few to explore",
+    featuredNote: "Real demos from the collection, selected for a quick first look.",
+    collectionEyebrow: "THE COLLECTION",
+    browseComponents: "Browse components",
+    libraryNote: "Search the details. Open a demo. Make it yours.",
+    searchPlaceholder: "Search buttons, cards, effects...",
+    loadingCollection: "Loading collection...",
+    filterByCategory: "Filter by category",
+    noComponents: "No components found",
+    noComponentsHint: "Try another search or choose a different category.",
+    loadMore: "Load more",
+    findStartingPoint: "FIND A STARTING POINT",
+    categoriesNote: "Grouped from the component names and folders.",
+    footerDescription: "Independent HTML, CSS, and JavaScript experiments.",
+    footerBuilt: "Built for the open web",
+    component: "component",
+    components: "components",
+    browseCategory: "Browse {category} components",
+    viewComponent: "View component",
+    liveDemo: "Live demo",
+    copied: "Copied!",
+    copy: "Copy",
+    copiedToClipboard: "{label} copied to clipboard",
+    clipboardUnavailable: "Clipboard access is unavailable in this browser",
+    noLocalSource: "No local source file found.",
+    originalComponentPreview: "Original component · interactive preview",
+    openOriginal: "Open original ↗",
+    openInNewTab: "Open in new tab ↗",
+      livePreviewTitle: "{name} live preview",
+      sourceLabel: "Source",
+      licenseLabel: "License",
+      licenseFileLabel: "License file",
+    downloadZip: "Download ZIP",
+    zipUnavailable: "ZIP unavailable",
+    downloadZipTitle: "Download this component and its local assets",
+    zipPermissionTitle: "Source, redistribution permission, and a component license file must be verified first",
+    preparingZip: "Preparing ZIP...",
+    zipDownloaded: "Component ZIP downloaded",
+    zipFailed: "Could not create ZIP: {message}",
+    attributionRecorded: "Redistribution cleared.",
+    attributionPending: "Distribution not cleared.",
+    attributionText: "Source: {source}. License: {license}.",
+    attributionPendingText: "ZIP downloads stay disabled until the source, redistribution permission, and a license file for this component are verified.",
+    missingFiles: "This original demo references missing local files: {files}. Its preview may be incomplete; the source files have not been changed.",
+    backToComponents: "← Back to components",
+    sourceCode: "Source code",
+    htmlSource: "HTML · index.html",
+    cssSource: "CSS",
+    javascriptSource: "JavaScript",
+    inlineSource: "{label} · inline {number}",
+    localFileSource: "{label} · {name}",
+    sourceLoadError: "Some source files could not be loaded. Open the original demo to inspect them. {message}",
+    libraryTitle: "HTML & CSS Library",
+    catalogUnavailable: "Catalog unavailable",
+    catalogLoadError: "Could not load the component catalog. Run the site from a local web server and regenerate it if needed. {message}",
+    themeNotSaved: "Theme preference will not be saved in this browser",
+    languageNotSaved: "Language preference will not be saved in this browser",
+    loadingPreview: "Loading preview...",
+    previewUnavailable: "Preview unavailable",
+    standaloneDescription: "Standalone {category} demo from the component collection.",
+    featuredDescriptions: {
+      "among-us-button": "A playful button with an animated character reveal on hover.",
+      "animated-nav-bar": "A social-link menu with a hover highlight and waving-hand animation.",
+      "card-skeleton": "A profile-card placeholder with a moving shimmer effect.",
+    },
+  },
+  es: {
+    categories: {
+      All: "Todas", Animations: "Animaciones", Buttons: "Botones", Cards: "Tarjetas", Controls: "Controles",
+      Effects: "Efectos", Forms: "Formularios", Galleries: "Galerías", Loaders: "Indicadores de carga", Navigation: "Navegación", Other: "Otros",
+    },
+    brandHome: "Inicio de la biblioteca HTML y CSS",
+    mainNavigation: "Navegación principal",
+    languageLabel: "Idioma",
+    navHome: "Inicio",
+    navComponents: "Componentes",
+    navCategories: "Categorías",
+    switchToLight: "Cambiar al tema claro",
+    switchToDark: "Cambiar al tema oscuro",
+    switchTheme: "Cambiar tema",
+    light: "Claro",
+    dark: "Oscuro",
+    heroTitleFirst: "Biblioteca",
+    heroTitleSecond: "HTML y CSS",
+    publicationTitle: "Revisión de distribución en curso.",
+    publicationText: "Esta versión publicada solo incluye demos con derechos de redistribución verificados. Todavía no hay componentes autorizados.",
+    heroEyebrow: "Una biblioteca activa de experimentos web",
+    heroDescription: "Un índice en crecimiento de componentes de interfaz, efectos visuales y pequeños experimentos. Explora los demos originales, consulta su código y adapta sus ideas a tu próximo proyecto.",
+    exploreComponents: "Explorar componentes",
+    viewGitHub: "Ver en GitHub",
+    librarySummary: "Resumen de la biblioteca",
+    collectionIndex: "ÍNDICE DE LA COLECCIÓN",
+    heroAsideLineOne: "Pequeñas piezas.",
+    heroAsideLineTwo: "Detalles útiles.",
+    experiments: "experimentos",
+    categoriesLabel: "categorías",
+    categoriesTitle: "Categorías",
+    selectedComponents: "COMPONENTES DESTACADOS",
+    featuredTitle: "Algunos para explorar",
+    featuredNote: "Demos reales de la colección para empezar a explorar.",
+    collectionEyebrow: "LA COLECCIÓN",
+    browseComponents: "Explorar componentes",
+    libraryNote: "Busca detalles. Abre un demo. Hazlo tuyo.",
+    searchPlaceholder: "Buscar botones, tarjetas, efectos...",
+    loadingCollection: "Cargando colección...",
+    filterByCategory: "Filtrar por categoría",
+    noComponents: "No se encontraron componentes",
+    noComponentsHint: "Prueba otra búsqueda o elige una categoría diferente.",
+    loadMore: "Cargar más",
+    findStartingPoint: "ENCUENTRA UN PUNTO DE PARTIDA",
+    categoriesNote: "Agrupados según los nombres de los componentes y sus carpetas.",
+    footerDescription: "Experimentos independientes de HTML, CSS y JavaScript.",
+    footerBuilt: "Hecho para la web abierta",
+    component: "componente",
+    components: "componentes",
+    browseCategory: "Explorar componentes de {category}",
+    viewComponent: "Ver componente",
+    liveDemo: "Demo en vivo",
+    copied: "¡Copiado!",
+    copy: "Copiar",
+    copiedToClipboard: "{label} copiado al portapapeles",
+    clipboardUnavailable: "El portapapeles no está disponible en este navegador",
+    noLocalSource: "No se encontró un archivo fuente local.",
+    originalComponentPreview: "Componente original · vista previa interactiva",
+    openOriginal: "Abrir demo original ↗",
+    openInNewTab: "Abrir en otra pestaña ↗",
+      livePreviewTitle: "Vista previa de {name}",
+      sourceLabel: "Fuente",
+      licenseLabel: "Licencia",
+      licenseFileLabel: "Archivo de licencia",
+    downloadZip: "Descargar ZIP",
+    zipUnavailable: "ZIP no disponible",
+    downloadZipTitle: "Descargar este componente y sus recursos locales",
+    zipPermissionTitle: "Primero hay que verificar la fuente, el permiso de redistribución y la licencia del componente",
+    preparingZip: "Preparando ZIP...",
+    zipDownloaded: "ZIP del componente descargado",
+    zipFailed: "No se pudo crear el ZIP: {message}",
+    attributionRecorded: "Redistribución autorizada.",
+    attributionPending: "Distribución no autorizada.",
+    attributionText: "Fuente: {source}. Licencia: {license}.",
+    attributionPendingText: "La descarga ZIP seguirá deshabilitada hasta verificar la fuente, el permiso de redistribución y la licencia de este componente.",
+    missingFiles: "Este demo original hace referencia a archivos locales que faltan: {files}. La vista previa podría estar incompleta; no se modificaron los archivos fuente.",
+    backToComponents: "← Volver a los componentes",
+    sourceCode: "Código fuente",
+    htmlSource: "HTML · index.html",
+    cssSource: "CSS",
+    javascriptSource: "JavaScript",
+    inlineSource: "{label} · integrado {number}",
+    localFileSource: "{label} · {name}",
+    sourceLoadError: "No se pudieron cargar algunos archivos fuente. Abre el demo original para consultarlos. {message}",
+    libraryTitle: "Biblioteca HTML y CSS",
+    catalogUnavailable: "Catálogo no disponible",
+    catalogLoadError: "No se pudo cargar el catálogo. Abre el sitio desde un servidor local y, si hace falta, vuelve a generarlo. {message}",
+    themeNotSaved: "No se pudo guardar el tema en este navegador",
+    languageNotSaved: "No se pudo guardar el idioma en este navegador",
+    loadingPreview: "Cargando vista previa...",
+    previewUnavailable: "Vista previa no disponible",
+    standaloneDescription: "Demo independiente de {category} de la colección de componentes.",
+    featuredDescriptions: {
+      "among-us-button": "Botón divertido con la aparición animada de un personaje al pasar el cursor.",
+      "animated-nav-bar": "Menú de enlaces sociales con resaltado y una mano animada al pasar el cursor.",
+      "card-skeleton": "Marcador de posición de una tarjeta de perfil con un brillo en movimiento.",
+    },
+  },
+};
+
 const state = {
   components: [],
+  language: "en",
   category: "All",
   query: "",
   visibleCount: pageSize,
@@ -25,7 +225,42 @@ const elements = {
   loadMore: document.querySelector("#load-more"),
   toast: document.querySelector("#toast"),
   themeToggle: document.querySelector("#theme-toggle"),
+  languageButtons: [...document.querySelectorAll(".language-button")],
 };
+
+function t(key, values = {}) {
+  const dictionary = translations[state.language] ?? translations.en;
+  const template = dictionary[key] ?? translations.en[key] ?? key;
+  return template.replace(/\{(\w+)\}/g, (_, name) => values[name] ?? "");
+}
+
+function getCategoryLabel(category) {
+  return translations[state.language]?.categories[category] ?? category;
+}
+
+function getComponentDescription(component) {
+  if (state.language === "en") return component.description;
+  const featuredDescription = translations.es.featuredDescriptions[component.id];
+  if (featuredDescription) return featuredDescription;
+  return t("standaloneDescription", { category: getCategoryLabel(component.category).toLowerCase() });
+}
+
+function applyStaticTranslations() {
+  for (const element of document.querySelectorAll("[data-i18n]")) {
+    element.textContent = t(element.dataset.i18n);
+  }
+  for (const element of document.querySelectorAll("[data-i18n-placeholder]")) {
+    element.placeholder = t(element.dataset.i18nPlaceholder);
+  }
+  for (const element of document.querySelectorAll("[data-i18n-aria-label]")) {
+    element.setAttribute("aria-label", t(element.dataset.i18nAriaLabel));
+  }
+  document.documentElement.lang = state.language;
+  document.querySelector('meta[name="description"]').content = t("heroDescription");
+  for (const button of elements.languageButtons) {
+    button.setAttribute("aria-pressed", String(button.dataset.language === state.language));
+  }
+}
 
 function normalizeText(value) {
   return String(value ?? "")
@@ -63,7 +298,7 @@ function getFilteredComponents() {
 function renderFilters() {
   elements.filters.replaceChildren();
   for (const category of ["All", ...getCategories()]) {
-    const button = createElement("button", "filter-button", category);
+    const button = createElement("button", "filter-button", getCategoryLabel(category));
     button.type = "button";
     button.setAttribute("aria-pressed", String(state.category === category));
     button.addEventListener("click", () => {
@@ -81,7 +316,7 @@ function createPreview(component, className) {
   preview.classList.add("live-preview");
   preview.dataset.previewState = "loading";
   const frame = document.createElement("iframe");
-  frame.title = `${component.name} live preview`;
+  frame.title = t("livePreviewTitle", { name: component.name });
   frame.loading = "lazy";
   frame.referrerPolicy = "no-referrer";
   frame.setAttribute("sandbox", "allow-scripts allow-forms allow-popups");
@@ -102,18 +337,18 @@ function createComponentCard(component, index) {
   const article = createElement("article", "component-card");
   article.append(createPreview(component, "card-preview"));
 
-  const previewLabel = createElement("span", "card-preview-label", "Live demo");
+  const previewLabel = createElement("span", "card-preview-label", t("liveDemo"));
   article.querySelector(".card-preview").append(previewLabel);
 
   const content = createElement("div", "card-content");
   const top = createElement("div", "component-card-top");
   top.append(
-    createElement("span", "component-category", component.category),
+    createElement("span", "component-category", getCategoryLabel(component.category)),
     createElement("span", "component-number", String(index + 1).padStart(3, "0")),
   );
   const heading = createElement("h3", "", component.name);
-  const description = createElement("p", "", component.description);
-  const link = createElement("a", "card-link", "View component");
+  const description = createElement("p", "", getComponentDescription(component));
+  const link = createElement("a", "card-link", t("viewComponent"));
   link.href = `?component=${encodeURIComponent(component.id)}`;
   const arrow = createElement("span", "", "→");
   arrow.setAttribute("aria-hidden", "true");
@@ -127,7 +362,8 @@ function renderComponents() {
   const filteredComponents = getFilteredComponents();
   const visibleComponents = filteredComponents.slice(0, state.visibleCount);
   elements.grid.replaceChildren(...visibleComponents.map((component, index) => createComponentCard(component, index)));
-  elements.resultsCount.textContent = `${filteredComponents.length} ${filteredComponents.length === 1 ? "component" : "components"}`;
+  const countLabel = filteredComponents.length === 1 ? t("component") : t("components");
+  elements.resultsCount.textContent = `${filteredComponents.length} ${countLabel}`;
   elements.emptyState.hidden = filteredComponents.length > 0;
   elements.loadMore.hidden = visibleComponents.length >= filteredComponents.length;
 }
@@ -148,10 +384,11 @@ function renderCategories() {
   for (const category of getCategories()) {
     const button = createElement("button", "category-card");
     button.type = "button";
-    button.setAttribute("aria-label", `Browse ${category} components`);
+    const translatedCategory = getCategoryLabel(category);
+    button.setAttribute("aria-label", t("browseCategory", { category: translatedCategory }));
     button.append(
-      createElement("span", "category-card-name", category),
-      createElement("span", "category-card-count", `${counts.get(category)} components`),
+      createElement("span", "category-card-name", translatedCategory),
+      createElement("span", "category-card-count", `${counts.get(category)} ${counts.get(category) === 1 ? t("component") : t("components")}`),
     );
     button.addEventListener("click", () => {
       state.category = category;
@@ -168,24 +405,24 @@ function createCodeBlock(label, code) {
   const block = createElement("section", "code-block");
   const header = createElement("div", "code-block-header");
   const title = createElement("span", "code-label", label);
-  const copyButton = createElement("button", "copy-button", "Copy");
+  const copyButton = createElement("button", "copy-button", t("copy"));
   copyButton.type = "button";
   copyButton.addEventListener("click", async () => {
     try {
       await copyText(code);
-      copyButton.textContent = "Copied!";
-      showToast(`${label} copied to clipboard`);
+      copyButton.textContent = t("copied");
+      showToast(t("copiedToClipboard", { label }));
       window.setTimeout(() => {
-        copyButton.textContent = "Copy";
+        copyButton.textContent = t("copy");
       }, 1400);
     } catch {
-      showToast("Clipboard access is unavailable in this browser");
+      showToast(t("clipboardUnavailable"));
     }
   });
   header.append(title, copyButton);
   const pre = document.createElement("pre");
   const codeElement = document.createElement("code");
-  codeElement.textContent = code || "No local source file found.";
+  codeElement.textContent = code || t("noLocalSource");
   pre.append(codeElement);
   block.append(header, pre);
   return block;
@@ -208,11 +445,11 @@ function appendSourceGroup(container, heading, files, inlineBlocks = []) {
   container.append(createElement("h3", "visually-hidden", heading));
   let blockIndex = 0;
   for (const file of files) {
-    container.append(createCodeBlock(`${heading} · ${file.name}`, file.code));
+    container.append(createCodeBlock(t("localFileSource", { label: heading, name: file.name }), file.code));
     blockIndex += 1;
   }
   for (const [index, code] of inlineBlocks.entries()) {
-    container.append(createCodeBlock(`${heading} · inline ${index + 1}`, code));
+    container.append(createCodeBlock(t("inlineSource", { label: heading, number: index + 1 }), code));
     blockIndex += 1;
   }
   if (blockIndex === 0) {
@@ -230,9 +467,9 @@ async function downloadComponentZip(component) {
     };
   }));
   const attribution = [
-    `Source: ${component.source}`,
-    `License: ${component.license}`,
-    `License file: ${component.licenseFile}`,
+    `${t("sourceLabel")}: ${component.source}`,
+    `${t("licenseLabel")}: ${component.license}`,
+    `${t("licenseFileLabel")}: ${component.licenseFile}`,
   ].join("\n");
   files.push({
     name: `${component.id}/ATTRIBUTION.txt`,
@@ -254,36 +491,36 @@ function createDetailHeading(component) {
   const heading = createElement("div", "detail-heading");
   const copy = createElement("div");
   copy.append(
-    createElement("p", "detail-kicker", `${component.category} / ${component.folder}`),
+    createElement("p", "detail-kicker", `${getCategoryLabel(component.category)} / ${component.folder}`),
     createElement("h1", "", component.name),
-    createElement("p", "detail-description", component.description),
+    createElement("p", "detail-description", getComponentDescription(component)),
   );
   const actions = createElement("div", "detail-actions");
-  const originalLink = createElement("a", "button button-secondary", "Open original ↗");
+  const originalLink = createElement("a", "button button-secondary", t("openOriginal"));
   const originalUrl = new URL(component.preview, document.baseURI);
   originalUrl.searchParams.set("previewRevision", previewRevision);
   originalLink.href = originalUrl.href;
   originalLink.target = "_blank";
   originalLink.rel = "noreferrer";
-  const zipButton = createElement("button", "button button-secondary download-button", component.downloadable ? "Download ZIP" : "ZIP unavailable");
+  const zipButton = createElement("button", "button button-secondary download-button", component.downloadable ? t("downloadZip") : t("zipUnavailable"));
   zipButton.type = "button";
   zipButton.disabled = !component.downloadable;
   zipButton.title = component.downloadable
-    ? "Download this component and its local assets"
-    : "Source, redistribution permission, and a component license file must be verified first";
+    ? t("downloadZipTitle")
+    : t("zipPermissionTitle");
   zipButton.setAttribute("aria-label", zipButton.title);
   if (component.downloadable) {
     zipButton.addEventListener("click", async () => {
       zipButton.disabled = true;
-      zipButton.textContent = "Preparing ZIP...";
+      zipButton.textContent = t("preparingZip");
       try {
         await downloadComponentZip(component);
-        showToast("Component ZIP downloaded");
+        showToast(t("zipDownloaded"));
       } catch (error) {
-        showToast(`Could not create ZIP: ${error.message}`);
+        showToast(t("zipFailed", { message: error.message }));
       } finally {
         zipButton.disabled = false;
-        zipButton.textContent = "Download ZIP";
+        zipButton.textContent = t("downloadZip");
       }
     });
   }
@@ -296,10 +533,10 @@ function createProvenanceNote(component) {
   const isVerified = component.downloadable === true;
   const note = createElement("p", "provenance-note");
   note.append(
-    createElement("strong", "", isVerified ? "Redistribution cleared." : "Distribution not cleared."),
+    createElement("strong", "", isVerified ? t("attributionRecorded") : t("attributionPending")),
     document.createTextNode(isVerified
-      ? `Source: ${component.source}. License: ${component.license}.`
-      : "ZIP downloads stay disabled until the source, redistribution permission, and a license file for this component are verified."),
+      ? t("attributionText", { source: component.source, license: component.license })
+      : t("attributionPendingText")),
   );
   return note;
 }
@@ -311,7 +548,7 @@ function createMissingReferencesNote(component) {
   return createElement(
     "p",
     "error-message",
-    `This original demo references missing local files: ${references}. Its preview may be incomplete; the source files have not been changed.`,
+    t("missingFiles", { files: references }),
   );
 }
 
@@ -319,9 +556,9 @@ async function renderDetail(component) {
   elements.catalogView.hidden = true;
   elements.detailView.hidden = false;
   elements.detailView.replaceChildren();
-  document.title = `${component.name} · HTML & CSS Library`;
+  document.title = `${component.name} · ${t("libraryTitle")}`;
 
-  const backLink = createElement("a", "detail-back", "← Back to components");
+  const backLink = createElement("a", "detail-back", t("backToComponents"));
   backLink.href = "#components";
   backLink.addEventListener("click", () => {
     window.history.pushState({}, "", `${window.location.pathname}#components`);
@@ -331,9 +568,9 @@ async function renderDetail(component) {
   const previewPanel = createElement("section", "preview-panel");
   const previewHeader = createElement("div", "preview-panel-header");
   previewHeader.append(
-    createElement("span", "", "Original component · interactive preview"),
+    createElement("span", "", t("originalComponentPreview")),
   );
-  const previewLink = createElement("a", "preview-open-link", "Open in new tab ↗");
+  const previewLink = createElement("a", "preview-open-link", t("openInNewTab"));
   const previewUrl = new URL(component.preview, document.baseURI);
   previewUrl.searchParams.set("previewRevision", previewRevision);
   previewLink.href = previewUrl.href;
@@ -343,8 +580,8 @@ async function renderDetail(component) {
   previewPanel.append(previewHeader, createPreview(component, ""));
 
   const sourceSection = createElement("section", "source-section");
-  sourceSection.append(createElement("h2", "", "Source code"));
-  sourceSection.append(createCodeBlock("HTML · index.html", component.html));
+  sourceSection.append(createElement("h2", "", t("sourceCode")));
+  sourceSection.append(createCodeBlock(t("htmlSource"), component.html));
 
   elements.detailView.append(backLink, createDetailHeading(component));
   const missingReferencesNote = createMissingReferencesNote(component);
@@ -358,10 +595,10 @@ async function renderDetail(component) {
     ]);
     appendSourceGroup(sourceSection, "CSS", stylesheets, component.inlineCss ?? []);
     if (scripts.length || component.inlineJavaScript?.length) {
-      appendSourceGroup(sourceSection, "JavaScript", scripts, component.inlineJavaScript ?? []);
+      appendSourceGroup(sourceSection, t("javascriptSource"), scripts, component.inlineJavaScript ?? []);
     }
   } catch (error) {
-    const message = createElement("p", "error-message", `Some source files could not be loaded. Open the original demo to inspect them. ${error.message}`);
+    const message = createElement("p", "error-message", t("sourceLoadError", { message: error.message }));
     sourceSection.append(message);
   }
 }
@@ -376,8 +613,46 @@ function renderRoute() {
 
   elements.detailView.hidden = true;
   elements.catalogView.hidden = false;
-  document.title = "HTML & CSS Library";
+  document.title = t("libraryTitle");
   renderComponents();
+}
+
+function updateThemeControls() {
+  const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  elements.themeToggle.setAttribute("aria-label", t(nextTheme === "light" ? "switchToLight" : "switchToDark"));
+  elements.themeToggle.title = t("switchTheme");
+  elements.themeToggle.querySelector(".theme-label").textContent = t(nextTheme);
+  elements.themeToggle.querySelector(".theme-icon").textContent = nextTheme === "light" ? "☼" : "◐";
+}
+
+function applyLanguage(language, rerender = true) {
+  state.language = language === "es" ? "es" : "en";
+  applyStaticTranslations();
+  updateThemeControls();
+  try {
+    localStorage.setItem("component-field-language", state.language);
+  } catch {
+    if (rerender) showToast(t("languageNotSaved"));
+  }
+  if (rerender && state.components.length > 0) {
+    renderFeaturedComponents();
+    renderFilters();
+    renderCategories();
+    renderRoute();
+  }
+}
+
+function initializeLanguage() {
+  let savedLanguage = "en";
+  try {
+    savedLanguage = localStorage.getItem("component-field-language") ?? "en";
+  } catch {
+    savedLanguage = "en";
+  }
+  applyLanguage(savedLanguage, false);
+  for (const button of elements.languageButtons) {
+    button.addEventListener("click", () => applyLanguage(button.dataset.language));
+  }
 }
 
 function showToast(message) {
@@ -389,14 +664,11 @@ function showToast(message) {
 
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
-  const nextTheme = theme === "dark" ? "light" : "dark";
-  elements.themeToggle.setAttribute("aria-label", `Switch to ${nextTheme} theme`);
-  elements.themeToggle.querySelector(".theme-label").textContent = nextTheme === "light" ? "Light" : "Dark";
-  elements.themeToggle.querySelector(".theme-icon").textContent = theme === "dark" ? "☼" : "◐";
+  updateThemeControls();
   try {
     localStorage.setItem("component-field-theme", theme);
   } catch {
-    showToast("Theme preference will not be saved in this browser");
+    showToast(t("themeNotSaved"));
   }
 }
 
@@ -457,6 +729,7 @@ function initializeSearch() {
 }
 
 async function initializeApp() {
+  initializeLanguage();
   initializeTheme();
   initializeNavigation();
   initializeSearch();
@@ -474,8 +747,8 @@ async function initializeApp() {
     renderCategories();
     renderRoute();
   } catch (error) {
-    elements.resultsCount.textContent = "Catalog unavailable";
-    elements.grid.replaceChildren(createElement("p", "error-message", `Could not load the component catalog. Run the site from a local web server and regenerate it if needed. ${error.message}`));
+    elements.resultsCount.textContent = t("catalogUnavailable");
+    elements.grid.replaceChildren(createElement("p", "error-message", t("catalogLoadError", { message: error.message })));
   }
 }
 

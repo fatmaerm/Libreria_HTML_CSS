@@ -13,6 +13,7 @@ La aplicación web está separada en `Web/`; los demos originales permanecen en 
 - Inspección y copia del HTML, CSS y JavaScript local de cada demo.
 - Descargas ZIP solo después de verificar la fuente, los permisos de redistribución y la licencia individual.
 - Tema oscuro y claro con preferencia guardada en el navegador.
+- Interfaz en inglés y español, con idioma recordado de forma independiente al tema.
 - Diseño adaptable, controles accesibles con teclado y compatibilidad con movimiento reducido.
 - Sin frameworks, backend, instalación de paquetes ni dependencias de compilación.
 

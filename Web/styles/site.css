@@ -189,6 +189,35 @@ input:focus-visible {
   line-height: 1;
 }
 
+.language-switch {
+  display: inline-flex;
+  flex: 0 0 auto;
+  min-height: 38px;
+  align-items: center;
+  margin: 0;
+  padding: 2px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.language-button {
+  min-width: 31px;
+  min-height: 30px;
+  padding: 0 7px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: "DM Mono", "Courier New", monospace;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.language-button[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
 .section-wrap {
   width: min(1320px, calc(100% - 64px));
   margin-inline: auto;
@@ -607,6 +636,14 @@ input:focus-visible {
   opacity: 1;
 }
 
+:root[lang="es"] .live-preview:not([data-preview-state="ready"]):not([data-preview-state="error"])::after {
+  content: "Cargando vista previa...";
+}
+
+:root[lang="es"] .live-preview[data-preview-state="error"]::after {
+  content: "Vista previa no disponible";
+}
+
 .card-preview-label {
   position: absolute;
   right: 9px;
@@ -1018,7 +1055,7 @@ input:focus-visible {
     min-height: 62px;
     flex-wrap: wrap;
     gap: 0 12px;
-    padding: 9px 18px 0;
+    padding: 9px 12px 0;
   }
 
   .brand {

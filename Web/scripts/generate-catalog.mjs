@@ -1,12 +1,14 @@
 import { readdir, readFile, mkdir, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { toIndexEntry, writeSources } from "./catalog-format.mjs";
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryDirectory = path.resolve(scriptDirectory, "../..");
 const libraryDirectory = path.join(repositoryDirectory, "BibliotecaDeHtml_CSS");
 const catalogFile = path.join(repositoryDirectory, "Web", "data", "catalog.json");
 const catalogScriptFile = path.join(repositoryDirectory, "Web", "data", "catalog.js");
+const sourcesDirectory = path.join(repositoryDirectory, "Web", "data", "sources");
 const overridesFile = path.join(repositoryDirectory, "Web", "data", "component-overrides.json");
 
 async function findHtmlPages(directory) {
@@ -201,6 +203,7 @@ async function createComponent(pagePath) {
   const description = override.description ?? (descriptionMatch
     ? readAttribute(descriptionMatch[0], "content")
     : `Standalone ${descriptionType} demo from the component collection.`);
+  const descriptionEs = override.descriptionEs ?? null;
   const previewPath = path.relative(repositoryDirectory, pagePath).split(path.sep).join("/");
   const missingReferences = await getMissingReferences(html, pageDirectory);
   const files = await collectComponentFiles(pageDirectory, id);
@@ -221,6 +224,7 @@ async function createComponent(pagePath) {
     category,
     featured: override.featured === true,
     description,
+    ...(descriptionEs ? { descriptionEs } : {}),
     tags: override.tags ?? getTags(directoryName, name, category),
     folder: folderPath,
     preview: `../${previewPath}`,
@@ -264,10 +268,14 @@ if (duplicateIds.length) {
 }
 
 await mkdir(path.dirname(catalogFile), { recursive: true });
-await writeFile(catalogFile, `${JSON.stringify(components, null, 2)}\n`, "utf8");
+await writeFile(catalogFile, `${JSON.stringify(components.map(toIndexEntry), null, 2)}\n`, "utf8");
 await writeFile(
   catalogScriptFile,
   `window.COMPONENT_CATALOG = ${JSON.stringify(components)};\n`,
   "utf8",
 );
-console.log(`Generated ${components.length} component entries at ${path.relative(repositoryDirectory, catalogFile)}.`);
+await writeSources(sourcesDirectory, components);
+console.log(
+  `Generated ${components.length} component entries at ${path.relative(repositoryDirectory, catalogFile)} `
+  + `and ${components.length} source files at ${path.relative(repositoryDirectory, sourcesDirectory)}.`,
+);

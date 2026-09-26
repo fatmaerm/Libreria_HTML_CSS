@@ -1,1 +1,12 @@
-.github-pages-site*/
+# Artefactos de build (se regeneran con Web/scripts/build-site.mjs)
+.github-pages-*
+
+# Despliegue
+.vercel/
+
+# Dependencias (el proyecto no las usa, por seguridad)
+node_modules/
+
+# Sistema
+Thumbs.db
+.DS_Store

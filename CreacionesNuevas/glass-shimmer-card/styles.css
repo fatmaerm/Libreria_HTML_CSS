@@ -1,0 +1,86 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 20% 20%, #6366f1 0%, transparent 45%),
+    radial-gradient(circle at 80% 70%, #ec4899 0%, transparent 40%),
+    #0f172a;
+  padding: 1rem;
+  font-family: system-ui, sans-serif;
+}
+
+.glass-card {
+  position: relative;
+  width: min(92vw, 340px);
+  min-height: 180px;
+  padding: 2rem 1.75rem;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 20px 50px rgba(15, 23, 42, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.shine {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 38%,
+    rgba(255, 255, 255, 0.15) 44%,
+    rgba(255, 255, 255, 0.65) 50%,
+    rgba(255, 255, 255, 0.15) 56%,
+    transparent 62%,
+    transparent 100%
+  );
+  background-size: 220% 100%;
+  animation: shimmer 2.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  color: #f8fafc;
+}
+
+.content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.content p {
+  color: #e2e8f0;
+  line-height: 1.55;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 120% 0;
+  }
+  100% {
+    background-position: -120% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shine {
+    animation: none;
+    background-position: 50% 0;
+    opacity: 0.35;
+  }
+}

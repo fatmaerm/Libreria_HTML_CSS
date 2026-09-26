@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #fef3c7;
+}
+
+.hive {
+  display: flex;
+  flex-wrap: wrap;
+  width: 210px;
+  gap: 4px 0;
+  justify-content: center;
+}
+
+.hex {
+  width: 52px;
+  height: 30px;
+  margin: 15px 8px;
+  background: #f59e0b;
+  position: relative;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  animation: hexPulse 1.4s ease-in-out infinite;
+}
+
+.hex:nth-child(odd) {
+  transform: translateY(22px);
+}
+
+.hex:nth-child(1) { animation-delay: 0s; }
+.hex:nth-child(2) { animation-delay: 0.1s; }
+.hex:nth-child(3) { animation-delay: 0.2s; }
+.hex:nth-child(4) { animation-delay: 0.3s; }
+.hex:nth-child(5) { animation-delay: 0.4s; }
+.hex:nth-child(6) { animation-delay: 0.5s; }
+.hex:nth-child(7) { animation-delay: 0.6s; }
+.hex:nth-child(8) { animation-delay: 0.7s; }
+.hex:nth-child(9) { animation-delay: 0.8s; }
+.hex:nth-child(10) { animation-delay: 0.9s; }
+.hex:nth-child(11) { animation-delay: 1s; }
+.hex:nth-child(12) { animation-delay: 1.1s; }
+.hex:nth-child(13) { animation-delay: 1.2s; }
+.hex:nth-child(14) { animation-delay: 1.3s; }
+.hex:nth-child(15) { animation-delay: 1.4s; }
+
+@keyframes hexPulse {
+  0%,
+  100% {
+    background: #fbbf24;
+    transform: scale(1);
+  }
+  50% {
+    background: #d97706;
+    transform: scale(0.88);
+  }
+}
+
+.hex:nth-child(odd) {
+  animation-name: hexPulseOdd;
+}
+
+@keyframes hexPulseOdd {
+  0%,
+  100% {
+    background: #fbbf24;
+    transform: translateY(22px) scale(1);
+  }
+  50% {
+    background: #d97706;
+    transform: translateY(22px) scale(0.88);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hex {
+    animation: none;
+  }
+}

@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #111;
+}
+
+.strip {
+  width: 100%;
+  overflow: hidden;
+  transform: skewY(-3deg);
+  background: #f97316;
+  padding: 1rem 0;
+  box-shadow: 0 20px 50px rgba(249, 115, 22, 0.35);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: marquee 14s linear infinite;
+  font: 800 1.4rem/1 system-ui, sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #111;
+}
+
+.track span {
+  padding-right: 2rem;
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}

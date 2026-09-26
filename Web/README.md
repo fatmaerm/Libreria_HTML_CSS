@@ -24,8 +24,6 @@ El generador requiere Node.js 18 o posterior. La aplicación usa HTML, CSS, mód
 
 ## Funcionamiento
 
-- `scripts/generate-catalog.mjs` busca cada `index.html`, incluidos los demos anidados, lee el título y las referencias locales a CSS/JavaScript, y genera `data/catalog.json`.
-- `scripts/generate-catalog.mjs` busca cada `index.html`, incluidos los demos anidados, lee el título y las referencias locales a CSS/JavaScript, e genera `data/catalog.json` y `data/catalog.js` con las fuentes locales incrustadas.
 - `scripts/generate-catalog.mjs` busca cada `index.html`, incluidos los demos anidados, lee el título y las referencias locales a CSS/JavaScript, y genera `data/catalog.json` y `data/catalog.js` con las fuentes locales incrustadas.
 - `data/component-overrides.json` permite añadir nombres, categorías, descripciones, etiquetas, destacados, fuentes y licencias revisados para cada ID. El estado predeterminado es `Unverified`; no marques una fuente o licencia como verificada sin comprobarla.
 - `scripts/app.js` muestra la búsqueda, los filtros, las vistas previas reales, los controles para copiar el código y los botones ZIP sujetos a la verificación de derechos.
@@ -52,6 +50,7 @@ Por ejemplo, una carpeta llamada `My-Hover-Card` produce el ID `my-hover-card`:
   "my-hover-card": {
     "category": "Cards",
     "description": "A short, accurate summary of the demo.",
+    "descriptionEs": "Resumen corto y preciso del demo en español.",
     "tags": ["card", "hover"],
     "source": "https://example.com/original-source",
     "license": "MIT",
@@ -63,6 +62,16 @@ Por ejemplo, una carpeta llamada `My-Hover-Card` produce el ID `my-hover-card`:
 
 Introduce una fuente y licencia solo después de verificar los derechos de redistribución del código y de todos los recursos incluidos. Guarda la licencia completa o el aviso dentro de la carpeta del componente, define `licenseFile` con su ruta relativa y establece `redistributable` en `true`. Si no se cumplen esas condiciones, el ZIP seguirá deshabilitado y el constructor excluirá el componente. La MIT de la raíz no autoriza contenido de terceros.
 
+`description` es el texto en inglés de la tarjeta y `descriptionEs` el español. Si falta la traducción, la interfaz en español muestra el texto original en inglés.
+
 ## Despliegue
 
-Ejecuta `node Web/scripts/generate-catalog.mjs` y luego `node Web/scripts/build-site.mjs .github-pages-site` para crear el artefacto filtrado por licencias. GitHub Actions realiza estos pasos; configura **Settings → Pages → Source** como **GitHub Actions**. Netlify y Vercel pueden usar el mismo comando y `.github-pages-site` como directorio de publicación. Con los metadatos actuales, el artefacto contiene la aplicación, pero ningún demo hasta que se verifiquen los derechos.
+La app es estática: **no necesita backend ni base de datos**.
+
+**Vercel:** usa la raíz del repositorio con `vercel.json` (framework `Other`, sin build command, output `.`). No ejecutes `build-site.mjs` como build: filtra por licencia y hoy publicaría **0 demos**, rompiendo las previews (`../BibliotecaDeHtml_CSS/...`).
+
+**GitHub Pages:** ejecuta `node Web/scripts/generate-catalog.mjs` y luego `node Web/scripts/build-site.mjs .github-pages-site` para crear el artefacto filtrado por licencias. GitHub Actions realiza estos pasos; configura **Settings → Pages → Source** como **GitHub Actions**.
+
+**Netlify:** publica la raíz sin build command, igual que Vercel.
+
+Con los metadatos actuales, el artefacto filtrado de Pages contiene la aplicación, pero ningún demo hasta que se verifiquen los derechos.

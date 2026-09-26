@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #0a0a0a;
+}
+
+.sign {
+  font: 900 clamp(2.5rem, 10vw, 4.5rem)/1 "Segoe UI", system-ui, sans-serif;
+  letter-spacing: 0.15em;
+  color: #ff49db;
+  text-shadow:
+    0 0 6px #ff49db,
+    0 0 18px #ff49db,
+    0 0 36px #ff49db,
+    0 0 72px #d600b8;
+  animation: neon 2.8s infinite;
+}
+
+@keyframes neon {
+  0%,
+  18%,
+  22%,
+  62%,
+  64%,
+  100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  20%,
+  21%,
+  63% {
+    opacity: 0.35;
+    filter: brightness(0.6);
+  }
+  23% {
+    opacity: 0.85;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sign {
+    animation: none;
+  }
+}

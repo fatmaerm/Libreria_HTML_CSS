@@ -1,0 +1,54 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at top, #1e3a8a, #020617);
+}
+
+.stage {
+  perspective: 800px;
+}
+
+.cube {
+  width: 90px;
+  height: 90px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: spin 4s linear infinite;
+}
+
+.face {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  background: rgba(56, 189, 248, 0.35);
+}
+
+.front  { transform: translateZ(45px); }
+.back   { transform: rotateY(180deg) translateZ(45px); }
+.right  { transform: rotateY(90deg) translateZ(45px); }
+.left   { transform: rotateY(-90deg) translateZ(45px); }
+.top    { transform: rotateX(90deg) translateZ(45px); }
+.bottom { transform: rotateX(-90deg) translateZ(45px); }
+
+@keyframes spin {
+  from {
+    transform: rotateX(-25deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(-25deg) rotateY(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cube {
+    animation: none;
+    transform: rotateX(-25deg) rotateY(45deg);
+  }
+}

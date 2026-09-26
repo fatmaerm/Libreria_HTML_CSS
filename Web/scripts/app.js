@@ -1,4 +1,5 @@
 const catalogPath = "./data/catalog.json";
+const fullCatalogPath = "./data/catalog.js";
 const previewRevision = "20260926-2";
 const pageSize = 12;
 const translations = {
@@ -22,6 +23,8 @@ const translations = {
     heroTitleSecond: "Library",
     publicationTitle: "Distribution review in progress.",
     publicationText: "This published build includes only demos with verified redistribution rights. No component is cleared for release yet.",
+    publicationZipTitle: "ZIP downloads pending verification.",
+    publicationZipText: "You can browse, preview, and copy the source of every demo. ZIP downloads stay disabled until each component's redistribution rights are verified.",
     heroEyebrow: "A working library of web experiments",
     heroDescription: "A growing index of interface components, visual effects, and small experiments. Browse the original demos, inspect their source, and take the patterns into your next project.",
     exploreComponents: "Explore components",
@@ -93,12 +96,6 @@ const translations = {
     languageNotSaved: "Language preference will not be saved in this browser",
     loadingPreview: "Loading preview...",
     previewUnavailable: "Preview unavailable",
-    standaloneDescription: "Standalone {category} demo from the component collection.",
-    featuredDescriptions: {
-      "among-us-button": "A playful button with an animated character reveal on hover.",
-      "animated-nav-bar": "A social-link menu with a hover highlight and waving-hand animation.",
-      "card-skeleton": "A profile-card placeholder with a moving shimmer effect.",
-    },
   },
   es: {
     categories: {
@@ -120,6 +117,8 @@ const translations = {
     heroTitleSecond: "HTML y CSS",
     publicationTitle: "Revisión de distribución en curso.",
     publicationText: "Esta versión publicada solo incluye demos con derechos de redistribución verificados. Todavía no hay componentes autorizados.",
+    publicationZipTitle: "Descargas ZIP pendientes de verificación.",
+    publicationZipText: "Puedes explorar, previsualizar y copiar el código de cada demo. Las descargas ZIP siguen deshabilitadas hasta verificar los derechos de redistribución de cada componente.",
     heroEyebrow: "Una biblioteca activa de experimentos web",
     heroDescription: "Un índice en crecimiento de componentes de interfaz, efectos visuales y pequeños experimentos. Explora los demos originales, consulta su código y adapta sus ideas a tu próximo proyecto.",
     exploreComponents: "Explorar componentes",
@@ -191,17 +190,12 @@ const translations = {
     languageNotSaved: "No se pudo guardar el idioma en este navegador",
     loadingPreview: "Cargando vista previa...",
     previewUnavailable: "Vista previa no disponible",
-    standaloneDescription: "Demo independiente de {category} de la colección de componentes.",
-    featuredDescriptions: {
-      "among-us-button": "Botón divertido con la aparición animada de un personaje al pasar el cursor.",
-      "animated-nav-bar": "Menú de enlaces sociales con resaltado y una mano animada al pasar el cursor.",
-      "card-skeleton": "Marcador de posición de una tarjeta de perfil con un brillo en movimiento.",
-    },
   },
 };
 
 const state = {
   components: [],
+  catalogLoaded: false,
   language: "en",
   category: "All",
   query: "",
@@ -238,9 +232,7 @@ function getCategoryLabel(category) {
 
 function getComponentDescription(component) {
   if (state.language === "en") return component.description;
-  const featuredDescription = translations.es.featuredDescriptions[component.id];
-  if (featuredDescription) return featuredDescription;
-  return t("standaloneDescription", { category: getCategoryLabel(component.category).toLowerCase() });
+  return component.descriptionEs || component.description;
 }
 
 function applyStaticTranslations() {
@@ -258,6 +250,21 @@ function applyStaticTranslations() {
   for (const button of elements.languageButtons) {
     button.setAttribute("aria-pressed", String(button.dataset.language === state.language));
   }
+}
+
+function updatePublicationNotice() {
+  if (!state.catalogLoaded) return;
+  const hasComponents = state.components.length > 0;
+  const allCleared = hasComponents && state.components.every((entry) => entry.downloadable === true);
+  elements.publicationNotice.hidden = allCleared;
+  const [title, text] = elements.publicationNotice.querySelectorAll("[data-i18n]");
+  const keys = hasComponents
+    ? ["publicationZipTitle", "publicationZipText"]
+    : ["publicationTitle", "publicationText"];
+  title.dataset.i18n = keys[0];
+  text.dataset.i18n = keys[1];
+  title.textContent = t(keys[0]);
+  text.textContent = t(keys[1]);
 }
 
 function normalizeText(value) {
@@ -309,6 +316,42 @@ function renderFilters() {
   }
 }
 
+const previewObserver = typeof IntersectionObserver === "function"
+  ? new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) mountQueuedPreview(entry.target);
+      }
+    }, { rootMargin: "400px 0px" })
+  : null;
+
+function armPreviewListeners(frame, preview) {
+  frame.addEventListener("load", () => {
+    preview.dataset.previewState = "ready";
+  }, { once: true });
+  frame.addEventListener("error", () => {
+    preview.dataset.previewState = "error";
+  }, { once: true });
+}
+
+function mountQueuedPreview(container) {
+  previewObserver?.unobserve(container);
+  const frame = container.querySelector("iframe[data-preview-src]");
+  if (!frame) return;
+  const src = frame.dataset.previewSrc;
+  delete frame.dataset.previewSrc;
+  armPreviewListeners(frame, container);
+  frame.src = src;
+}
+
+function refreshQueuedPreviews() {
+  if (!previewObserver) return;
+  previewObserver.disconnect();
+  const pending = document.querySelectorAll(
+    ".live-preview[data-preview-state='loading'] iframe[data-preview-src]",
+  );
+  for (const frame of pending) previewObserver.observe(frame.parentElement);
+}
+
 function createPreview(component, className) {
   const preview = createElement("div", className);
   preview.classList.add("live-preview");
@@ -318,16 +361,16 @@ function createPreview(component, className) {
   frame.loading = "lazy";
   frame.referrerPolicy = "no-referrer";
   frame.setAttribute("sandbox", "allow-scripts allow-forms allow-popups");
-  frame.addEventListener("load", () => {
-    preview.dataset.previewState = "ready";
-  }, { once: true });
-  frame.addEventListener("error", () => {
-    preview.dataset.previewState = "error";
-  }, { once: true });
   preview.append(frame);
   const previewUrl = new URL(component.preview, document.baseURI);
   previewUrl.searchParams.set("previewRevision", previewRevision);
-  frame.src = previewUrl.href;
+  if (previewObserver) {
+    frame.dataset.previewSrc = previewUrl.href;
+    previewObserver.observe(preview);
+  } else {
+    armPreviewListeners(frame, preview);
+    frame.src = previewUrl.href;
+  }
   return preview;
 }
 
@@ -364,12 +407,14 @@ function renderComponents() {
   elements.resultsCount.textContent = `${filteredComponents.length} ${countLabel}`;
   elements.emptyState.hidden = filteredComponents.length > 0;
   elements.loadMore.hidden = visibleComponents.length >= filteredComponents.length;
+  refreshQueuedPreviews();
 }
 
 function renderFeaturedComponents() {
   const featuredComponents = state.components.filter((component) => component.featured);
   elements.featuredGrid.replaceChildren(...featuredComponents.map((component, index) => createComponentCard(component, index)));
   elements.featuredGrid.closest(".featured-section").hidden = featuredComponents.length === 0;
+  refreshQueuedPreviews();
 }
 
 function renderCategories() {
@@ -452,11 +497,54 @@ function appendSourceGroup(container, heading, files, inlineBlocks = []) {
     blockIndex += 1;
   }
   if (blockIndex === 0) {
-    container.append(createCodeBlock(heading, "No local source file found."));
+    container.append(createCodeBlock(heading, t("noLocalSource")));
   }
 }
 
+function loadFullCatalogScript() {
+  return new Promise((resolve, reject) => {
+    if (Array.isArray(window.COMPONENT_CATALOG)) {
+      resolve(window.COMPONENT_CATALOG);
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = fullCatalogPath;
+    script.addEventListener("load", () => resolve(window.COMPONENT_CATALOG), { once: true });
+    script.addEventListener("error", () => reject(new Error(`Could not load ${fullCatalogPath}`)), { once: true });
+    document.head.append(script);
+  });
+}
+
+async function loadCatalog() {
+  if (window.location.protocol === "file:") {
+    const fullCatalog = await loadFullCatalogScript();
+    if (!Array.isArray(fullCatalog)) throw new Error("The full catalog is unavailable.");
+    return fullCatalog;
+  }
+
+  try {
+    const response = await fetch(catalogPath);
+    if (!response.ok) throw new Error(`Catalog request failed (${response.status})`);
+    return await response.json();
+  } catch (error) {
+    const fallback = await loadFullCatalogScript().catch(() => null);
+    if (Array.isArray(fallback)) return fallback;
+    throw error;
+  }
+}
+
+async function ensureComponentSource(component) {
+  if (typeof component.html === "string") return component;
+  const response = await fetch(
+    new URL(`./data/sources/${encodeURIComponent(component.id)}.json`, document.baseURI),
+  );
+  if (!response.ok) throw new Error(`Source request failed (${response.status})`);
+  Object.assign(component, await response.json());
+  return component;
+}
+
 async function downloadComponentZip(component) {
+  await ensureComponentSource(component);
   const files = await Promise.all(component.files.map(async (file) => {
     const response = await fetch(new URL(file.path, document.baseURI));
     if (!response.ok) throw new Error(`Could not load ${file.name}`);
@@ -475,7 +563,7 @@ async function downloadComponentZip(component) {
     bytes: new TextEncoder().encode(`${attribution}\n`),
   });
 
-  const archive = window.createStoredZip(files);
+  const archive = await window.createZip(files);
   const archiveUrl = URL.createObjectURL(archive);
   const downloadLink = createElement("a");
   downloadLink.href = archiveUrl;
@@ -559,9 +647,11 @@ async function renderDetail(component) {
 
   const backLink = createElement("a", "detail-back", t("backToComponents"));
   backLink.href = "#components";
-  backLink.addEventListener("click", () => {
+  backLink.addEventListener("click", (event) => {
+    event.preventDefault();
     window.history.pushState({}, "", `${window.location.pathname}#components`);
     renderRoute();
+    document.querySelector("#components")?.scrollIntoView({ behavior: "smooth" });
   });
 
   const previewPanel = createElement("section", "preview-panel");
@@ -578,14 +668,26 @@ async function renderDetail(component) {
   previewHeader.append(previewLink);
   previewPanel.append(previewHeader, createPreview(component, ""));
 
-  const sourceSection = createElement("section", "source-section");
-  sourceSection.append(createElement("h2", "", t("sourceCode")));
-  sourceSection.append(createCodeBlock(t("htmlSource"), component.html));
-
   elements.detailView.append(backLink, createDetailHeading(component));
   const missingReferencesNote = createMissingReferencesNote(component);
   if (missingReferencesNote) elements.detailView.append(missingReferencesNote);
-  elements.detailView.append(previewPanel, sourceSection, createProvenanceNote(component));
+  elements.detailView.append(previewPanel);
+  refreshQueuedPreviews();
+
+  let sourceError = null;
+  try {
+    await ensureComponentSource(component);
+  } catch (error) {
+    sourceError = error;
+  }
+
+  const sourceSection = createElement("section", "source-section");
+  sourceSection.append(createElement("h2", "", t("sourceCode")));
+  if (sourceError) {
+    sourceSection.append(createElement("p", "error-message", t("sourceLoadError", { message: sourceError.message })));
+  }
+  sourceSection.append(createCodeBlock(t("htmlSource"), component.html));
+  elements.detailView.append(sourceSection, createProvenanceNote(component));
 
   try {
     const [stylesheets, scripts] = await Promise.all([
@@ -606,7 +708,9 @@ function renderRoute() {
   const componentId = new URLSearchParams(window.location.search).get("component");
   const component = state.components.find((entry) => entry.id === componentId);
   if (component) {
-    renderDetail(component);
+    renderDetail(component).catch((error) => {
+      showToast(t("sourceLoadError", { message: error.message }));
+    });
     return;
   }
 
@@ -628,6 +732,7 @@ function applyLanguage(language, rerender = true) {
   state.language = language === "es" ? "es" : "en";
   applyStaticTranslations();
   updateThemeControls();
+  updatePublicationNotice();
   try {
     localStorage.setItem("component-field-language", state.language);
   } catch {
@@ -735,14 +840,9 @@ async function initializeApp() {
   document.querySelector("#footer-year").textContent = String(new Date().getFullYear());
 
   try {
-    if (Array.isArray(window.COMPONENT_CATALOG)) {
-      state.components = window.COMPONENT_CATALOG;
-    } else {
-      const response = await fetch(catalogPath);
-      if (!response.ok) throw new Error(`Catalog request failed (${response.status})`);
-      state.components = await response.json();
-    }
-    elements.publicationNotice.hidden = state.components.length > 0;
+    state.components = await loadCatalog();
+    state.catalogLoaded = true;
+    updatePublicationNotice();
     document.querySelector("#stat-components").textContent = String(state.components.length);
     document.querySelector("#stat-categories").textContent = String(getCategories().length);
     renderFeaturedComponents();

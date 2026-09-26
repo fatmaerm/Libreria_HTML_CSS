@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #ecfdf5;
+}
+
+.liquid-btn {
+  position: relative;
+  border: none;
+  padding: 1rem 2.5rem;
+  font: 600 1rem/1 system-ui, sans-serif;
+  color: #065f46;
+  background: #fff;
+  border-radius: 999px;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.25);
+}
+
+.liquid-btn .wave {
+  position: absolute;
+  left: 50%;
+  bottom: -120%;
+  width: 220%;
+  height: 220%;
+  background: #10b981;
+  border-radius: 42%;
+  transform: translateX(-50%);
+  transition: bottom 0.55s ease;
+  animation: slosh 4s linear infinite;
+}
+
+.liquid-btn .label {
+  position: relative;
+  z-index: 1;
+  transition: color 0.35s ease;
+}
+
+.liquid-btn:hover .wave,
+.liquid-btn:focus-visible .wave {
+  bottom: -35%;
+}
+
+.liquid-btn:hover .label,
+.liquid-btn:focus-visible .label {
+  color: #ecfdf5;
+}
+
+.liquid-btn:focus-visible {
+  outline: 3px solid #059669;
+  outline-offset: 4px;
+}
+
+@keyframes slosh {
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liquid-btn .wave {
+    animation: none;
+  }
+  .liquid-btn:hover .wave,
+  .liquid-btn:focus-visible .wave {
+    bottom: 0;
+  }
+}

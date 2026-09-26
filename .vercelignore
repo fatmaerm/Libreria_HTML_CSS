@@ -1,0 +1,13 @@
+# Documentación y herramientas internas: no hace falta en el despliegue.
+Docs/
+.qodo/
+.github/
+.vercel/
+CHANGELOG.md
+
+# Artefactos de build de GitHub Pages (regenerados en cada despliegue).
+.github-pages-*
+
+# Sistema
+Thumbs.db
+.DS_Store

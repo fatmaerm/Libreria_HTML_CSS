@@ -1,11 +1,13 @@
 import { cp, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { readSource, toIndexEntry, writeSources } from "./catalog-format.mjs";
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryDirectory = path.resolve(scriptDirectory, "../..");
 const libraryDirectory = path.join(repositoryDirectory, "BibliotecaDeHtml_CSS");
 const catalogFile = path.join(repositoryDirectory, "Web", "data", "catalog.json");
+const sourcesDirectory = path.join(repositoryDirectory, "Web", "data", "sources");
 const outputDirectory = path.resolve(repositoryDirectory, process.argv[2] ?? ".github-pages-site");
 
 if (outputDirectory === repositoryDirectory || !outputDirectory.startsWith(`${repositoryDirectory}${path.sep}`)) {
@@ -13,8 +15,13 @@ if (outputDirectory === repositoryDirectory || !outputDirectory.startsWith(`${re
 }
 
 const catalog = JSON.parse(await readFile(catalogFile, "utf8"));
-const approvedComponents = catalog.filter((component) => component.downloadable === true);
-await mkdir(outputDirectory);
+const approvedIndex = catalog.filter((component) => component.downloadable === true);
+const approvedComponents = [];
+for (const entry of approvedIndex) {
+  approvedComponents.push({ ...entry, ...(await readSource(sourcesDirectory, entry.id)) });
+}
+
+await mkdir(outputDirectory, { recursive: true });
 await cp(path.join(repositoryDirectory, "Web"), path.join(outputDirectory, "Web"), { recursive: true });
 await cp(path.join(repositoryDirectory, "index.html"), path.join(outputDirectory, "index.html"));
 await cp(path.join(repositoryDirectory, "LICENSE"), path.join(outputDirectory, "LICENSE"));
@@ -30,9 +37,12 @@ for (const component of approvedComponents) {
   await cp(sourceDirectory, destinationDirectory, { recursive: true });
 }
 
+const outputSourcesDirectory = path.join(outputDirectory, "Web", "data", "sources");
+await writeSources(outputSourcesDirectory, approvedComponents);
+
 await writeFile(
   path.join(outputDirectory, "Web", "data", "catalog.json"),
-  `${JSON.stringify(approvedComponents, null, 2)}\n`,
+  `${JSON.stringify(approvedComponents.map(toIndexEntry), null, 2)}\n`,
   "utf8",
 );
 await writeFile(

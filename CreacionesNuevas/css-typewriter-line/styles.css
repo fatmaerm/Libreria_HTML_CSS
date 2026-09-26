@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #18181b;
+  font-family: "Consolas", "Courier New", monospace;
+}
+
+.typewriter {
+  color: #4ade80;
+  font-size: clamp(1rem, 4vw, 1.35rem);
+  border-right: 3px solid #4ade80;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 3.2s steps(26, end) forwards, caret 0.7s step-end infinite;
+}
+
+.text {
+  display: inline-block;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 26ch;
+  }
+}
+
+@keyframes caret {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typewriter {
+    width: auto;
+    border-right: none;
+    animation: none;
+  }
+}

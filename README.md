@@ -74,6 +74,7 @@ Por ejemplo, la carpeta `My-Hover-Card/` produce el ID `my-hover-card`:
   "my-hover-card": {
     "category": "Cards",
     "description": "A concise, accurate description of the demo.",
+    "descriptionEs": "Descripción concisa y precisa del demo.",
     "tags": ["card", "hover"],
     "source": "https://example.com/original-source",
     "license": "MIT",
@@ -85,7 +86,7 @@ Por ejemplo, la carpeta `My-Hover-Card/` produce el ID `my-hover-card`:
 
 Establece `redistributable` en `true` solo después de confirmar los permisos del código y de todos los recursos incluidos. Guarda la licencia completa o el aviso requerido en la ruta indicada por `licenseFile` dentro de la carpeta del demo. Sin esos campos revisados y un archivo de licencia válido, el botón ZIP permanece deshabilitado y el demo queda fuera del artefacto de despliegue.
 
-Las categorías se infieren de los nombres de carpetas y páginas, y se añaden automáticamente cuando aparecen. Usa un override si hay que corregir una categoría o descripción. La búsqueda no distingue mayúsculas y minúsculas.
+Las categorías se infieren de los nombres de carpetas y páginas, y se añaden automáticamente cuando aparecen. Usa un override si hay que corregir una categoría o descripción. `description` es el texto en inglés y `descriptionEs` el español: si no hay traducción, la interfaz en español muestra el texto original. La búsqueda no distingue mayúsculas y minúsculas.
 
 ## Vistas previas y código
 
@@ -101,7 +102,31 @@ Antes de publicar o distribuir un demo, verifica su procedencia y las condicione
 
 ## Despliegue
 
-La aplicación es estática y no necesita backend. El [workflow de GitHub Actions](.github/workflows/deploy-pages.yml) regenera el catálogo, prepara solo los componentes autorizados y despliega el artefacto. En la configuración del repositorio, selecciona **Settings → Pages → Source → GitHub Actions**. Para Netlify o Vercel, usa el comando `node Web/scripts/generate-catalog.mjs && node Web/scripts/build-site.mjs .github-pages-site` y configura `.github-pages-site` como directorio de publicación. Hasta que se autorice algún demo, Pages publicará la aplicación sin código de demos ni descargas ZIP.
+La aplicación es estática y no necesita backend ni base de datos.
+
+### Vercel
+
+El repositorio incluye [`vercel.json`](./vercel.json) y [`.vercelignore`](./vercelignore). Configura el proyecto con **Framework Preset: Other**, **Build Command vacío** y **Output Directory: `.`** (la raíz del repositorio); es lo que ya fija `vercel.json`.
+
+Se despliega **la raíz del repositorio**, no un subdirectorio: las vistas previas cargan `../BibliotecaDeHtml_CSS/...`, así que esa carpeta tiene que publicarse también. `vercel.json` redirige `/` → `/Web/` y `/Web` → `/Web/` (sin barra final rompería las rutas relativas) y añade cabeceras de seguridad.
+
+> ⚠️ **No** uses `node Web/scripts/build-site.mjs` como build command de Vercel. Ese script filtra los demos por licencia y, con los metadatos actuales, publicaría **0 de 116** componentes: catálogo vacío y previews en 404. Solo tiene sentido cuando haya componentes con `redistributable: true` (ver *Procedencia y licencias*).
+
+### GitHub Pages
+
+El [workflow de GitHub Actions](.github/workflows/deploy-pages.yml) regenera el catálogo, prepara solo los componentes autorizados y despliega el artefacto. En la configuración del repositorio, selecciona **Settings → Pages → Source → GitHub Actions**. Hasta que se autorice algún demo, Pages publicará la aplicación sin código de demos ni descargas ZIP.
+
+### Netlify
+
+Publica la raíz del repositorio con **Build Command vacío**. Si quieres regenerar el catálogo en cada despliegue, usa `node Web/scripts/generate-catalog.mjs` (Node 18+), pero **no** encadenes `build-site.mjs` mientras no haya demos autorizados.
+
+### Después de añadir o modificar demos
+
+Regenera y versiona el catálogo antes de desplegar:
+
+```powershell
+node Web/scripts/generate-catalog.mjs
+```
 
 ## Contribuir
 

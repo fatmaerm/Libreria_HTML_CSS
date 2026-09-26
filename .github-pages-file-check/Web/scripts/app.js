@@ -1,4 +1,5 @@
 const catalogPath = "./data/catalog.json";
+const createStoredZip = window.createStoredZip;
 const previewRevision = "20260926-2";
 const pageSize = 12;
 const translations = {
@@ -475,7 +476,7 @@ async function downloadComponentZip(component) {
     bytes: new TextEncoder().encode(`${attribution}\n`),
   });
 
-  const archive = window.createStoredZip(files);
+  const archive = createStoredZip(files);
   const archiveUrl = URL.createObjectURL(archive);
   const downloadLink = createElement("a");
   downloadLink.href = archiveUrl;

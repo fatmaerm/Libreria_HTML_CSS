@@ -25,13 +25,15 @@ Regenera el catálogo después de añadir o modificar demos:
 node Web/scripts/generate-catalog.mjs
 ```
 
-Inicia un servidor estático desde la raíz del repositorio. En Windows puedes usar Python:
+Para abrir la biblioteca directamente, abre `Web/index.html` en el navegador. Antes, regenera el catálogo con el comando anterior si cambiaste o añadiste demos. El archivo `Web/data/catalog.js` permite cargar el catálogo al usar `file://`.
+
+Para probarla mediante HTTP, inicia un servidor estático desde la raíz del repositorio. En Windows puedes usar Python:
 
 ```powershell
 py -m http.server 8000
 ```
 
-Abre <http://localhost:8000/>. La página raíz redirige a `/Web/`. También puedes iniciar Live Server en VS Code desde la raíz del repositorio. No abras el HTML directamente con `file://`: el navegador necesita acceso HTTP al catálogo y a los archivos fuente.
+Abre <http://localhost:8000/>. La página raíz redirige a `/Web/`. También puedes iniciar Live Server en VS Code desde la raíz del repositorio. El servidor HTTP es recomendable para probar el portapapeles y las descargas ZIP; al abrir con `file://`, la compatibilidad de esas API depende del navegador.
 
 Node.js 18 o posterior solo hace falta para regenerar el catálogo. El sitio utiliza HTML, CSS y módulos JavaScript.
 

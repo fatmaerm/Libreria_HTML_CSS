@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Knob Rotary Switch</title>
+<meta name="description" content="Draggable rotary knob control with value readout.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="knob-panel">
+  <div class="knob" id="knob">
+    <div class="knob-body">
+      <div class="knob-mark"></div>
+    </div>
+    <svg class="knob-arc" viewBox="0 0 100 100">
+      <circle class="arc-track" cx="50" cy="50" r="40"/>
+      <circle class="arc-fill" cx="50" cy="50" r="40" id="arcFill"/>
+    </svg>
+  </div>
+  <div class="knob-label" id="knobLbl">50</div>
+  <div class="knob-name">Volume</div>
+</div>
+</body>
+</html>

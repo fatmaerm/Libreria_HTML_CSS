@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OTP Code Input Form</title>
+<meta name="description" content="Six-digit OTP verification code input with auto-advance and paste support.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="otp-wrap">
+  <h2>Verification Code</h2>
+  <p>Enter the 6-digit code sent to your device.</p>
+  <div class="otp-inputs" id="otpInputs">
+    <input class="otp-cell" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" data-i="0"><input class="otp-cell" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" data-i="1"><input class="otp-cell" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" data-i="2"><input class="otp-cell" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" data-i="3"><input class="otp-cell" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" data-i="4"><input class="otp-cell" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" data-i="5">
+  </div>
+  <button class="otp-btn" id="otpBtn">Verify</button>
+</div>
+</body>
+</html>

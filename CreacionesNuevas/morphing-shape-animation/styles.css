@@ -1,0 +1,12 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;background:#0f172a}
+.morph-wrap{width:300px;height:300px;display:grid;place-items:center}
+.morph-svg{width:100%;height:100%}
+.blob{animation:morph 8s ease-in-out infinite;transform-origin:center}
+@keyframes morph{
+  0%,100%{d:path("M100,30 C140,20 170,60 180,100 C190,140 160,175 120,185 C80,195 40,170 25,130 C10,90 30,45 60,30 C75,23 85,33 100,30Z")}
+  25%{d:path("M100,25 C145,15 175,50 185,95 C195,140 170,180 125,188 C80,196 35,175 20,130 C5,85 25,40 55,28 C70,22 85,28 100,25Z")}
+  50%{d:path("M100,20 C150,10 185,55 190,100 C195,145 165,185 118,192 C71,199 28,178 15,132 C2,86 22,38 55,24 C72,17 88,23 100,20Z")}
+  75%{d:path("M100,28 C138,18 172,58 182,100 C192,142 162,178 120,186 C78,194 38,168 23,125 C8,82 32,42 62,28 C78,21 88,32 100,28Z")}
+}
+@media(prefers-reduced-motion:reduce){.blob{animation:none;d:path("M100,30 C140,20 170,60 180,100 C190,140 160,175 120,185 C80,195 40,170 25,130 C10,90 30,45 60,30 C75,23 85,33 100,30Z")}}

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vertical Volume Slider</title>
+<meta name="description" content="Vertical audio volume fader with level meter visualization.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="vol-panel">
+  <div class="vol-meter" id="meter">
+    <div class="meter-bar" data-i="11"></div><div class="meter-bar" data-i="10"></div><div class="meter-bar" data-i="9"></div><div class="meter-bar" data-i="8"></div><div class="meter-bar" data-i="7"></div><div class="meter-bar" data-i="6"></div><div class="meter-bar" data-i="5"></div><div class="meter-bar" data-i="4"></div><div class="meter-bar" data-i="3"></div><div class="meter-bar" data-i="2"></div><div class="meter-bar" data-i="1"></div><div class="meter-bar" data-i="0"></div>
+  </div>
+  <div class="fader-wrap">
+    <input type="range" orient="vertical" class="fader" id="fader" min="0" max="100" value="70">
+  </div>
+  <div class="vol-label" id="volLbl">70</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Morphing Shape Animation</title>
+<meta name="description" content="Pure CSS SVG path morphing blob animation with gradient fill.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="morph-wrap">
+  <svg class="morph-svg" viewBox="0 0 200 200">
+    <defs>
+      <linearGradient id="mg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#6366f1"/>
+        <stop offset="100%" stop-color="#ec4899"/>
+      </linearGradient>
+    </defs>
+    <path class="blob" fill="url(#mg)"/>
+  </svg>
+</div>
+</body>
+</html>

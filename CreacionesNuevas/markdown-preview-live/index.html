@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Markdown Preview Live</title>
+<meta name="description" content="Split-pane live Markdown editor and preview panel.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="md-wrap">
+  <div class="md-pane editor-pane">
+    <div class="pane-header"><span>📝 Markdown</span></div>
+    <textarea id="mdInput" spellcheck="false"># Hello World
+
+## Features
+- **Bold text**
+- *Italic text*
+- `inline code`
+
+> A blockquote here
+
+```
+const x = 42;
+```</textarea>
+  </div>
+  <div class="md-pane preview-pane">
+    <div class="pane-header"><span>👁️ Preview</span></div>
+    <div class="md-preview" id="mdPreview"></div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tag Input Chip Form</title>
+<meta name="description" content="Tag chip input field with add and remove animations.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="tag-card">
+  <h3>Add Tags</h3>
+  <div class="tag-field" id="tagField">
+    <div class="tags" id="tags">
+      <span class="chip" data-v="CSS">CSS <button>×</button></span>
+      <span class="chip" data-v="JavaScript">JavaScript <button>×</button></span>
+    </div>
+    <input class="tag-input" id="tagInput" placeholder="Type and press Enter…" autocomplete="off">
+  </div>
+  <p class="tag-hint">Press Enter or comma to add</p>
+</div>
+</body>
+</html>

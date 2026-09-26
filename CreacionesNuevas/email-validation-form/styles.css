@@ -1,0 +1,14 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;background:#0f172a;font-family:sans-serif}
+.val-card{background:#1e293b;border-radius:20px;padding:28px;width:320px;border:1px solid #334155}
+h2{color:#f1f5f9;margin-bottom:20px;font-size:1rem}
+.vfield{position:relative;margin-bottom:16px}
+.vinput{width:100%;padding:12px 44px 12px 14px;background:#0f172a;border:2px solid #334155;
+  border-radius:10px;color:#f1f5f9;outline:none;transition:border-color .2s;font-family:sans-serif}
+.vinput.valid{border-color:#10b981}.vinput.invalid{border-color:#ef4444}
+.vstatus{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:1.1rem}
+.vhints{list-style:none;display:flex;flex-direction:column;gap:6px}
+.vhints li{font-size:.8rem;color:#64748b;display:flex;align-items:center;gap:8px;transition:color .3s}
+.vhints li::before{content:'○';font-size:.8rem}
+.vhints li.pass{color:#10b981}.vhints li.pass::before{content:'●';color:#10b981}
+@media(prefers-reduced-motion:reduce){.vinput,.vhints li{transition:none}}

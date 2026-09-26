@@ -1,0 +1,15 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;background:#0f172a}
+.slider-wrap{position:relative;width:300px;display:flex;flex-direction:column;align-items:center;gap:20px}
+.slider3d{-webkit-appearance:none;appearance:none;width:100%;height:12px;border-radius:6px;outline:none;cursor:pointer;
+  background:linear-gradient(180deg,#1e293b 0%,#0f172a 100%);
+  box-shadow:inset 0 2px 4px #0008,inset 0 -1px 2px #ffffff10}
+.slider3d::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;cursor:pointer;
+  background:radial-gradient(circle at 35% 35%,#a5b4fc,#6366f1);
+  box-shadow:0 4px 12px #6366f188,0 0 0 3px #6366f133;transition:transform .2s}
+.slider3d::-webkit-slider-thumb:hover{transform:scale(1.15)}
+.slider3d::-moz-range-thumb{width:28px;height:28px;border-radius:50%;border:none;
+  background:radial-gradient(circle at 35% 35%,#a5b4fc,#6366f1);box-shadow:0 4px 12px #6366f188}
+.value-badge{background:#6366f1;color:#fff;padding:6px 16px;border-radius:20px;font-family:sans-serif;
+  font-size:1rem;font-weight:700;min-width:60px;text-align:center}
+@media(prefers-reduced-motion:reduce){.slider3d::-webkit-slider-thumb{transition:none}}

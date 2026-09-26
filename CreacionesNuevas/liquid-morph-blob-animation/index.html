@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Liquid Morph Blob Animation</title>
+<meta name="description" content="Multi-blob animated morph with gooey CSS filter.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="goo-filter">
+  <svg><defs><filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="10"/><feColorMatrix mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 25 -10"/></filter></defs></svg>
+  <div class="goo-wrap">
+    <div class="goo-blob g1"></div>
+    <div class="goo-blob g2"></div>
+    <div class="goo-blob g3"></div>
+  </div>
+</div>
+</body>
+</html>

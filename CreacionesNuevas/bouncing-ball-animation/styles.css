@@ -1,0 +1,16 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;background:#0f172a}
+.stage{position:relative;width:120px;height:260px}
+.ball{position:absolute;width:60px;height:60px;left:50%;transform:translateX(-50%);
+  background:radial-gradient(circle at 35% 35%,#a5b4fc,#6366f1);border-radius:50%;
+  box-shadow:0 8px 24px #6366f155;
+  animation:bounce 0.8s cubic-bezier(.4,0,1,1) infinite alternate}
+@keyframes bounce{
+  0%{top:10px;transform:translateX(-50%) scaleX(.9) scaleY(1.1)}
+  100%{top:190px;transform:translateX(-50%) scaleX(1.15) scaleY(.85)}}
+.shadow{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);
+  width:60px;height:14px;border-radius:50%;background:#6366f133;
+  animation:shadow .8s ease-in-out infinite alternate}
+@keyframes shadow{0%{width:30px;opacity:.3}100%{width:60px;opacity:.8}}
+.floor{position:absolute;bottom:0;left:-20px;right:-20px;height:4px;background:#1e293b;border-radius:2px}
+@media(prefers-reduced-motion:reduce){.ball,.shadow{animation:none}}

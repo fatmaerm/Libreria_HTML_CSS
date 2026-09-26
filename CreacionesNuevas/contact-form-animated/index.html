@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact Form Animated</title>
+<meta name="description" content="Minimal contact form with send animation and success state.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<form class="cform" id="cform" novalidate>
+  <h2>Get in Touch</h2>
+  <div class="cfield"><input type="text" placeholder="Your name" required id="cname"></div>
+  <div class="cfield"><input type="email" placeholder="Email address" required id="cemail"></div>
+  <div class="cfield"><textarea rows="4" placeholder="Your message…" required id="cmsg"></textarea></div>
+  <button type="submit" class="csend" id="csend"><span id="cslbl">Send Message</span><span class="arrow">→</span></button>
+  <div class="success" id="csuccess" hidden>✅ Message sent! I'll reply soon.</div>
+</form>
+</body>
+</html>

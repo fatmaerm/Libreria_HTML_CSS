@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>File Upload Dropzone Modern</title>
+<meta name="description" content="Modern drag-and-drop file upload zone with animated border and file list.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="dropzone" id="dz" tabindex="0">
+  <div class="dz-inner">
+    <span class="dz-icon">📁</span>
+    <p class="dz-main">Drop files here or <label class="dz-browse" for="fileInput">browse</label></p>
+    <p class="dz-hint">PNG, JPG, PDF up to 10MB</p>
+    <input type="file" id="fileInput" multiple hidden>
+  </div>
+</div>
+<ul class="file-list" id="fileList"></ul>
+</body>
+</html>

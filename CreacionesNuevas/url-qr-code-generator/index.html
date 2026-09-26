@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>URL QR Code Generator</title>
+<meta name="description" content="Canvas-drawn QR code generator for URLs using the QR Server API.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="qr-card">
+  <h2>QR Generator</h2>
+  <div class="qr-input-row">
+    <input type="url" id="qrUrl" placeholder="https://example.com" value="https://github.com">
+    <button id="qrGen">Generate</button>
+  </div>
+  <div class="qr-preview" id="qrPreview">
+    <img id="qrImg" src="" alt="QR Code" hidden>
+    <p class="qr-hint" id="qrHint">Click generate to create QR</p>
+  </div>
+  <button class="dl-btn" id="dlBtn" hidden>⬇️ Download</button>
+</div>
+</body>
+</html>

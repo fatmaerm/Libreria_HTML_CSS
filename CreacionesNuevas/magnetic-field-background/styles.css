@@ -1,0 +1,6 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{overflow:hidden;background:#050510;font-family:sans-serif}
+canvas{position:fixed;inset:0}
+.info{position:relative;z-index:1;text-align:center;padding-top:30vh;color:#a5b4fc}
+.info h1{font-size:3rem;font-weight:800;margin-bottom:8px}
+.info p{color:#4c4f8a}

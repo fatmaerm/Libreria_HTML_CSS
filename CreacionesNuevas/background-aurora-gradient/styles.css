@@ -1,0 +1,20 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:#020c1b;overflow:hidden;font-family:sans-serif;display:grid;place-items:center}
+.aurora{position:fixed;inset:0;overflow:hidden}
+.aurora>div{position:absolute;border-radius:50%;filter:blur(80px);opacity:.6}
+.a1{width:600px;height:600px;background:#6366f1;top:-200px;left:-100px;
+  animation:drift1 12s ease-in-out infinite alternate}
+.a2{width:500px;height:500px;background:#22d3ee;top:-100px;right:-100px;
+  animation:drift2 10s ease-in-out infinite alternate}
+.a3{width:400px;height:400px;background:#10b981;bottom:-100px;left:30%;
+  animation:drift3 14s ease-in-out infinite alternate}
+.a4{width:350px;height:350px;background:#a855f7;bottom:-50px;right:20%;
+  animation:drift4 11s ease-in-out infinite alternate}
+@keyframes drift1{to{transform:translate(100px,80px)}}
+@keyframes drift2{to{transform:translate(-80px,60px)}}
+@keyframes drift3{to{transform:translate(60px,-60px)}}
+@keyframes drift4{to{transform:translate(-40px,-80px)}}
+.content{position:relative;z-index:1;text-align:center;color:#fff}
+.content h1{font-size:4rem;font-weight:800;letter-spacing:.05em}
+.content p{color:#a5b4fc;margin-top:8px}
+@media(prefers-reduced-motion:reduce){.aurora>div{animation:none}}

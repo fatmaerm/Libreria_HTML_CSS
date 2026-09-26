@@ -1,0 +1,4 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{overflow:hidden;background:#030308;font-family:sans-serif;cursor:crosshair}
+canvas{position:fixed;inset:0}
+.info{position:relative;z-index:1;color:#334155;text-align:center;padding-top:45vh;font-size:.9rem}

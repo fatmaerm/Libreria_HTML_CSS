@@ -1,0 +1,16 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;background:#0f172a;font-family:sans-serif}
+.pomo{display:flex;flex-direction:column;align-items:center;gap:16px;position:relative}
+.pomo-mode{color:#6b7280;font-size:.85rem;text-transform:uppercase;letter-spacing:.15em}
+.pomo-ring{width:200px;height:200px;transform:rotate(-90deg)}
+.ring-bg{fill:none;stroke:#1e293b;stroke-width:8}
+.ring-fill{fill:none;stroke:#6366f1;stroke-width:8;stroke-linecap:round;stroke-dasharray:326.7;
+  stroke-dashoffset:0;transition:stroke-dashoffset .5s linear,stroke .3s}
+.pomo-time{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) translateY(8px);
+  font-size:2.2rem;font-weight:700;color:#f1f5f9;letter-spacing:.05em}
+.pomo-controls{display:flex;gap:12px}
+.pomo-controls button{width:44px;height:44px;border-radius:50%;border:1px solid #334155;
+  background:#1e293b;color:#f1f5f9;cursor:pointer;font-size:1rem;transition:background .2s}
+.pomo-controls button:hover{background:#334155}
+.pomo-sessions{color:#6b7280;font-size:.8rem}
+@media(prefers-reduced-motion:reduce){.ring-fill{transition:none}}

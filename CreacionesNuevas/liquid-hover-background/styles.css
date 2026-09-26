@@ -1,0 +1,10 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;overflow:hidden;font-family:sans-serif}
+.liquid-bg{min-height:100vh;display:grid;place-items:center;
+  background:radial-gradient(circle at var(--mx,50%) var(--my,50%),#6366f1 0%,#1e1b4b 30%,#0f0a1e 70%);
+  transition:background .1s ease}
+.liquid-content{text-align:center;color:#fff}
+.liquid-content h1{font-size:3.5rem;font-weight:800;margin-bottom:12px;
+  background:linear-gradient(135deg,#c4b5fd,#f0abfc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.liquid-content p{color:#a5b4fc;font-size:1rem}
+@media(prefers-reduced-motion:reduce){.liquid-bg{transition:none}}

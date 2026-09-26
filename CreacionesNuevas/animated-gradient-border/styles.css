@@ -1,0 +1,9 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;background:#050510;font-family:sans-serif}
+.agb-wrap{position:relative;padding:3px;border-radius:20px;background:conic-gradient(from var(--angle,0deg),#6366f1,#a855f7,#ec4899,#f59e0b,#10b981,#6366f1);animation:rotate 3s linear infinite}
+@property --angle{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes rotate{to{--angle:360deg}}
+.agb-card{background:#0f172a;border-radius:18px;padding:36px 48px;text-align:center}
+.agb-card h2{color:#f1f5f9;font-size:1.4rem;margin-bottom:8px}
+.agb-card p{color:#6b7280;font-size:.9rem}
+@media(prefers-reduced-motion:reduce){.agb-wrap{animation:none}}

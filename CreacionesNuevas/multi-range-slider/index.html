@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Multi Range Slider</title>
+<meta name="description" content="Dual-handle price range slider with fill track between handles.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="mrange-wrap">
+  <h3>Price Range</h3>
+  <div class="mrange">
+    <div class="fill-track" id="fillTrack"></div>
+    <input type="range" id="rmin" min="0" max="1000" value="200">
+    <input type="range" id="rmax" min="0" max="1000" value="700">
+  </div>
+  <div class="labels"><span id="lmin">$200</span><span id="lmax">$700</span></div>
+</div>
+</body>
+</html>

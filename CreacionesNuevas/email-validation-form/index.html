@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Email Validation Form</title>
+<meta name="description" content="Real-time email validation form with animated feedback indicators.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="val-card">
+  <h2>Email Validation</h2>
+  <div class="vfield" id="vfield">
+    <input type="email" class="vinput" id="vemail" placeholder="Enter your email">
+    <span class="vstatus" id="vstatus"></span>
+  </div>
+  <ul class="vhints" id="vhints">
+    <li data-rule="nonempty">Not empty</li>
+    <li data-rule="atsign">Contains @</li>
+    <li data-rule="domain">Has valid domain</li>
+    <li data-rule="tld">Has TLD (.com etc.)</li>
+  </ul>
+</div>
+</body>
+</html>

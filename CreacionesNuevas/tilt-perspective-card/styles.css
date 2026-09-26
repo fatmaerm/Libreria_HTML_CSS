@@ -1,0 +1,13 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;background:#0a0a14;font-family:sans-serif;perspective:800px}
+.scene{perspective:800px}
+.tilt-card{position:relative;width:300px;height:380px;border-radius:20px;
+  background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca44;
+  transform-style:preserve-3d;transition:transform .1s ease;overflow:hidden;cursor:pointer}
+.shine{position:absolute;inset:0;border-radius:20px;pointer-events:none;
+  background:radial-gradient(circle at var(--x,50%) var(--y,50%),rgba(255,255,255,.15),transparent 60%);transition:opacity .2s}
+.tilt-content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px}
+.tc-icon{font-size:4rem}
+.tilt-card h2{color:#f1f5f9;font-size:1.3rem}
+.tilt-card p{color:#94a3b8;font-size:.85rem;text-align:center}
+@media(prefers-reduced-motion:reduce){.tilt-card{transition:none}}

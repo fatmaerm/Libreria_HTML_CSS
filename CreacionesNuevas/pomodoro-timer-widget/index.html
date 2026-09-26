@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pomodoro Timer Widget</title>
+<meta name="description" content="Minimal Pomodoro productivity timer with work/break cycle tracking.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="pomo">
+  <div class="pomo-mode" id="modeLabel">Work</div>
+  <svg class="pomo-ring" viewBox="0 0 120 120">
+    <circle class="ring-bg" cx="60" cy="60" r="52"/>
+    <circle class="ring-fill" cx="60" cy="60" r="52" id="ringFill"/>
+  </svg>
+  <div class="pomo-time" id="pomoTime">25:00</div>
+  <div class="pomo-controls">
+    <button id="pStart">▶</button>
+    <button id="pReset">↺</button>
+    <button id="pSkip">⏭</button>
+  </div>
+  <div class="pomo-sessions">Session <span id="sess">1</span>/4</div>
+</div>
+</body>
+</html>

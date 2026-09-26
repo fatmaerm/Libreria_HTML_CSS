@@ -1,0 +1,15 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;background:#0f172a;font-family:sans-serif}
+.fform{display:flex;flex-direction:column;gap:24px;width:300px}
+.ffield{position:relative}
+.finput{width:100%;padding:14px 16px 6px;background:#1e293b;border:2px solid #334155;border-radius:10px;
+  color:#f1f5f9;font-size:.95rem;outline:none;transition:border-color .2s;font-family:sans-serif}
+.finput:focus{border-color:#6366f1}
+.flabel{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#6b7280;font-size:.9rem;
+  pointer-events:none;transition:all .2s cubic-bezier(.4,0,.2,1);background:transparent}
+.finput:focus~.flabel,.finput:not(:placeholder-shown)~.flabel{
+  top:4px;transform:none;font-size:.7rem;color:#6366f1}
+.fsub{padding:14px;background:#6366f1;border:none;border-radius:10px;color:#fff;font-size:1rem;
+  cursor:pointer;font-family:sans-serif;transition:background .2s}
+.fsub:hover{background:#4f46e5}
+@media(prefers-reduced-motion:reduce){.flabel,.finput,.fsub{transition:none}}

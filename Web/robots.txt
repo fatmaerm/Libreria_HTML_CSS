@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /Web/
+Disallow: /Web/?component=
+Disallow: /.github-pages-site/
+
+Sitemap: https://libreria-html-css.vercel.app/Web/sitemap.xml

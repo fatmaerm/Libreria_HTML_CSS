@@ -44,16 +44,25 @@ Node.js 18 o posterior solo hace falta para regenerar el catálogo. El sitio uti
 |-- BibliotecaDeHtml_CSS/       # Demos originales independientes y sus recursos
 |-- Web/
 |   |-- data/
-|   |   |-- catalog.json        # Índice generado de componentes
+|   |   |-- catalog.json        # Índice ligero generado (sin código fuente)
+|   |   |-- catalog.js          # Catálogo completo, solo para abrir con file://
+|   |   |-- sources/            # Código de cada componente, se paga al abrir el detalle
 |   |   `-- component-overrides.json
 |   |-- scripts/
-|   |   |-- app.js              # Búsqueda, filtros, detalle, copia y tema
+|   |   |-- app.js              # Búsqueda, filtros, detalle, copia, tema y metadatos
 |   |   |-- build-site.mjs      # Prepara solo demos autorizados
+|   |   |-- catalog-format.mjs  # Formato compartido por los dos scripts de build
 |   |   |-- generate-catalog.mjs
-|   |   `-- zip.js              # Crea archivos ZIP en el navegador
+|   |   `-- zip.js              # Crea archivos ZIP comprimidos en el navegador
 |   |-- styles/site.css
+|   |-- favicon.svg
+|   |-- og-image.png
+|   |-- robots.txt
+|   |-- sitemap.xml
 |   `-- index.html
 |-- .github/workflows/          # Despliegue con GitHub Pages
+|-- Docs/Opencode/Plan.md       # Plan de mejora por fases
+|-- CHANGELOG.md
 |-- index.html                  # Entrada a la aplicación web
 |-- LICENSE
 |-- THIRD_PARTY_NOTICES.md
@@ -96,7 +105,11 @@ Se repararon las cinco referencias locales que estaban rotas: se eliminaron o re
 
 ## Procedencia y licencias
 
-La MIT de la raíz se limita al código original de la aplicación y a la documentación de `kindred-98`; no cubre los demos ni recursos de terceros. **Los 116 demos siguen sin estar verificados para redistribución.** El catálogo mantiene `source` y `license` como `Unverified` hasta que se revisen. Consulta [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Una URL de origen o un repositorio público no constituyen por sí mismos una licencia de redistribución.
+La MIT de la raíz se limita al código original de la aplicación y a la documentación de `kindred-98`; no cubre los demos ni recursos de terceros.
+
+La procedencia **sí está investigada**: los **116 demos** proceden del repositorio público [`gevendra2004/gevstack`](https://github.com/gevendra2004/gevstack) (106 coincidencias exactas de carpeta y 8 por erratas del propio repositorio de origen). Ese repositorio **no tiene licencia** —`LICENSE` devuelve 404, la API de GitHub responde `"license": null` y el `README.md` no incluye términos—, así que **no se puede redistribuir**. Por eso el catálogo mantiene `license: "Unverified"` y `redistributable: false` en los 116, y el botón ZIP está deshabilitado en todos. La fuente queda registrada en `source` de cada entrada. El detalle y el inventario completo están en [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+Para desbloquear las descargas ZIP hay que obtener una **autorización escrita** del autor o que añada una licencia a su repositorio. Una URL de origen o un repositorio público no constituyen por sí mismos una licencia de redistribución.
 
 Antes de publicar o distribuir un demo, verifica su procedencia y las condiciones de su código, imágenes, fuentes, iconos y dependencias. Conserva los avisos necesarios, solicita permiso cuando corresponda o excluye el material cuyos derechos no estén claros.
 

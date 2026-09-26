@@ -7,6 +7,206 @@ Formato: [Keep a Changelog](https://keepachangelog.com/es/1.1.0/).
 Cada fase terminada se registra aquí con su fecha. Las fases están definidas en
 [`Docs/Opencode/Plan.md`](./Docs/Opencode/Plan.md).
 
+## [Fase 8 — Verificación final] — 2026-09-26
+
+### Hecho
+
+- Smoke completo con Chrome headless vía CDP: **24 comprobaciones** sobre home,
+  búsqueda, estado vacío, filtro por categoría, «cargar más», detalle, copiar,
+  «volver», tema, idioma y previews. **24/24 superadas, 0 errores de consola y
+  0 peticiones fallidas.**
+- **Auditoría de las 116 previews una a una**: todas alcanzan
+  `data-preview-state="ready"`, ninguna queda en `error`, **0 referencias
+  locales ausentes** y **0 fallos de red externa** (Google Fonts, cdnjs,
+  jsDelivr, unpkg, pexels, unsplash, bootstrapcdn…).
+- **Mejora encontrada por el smoke**: «Copiar» solo dependía de
+  `navigator.clipboard.writeText`. Cuando la API **existe pero deniega el
+  permiso** (contexto no seguro, iframe sin permiso, foco perdido) el botón
+  quedaba muerto. Ahora `copyText()` cae a un `textarea` temporal con
+  `document.execCommand("copy")`, y solo si ambos caminos fallan avisa al
+  visitante. El `textarea` se elimina siempre, incluso si el comando falla.
+- Documentación actualizada al estado real:
+  - `README.md`: sección *Estructura* rehecha (incluye `data/sources/`,
+    `catalog.js`, `scripts/catalog-format.mjs` y los cuatro ficheros SEO) y
+    *Procedencia y licencias* corregida — `source` **ya está verificado** para
+    los 116; lo que sigue `Unverified` es `license`.
+  - `Web/README.md`: la generación ahora describe los **tres** artefactos
+    (`catalog.json`, `sources/<id>.json` y `catalog.js`) y el override documenta
+    `descriptionEs`.
+
+### Verificado
+
+| Comprobación | Resultado |
+|---|---|
+| `node --check` (5 scripts) | 0 |
+| `generate-catalog.mjs` | 116 entradas + 116 fuentes |
+| `build-site.mjs` ×2 | exit 0, `0 cleared component(s)` en ambas |
+| Smoke funcional | 24/24 |
+| Previews de componentes | **116/116 `ready`**, 0 `error` |
+| Referencias locales rotas | 0 |
+| Peticiones externas fallidas | 0 |
+| Errores de consola / red | 0 |
+| `git ls-files` con `github-pages*` | 0 |
+
+### Pendiente / limitaciones
+
+- `CreacionesNuevas/` contiene **248 demos nuevos** del autor que el catálogo
+  **no recoge**: `generate-catalog.mjs` solo recorre `BibliotecaDeHtml_CSS/`.
+  Integrarlos es una fase aparte (movimiento o referencia de la carpeta,
+  248 descripciones EN/ES y decisión de licencia; al ser creaciones propias sí
+  podrían autorizarse para ZIP). **No se ha tocado esa carpeta.**
+- «Copiar» sigue mostrando un aviso si el navegador no ofrece **ninguno** de los
+  dos caminos; en headless sin portapapeles real es el caso esperado.
+- El dominio `libreria-html-css.vercel.app` está escrito a mano en `index.html`,
+  `robots.txt`, `sitemap.xml` y en el `siteOrigin` de `app.js`: si Vercel
+  asigna otro nombre hay que actualizar esos cuatro sitios.
+
+## [Fase 7 — SEO y pulido] — 2026-09-26
+
+### Hecho
+
+- **`Web/favicon.svg`** (nuevo): icono SVG dibujado con la paleta del sitio
+  (`</>` en `--accent`, barra diagonal en `--coral`, fondo `--page` y borde
+  `--line`). Se enlaza también como `apple-touch-icon`.
+- **`Web/og-image.png`** (nuevo): tarjeta social de **1200×630 px** (75 KB)
+  generada con Chrome headless a partir de una maqueta con los colores y
+  tipografías del sitio. Verificada la firma PNG y las dimensiones exactas.
+- **`Web/index.html`**:
+  - Open Graph completo: `og:type`, `og:site_name`, `og:title`,
+    `og:description`, `og:url`, `og:image`, `og:locale` y `og:locale:alternate`
+    (EN/ES).
+  - Twitter Card `summary_large_image` con `twitter:title`,
+    `twitter:description` y `twitter:image`.
+  - `link[rel=canonical]` a `https://libreria-html-css.vercel.app/Web/`.
+  - `meta[name=robots]` = `index, follow` y `meta[name=color-scheme]` =
+    `dark light` (los controles nativos respetan el tema).
+  - Caché de assets actualizada a `?v=20260926-4`.
+- **`Web/robots.txt`** (nuevo): permite `/Web/`, bloquea `/Web/?component=` y el
+  artefacto `.github-pages-site/`, y declara el sitemap.
+- **`Web/sitemap.xml`** (nuevo): contiene **solo la home**. Los detalles se
+  sirven con `?component=<id>`, que no es una URL indexable; listarlos en el
+  sitemap sería apuntar a páginas que no existen como recurso independiente.
+- **`Web/scripts/app.js`**:
+  - Nuevo `updateDocumentMetadata({ title, description, url, robots })`, que
+    escribe de una vez `document.title`, `meta[name=description]`, `meta[name=robots]`,
+    `og:title/description/url/image`, `twitter:title/description/image` y el
+    `canonical`. Evita que las etiquetas se desincronicen entre sí.
+  - `renderDetail()` pasa a usarlo: cada componente expone su título, su
+    descripción real (EN o ES según el idioma) y su URL, y se marca
+    `noindex, follow` para no competir con la home en el índice.
+  - `renderRoute()` restaura los valores por defecto de la home al volver del
+    detalle.
+  - `updateLocalizedMetadata()` regenera los metadatos al cambiar de idioma
+    (antes solo se traducía `meta[name=description]`).
+  - `defaultMetadata` captura la imagen OG una sola vez al cargar.
+
+### Verificado
+
+- `node --check Web/scripts/app.js` → 0.
+- **Chrome headless (CDP)**, tres estados:
+  - **Home**: `title` = «HTML & CSS Library», `description` = la del hero,
+    `og:title/description/url/image` correctos, `twitter:card` =
+    `summary_large_image`, `robots` = `index, follow`, `canonical` =
+    `…/Web/`, favicon y `apple-touch-icon` presentes.
+  - **Detalle (`?component=tic-tac-toe`)**: `title` = «Tic Tac Toe · HTML & CSS
+    Library», `description` = «A playable tic-tac-toe game running in the
+    browser.» (la descripción real del componente), `og:*` y `canonical`
+    apuntando a su URL, `robots` = `noindex, follow`.
+  - **Vuelta a home**: todos los valores restaurados correctamente.
+- Servidor local: `/Web/`, `/Web/favicon.svg`, `/Web/og-image.png`,
+  `/Web/robots.txt`, `/Web/sitemap.xml`, `/Web/scripts/app.js` y
+  `/Web/scripts/zip.js` → **todos 200**. Nada de lo nuevo está en
+  `.vercelignore`.
+
+### Pendiente / limitaciones
+
+- El dominio `libreria-html-css.vercel.app` está escrito a mano en `index.html`
+  y en `robots.txt`/`sitemap.xml`. Si al desplegar Vercel asigna otro nombre de
+  proyecto, hay que sustituirlo en esos tres sitios (y en el `siteOrigin` de
+  `app.js`).
+- Para indexar los 116 demos individually haría falta convertir las vistas
+  `?component=` en páginas reales (por ejemplo `/Web/component/<id>/index.html`
+  generadas por `generate-catalog.mjs`). Es un cambio de arquitectura del
+  enrutado, fuera del alcance de esta fase.
+
+## [Fase 6 — ZIP e investigación de procedencia] — 2026-09-26
+
+### Hecho — ZIP
+
+- `Web/scripts/zip.js` reescrito para **comprimir de verdad**:
+  - `deflateRaw()` usa `CompressionStream("deflate-raw")` y devuelve `null`
+    (→ método `stored`) si no existe `CompressionStream`, si el fichero está
+    vacío, si falla la compresión o si el resultado no es más pequeño.
+  - Cada entrada se prepara antes de escribir cabeceras, de modo que el método y
+    los dos tamaños (comprimido y original) se rellenan correctamente en la
+    cabecera local y en la central.
+  - `createStoredZip` pasa a llamarse **`createZip`** y es `async`;
+    `app.js:566` hace `await window.createZip(files)`.
+- **Bug crítico corregido**: el EOCD escribía la longitud del comentario con
+  `view.setUint32(20, 0, true)` sobre un buffer de **22** bytes → `RangeError`
+  garantizado en **cada** descarga. Se cambia a `setUint16`. El botón ZIP nunca
+  había funcionado; no se había notado porque los 116 componentes están
+  deshabilitados (`downloadable: false`).
+- `Web/scripts/app.js` — `createProvenanceNote()`: ahora muestra la **fuente
+  identificada** también cuando el componente no está verificado. Antes solo
+  aparecía `Source:` en el caso verificado, que hoy no existe en ningún
+  componente, así que la atribución era invisible pese a conocerla.
+
+### Hecho — Investigación de procedencia (116/116)
+
+- Se comparó el árbol de carpetas local con el del repositorio público de origen.
+  **Los 116 demos proceden de `https://github.com/gevendra2004/gevstack`**
+  («All Gevstack projects», Gevendra Sahu, 659 ★): 106 coincidencias exactas y 8
+  por erratas del propio repositorio de origen
+  (`color-chainging-navigation`, `Order-confirm-anmation`,
+  `Shoping-cart-preloader`, `Sportlight-Text-Animation`, `Tic-tak-toe`,
+  `Trick-&-treat-toggle`, `webgel-liquid-masking`, `Facebook-emoji-reactor`).
+- **Ese repositorio no tiene licencia**: `LICENSE` → **404**, la API de GitHub
+  devuelve `"license": null` y el `README.md` solo dice «All Gevstack projects»,
+  sin términos. Se buscaron condiciones equivalentes en el sitio del autor: nada.
+  El mismo autor **sí** declara MIT en otros repos suyos, lo que confirma que su
+  ausencia en `gevstack` es deliberada.
+- **Consecuencia**: 0 componentes autorizados. `license` sigue en `Unverified` y
+  `redistributable` en `false` para los 116. El botón ZIP continúa deshabilitado
+  **por diseño**, no por descuido.
+- `Web/data/component-overrides.json`: se documenta `source` en las **116**
+  entradas (antes ninguna lo tenía). Se conservan `license: "Unverified"`,
+  sin `licenseFile` y sin `redistributable`, complying con la regla transversal de
+  no autorizar sin licencia verificada y sin archivo `LICENSE` en la carpeta.
+- `THIRD_PARTY_NOTICES.md` reescrito: inventario completo, evidencia de la
+  ausencia de licencia, tabla de correspondencia de las 8 erratas, qué se sí
+  permite (estudio personal) y el camino para desbloquearlo (autorización
+  escrita del autor).
+
+### Verificado
+
+- `node --check` en `app.js`, `zip.js` y `generate-catalog.mjs` → 0.
+- ZIP real generado con `zip.js` y validado con `zipfile` de Python:
+  6 entradas, 39 126 B → **1 199 B** (`ratio` 0,031), `testzip()` → `None`
+  (CRC correctos en todas), `index.html` y `styles.css` con **método 8**,
+  y `stored` (método 0) en el fichero vacío, el binario y el texto corto;
+  contenido recuperado idéntico al original.
+- `generate-catalog.mjs` → 116 con `source`; `downloadable: 0`;
+  `license: "Unverified"` en 116.
+- `build-site.mjs` → exit 0, `Prepared 0 cleared component(s)` (correcto).
+- **Chrome headless (CDP)** sobre `?component=among-us-button`: título y `<h1>`
+  correctos, botón con texto **«ZIP unavailable»** y `disabled: true`, `title`
+  explicativo correcto, aviso **«Distribution not cleared»** y la URL de origen
+  `github.com/gevendra2004/gevstack` **visible** en la nota de procedencia.
+
+### Pendiente / limitaciones
+
+- **Ninguna descarga ZIP puede habilitarse** sin autorización del autor. El camino
+  previsto es pedirle a Gevendra Sahu una autorización escrita o que añada una
+  licencia a `gevendra2004/gevstack`.
+- No se auditó de forma individual la licencia de los recursos externos que las
+  páginas **referencian** (Google Fonts, Remix Icon, Ionicons, GSAP, Bootstrap
+  CDN, fotos de `samrithasudhagar.github.io`, `araltasher/misc`, Pexels,
+  Unsplash, Pinterest). No se incluyen en el ZIP, pero condicionan cualquier
+  futura redistribución.
+- `build-site.mjs` sigue generando un artefacto vacío a propósito; **no** usarlo
+  como build command de Vercel (ya está avisado en los README y en `vercel.json`).
+
 ## [Fase 5 — i18n: descripciones reales en español] — 2026-09-26
 
 ### Contexto
@@ -44,6 +244,9 @@ todas las tarjetas mostraban la misma frase
 - `node --check Web/scripts/app.js` y `generate-catalog.mjs` → 0.
 - Catálogo regenerado: **116/116** con `description` **y** `descriptionEs`;
   0 descripciones que empiecen por `Standalone`; 0 `descriptionEs` genéricos.
+- `catalog.json` pasa de 84,5 KB (Fase 3) a **99,7 KB**: +15 KB por las 116
+  descripciones en español y las 116 URLs de `source`. Sigue siendo un **−87 %**
+  frente a los 733 KB del catálogo original.
 - **Chrome headless, EN** (`--dump-dom`, `/Web/`): `lang="en"`, 15 tarjetas,
   **0** textos `Standalone …` visibles, y se ven las descripciones nuevas
   (p. ej. la del 404 y la de `blur-text-reveal`), `stat-components` = 116.

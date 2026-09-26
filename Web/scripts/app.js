@@ -246,7 +246,7 @@ function applyStaticTranslations() {
     element.setAttribute("aria-label", t(element.dataset.i18nAriaLabel));
   }
   document.documentElement.lang = state.language;
-  document.querySelector('meta[name="description"]').content = t("heroDescription");
+  if (elements.detailView.hidden) updateLocalizedMetadata();
   for (const button of elements.languageButtons) {
     button.setAttribute("aria-pressed", String(button.dataset.language === state.language));
   }
@@ -472,8 +472,24 @@ function createCodeBlock(label, code) {
 }
 
 async function copyText(value) {
-  if (!navigator.clipboard?.writeText) throw new Error("Clipboard access is unavailable");
-  await navigator.clipboard.writeText(value);
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(value);
+      return;
+    } catch {
+      // Sin permiso o sin foco: se intenta el respaldo de abajo.
+    }
+  }
+  const helper = document.createElement("textarea");
+  helper.value = value;
+  helper.setAttribute("readonly", "");
+  helper.style.position = "fixed";
+  helper.style.opacity = "0";
+  document.body.append(helper);
+  helper.select();
+  const copied = document.execCommand("copy");
+  helper.remove();
+  if (!copied) throw new Error("Clipboard access is unavailable");
 }
 
 async function loadSourceFiles(files) {
@@ -619,12 +635,21 @@ function createDetailHeading(component) {
 function createProvenanceNote(component) {
   const isVerified = component.downloadable === true;
   const note = createElement("p", "provenance-note");
-  note.append(
-    createElement("strong", "", isVerified ? t("attributionRecorded") : t("attributionPending")),
-    document.createTextNode(isVerified
-      ? t("attributionText", { source: component.source, license: component.license })
-      : t("attributionPendingText")),
-  );
+  note.append(createElement("strong", "", isVerified ? t("attributionRecorded") : t("attributionPending")));
+  if (isVerified) {
+    note.append(document.createTextNode(` ${t("attributionText", { source: component.source, license: component.license })}`));
+    return note;
+  }
+  if (component.source && component.source !== "Unverified") {
+    note.append(document.createElement("br"));
+    note.append(document.createTextNode(`${t("sourceLabel")}: ${component.source}`));
+  }
+  if (component.license && component.license !== "Unverified") {
+    note.append(document.createElement("br"));
+    note.append(document.createTextNode(`${t("licenseLabel")}: ${component.license}`));
+  }
+  note.append(document.createElement("br"));
+  note.append(document.createTextNode(t("attributionPendingText")));
   return note;
 }
 
@@ -639,11 +664,51 @@ function createMissingReferencesNote(component) {
   );
 }
 
+const siteOrigin = "https://libreria-html-css.vercel.app";
+const sitePath = "/Web/";
+const defaultMetadata = {
+  description: document.querySelector('meta[name="description"]')?.getAttribute("content") ?? "",
+  image: `${siteOrigin}${sitePath}og-image.png`,
+};
+
+function setMetaContent(selector, content) {
+  const element = document.querySelector(selector);
+  if (element && content) element.setAttribute("content", content);
+}
+
+function updateDocumentMetadata({ title, description, url, robots = "index, follow" }) {
+  if (title) document.title = title;
+  setMetaContent('meta[name="description"]', description);
+  setMetaContent('meta[name="robots"]', robots);
+  setMetaContent('meta[property="og:title"]', title);
+  setMetaContent('meta[property="og:description"]', description);
+  setMetaContent('meta[property="og:url"]', url);
+  setMetaContent('meta[property="og:image"]', defaultMetadata.image);
+  setMetaContent('meta[name="twitter:title"]', title);
+  setMetaContent('meta[name="twitter:description"]', description);
+  setMetaContent('meta[name="twitter:image"]', defaultMetadata.image);
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) canonical.setAttribute("href", url);
+}
+
+function updateLocalizedMetadata() {
+  updateDocumentMetadata({
+    title: t("libraryTitle"),
+    description: t("heroDescription"),
+    url: `${siteOrigin}${sitePath}`,
+  });
+}
+
 async function renderDetail(component) {
   elements.catalogView.hidden = true;
   elements.detailView.hidden = false;
   elements.detailView.replaceChildren();
-  document.title = `${component.name} · ${t("libraryTitle")}`;
+  updateDocumentMetadata({
+    title: `${component.name} · ${t("libraryTitle")}`,
+    description: getComponentDescription(component),
+    url: `${siteOrigin}${sitePath}?component=${encodeURIComponent(component.id)}`,
+    robots: "noindex, follow",
+  });
 
   const backLink = createElement("a", "detail-back", t("backToComponents"));
   backLink.href = "#components";
@@ -716,7 +781,7 @@ function renderRoute() {
 
   elements.detailView.hidden = true;
   elements.catalogView.hidden = false;
-  document.title = t("libraryTitle");
+  updateLocalizedMetadata();
   renderComponents();
 }
 

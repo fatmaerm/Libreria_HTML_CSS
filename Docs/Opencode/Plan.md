@@ -1,7 +1,29 @@
 # Plan de mejora — Biblioteca HTML & CSS
 
 > Documento vivo. Cada fase que se termina se registra en [`CHANGELOG.md`](../../CHANGELOG.md).
-> Última actualización: 2026-09-26.
+> Última actualización: 2026-09-26. **Fases 0 a 8 completadas.**
+
+## Resultado
+
+| Fase | Tema | Estado |
+|---|---|---|
+| 0 | Limpieza del repositorio | ✅ |
+| 1 | Despliegue en Vercel | ✅ |
+| 2 | Bugs y correcciones de código | ✅ |
+| 3 | Catálogo ligero (84,5 KB en vez de 733 KB) | ✅ |
+| 4 | Previews bajo demanda | ✅ |
+| 5 | i18n: 116 descripciones EN + ES | ✅ |
+| 6 | ZIP comprimido + investigación de procedencia | ✅ |
+| 7 | SEO y pulido | ✅ |
+| 8 | Verificación final | ✅ |
+
+Balancie: la web carga un 89 % menos de catálogo, monta 3 previews en vez de 15,
+describe los 116 componentes en dos idiomas, comprime los ZIP (y arregla un
+`RangeError` que los impedía crear) y tiene la procedencia documentada al
+100 %. Los 116 demos **no** se pueden redistribuir: su repositorio de origen no
+declara licencia, y el botón ZIP sigue deshabilitado por diseño.
+Queda fuera del plan integrar los **248 demos** de `CreacionesNuevas/`.
+
 
 ## Contexto
 
@@ -149,36 +171,106 @@ mostrando HTML/CSS/JS completos con *Copiar* funcionando. ✅
 **Hecho cuando:** en ES ninguna tarjeta muestra "Demo independiente de X de la colección"
 salvo los demos aún sin traducir, y esos muestran el texto original en inglés. ✅
 
-### Fase 6 — ZIP: compresión y habilitación progresiva
+### Fase 6 — ZIP: compresión e investigación de procedencia ✅ (2026-09-26)
 
-- [ ] `zip.js`: comprimir con `CompressionStream("deflate-raw")` y fallback a `stored`.
-- [ ] Verificar procedencia por lotes: para cada demo candidato, confirmar licencia del
-      código **y** de imágenes/fuentes/iconos incluidos.
-- [ ] Por cada demo verificado: crear `LICENSE` en su carpeta, rellenar `source`,
-      `license`, `licenseFile` y `redistributable: true` en `component-overrides.json`.
-- [ ] Actualizar `THIRD_PARTY_NOTICES.md` con cada componente autorizado.
-- [ ] `node Web/scripts/build-site.mjs` debe empezar a reportar `N cleared component(s) > 0`.
-- [ ] Documentar en el README el criterio de verificación (qué se mira, qué se descarta).
+- [x] `zip.js`: compresión con `CompressionStream("deflate-raw")` y reserva a
+      `stored` cuando no hay `CompressionStream` o no compensa. Renombrado
+      `createStoredZip` → `createZip` (ahora es `async`); `app.js` lo espera.
+- [x] **Bug crítico corregido en `zip.js`**: el registro final (EOCD) escribía la
+      longitud del comentario con `setUint32(20, …)` sobre un buffer de 22 bytes →
+      `RangeError` garantizado. **Ninguna descarga ZIP había funcionado jamás**
+      (no se notó porque los 116 botones están deshabilitados). Ahora `setUint16`.
+- [x] Verificación del ZIP con `zipfile` de Python: 39 126 B → 1 199 B (3,1 %),
+      `testzip()` sin errores, CRC correctos, método 8 en el texto y método 0 en
+      ficheros pequeños/binarios/vacíos.
+- [x] **Investigación de procedencia de los 116 demos**: todos proceden de
+      `https://github.com/gevendra2004/gevstack` (106 coincidencias exactas de
+      carpeta, 8 por erratas del propio repositorio de origen).
+- [x] Ese repositorio **no tiene licencia**: `LICENSE` → 404, `"license": null` en
+      la API de GitHub y `README.md` sin términos. → **0 demos autorizados**;
+      `license` sigue en `Unverified` y `redistributable` en `false` en los 116.
+- [x] `component-overrides.json`: `source` documentado en las 116 entradas.
+- [x] `app.js`: la nota de procedencia muestra ahora la **fuente identificada**
+      aunque el componente no esté verificado (antes solo se mostraba `Source`
+      en el caso verificado, que hoy no existe).
+- [x] `THIRD_PARTY_NOTICES.md` reescrito con el inventario, la evidencia y las
+      erratas de correspondencia.
+- [x] Criterio documentado en `THIRD_PARTY_NOTICES.md` (ya lo estaba) y
+      verificado: `build-site.mjs` sigue informando `0 cleared component(s)`.
+
+**Resultado**: el ZIP es funcional y ligero; el inventario legal está al 100 %.
 
 **Hecho cuando:** al menos un componente tiene el botón ZIP activo y el ZIP resultante
-abre correctamente con su `ATTRIBUTION.txt`.
+abre correctamente con su `ATTRIBUTION.txt`. ⚠️ **Criterio de éxito no alcanzable
+por diseño**: sin licencia del autor no hay ningún componente que pueda marcarse
+como redistribuible. Se sustituye por «el ZIP funciona verificado» +
+«procedencia documentada al 100 %». El camino para desbloquearlo es pedir
+autorización escrita a Gevendra Sahu.
 
-### Fase 7 — SEO y pulido
+### Fase 7 — SEO y pulido ✅ (2026-09-26)
 
-- [ ] Favicon (SVG inline o `/favicon.svg`) + `apple-touch-icon`.
-- [ ] Open Graph y Twitter Card en `Web/index.html`.
-- [ ] `canonical` + `robots.txt` + `sitemap.xml` (los `?component=` no se indexan).
-- [ ] Comprobar `lang`, meta description por detalle (ya se actualiza el `document.title`).
+- [x] `Web/favicon.svg`: icono SVG propio (`</>` en `--accent` y barra en
+      `--coral` sobre `--page`), reutilizado también como `apple-touch-icon`.
+- [x] `Web/og-image.png`: tarjeta social de **1200×630** generada con Chrome
+      headless a partir de la paleta del sitio (75 KB).
+- [x] Open Graph completo: `og:type`, `og:site_name`, `og:title`,
+      `og:description`, `og:url`, `og:image`, `og:locale` y `og:locale:alternate`.
+- [x] Twitter Card `summary_large_image` con `twitter:title`,
+      `twitter:description` y `twitter:image`.
+- [x] `canonical` a `https://libreria-html-css.vercel.app/Web/` + `robots`
+      (`index, follow` en la home).
+- [x] `Web/robots.txt`: permite `/Web/`, bloquea `/Web/?component=` y el
+      artefacto de Pages, y declara el sitemap.
+- [x] `Web/sitemap.xml`: **solo la home**. Las vistas de detalle son
+      `?component=`, que no son URLs indexables; incluirlas sería inventar
+      páginas que no existen.
+- [x] `color-scheme: dark light` para que los controles nativos respeten el tema.
+- [x] Metadatos por detalle en `app.js`: `updateDocumentMetadata()` actualiza
+      `title`, `description`, `og:*`, `twitter:*` y `canonical` al abrir un
+      componente, y los restaura al volver. El detalle queda en
+      `noindex, follow`, coherente con `robots.txt`.
+- [x] Metadatos traducidos: `updateLocalizedMetadata()` los regenera al cambiar
+      de idioma (antes solo cambiaba `meta[name=description]`).
+- [x] Caché de assets subida a `?v=20260926-4`.
 
-**Hecho cuando:** las URLs principales pasan la auditoría básica de metadatos.
+**Resultado:** la home es indexable con tarjeta social; los detalles informan
+correctamente al compartir y no compiten en el índice.
 
-### Fase 8 — Verificación final
+**Hecho cuando:** las URLs principales pasan la auditoría básica de metadatos. ✅
 
-- [ ] Servidor estático local (`py -m http.server 8000`) + smoke:
-      home, búsqueda, filtros, detalle, copiar código, tema, idioma, "volver".
-- [ ] Comprobar previews con recursos externos (CDNs) y anotar las que fallen.
-- [ ] Comprobar que `git status` está limpio y el changelog refleja todas las fases.
-- [ ] Releer `README.md` y `Web/README.md` para que no contradigan el estado real.
+### Fase 8 — Verificación final ✅ (2026-09-26)
+
+- [x] Servidor estático local + smoke de **24 comprobaciones** vía Chrome headless
+      (CDP): home, búsqueda (con y sin resultados), filtro por categoría,
+      «cargar más», detalle, copiar, volver, tema, idioma y previews.
+      **24/24 superadas y 0 errores de consola o de red.**
+- [x] **Previews de los 116 componentes revisados uno a uno**:
+      **116/116 con la preview `ready`**, 0 en `error`, 0 referencias locales
+      ausentes y 0 peticiones externas fallidas (Google Fonts, cdnjs, jsDelivr,
+      unpkg, pexels, unsplash, etc.).
+- [x] Mejora detectada durante el smoke: «Copiar» solo usaba
+      `navigator.clipboard`, que **falla también cuando el permiso se deniega**
+      (no solo cuando la API no existe). Añadido respaldo con `execCommand`
+      y `textarea` temporal para contextos no seguros.
+- [x] `node --check` en los 5 scripts → 0. `generate-catalog.mjs` → 116 + 116.
+- [x] `build-site.mjs` dos veces seguidas → exit 0 y `0 cleared component(s)`
+      (regresión del `EEXIST` sigue corregida).
+- [x] `git status`: solo los cambios de las fases 4-8 pendientes de commitear
+      (no se hace commit sin petición). `git ls-files` sin rutas `github-pages*`.
+- [x] README y `Web/README.md` al día: estructura real (incluye `sources/`,
+      `catalog.js`, `catalog-format.mjs` y los ficheros SEO), generación en tres
+      artefactos, campo `descriptionEs` y **procedencia ya investigada** (los 116
+      vienen de `gevendra2004/gevstack`, sin licencia).
+
+**Hecho cuando:** servidor local + smoke home, búsqueda, filtros, detalle,
+copiar, tema, idioma y «volver» → ✅. Previews con CDNs anotadas → ninguna
+falla ✅. `git status` sin artefactos ✅. README sin contradicciones ✅.
+
+> ⚠️ **Pendiente fuera del plan:** `CreacionesNuevas/` contiene **248 demos
+> nuevos** del autor que el catálogo **no incluye** (el generador solo recorre
+> `BibliotecaDeHtml_CSS/`). Integrarlos requiere una fase propia: mover o
+> referenciar la carpeta, redactar 248 descripciones EN/ES, y decidir su licencia
+> (al ser creaciones propias sí podrían autorizarse para ZIP).
 
 ---
 

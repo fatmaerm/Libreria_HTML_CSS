@@ -24,8 +24,8 @@ El generador requiere Node.js 18 o posterior. La aplicación usa HTML, CSS, mód
 
 ## Funcionamiento
 
-- `scripts/generate-catalog.mjs` busca cada `index.html`, incluidos los demos anidados, lee el título y las referencias locales a CSS/JavaScript, y genera `data/catalog.json` y `data/catalog.js` con las fuentes locales incrustadas.
-- `data/component-overrides.json` permite añadir nombres, categorías, descripciones, etiquetas, destacados, fuentes y licencias revisados para cada ID. El estado predeterminado es `Unverified`; no marques una fuente o licencia como verificada sin comprobarla.
+- `scripts/generate-catalog.mjs` busca cada `index.html`, incluidos los demos anidados, lee el título y las referencias locales a CSS/JavaScript, y genera tres artefactos: `data/catalog.json` (índice ligero, sin código), `data/sources/<id>.json` (el código de cada componente, que la web pide solo al abrir su detalle) y `data/catalog.js` (catálogo completo para el modo `file://`).
+- `data/component-overrides.json` permite añadir nombres, categorías, descripciones, descripciones en español, etiquetas, destacados, fuentes y licencias revisados para cada ID. `license` mantiene el valor predeterminado `Unverified`; no marques una licencia como verificada sin comprobarla.
 - `scripts/app.js` muestra la búsqueda, los filtros, las vistas previas reales, los controles para copiar el código y los botones ZIP sujetos a la verificación de derechos.
 - `scripts/zip.js` crea archivos ZIP en el navegador sin paquetes externos.
 - `scripts/build-site.mjs` excluye del artefacto de publicación todos los demos que no estén autorizados para redistribución.
@@ -33,7 +33,7 @@ El generador requiere Node.js 18 o posterior. La aplicación usa HTML, CSS, mód
 - La interfaz ofrece inglés y español; guarda el idioma en `localStorage` con la clave `component-field-language`, separada de `component-field-theme`.
 - Las vistas previas cargan el `index.html` original en un `iframe`. El detalle muestra ese HTML y lee los archivos CSS y JavaScript locales para poder copiarlos.
 
-El catálogo local detecta actualmente 116 páginas de demos. Las categorías se infieren de los nombres de carpetas y páginas. Las referencias locales faltantes se muestran en el detalle. Ninguno de los demos está autorizado todavía para redistribución; por eso, el artefacto público no incluye su código hasta que se confirmen los derechos.
+El catálogo local detecta actualmente 116 páginas de demos. Las categorías se infieren de los nombres de carpetas y páginas. Las referencias locales faltantes se muestran en el detalle. La procedencia de los 116 está trazada al repositorio `gevendra2004/gevstack`, que **no declara licencia**, así que ninguno está autorizado todavía para redistribución y el artefacto público no incluye su código. Consulta [`../THIRD_PARTY_NOTICES.md`](../THIRD_PARTY_NOTICES.md).
 
 ## Añadir un componente
 

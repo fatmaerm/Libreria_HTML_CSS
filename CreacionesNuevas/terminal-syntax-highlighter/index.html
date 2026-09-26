@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terminal Syntax Highlighter</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="editor-window">
+    <div class="editor-titlebar">
+      <div class="window-controls">
+        <span class="ctrl-close"></span><span class="ctrl-min"></span><span class="ctrl-max"></span>
+      </div>
+      <span class="doc-tab">server.ts</span>
+    </div>
+    <div class="code-area">
+      <div class="line-nums"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div>
+      <div class="code-lines">
+        <div><span class="kwd">import</span> { <span class="cls">FastifyInstance</span> } <span class="kwd">from</span> <span class="str">'fastify'</span>;</div>
+        <div></div>
+        <div><span class="kwd">export async function</span> <span class="fn">routes</span>(<span class="var">app</span>: <span class="cls">FastifyInstance</span>) {</div>
+        <div>&nbsp;&nbsp;<span class="var">app</span>.<span class="fn">get</span>(<span class="str">'/health'</span>, <span class="kwd">async</span> () => ({</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">status</span>: <span class="str">'online'</span>,</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">timestamp</span>: <span class="fn">Date</span>.<span class="fn">now</span>()</div>
+        <div>&nbsp;&nbsp;}));<span class="caret"></span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

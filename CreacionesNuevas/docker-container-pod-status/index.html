@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Docker Container Pod Status</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="pod-card">
+    <div class="pod-header">
+      <div class="pod-title-box">
+        <span class="whale-icon">🐳</span>
+        <h3>redis-cache-cluster</h3>
+      </div>
+      <span class="replica-badge">3 / 3 LISTO</span>
+    </div>
+    <div class="pod-replicas">
+      <div class="replica-node healthy">
+        <span class="node-indicator"></span><span class="node-id">pod-01</span>
+      </div>
+      <div class="replica-node healthy">
+        <span class="node-indicator"></span><span class="node-id">pod-02</span>
+      </div>
+      <div class="replica-node healthy">
+        <span class="node-indicator"></span><span class="node-id">pod-03</span>
+      </div>
+    </div>
+    <div class="pod-metrics">
+      <div class="metric"><span class="m-label">CPU</span><span class="m-val">12%</span></div>
+      <div class="metric"><span class="m-label">MEMORIA</span><span class="m-val">184MB</span></div>
+      <div class="metric"><span class="m-label">UPTIME</span><span class="m-val">14d 8h</span></div>
+    </div>
+  </div>
+</body>
+</html>

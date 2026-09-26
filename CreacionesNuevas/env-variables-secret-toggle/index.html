@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Env Variables Secret Toggle</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="env-card">
+    <div class="env-header">
+      <span class="file-tag">.env.production</span>
+      <span class="lock-icon">🔒 ENCRIPTADO</span>
+    </div>
+    <div class="env-row">
+      <span class="env-key">DATABASE_URL</span>
+      <span class="env-val masked" id="envVal">••••••••••••••••••••••••</span>
+      <button class="toggle-eye-btn" id="eyeBtn" aria-label="Mostrar secreto">👁</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

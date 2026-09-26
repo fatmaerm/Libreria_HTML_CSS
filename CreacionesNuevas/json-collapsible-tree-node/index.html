@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Collapsible Tree Node</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="json-card">
+    <div class="json-header">
+      <span>config.json</span>
+      <span class="badge">JSON TREE</span>
+    </div>
+    <div class="json-body">
+      <div class="json-line">
+        <span class="toggle-arrow" id="toggleObj">▼</span>
+        <span class="json-key">"cluster"</span>: {
+      </div>
+      <div class="json-nested" id="nestedContent">
+        <div class="json-line"><span class="json-key">"nodes"</span>: <span class="json-num">12</span>,</div>
+        <div class="json-line"><span class="json-key">"region"</span>: <span class="json-str">"us-central-1"</span>,</div>
+        <div class="json-line"><span class="json-key">"ssl"</span>: <span class="json-bool">true</span>,</div>
+        <div class="json-line"><span class="json-key">"version"</span>: <span class="json-str">"v2.14.0"</span></div>
+      </div>
+      <div class="json-line">}</div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #090a14; font-family: ui-monospace, monospace; color: #fff; }
+.ws-scene { width: min(92vw, 420px); display: flex; align-items: center; justify-content: space-between; padding: 2rem; background: #111422; border-radius: 20px; border: 1px solid #232840; box-shadow: 0 20px 45px rgba(0,0,0,0.7); }
+.endpoint { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.icon { font-size: 2rem; }
+.label { font-size: 0.7rem; color: #94a3b8; font-weight: 700; }
+.wire { flex: 1; height: 3px; background: #1e263d; margin: 0 1rem; position: relative; }
+.packet { position: absolute; top: -4px; width: 10px; height: 10px; border-radius: 50%; }
+.to-server { background: #38bdf8; box-shadow: 0 0 10px #38bdf8; animation: send-right 2s ease-in-out infinite; }
+.to-client { background: #ec4899; box-shadow: 0 0 10px #ec4899; animation: send-left 2s ease-in-out infinite 1s; }
+@keyframes send-right { 0% { left: 0%; opacity: 0; } 20% { opacity: 1; } 80% { opacity: 1; } 100% { left: 95%; opacity: 0; } }
+@keyframes send-left { 0% { left: 95%; opacity: 0; } 20% { opacity: 1; } 80% { opacity: 1; } 100% { left: 0%; opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .packet { animation: none; } }

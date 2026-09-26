@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RegEx Token Matcher</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="regex-card">
+    <div class="regex-pattern">
+      <span class="delim">/</span><span class="p-group">([a-zA-Z0-9._%+-]+)</span><span class="p-at">@</span><span class="p-domain">([a-zA-Z0-9.-]+)</span><span class="delim">/g</span>
+    </div>
+    <div class="regex-sample">
+      <span>Email: </span><span class="match user">dev_alex</span><span class="match at">@</span><span class="match domain">quantum.io</span>
+    </div>
+    <div class="token-legend">
+      <span class="tag-group">Grupo 1: Usuario</span>
+      <span class="tag-domain">Grupo 2: Dominio</span>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

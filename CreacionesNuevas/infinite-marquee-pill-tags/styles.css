@@ -1,0 +1,7 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #080911; font-family: ui-monospace, monospace; color: #fff; }
+.marquee-wrap { width: min(92vw, 460px); overflow: hidden; position: relative; }
+.marquee-track { display: flex; gap: 1rem; width: max-content; animation: scroll-tags 12s linear infinite; }
+.tag { font-size: 0.8rem; font-weight: 700; padding: 0.4rem 1rem; border-radius: 9999px; background: #131726; border: 1px solid #262e49; color: #38bdf8; }
+@keyframes scroll-tags { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }

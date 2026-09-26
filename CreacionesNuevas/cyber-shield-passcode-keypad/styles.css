@@ -1,0 +1,12 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #070912; font-family: ui-monospace, monospace; color: #fff; }
+.keypad-card { width: min(92vw, 320px); background: #111424; border-radius: 20px; border: 1px solid #232a42; padding: 2rem 1.5rem; box-shadow: 0 25px 60px rgba(0,0,0,0.8); }
+.code-dots { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; }
+.dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #334155; transition: all 0.2s ease; }
+.dot.filled { background: #38bdf8; border-color: #38bdf8; box-shadow: 0 0 10px #38bdf8; }
+.keys-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+.key { height: 50px; border-radius: 12px; background: #181d32; border: 1px solid #283152; color: #f1f5f9; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.15s ease; }
+.key:hover { background: #262e50; border-color: #38bdf8; }
+.key:active { transform: scale(0.94); }
+.clear { color: #f43f5e; }
+.enter { color: #22c55e; }

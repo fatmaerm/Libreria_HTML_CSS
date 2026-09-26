@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CI/CD Pipeline Flow</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="pipeline-card">
+    <div class="pipe-header">
+      <span class="pipe-branch">main // #3842</span>
+      <span class="pipe-status">COMPLETADO CON ÉXITO</span>
+    </div>
+    <div class="pipe-track">
+      <div class="pipe-step done">
+        <div class="step-circle">✓</div>
+        <span class="step-label">Lint</span>
+      </div>
+      <div class="step-connector active-bar"></div>
+      <div class="pipe-step done">
+        <div class="step-circle">✓</div>
+        <span class="step-label">Test</span>
+      </div>
+      <div class="step-connector active-bar"></div>
+      <div class="pipe-step done">
+        <div class="step-circle">✓</div>
+        <span class="step-label">Build</span>
+      </div>
+      <div class="step-connector active-bar"></div>
+      <div class="pipe-step done">
+        <div class="step-circle">✓</div>
+        <span class="step-label">Deploy</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

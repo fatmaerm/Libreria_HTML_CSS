@@ -1,0 +1,14 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: radial-gradient(circle, #0e091e 0%, #030208 100%); font-family: ui-monospace, monospace; color: #fff; overflow: hidden; }
+.bloch-container { display: flex; flex-direction: column; align-items: center; gap: 2.5rem; perspective: 800px; }
+.bloch-sphere { position: relative; width: 180px; height: 180px; border-radius: 50%; border: 1.5px solid rgba(168, 85, 247, 0.4); display: grid; place-items: center; transform-style: preserve-3d; animation: rotate-bloch 8s linear infinite; }
+.pole { position: absolute; font-weight: 900; font-size: 0.9rem; color: #38bdf8; }
+.pole-zero { top: -25px; }
+.pole-one { bottom: -25px; }
+.ring-lat { position: absolute; width: 100%; height: 60px; border-radius: 50%; border: 1px dashed rgba(56, 189, 248, 0.5); transform: rotateX(75deg); }
+.ring-lon { position: absolute; width: 60px; height: 100%; border-radius: 50%; border: 1px dashed rgba(236, 72, 153, 0.5); transform: rotateY(75deg); }
+.state-vector { position: absolute; width: 2px; height: 80px; background: #facc15; transform-origin: bottom center; transform: rotate(45deg); box-shadow: 0 0 10px #facc15; }
+.vector-arrow { position: absolute; top: -6px; left: -4px; width: 10px; height: 10px; border-radius: 50%; background: #fff; box-shadow: 0 0 12px #fff; }
+.bloch-tag { font-size: 0.75rem; letter-spacing: 0.15em; color: #c084fc; border: 1px solid rgba(192, 132, 252, 0.3); padding: 0.4rem 1.2rem; border-radius: 9999px; }
+@keyframes rotate-bloch { from { transform: rotateY(0deg) rotateX(15deg); } to { transform: rotateY(360deg) rotateX(15deg); } }
+@media (prefers-reduced-motion: reduce) { .bloch-sphere { animation: none; } }

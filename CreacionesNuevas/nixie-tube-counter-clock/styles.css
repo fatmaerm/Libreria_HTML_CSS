@@ -1,0 +1,6 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #070402; font-family: 'Times New Roman', serif; }
+.nixie-rack { display: flex; gap: 1rem; padding: 1.5rem; background: #1a0f07; border-radius: 18px; border: 2px solid #3d2311; box-shadow: 0 25px 60px rgba(0,0,0,0.9); }
+.nixie-tube { width: 65px; height: 120px; background: rgba(255, 140, 0, 0.05); border: 2px solid rgba(255, 140, 0, 0.35); border-radius: 30px 30px 6px 6px; display: grid; place-items: center; box-shadow: inset 0 0 15px rgba(255, 120, 0, 0.2); }
+.filament { font-size: 3rem; font-weight: 700; color: #ff8c00; text-shadow: 0 0 15px #ff7700, 0 0 35px #ff4400; animation: nixie-flicker 0.12s infinite alternate; }
+@keyframes nixie-flicker { 0% { opacity: 0.92; } 100% { opacity: 1; } }

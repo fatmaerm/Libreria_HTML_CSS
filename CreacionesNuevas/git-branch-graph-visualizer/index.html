@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Branch Graph Visualizer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="git-card">
+    <div class="git-header">
+      <span class="repo-badge">git log --graph --oneline</span>
+      <span class="branch-tag">main</span>
+    </div>
+    <div class="graph-tree">
+      <div class="node-row">
+        <div class="lane-col">
+          <div class="git-dot dot-main active-pulse"></div>
+          <div class="line line-main"></div>
+        </div>
+        <div class="commit-info">
+          <span class="commit-hash">c850d09</span>
+          <span class="commit-msg">feat: merge branch 'feat/auth-v2' into main</span>
+        </div>
+      </div>
+      <div class="node-row">
+        <div class="lane-col double-lane">
+          <div class="git-dot dot-main"></div>
+          <div class="line line-main"></div>
+          <div class="git-dot dot-feat"></div>
+          <div class="line line-feat"></div>
+        </div>
+        <div class="commit-info">
+          <span class="commit-hash">8f21bc4</span>
+          <span class="commit-msg">refactor(jwt): implement refresh token rotation</span>
+        </div>
+      </div>
+      <div class="node-row">
+        <div class="lane-col double-lane">
+          <div class="git-dot dot-main"></div>
+          <div class="line line-main"></div>
+          <div class="git-dot dot-feat"></div>
+          <div class="curve-in"></div>
+        </div>
+        <div class="commit-info">
+          <span class="commit-hash">4a921d0</span>
+          <span class="commit-msg">feat: add oauth2 github provider endpoint</span>
+        </div>
+      </div>
+      <div class="node-row">
+        <div class="lane-col">
+          <div class="git-dot dot-main"></div>
+        </div>
+        <div class="commit-info">
+          <span class="commit-hash">11ef882</span>
+          <span class="commit-msg">initial: setup project architecture & router</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

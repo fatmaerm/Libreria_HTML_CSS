@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Command Palette HUD</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="palette-modal">
+    <div class="search-input-row">
+      <span class="search-icon">🔍</span>
+      <input type="text" class="search-field" placeholder="Escribe un comando o archivo..." id="cmdInput">
+      <span class="cmd-shortcut">ESC</span>
+    </div>
+    <div class="results-list" id="resultsList">
+      <div class="result-item active">
+        <span class="r-icon">⚡</span>
+        <div class="r-text"><span class="r-title">Desplegar en Vercel (Producción)</span><span class="r-sub">vercel --prod</span></div>
+        <span class="r-badge">↵ Ejecutar</span>
+      </div>
+      <div class="result-item">
+        <span class="r-icon">🔄</span>
+        <div class="r-text"><span class="r-title">Regenerar Catálogo de Componentes</span><span class="r-sub">node scripts/generate-catalog.mjs</span></div>
+        <span class="r-badge">↵ Ejecutar</span>
+      </div>
+      <div class="result-item">
+        <span class="r-icon">🧪</span>
+        <div class="r-text"><span class="r-title">Ejecutar Suite de Pruebas</span><span class="r-sub">npm test --watch</span></div>
+        <span class="r-badge">↵ Ejecutar</span>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

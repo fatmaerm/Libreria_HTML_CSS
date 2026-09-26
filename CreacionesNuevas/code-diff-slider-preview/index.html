@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Diff Slider Preview</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="diff-container" id="diffContainer">
+    <div class="diff-panel before-panel">
+      <div class="code-box">
+        <span class="diff-badge badge-del">- ANTES</span>
+        <pre><code><span class="kw">function</span> <span class="fn">fetchUser</span>(id) {
+  <span class="kw">return</span> fetch(<span class="str">'/api/'</span> + id)
+    .then(<span class="fn">res</span> => res.json())
+    .catch(<span class="fn">err</span> => {
+      console.log(err);
+    });
+}</code></pre>
+      </div>
+    </div>
+    <div class="diff-panel after-panel" id="afterPanel">
+      <div class="code-box">
+        <span class="diff-badge badge-add">+ AHORA</span>
+        <pre><code><span class="kw">async function</span> <span class="fn">fetchUser</span>(id) {
+  <span class="kw">try</span> {
+    <span class="kw">const</span> res = <span class="kw">await</span> fetch(<span class="str">`/api/${id}`</span>);
+    <span class="kw">return await</span> res.json();
+  } <span class="kw">catch</span> (err) {
+    <span class="fn">logError</span>(err);
+  }
+}</code></pre>
+      </div>
+    </div>
+    <div class="slider-handle" id="sliderHandle">
+      <div class="handle-bar"></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

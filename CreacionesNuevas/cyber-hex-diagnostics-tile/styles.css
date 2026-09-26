@@ -1,0 +1,15 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #030709; font-family: ui-monospace, monospace; color: #fff; }
+.hud-tile { position: relative; width: 180px; height: 180px; background: rgba(6, 182, 212, 0.05); border: 1px solid rgba(6, 182, 212, 0.3); box-shadow: 0 0 30px rgba(6, 182, 212, 0.15); display: grid; place-items: center; }
+.tile-corner { position: absolute; width: 10px; height: 10px; border-color: #06b6d4; border-style: solid; }
+.top-left { top: -2px; left: -2px; border-width: 2px 0 0 2px; }
+.top-right { top: -2px; right: -2px; border-width: 2px 2px 0 0; }
+.btm-left { bottom: -2px; left: -2px; border-width: 0 0 2px 2px; }
+.btm-right { bottom: -2px; right: -2px; border-width: 0 2px 2px 0; }
+.tile-core { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.radar-circle { position: relative; width: 70px; height: 70px; border-radius: 50%; border: 1px solid #06b6d4; display: grid; place-items: center; }
+.spin-scanner { position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 0deg, rgba(6, 182, 212, 0.6), transparent 90deg); animation: scan-hud 2.5s linear infinite; }
+.telemetry-val { font-size: 1.1rem; font-weight: 900; color: #22d3ee; }
+.telemetry-lbl { font-size: 0.6rem; color: #67e8f9; letter-spacing: 0.1em; }
+@keyframes scan-hud { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spin-scanner { animation: none; opacity: 0.3; } }

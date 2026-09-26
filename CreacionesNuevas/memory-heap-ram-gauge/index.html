@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Heap RAM Gauge</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ram-card">
+    <div class="ram-circle">
+      <svg viewBox="0 0 100 100" class="gauge-svg">
+        <circle cx="50" cy="50" r="40" class="track"></circle>
+        <circle cx="50" cy="50" r="40" class="val-bar"></circle>
+      </svg>
+      <div class="ram-center">
+        <span class="pct">74%</span>
+        <span class="lbl">HEAP</span>
+      </div>
+    </div>
+    <div class="ram-info">
+      <h3>NODE.JS V8 HEAP</h3>
+      <p>1.42 GB / 2.00 GB LÍMITE</p>
+    </div>
+  </div>
+</body>
+</html>

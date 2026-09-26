@@ -1,0 +1,10 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #080911; font-family: ui-monospace, monospace; color: #fff; }
+.picker-card { width: min(92vw, 360px); background: #111422; border-radius: 18px; border: 1px solid #232840; overflow: hidden; box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7); }
+.color-preview { height: 160px; background: #6366f1; transition: background 0.3s ease; }
+.picker-controls { padding: 1.25rem; display: flex; justify-content: space-between; align-items: center; }
+.label { display: block; font-size: 0.65rem; color: #64748b; font-weight: 700; }
+.hex-code { font-size: 1.1rem; font-weight: 800; color: #f8fafc; }
+.swatches { display: flex; gap: 8px; }
+.swatch { width: 28px; height: 28px; border-radius: 50%; border: 2px solid #232840; cursor: pointer; transition: transform 0.2s ease; }
+.swatch:hover { transform: scale(1.15); }

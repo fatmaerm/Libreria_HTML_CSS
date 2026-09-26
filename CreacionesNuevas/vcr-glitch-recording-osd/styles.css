@@ -1,0 +1,10 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #030408; font-family: ui-monospace, monospace; color: #fff; }
+.vcr-screen { width: min(94vw, 460px); height: 260px; background: #000088; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; border: 3px solid #1e263d; box-shadow: 0 20px 50px rgba(0,0,0,0.9); }
+.vcr-header { display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 900; }
+.rec-dot { color: #ef4444; animation: blink 1s infinite; }
+.play-mode { color: #facc15; }
+.vcr-center { text-align: center; }
+.vcr-center h2 { font-size: 1.5rem; letter-spacing: 0.15em; color: #fff; text-shadow: 2px 2px #00ffff; }
+.vcr-footer { display: flex; justify-content: space-between; font-size: 0.75rem; color: #cbd5e1; }
+@keyframes blink { 50% { opacity: 0; } }

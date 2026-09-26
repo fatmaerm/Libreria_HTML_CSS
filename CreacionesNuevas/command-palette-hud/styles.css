@@ -1,0 +1,15 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: radial-gradient(circle at center, #10121d 0%, #06070a 100%); font-family: system-ui, -apple-system, sans-serif; color: #fff; }
+.palette-modal { width: min(92vw, 480px); background: #111422; border-radius: 18px; border: 1px solid #232a42; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(99, 102, 241, 0.2); overflow: hidden; }
+.search-input-row { display: flex; align-items: center; gap: 0.75rem; padding: 1.1rem 1.25rem; border-bottom: 1px solid #1f253d; }
+.search-icon { font-size: 1rem; opacity: 0.7; }
+.search-field { flex: 1; background: transparent; border: none; outline: none; font-family: inherit; font-size: 0.95rem; color: #fff; }
+.cmd-shortcut { font-family: ui-monospace, monospace; font-size: 0.65rem; font-weight: 800; padding: 0.25rem 0.5rem; border-radius: 4px; background: #1c2238; color: #94a3b8; border: 1px solid #2e3758; }
+.results-list { padding: 0.5rem; display: flex; flex-direction: column; gap: 0.25rem; }
+.result-item { display: flex; align-items: center; gap: 0.85rem; padding: 0.75rem 1rem; border-radius: 10px; cursor: pointer; transition: all 0.15s ease; }
+.result-item:hover, .result-item.active { background: #1b2038; }
+.r-icon { font-size: 1.1rem; }
+.r-text { flex: 1; }
+.r-title { display: block; font-size: 0.85rem; font-weight: 600; color: #f1f5f9; }
+.r-sub { font-family: ui-monospace, monospace; font-size: 0.7rem; color: #818cf8; }
+.r-badge { font-family: ui-monospace, monospace; font-size: 0.65rem; color: #64748b; }

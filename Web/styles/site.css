@@ -568,6 +568,45 @@ input:focus-visible {
   pointer-events: none;
 }
 
+.live-preview {
+  position: relative;
+}
+
+.live-preview iframe {
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+.live-preview::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--surface-preview);
+  color: #39433b;
+  content: "Loading preview...";
+  font-family: "DM Mono", "Courier New", monospace;
+  font-size: 10px;
+  pointer-events: none;
+  transition: opacity 160ms ease;
+}
+
+.live-preview[data-preview-state="ready"] iframe {
+  opacity: 1;
+}
+
+.live-preview[data-preview-state="ready"]::after {
+  opacity: 0;
+}
+
+.live-preview[data-preview-state="error"]::after {
+  background: var(--surface);
+  color: var(--coral);
+  content: "Preview unavailable";
+  opacity: 1;
+}
+
 .card-preview-label {
   position: absolute;
   right: 9px;

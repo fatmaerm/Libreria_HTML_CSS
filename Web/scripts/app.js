@@ -1,6 +1,7 @@
 import { createStoredZip } from "./zip.js";
 
 const catalogPath = "./data/catalog.json";
+const previewRevision = "20260926-2";
 const pageSize = 12;
 const state = {
   components: [],
@@ -77,13 +78,23 @@ function renderFilters() {
 
 function createPreview(component, className) {
   const preview = createElement("div", className);
+  preview.classList.add("live-preview");
+  preview.dataset.previewState = "loading";
   const frame = document.createElement("iframe");
-  frame.src = new URL(component.preview, document.baseURI).href;
   frame.title = `${component.name} live preview`;
   frame.loading = "lazy";
   frame.referrerPolicy = "no-referrer";
   frame.setAttribute("sandbox", "allow-scripts allow-forms allow-popups");
+  frame.addEventListener("load", () => {
+    preview.dataset.previewState = "ready";
+  }, { once: true });
+  frame.addEventListener("error", () => {
+    preview.dataset.previewState = "error";
+  }, { once: true });
   preview.append(frame);
+  const previewUrl = new URL(component.preview, document.baseURI);
+  previewUrl.searchParams.set("previewRevision", previewRevision);
+  frame.src = previewUrl.href;
   return preview;
 }
 
@@ -249,7 +260,9 @@ function createDetailHeading(component) {
   );
   const actions = createElement("div", "detail-actions");
   const originalLink = createElement("a", "button button-secondary", "Open original ↗");
-  originalLink.href = new URL(component.preview, document.baseURI).href;
+  const originalUrl = new URL(component.preview, document.baseURI);
+  originalUrl.searchParams.set("previewRevision", previewRevision);
+  originalLink.href = originalUrl.href;
   originalLink.target = "_blank";
   originalLink.rel = "noreferrer";
   const zipButton = createElement("button", "button button-secondary download-button", component.downloadable ? "Download ZIP" : "ZIP unavailable");
@@ -321,7 +334,9 @@ async function renderDetail(component) {
     createElement("span", "", "Original component · interactive preview"),
   );
   const previewLink = createElement("a", "preview-open-link", "Open in new tab ↗");
-  previewLink.href = new URL(component.preview, document.baseURI).href;
+  const previewUrl = new URL(component.preview, document.baseURI);
+  previewUrl.searchParams.set("previewRevision", previewRevision);
+  previewLink.href = previewUrl.href;
   previewLink.target = "_blank";
   previewLink.rel = "noreferrer";
   previewHeader.append(previewLink);

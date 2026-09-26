@@ -34,10 +34,11 @@ El catálogo local detecta actualmente 116 páginas de demos. Las categorías se
 
 ## Añadir un componente
 
-1. Crea una carpeta independiente dentro de `BibliotecaDeHtml_CSS/` con un `index.html` y los recursos locales necesarios.
+1. Crea una carpeta independiente dentro de `BibliotecaDeHtml_CSS/` con un `index.html` y los recursos locales necesarios. Usa `kebab-case` en minúsculas y un nombre que describa el componente.
 2. Enlaza el CSS y JavaScript locales mediante etiquetas `<link rel="stylesheet">` y `<script src="...">`.
 3. Regenera el catálogo con `node Web/scripts/generate-catalog.mjs`.
-4. Si hace falta, añade metadatos a `data/component-overrides.json` con el ID generado. El ID usa la ruta de la carpeta en minúsculas y convierte los separadores en guiones.
+4. Escribe el `<title>` con el nombre funcional del componente, sin añadir marcas como `GevStack`.
+5. Si hace falta, añade metadatos a `data/component-overrides.json` con el ID generado. El ID usa la ruta de la carpeta en minúsculas y convierte los separadores en guiones.
 
 Por ejemplo, una carpeta llamada `My-Hover-Card` produce el ID `my-hover-card`:
 

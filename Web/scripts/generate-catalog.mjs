@@ -104,13 +104,16 @@ async function getLocalReferences(html, pageDirectory, tagName, referenceAttribu
     const reference = readAttribute(match[0], referenceAttribute);
     if (!reference || /^(?:[a-z]+:|\/\/|#)/i.test(reference)) continue;
 
-    const resolvedPath = path.resolve(pageDirectory, decodeURIComponent(reference.split(/[?#]/, 1)[0]));
+    const suffixIndex = reference.search(/[?#]/);
+    const referencePath = suffixIndex < 0 ? reference : reference.slice(0, suffixIndex);
+    const referenceSuffix = suffixIndex < 0 ? "" : reference.slice(suffixIndex);
+    const resolvedPath = path.resolve(pageDirectory, decodeURIComponent(referencePath));
     if (!resolvedPath.startsWith(`${libraryDirectory}${path.sep}`)) continue;
 
     try {
       if ((await stat(resolvedPath)).isFile()) {
         const relativePath = path.relative(repositoryDirectory, resolvedPath).split(path.sep).join("/");
-        references.push({ name: path.basename(resolvedPath), path: `../${relativePath}` });
+        references.push({ name: path.basename(resolvedPath), path: `../${relativePath}${referenceSuffix}` });
       }
     } catch {
       // Ignore optional references that do not exist in the local checkout.

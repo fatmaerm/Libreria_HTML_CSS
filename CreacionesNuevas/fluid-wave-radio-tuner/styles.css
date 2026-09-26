@@ -1,0 +1,8 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #080911; font-family: ui-monospace, monospace; color: #fff; }
+.radio-card { width: min(92vw, 380px); background: #121422; border-radius: 18px; border: 1px solid #232840; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; box-shadow: 0 20px 45px rgba(0,0,0,0.7); }
+.wave-screen { background: #080a14; border-radius: 10px; border: 1px solid #1c2236; overflow: hidden; }
+#radioWave { width: 100%; height: 100px; display: block; }
+.tuner-bar { display: flex; flex-direction: column; gap: 0.5rem; }
+input[type="range"] { accent-color: #38bdf8; cursor: pointer; }
+.freq-readout { text-align: center; font-size: 0.85rem; font-weight: 800; color: #38bdf8; }

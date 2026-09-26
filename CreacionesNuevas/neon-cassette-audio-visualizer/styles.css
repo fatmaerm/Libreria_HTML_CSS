@@ -1,0 +1,8 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #080310; font-family: ui-monospace, monospace; color: #fff; }
+.neon-cassette { width: 260px; height: 160px; border-radius: 14px; background: #130a1c; border: 2px solid #ec4899; box-shadow: 0 0 30px rgba(236, 72, 153, 0.4); display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 1.25rem; }
+.cassette-label { font-size: 0.8rem; font-weight: 900; color: #facc15; letter-spacing: 0.15em; }
+.wheels { display: flex; gap: 3.5rem; }
+.wheel { width: 45px; height: 45px; border-radius: 50%; border: 3px dashed #06b6d4; animation: spin-wheel 2s linear infinite; }
+@keyframes spin-wheel { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .wheel { animation: none; } }

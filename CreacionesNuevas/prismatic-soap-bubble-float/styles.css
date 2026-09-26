@@ -1,0 +1,8 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #06070c; font-family: ui-monospace, monospace; color: #fff; }
+.bubble-scene { display: flex; flex-direction: column; align-items: center; gap: 2.5rem; }
+.soap-bubble { position: relative; width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.2), rgba(236,72,153,0.2) 40%, rgba(56,189,248,0.25) 70%, transparent 100%); border: 1.5px solid rgba(255,255,255,0.4); box-shadow: 0 0 25px rgba(56,189,248,0.3); animation: float-bubble 4s infinite alternate ease-in-out; }
+.highlight { position: absolute; top: 20px; left: 25px; width: 25px; height: 14px; border-radius: 50%; background: #ffffff; transform: rotate(-30deg); filter: blur(1px); opacity: 0.8; }
+.bubble-tag { font-size: 0.75rem; letter-spacing: 0.15em; color: #cbd5e1; }
+@keyframes float-bubble { 0% { transform: translateY(-12px) scale(1); } 100% { transform: translateY(12px) scale(1.04); } }
+@media (prefers-reduced-motion: reduce) { .soap-bubble { animation: none; } }

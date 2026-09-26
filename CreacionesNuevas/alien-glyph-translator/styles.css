@@ -1,0 +1,7 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #06050b; font-family: ui-monospace, monospace; color: #fff; }
+.glyph-card { width: min(92vw, 380px); background: #11101e; border-radius: 18px; border: 1px solid #26223d; padding: 2rem; text-align: center; display: flex; flex-direction: column; gap: 1.5rem; box-shadow: 0 25px 50px rgba(0,0,0,0.8); }
+.glyph-row { font-size: 2.2rem; color: #a855f7; display: flex; justify-content: center; gap: 1rem; text-shadow: 0 0 15px #a855f7; }
+.translation { font-size: 1.1rem; font-weight: 800; color: #38bdf8; min-height: 1.5rem; }
+.translate-btn { padding: 0.65rem 1.4rem; background: #26223d; border: 1px solid #4a3e7a; color: #f1f5f9; border-radius: 8px; font-family: inherit; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; }
+.translate-btn:hover { background: #a855f7; color: #000; }

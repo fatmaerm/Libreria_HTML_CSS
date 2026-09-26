@@ -1,0 +1,8 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #0a0b12; font-family: ui-monospace, monospace; color: #fff; }
+.mercury-scene { display: flex; flex-direction: column; align-items: center; gap: 3rem; }
+.mercury-blob { width: 140px; height: 140px; border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; background: linear-gradient(135deg, #f8fafc, #94a3b8 50%, #334155 100%); box-shadow: 0 20px 45px rgba(0,0,0,0.8), inset -8px -8px 20px rgba(0,0,0,0.6); position: relative; animation: wobble-mercury 5s infinite ease-in-out; }
+.mercury-reflection { position: absolute; top: 20px; left: 25px; width: 35px; height: 20px; border-radius: 50%; background: #ffffff; filter: blur(2px); transform: rotate(-25deg); opacity: 0.9; }
+.mercury-caption { font-size: 0.75rem; letter-spacing: 0.15em; color: #cbd5e1; border: 1px solid rgba(255,255,255,0.1); padding: 0.4rem 1.2rem; border-radius: 9999px; }
+@keyframes wobble-mercury { 0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; } 50% { border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%; } 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; } }
+@media (prefers-reduced-motion: reduce) { .mercury-blob { animation: none; } }

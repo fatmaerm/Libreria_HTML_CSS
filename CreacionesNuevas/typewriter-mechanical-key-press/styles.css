@@ -1,0 +1,7 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #0c0d14; font-family: 'Courier New', monospace; color: #fff; }
+.tw-card { width: min(92vw, 360px); background: #161824; border-radius: 16px; border: 1px solid #282d42; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; box-shadow: 0 20px 45px rgba(0,0,0,0.8); }
+.tw-sheet { background: #fdfbf7; color: #1e293b; padding: 1rem; border-radius: 6px; min-height: 70px; font-weight: 800; font-size: 0.95rem; }
+.tw-keyboard { display: flex; justify-content: center; gap: 8px; }
+.tw-key { width: 40px; height: 40px; border-radius: 50%; background: #262c44; border: 2px solid #4a557e; color: #fff; font-weight: 900; font-size: 1rem; cursor: pointer; transition: transform 0.1s; }
+.tw-key:active { transform: scale(0.9) translateY(4px); background: #38bdf8; color: #000; }

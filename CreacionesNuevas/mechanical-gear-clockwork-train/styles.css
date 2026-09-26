@@ -1,0 +1,9 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #090910; }
+.gears-box { position: relative; width: 220px; height: 180px; }
+.gear { position: absolute; border-radius: 50%; border: 6px dashed #d97706; background: #1a1510; }
+.g-large { width: 120px; height: 120px; top: 10px; left: 10px; animation: spin-gear 6s linear infinite; }
+.g-small { width: 80px; height: 80px; bottom: 10px; right: 10px; animation: spin-gear-rev 4s linear infinite; border-color: #f59e0b; }
+@keyframes spin-gear { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes spin-gear-rev { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+@media (prefers-reduced-motion: reduce) { .gear { animation: none; } }

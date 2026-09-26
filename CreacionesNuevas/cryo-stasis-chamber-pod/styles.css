@@ -1,0 +1,13 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #040810; font-family: ui-monospace, monospace; color: #fff; }
+.pod-scene { display: flex; flex-direction: column; align-items: center; }
+.cryo-pod { position: relative; width: 140px; height: 260px; display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 0 35px rgba(56, 189, 248, 0.35)); }
+.pod-cap { width: 100%; height: 28px; background: linear-gradient(180deg, #334155, #1e293b); border: 2px solid #475569; }
+.top-cap { border-radius: 16px 16px 4px 4px; }
+.btm-cap { border-radius: 4px 4px 16px 16px; height: 42px; display: grid; place-items: center; }
+.status-indicator { font-size: 0.6rem; color: #38bdf8; font-weight: 800; letter-spacing: 0.05em; }
+.frost-glass { position: relative; width: 120px; height: 190px; background: rgba(56, 189, 248, 0.12); border-left: 2px solid rgba(255, 255, 255, 0.3); border-right: 2px solid rgba(255, 255, 255, 0.15); overflow: hidden; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); display: grid; place-items: center; }
+.silhouette { width: 45px; height: 130px; border-radius: 20px; background: rgba(15, 23, 42, 0.7); filter: blur(3px); }
+.vapor { position: absolute; inset: 0; background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%); animation: pulse-vapor 3s infinite alternate ease-in-out; }
+@keyframes pulse-vapor { 0% { opacity: 0.3; } 100% { opacity: 0.8; } }
+@media (prefers-reduced-motion: reduce) { .vapor { animation: none; } }

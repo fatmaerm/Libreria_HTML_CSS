@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elastic Gooey FAB</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="fab-wrapper">
+    <input type="checkbox" id="fabToggle" class="fab-checkbox">
+    <div class="fab-container">
+      <label for="fabToggle" class="fab-main-btn" aria-label="Menú elástico">
+        <span class="icon-cross">+</span>
+      </label>
+      
+      <button class="fab-item item-1" aria-label="Favorito">★</button>
+      <button class="fab-item item-2" aria-label="Compartir">🔗</button>
+      <button class="fab-item item-3" aria-label="Mensaje">✉</button>
+    </div>
+  </div>
+
+  <svg class="svg-filter" aria-hidden="true">
+    <defs>
+      <filter id="fab-goo">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+        <feColorMatrix in="blur" mode="matrix" values="
+          1 0 0 0 0
+          0 1 0 0 0
+          0 0 1 0 0
+          0 0 0 20 -8" result="goo" />
+        <feBlend in="SourceGraphic" in2="goo" />
+      </filter>
+    </defs>
+  </svg>
+</body>
+</html>

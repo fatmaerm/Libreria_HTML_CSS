@@ -1,0 +1,214 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at center, #1b0a2a 0%, #080310 100%);
+  font-family: 'Courier New', Courier, monospace;
+  overflow: hidden;
+}
+
+.cassette-container {
+  padding: 1.5rem;
+  perspective: 800px;
+}
+
+.cassette-body {
+  position: relative;
+  width: min(92vw, 360px);
+  height: 230px;
+  background: linear-gradient(145deg, #181920, #0c0d12);
+  border-radius: 16px;
+  border: 2px solid #2d313d;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(236, 72, 153, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.screw {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #333945;
+  border: 1px solid #1a1c22;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+.screw::after {
+  content: '';
+  position: absolute;
+  top: 3.5px;
+  left: 1px;
+  width: 6px;
+  height: 1px;
+  background: #111;
+  transform: rotate(35deg);
+}
+.top-left { top: 8px; left: 8px; }
+.top-right { top: 8px; right: 8px; }
+.bottom-left { bottom: 8px; left: 8px; }
+.bottom-right { bottom: 8px; right: 8px; }
+
+.cassette-label {
+  position: relative;
+  background: #fdfbf7;
+  border-radius: 8px;
+  height: 155px;
+  padding: 10px 14px;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
+  border: 1px solid #c9c3b8;
+}
+
+.synth-stripes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  height: 9px;
+}
+.synth-stripes span:nth-child(1) { height: 3px; background: #ec4899; }
+.synth-stripes span:nth-child(2) { height: 3px; background: #8b5cf6; }
+.synth-stripes span:nth-child(3) { height: 3px; background: #06b6d4; }
+
+.label-header {
+  margin-top: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #1e1b29;
+}
+.album-title {
+  color: #db2777;
+  letter-spacing: 0.08em;
+  font-weight: 900;
+}
+
+.tape-window {
+  position: relative;
+  margin-top: 10px;
+  height: 80px;
+  background: rgba(15, 17, 26, 0.88);
+  border-radius: 6px;
+  border: 1.5px solid #202433;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+
+.tape-spool {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.spool-center {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fdfbf7;
+  border: 2px solid #888;
+  z-index: 3;
+}
+
+.spool-teeth {
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  border: 3px dashed #333;
+  animation: spin-teeth 2s linear infinite;
+}
+
+.spool-wound {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #2d1808 60%, #150a04 100%);
+  border: 1px solid #3d2008;
+  z-index: 1;
+}
+
+.wound-left {
+  width: 48px;
+  height: 48px;
+}
+
+.wound-right {
+  width: 32px;
+  height: 32px;
+}
+
+.tape-bridge {
+  flex: 1;
+  position: relative;
+  height: 8px;
+  margin: 0 10px;
+}
+.tape-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #2b1708;
+  transform: translateY(-50%);
+  box-shadow: 0 0 4px rgba(0,0,0,0.8);
+}
+
+.cassette-bottom {
+  height: 30px;
+  background: #0f1015;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-top: 1px solid #232733;
+}
+
+.guide-hole {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #050608;
+  border: 1px solid #292d3b;
+}
+
+.tape-head-window {
+  width: 90px;
+  height: 12px;
+  background: #050608;
+  border-radius: 2px;
+  border: 1px solid #222632;
+}
+
+@keyframes spin-teeth {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spool-teeth { animation: none; }
+}

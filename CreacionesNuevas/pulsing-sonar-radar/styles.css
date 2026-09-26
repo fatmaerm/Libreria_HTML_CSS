@@ -1,0 +1,127 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #020b08;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.sonar-wrapper {
+  padding: 2rem;
+}
+
+.radar-scope {
+  position: relative;
+  width: min(88vw, 340px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, #022012 0%, #011209 65%, #000604 100%);
+  border: 4px solid #005a2e;
+  box-shadow: 
+    0 0 45px rgba(0, 255, 128, 0.25),
+    inset 0 0 50px rgba(0, 40, 20, 0.9);
+  overflow: hidden;
+}
+
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 255, 128, 0.22);
+  pointer-events: none;
+}
+
+.ring-1 { width: 25%; height: 25%; }
+.ring-2 { width: 50%; height: 50%; }
+.ring-3 { width: 75%; height: 75%; }
+.ring-4 { width: 95%; height: 95%; border-color: rgba(0, 255, 128, 0.4); }
+
+.axis {
+  position: absolute;
+  background: rgba(0, 255, 128, 0.18);
+  pointer-events: none;
+}
+.axis-x { top: 50%; left: 0; right: 0; height: 1px; }
+.axis-y { left: 50%; top: 0; bottom: 0; width: 1px; }
+
+.sweep-beam {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(0, 255, 128, 0.65) 0deg,
+    rgba(0, 255, 128, 0.2) 20deg,
+    rgba(0, 255, 128, 0.03) 60deg,
+    transparent 80deg,
+    transparent 360deg
+  );
+  animation: sweep 3.5s linear infinite;
+}
+
+.blip {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 14px #34d399;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.blip-1 { animation: blip-pulse 3.5s ease-in-out infinite 0.7s; }
+.blip-2 { animation: blip-pulse 3.5s ease-in-out infinite 2.1s; }
+.blip-3 { animation: blip-pulse 3.5s ease-in-out infinite 3.0s; }
+
+.scope-hub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #00ff80;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 16px #00ff80;
+}
+
+.radar-info {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: rgba(0, 255, 128, 0.7);
+  pointer-events: none;
+}
+
+@keyframes sweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes blip-pulse {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+  10% { opacity: 1; transform: translate(-50%, -50%) scale(1.4); }
+  45% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+  90%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sweep-beam { animation: none; opacity: 0.3; }
+  .blip { opacity: 0.8; animation: none; }
+}

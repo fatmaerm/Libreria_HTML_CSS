@@ -1,0 +1,138 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #02040a;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #fff;
+}
+
+.night-sky {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #050814 60%, #010206 100%);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stars-layer {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(1px 1px at 25px 35px, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 150px 80px, #a5b4fc, transparent),
+    radial-gradient(1px 1px at 280px 220px, #fbcfe8, transparent),
+    radial-gradient(2px 2px at 90px 310px, #fef08a, transparent);
+  background-size: 350px 350px;
+}
+
+.shooting-star {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 2px;
+  background: linear-gradient(-45deg, #ffffff, rgba(56, 189, 248, 0.8), transparent);
+  border-radius: 999px;
+  filter: drop-shadow(0 0 6px #38bdf8);
+  animation: meteor-tail 3s ease-in-out infinite;
+  opacity: 0;
+}
+
+.shooting-star::before {
+  content: '';
+  position: absolute;
+  top: calc(50% - 1px);
+  right: 0;
+  height: 2px;
+  background: linear-gradient(-45deg, transparent, rgba(56, 189, 248, 0.8), #ffffff);
+  transform: translateX(50%) rotateZ(45deg);
+  border-radius: 100%;
+}
+
+.star-1 {
+  top: 15%;
+  left: 70%;
+  width: 180px;
+  animation-delay: 0s;
+}
+
+.star-2 {
+  top: 30%;
+  left: 85%;
+  width: 140px;
+  animation-delay: 1.4s;
+}
+
+.star-3 {
+  top: 10%;
+  left: 45%;
+  width: 220px;
+  animation-delay: 2.2s;
+}
+
+.star-4 {
+  top: 45%;
+  left: 90%;
+  width: 160px;
+  animation-delay: 3.5s;
+}
+
+.star-5 {
+  top: 25%;
+  left: 60%;
+  width: 190px;
+  animation-delay: 4.8s;
+}
+
+.sky-title {
+  position: absolute;
+  bottom: 3rem;
+  text-align: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.sky-title h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #e0e7ff;
+  text-shadow: 0 0 25px rgba(165, 180, 252, 0.5);
+}
+
+.sky-title p {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin-top: 0.35rem;
+  letter-spacing: 0.1em;
+}
+
+@keyframes meteor-tail {
+  0% {
+    transform: rotate(315deg) translateX(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(315deg) translateX(-650px);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shooting-star { animation: none; opacity: 0.4; }
+}

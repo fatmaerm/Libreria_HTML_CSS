@@ -1,0 +1,163 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #03080e;
+  font-family: 'Courier New', Courier, monospace;
+  color: #fff;
+  overflow: hidden;
+}
+
+.pcb-scene {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  display: grid;
+  place-items: center;
+}
+
+.pcb-chip {
+  width: 90px;
+  height: 90px;
+  background: #0b1523;
+  border: 2px solid #0ea5e9;
+  border-radius: 12px;
+  box-shadow: 
+    0 0 25px rgba(14, 165, 233, 0.4),
+    inset 0 0 15px rgba(14, 165, 233, 0.2);
+  display: grid;
+  place-items: center;
+  z-index: 10;
+}
+
+.chip-label {
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  color: #38bdf8;
+  text-shadow: 0 0 10px #38bdf8;
+}
+
+.trace {
+  position: absolute;
+  background: rgba(14, 165, 233, 0.2);
+}
+
+.trace-top {
+  top: 20px;
+  width: 2px;
+  height: 95px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.trace-bottom {
+  bottom: 20px;
+  width: 2px;
+  height: 95px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.trace-left {
+  left: 20px;
+  height: 2px;
+  width: 95px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.trace-right {
+  right: 20px;
+  height: 2px;
+  width: 95px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.pulse {
+  position: absolute;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 10px #38bdf8;
+}
+
+.trace-top .pulse {
+  width: 6px;
+  height: 18px;
+  border-radius: 999px;
+  left: -2px;
+  animation: pulse-down 1.8s ease-in-out infinite;
+}
+
+.trace-bottom .pulse {
+  width: 6px;
+  height: 18px;
+  border-radius: 999px;
+  left: -2px;
+  animation: pulse-up 1.8s ease-in-out infinite 0.5s;
+}
+
+.trace-left .pulse {
+  height: 6px;
+  width: 18px;
+  border-radius: 999px;
+  top: -2px;
+  animation: pulse-right 1.8s ease-in-out infinite 0.9s;
+}
+
+.trace-right .pulse {
+  height: 6px;
+  width: 18px;
+  border-radius: 999px;
+  top: -2px;
+  animation: pulse-left 1.8s ease-in-out infinite 1.3s;
+}
+
+.pcb-status {
+  position: absolute;
+  bottom: -40px;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: #38bdf8;
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  padding: 0.4rem 1.2rem;
+  border-radius: 9999px;
+  background: rgba(14, 165, 233, 0.08);
+}
+
+@keyframes pulse-down {
+  0% { top: 0; opacity: 0; }
+  50% { opacity: 1; }
+  100% { top: 75px; opacity: 0; }
+}
+
+@keyframes pulse-up {
+  0% { bottom: 0; opacity: 0; }
+  50% { opacity: 1; }
+  100% { bottom: 75px; opacity: 0; }
+}
+
+@keyframes pulse-right {
+  0% { left: 0; opacity: 0; }
+  50% { opacity: 1; }
+  100% { left: 75px; opacity: 0; }
+}
+
+@keyframes pulse-left {
+  0% { right: 0; opacity: 0; }
+  50% { opacity: 1; }
+  100% { right: 75px; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse { animation: none; opacity: 0.6; }
+}

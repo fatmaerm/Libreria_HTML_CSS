@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terminal Code Matrix Decode</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="terminal-box">
+    <div class="terminal-bar">
+      <div class="term-dots">
+        <span></span><span></span><span></span>
+      </div>
+      <span class="term-title">CIPHER_DECRYPTOR.SH</span>
+    </div>
+    <div class="terminal-body">
+      <div class="prompt-line">
+        <span class="prompt-user">root@matrix:~$</span>
+        <span class="prompt-cmd">decrypt --quantum-key 0x7F</span>
+      </div>
+      <div class="decode-target" id="decodeTarget" data-text="PROTOCOLO QUANTUM COMPLETO">
+        PROTOCOLO QUANTUM COMPLETO
+      </div>
+      <div class="status-msg">
+        <span class="status-badge" id="statusBadge">DESCRIPTADO CON ÉXITO</span>
+      </div>
+      <button class="rerun-btn" id="rerunBtn">Reiniciar descifrado</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

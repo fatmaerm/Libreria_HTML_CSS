@@ -1,0 +1,7 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: radial-gradient(circle at 30% 30%, #4338ca 0%, #070912 60%); font-family: system-ui, sans-serif; color: #fff; }
+.cal-widget { width: min(92vw, 320px); background: rgba(255,255,255,0.06); border-radius: 20px; border: 1px solid rgba(255,255,255,0.15); padding: 1.5rem; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: 0 20px 45px rgba(0,0,0,0.6); }
+.cal-month { font-size: 0.85rem; font-weight: 800; letter-spacing: 0.1em; color: #a5b4fc; text-align: center; margin-bottom: 1.25rem; }
+.cal-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; text-align: center; font-size: 0.8rem; font-weight: 600; }
+.dim { color: #64748b; }
+.today { background: #6366f1; border-radius: 6px; box-shadow: 0 0 10px #6366f1; }

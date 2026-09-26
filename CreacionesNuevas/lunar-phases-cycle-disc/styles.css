@@ -1,0 +1,8 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #030408; font-family: ui-monospace, monospace; color: #fff; }
+.lunar-scene { display: flex; flex-direction: column; align-items: center; gap: 2rem; }
+.moon-cycle { position: relative; width: 140px; height: 140px; border-radius: 50%; background: #fdfbf7; box-shadow: 0 0 25px rgba(253,251,247,0.4); overflow: hidden; }
+.moon-shadow { position: absolute; inset: 0; border-radius: 50%; background: #090b14; animation: lunar-orbit 8s infinite alternate ease-in-out; }
+.lunar-tag { font-size: 0.75rem; letter-spacing: 0.15em; color: #cbd5e1; }
+@keyframes lunar-orbit { 0% { transform: translateX(-100%); } 50% { transform: translateX(0%); } 100% { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) { .moon-shadow { animation: none; } }

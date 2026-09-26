@@ -1,0 +1,11 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #050201; }
+.camp-scene { position: relative; width: 180px; height: 220px; display: flex; justify-content: center; align-items: flex-end; }
+.fire-glow { width: 90px; height: 90px; border-radius: 50%; background: radial-gradient(circle, #f97316, #b91c1c, transparent 70%); filter: blur(14px); }
+.sparks span { position: absolute; bottom: 30px; width: 4px; height: 4px; border-radius: 50%; background: #fef08a; box-shadow: 0 0 6px #f97316; animation: float-spark 2.5s infinite; }
+.sparks span:nth-child(1) { left: 40%; animation-delay: 0.2s; }
+.sparks span:nth-child(2) { left: 55%; animation-delay: 0.8s; }
+.sparks span:nth-child(3) { left: 48%; animation-delay: 1.4s; }
+.sparks span:nth-child(4) { left: 62%; animation-delay: 1.9s; }
+@keyframes float-spark { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-160px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .sparks span { animation: none; } }

@@ -1,0 +1,8 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #080911; font-family: ui-monospace, monospace; color: #fff; }
+.contrib-card { width: min(92vw, 440px); background: #111422; border-radius: 16px; border: 1px solid #232840; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; box-shadow: 0 20px 45px rgba(0,0,0,0.7); }
+.c-head { font-size: 0.75rem; color: #94a3b8; font-weight: 800; }
+.contrib-grid { display: grid; grid-template-columns: repeat(14, 1fr); gap: 5px; }
+.c-box { width: 18px; height: 18px; border-radius: 4px; background: #161b2c; transition: transform 0.15s; }
+.c-box:hover { transform: scale(1.25); }
+.l1 { background: #0e4429; } .l2 { background: #006d32; } .l3 { background: #26a641; } .l4 { background: #39d353; }

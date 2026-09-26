@@ -1,0 +1,10 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #080911; font-family: ui-monospace, monospace; color: #fff; }
+.deck-container { position: relative; width: 140px; height: 190px; cursor: pointer; }
+.f-card { position: absolute; inset: 0; border-radius: 16px; border: 1px solid rgba(255,255,255,0.2); display: grid; place-items: center; font-size: 1.5rem; font-weight: 900; transition: transform 0.3s ease; box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
+.c1 { background: #ec4899; transform: rotate(-8deg); z-index: 1; }
+.c2 { background: #8b5cf6; transform: rotate(0deg); z-index: 2; }
+.c3 { background: #38bdf8; transform: rotate(8deg); z-index: 3; }
+.deck-container:hover .c1 { transform: rotate(-25deg) translateX(-40px); }
+.deck-container:hover .c2 { transform: translateY(-20px); }
+.deck-container:hover .c3 { transform: rotate(25deg) translateX(40px); }

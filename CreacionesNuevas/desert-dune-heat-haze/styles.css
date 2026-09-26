@@ -1,0 +1,5 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #080302; }
+.desert-box { position: relative; width: min(92vw, 380px); height: 220px; border-radius: 18px; background: linear-gradient(180deg, #fdba74, #ea580c); overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
+.mirage-sun { position: absolute; top: 30px; left: 50%; transform: translateX(-50%); width: 70px; height: 70px; border-radius: 50%; background: #ffffff; box-shadow: 0 0 30px #ffffff; }
+.dune { height: 90px; background: #7c2d12; border-radius: 150px 150px 0 0; }

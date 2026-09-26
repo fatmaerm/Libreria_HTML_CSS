@@ -1,0 +1,8 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #0c0805; font-size: 2.5rem; overflow: hidden; }
+.leaf-box { position: relative; width: 220px; height: 260px; }
+.maple-leaf { position: absolute; }
+.l1 { animation: fall-leaf 4s infinite linear; }
+.l2 { animation: fall-leaf 5s infinite linear 2s; }
+@keyframes fall-leaf { 0% { top: -40px; left: 20px; transform: rotate(0deg); } 50% { left: 160px; transform: rotate(180deg); } 100% { top: 280px; left: 40px; transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .maple-leaf { animation: none; } }

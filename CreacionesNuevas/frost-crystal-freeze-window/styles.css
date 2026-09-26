@@ -1,0 +1,7 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: grid; place-items: center; background: #030810; font-family: ui-monospace, monospace; color: #fff; }
+.frost-card { width: 220px; height: 220px; border-radius: 20px; background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.3); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; box-shadow: 0 0 35px rgba(56,189,248,0.25); }
+.ice-star { font-size: 3rem; color: #bae6fd; animation: spin-ice 12s linear infinite; }
+.frost-temp { font-size: 0.75rem; color: #7dd3fc; font-weight: 800; letter-spacing: 0.1em; }
+@keyframes spin-ice { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .ice-star { animation: none; } }

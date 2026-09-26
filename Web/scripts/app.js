@@ -360,6 +360,7 @@ function createPreview(component, className) {
   frame.title = t("livePreviewTitle", { name: component.name });
   frame.loading = "lazy";
   frame.referrerPolicy = "no-referrer";
+  frame.setAttribute("scrolling", "no");
   frame.setAttribute("sandbox", "allow-scripts allow-forms allow-popups");
   preview.append(frame);
   const previewUrl = new URL(component.preview, document.baseURI);

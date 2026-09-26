@@ -1,0 +1,260 @@
+import { readdir, readFile, mkdir, stat, writeFile } from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
+const repositoryDirectory = path.resolve(scriptDirectory, "../..");
+const libraryDirectory = path.join(repositoryDirectory, "BibliotecaDeHtml_CSS");
+const catalogFile = path.join(repositoryDirectory, "Web", "data", "catalog.json");
+const overridesFile = path.join(repositoryDirectory, "Web", "data", "component-overrides.json");
+
+async function findHtmlPages(directory) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const pages = [];
+
+  for (const entry of entries) {
+    if (entry.name.startsWith(".")) continue;
+
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) {
+      pages.push(...(await findHtmlPages(entryPath)));
+    } else if (entry.isFile() && entry.name.toLowerCase() === "index.html") {
+      pages.push(entryPath);
+    }
+  }
+
+  return pages;
+}
+
+function readAttribute(tag, attribute) {
+  const match = tag.match(new RegExp(String.raw`\b${attribute}\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))`, "i"));
+  return match?.[1] ?? match?.[2] ?? match?.[3] ?? "";
+}
+
+function cleanText(value) {
+  return value
+    .replace(/<[^<>]*>/g, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;|&apos;/gi, "'")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function removeBrandSuffix(value) {
+  const suffixes = [" - gevstack", " - gev stack", " | gevstack", " | gev stack", ": gevstack", ": gev stack", " gevstack", " gev stack"];
+  const normalizedValue = value.toLowerCase();
+  const suffix = suffixes.find((candidate) => normalizedValue.endsWith(candidate));
+  return suffix ? value.slice(0, -suffix.length).trim() : value.trim();
+}
+
+function createSlug(value) {
+  return value
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function getCategory(value) {
+  const name = value.toLowerCase();
+  if (/loader|preloader|skeleton/.test(name)) return "Loaders";
+  if (/button|submit|checkbox/.test(name)) return "Buttons";
+  if (/card|testimonial|profile|product|movie/.test(name)) return "Cards";
+  if (/navbar|navigation|breadcrumb|pagination|tab-menu|menu|footer/.test(name)) return "Navigation";
+  if (/gallery|carousel|image-slider|photo-gallery/.test(name)) return "Galleries";
+  if (/toggle|switch|range-slider|slider-bar/.test(name)) return "Controls";
+  if (/form|input|email|login|dropzone|subscription|contact|reservation/.test(name)) return "Forms";
+  if (/text|cursor|hover|reveal|glitch|scroll|background|liquid|image-effect/.test(name)) return "Effects";
+  if (/animation|animated|morph/.test(name)) return "Animations";
+  return "Other";
+}
+
+function getTags(name, title, category) {
+  const words = `${name} ${title}`
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .split(/[^a-zA-Z0-9]+/)
+    .map((word) => word.toLowerCase())
+    .filter((word) => word.length > 1);
+
+  return [...new Set([category.toLowerCase(), ...words])];
+}
+
+function getInlineBlocks(html, tagName, shouldInclude) {
+  const blocks = [];
+  const tagPattern = new RegExp(String.raw`<${tagName}\b([^>]*)>([\s\S]*?)<\/${tagName}\s*>`, "gi");
+
+  for (const match of html.matchAll(tagPattern)) {
+    if (readAttribute(`<${tagName} ${match[1]}>`, "src")) continue;
+    if (shouldInclude(match[1])) blocks.push(match[2].trim());
+  }
+
+  return blocks.filter(Boolean);
+}
+
+async function getLocalReferences(html, pageDirectory, tagName, referenceAttribute, includeTag) {
+  const references = [];
+  const tagPattern = new RegExp(String.raw`<${tagName}\b[^>]*>`, "gi");
+
+  for (const match of html.matchAll(tagPattern)) {
+    if (!includeTag(match[0])) continue;
+    const reference = readAttribute(match[0], referenceAttribute);
+    if (!reference || /^(?:[a-z]+:|\/\/|#)/i.test(reference)) continue;
+
+    const resolvedPath = path.resolve(pageDirectory, decodeURIComponent(reference.split(/[?#]/, 1)[0]));
+    if (!resolvedPath.startsWith(`${libraryDirectory}${path.sep}`)) continue;
+
+    try {
+      if ((await stat(resolvedPath)).isFile()) {
+        const relativePath = path.relative(repositoryDirectory, resolvedPath).split(path.sep).join("/");
+        references.push({ name: path.basename(resolvedPath), path: `../${relativePath}` });
+      }
+    } catch {
+      // Ignore optional references that do not exist in the local checkout.
+    }
+  }
+
+  return [...new Map(references.map((reference) => [reference.path, reference])).values()];
+}
+
+async function getMissingReferences(html, pageDirectory) {
+  const missing = [];
+  const tagPattern = /<(script|link|img|source|video|audio)\b[^<>]*>/gi;
+
+  for (const match of html.matchAll(tagPattern)) {
+    const tagName = match[1].toLowerCase();
+    const reference = readAttribute(match[0], tagName === "link" ? "href" : "src");
+    if (!reference || /^(?:[a-z]+:|\/\/|#)/i.test(reference)) continue;
+
+    let resolvedPath;
+    try {
+      resolvedPath = path.resolve(pageDirectory, decodeURIComponent(reference.split(/[?#]/, 1)[0]));
+    } catch {
+      missing.push(reference);
+      continue;
+    }
+    if (!resolvedPath.startsWith(`${libraryDirectory}${path.sep}`)) continue;
+
+    try {
+      if (!(await stat(resolvedPath)).isFile()) missing.push(reference);
+    } catch {
+      missing.push(reference);
+    }
+  }
+
+  return [...new Set(missing)];
+}
+
+async function collectComponentFiles(componentDirectory, componentId, currentDirectory = componentDirectory) {
+  const entries = await readdir(currentDirectory, { withFileTypes: true });
+  const files = [];
+
+  for (const entry of entries) {
+    if (entry.name.startsWith(".")) continue;
+    const entryPath = path.join(currentDirectory, entry.name);
+
+    if (entry.isDirectory()) {
+      files.push(...(await collectComponentFiles(componentDirectory, componentId, entryPath)));
+      continue;
+    }
+
+    if (!entry.isFile()) continue;
+    const relativePath = path.relative(componentDirectory, entryPath).split(path.sep).join("/");
+    const repositoryPath = path.relative(repositoryDirectory, entryPath).split(path.sep).join("/");
+    files.push({
+      name: entry.name,
+      relativePath,
+      path: `../${repositoryPath}`,
+      archivePath: `${componentId}/${relativePath}`,
+    });
+  }
+
+  return files;
+}
+
+async function createComponent(pagePath) {
+  const html = await readFile(pagePath, "utf8");
+  const pageDirectory = path.dirname(pagePath);
+  const folderPath = path.relative(libraryDirectory, pageDirectory).split(path.sep).join("/");
+  const directoryName = path.basename(pageDirectory);
+  const titleMatch = html.match(/<title\b[^>]*>([\s\S]*?)<\/title\s*>/i);
+  const rawTitle = cleanText(titleMatch?.[1] ?? "");
+  const titleWithoutPrefix = rawTitle.replace(/^(?:Gev\s*Stack|Gevstack|2much_tech)\s*(?:[-|:]\s*)?/i, "");
+  const title = removeBrandSuffix(titleWithoutPrefix);
+  const id = createSlug(folderPath);
+  const override = catalogOverrides[id] ?? {};
+  const name = override.name ?? (title || directoryName.replace(/[-_]+/g, " "));
+  const category = override.category ?? getCategory(`${directoryName} ${name}`);
+  const descriptionMatch = html.match(/<meta\b(?=[^>]*\bname\s*=\s*["']description["'])[^>]*>/i);
+  const descriptionType = category === "Other" ? "HTML and CSS" : category.toLowerCase();
+  const description = override.description ?? (descriptionMatch
+    ? readAttribute(descriptionMatch[0], "content")
+    : `Standalone ${descriptionType} demo from the component collection.`);
+  const previewPath = path.relative(repositoryDirectory, pagePath).split(path.sep).join("/");
+  const missingReferences = await getMissingReferences(html, pageDirectory);
+  const files = await collectComponentFiles(pageDirectory, id);
+  const license = override.license ?? "Unverified";
+  const source = override.source ?? "Unverified";
+  const rawLicenseFile = String(override.licenseFile ?? "").replaceAll("\\", "/");
+  const licenseFile = rawLicenseFile.startsWith("./") ? rawLicenseFile.slice(2) : rawLicenseFile;
+  const includesLicenseFile = files.some((file) => file.relativePath === licenseFile);
+  const downloadable = override.redistributable === true
+    && source !== "Unverified"
+    && license !== "Unverified"
+    && includesLicenseFile
+    && missingReferences.length === 0;
+
+  return {
+    id,
+    name,
+    category,
+    featured: override.featured === true,
+    description,
+    tags: override.tags ?? getTags(directoryName, name, category),
+    folder: folderPath,
+    preview: `../${previewPath}`,
+    html: await readFile(pagePath, "utf8"),
+    stylesheets: await getLocalReferences(
+      html,
+      pageDirectory,
+      "link",
+      "href",
+      (tag) => /\brel\s*=\s*["'][^"']*\bstylesheet\b/i.test(tag),
+    ),
+    scripts: await getLocalReferences(html, pageDirectory, "script", "src", () => true),
+    missingReferences,
+    inlineCss: getInlineBlocks(html, "style", () => true),
+    inlineJavaScript: getInlineBlocks(
+      html,
+      "script",
+      (attributes) => !/\btype\s*=\s*["'](?:x-|text\/x-|application\/ld\+json)/i.test(attributes),
+    ),
+    license,
+    source,
+    licenseFile: licenseFile || null,
+    downloadable,
+    files,
+  };
+}
+
+let catalogOverrides = {};
+try {
+  catalogOverrides = JSON.parse(await readFile(overridesFile, "utf8"));
+} catch (error) {
+  if (error.code !== "ENOENT") throw error;
+}
+
+const pages = (await findHtmlPages(libraryDirectory)).sort((first, second) => first.localeCompare(second));
+const components = await Promise.all(pages.map(createComponent));
+const duplicateIds = components.filter((component, index) => components.findIndex((entry) => entry.id === component.id) !== index);
+
+if (duplicateIds.length) {
+  throw new Error(`Duplicate component IDs: ${duplicateIds.map((component) => component.id).join(", ")}`);
+}
+
+await mkdir(path.dirname(catalogFile), { recursive: true });
+await writeFile(catalogFile, `${JSON.stringify(components, null, 2)}\n`, "utf8");
+console.log(`Generated ${components.length} component entries at ${path.relative(repositoryDirectory, catalogFile)}.`);

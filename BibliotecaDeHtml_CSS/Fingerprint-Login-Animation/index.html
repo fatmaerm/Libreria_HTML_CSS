@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>GevStack - Fingerprint Login Animation</title>
@@ -7,7 +7,7 @@
 
 </head>
 <body>
-<div class="container" onclick="this.classList.toggle('active')">
+<button class="container" type="button" aria-pressed="false">
   <span class="text">LOGIN</span>
   <svg class="fingerprint fingerprint-base" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
     <g class="fingerprint-out" fill="none" stroke-width="2" stroke-linecap="round">
@@ -90,9 +90,8 @@
     </g>
   </svg>
   <svg class="ok" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M34.912 50.75l10.89 10.125L67 36.75" fill="none" stroke="#EEA47F" stroke-width="6"/></svg>
-</div>
+</button>
 
-  <script  src="./script.js"></script>
-
+      <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101311">
+    <meta name="description" content="A searchable collection of standalone HTML and CSS components, effects, and interface experiments.">
+    <title>HTML &amp; CSS Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/site.css">
+    <script type="module" src="./scripts/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="HTML and CSS Library home">
+        <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+        <span>component<span class="brand-accent">/</span>field</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#home" data-nav="home">Home</a>
+        <a href="#components" data-nav="components">Components</a>
+        <a href="#categories" data-nav="categories">Categories</a>
+        <a href="https://github.com/kindred-98/Libreria_HTML_CSS" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch theme">
+        <span class="theme-icon" aria-hidden="true">☼</span>
+        <span class="theme-label">Light</span>
+      </button>
+    </header>
+
+    <main id="main-content">
+      <div id="catalog-view">
+        <aside class="publication-notice" id="publication-notice" hidden>
+          <strong>Distribution review in progress.</strong>
+          <span>This published build includes only demos with verified redistribution rights. No component is cleared for release yet.</span>
+        </aside>
+        <section class="hero section-wrap" id="home" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> A working library of web experiments</p>
+            <h1 id="hero-title">HTML &amp; CSS<br><span>Library</span></h1>
+            <p class="hero-description">A growing index of interface components, visual effects, and small experiments. Browse the original demos, inspect their source, and take the patterns into your next project.</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#components">Explore components <span aria-hidden="true">↓</span></a>
+              <a class="button button-secondary" href="https://github.com/kindred-98/Libreria_HTML_CSS" target="_blank" rel="noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <div class="hero-aside" aria-label="Library summary">
+            <div class="hero-aside-top"><span>COLLECTION INDEX</span><span>01 — 26</span></div>
+            <p class="hero-aside-title">Small pieces.<br>Useful details.</p>
+            <div class="stat-grid">
+              <div><strong id="stat-components">—</strong><span>experiments</span></div>
+              <div><strong id="stat-categories">—</strong><span>categories</span></div>
+            </div>
+            <span class="hero-aside-foot">HTML <i>+</i> CSS <i>+</i> JS</span>
+          </div>
+        </section>
+
+        <section class="featured-section section-wrap" id="featured" aria-labelledby="featured-title">
+          <div class="section-heading">
+            <div><p class="eyebrow">SELECTED COMPONENTS</p><h2 id="featured-title">A few to explore</h2></div>
+            <p class="section-note">Real demos from the collection, selected for a quick first look.</p>
+          </div>
+          <div class="component-grid" id="featured-grid"></div>
+        </section>
+
+        <section class="library-section section-wrap" id="components" aria-labelledby="library-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">THE COLLECTION</p>
+              <h2 id="library-title">Browse components</h2>
+            </div>
+            <p class="section-note">Search the details. Open a demo. Make it yours.</p>
+          </div>
+          <div class="library-toolbar">
+            <label class="search-box" for="component-search">
+              <span class="search-icon" aria-hidden="true">⌕</span>
+              <input id="component-search" type="search" placeholder="Search buttons, cards, effects..." autocomplete="off">
+              <kbd>/</kbd>
+            </label>
+            <p class="results-count" id="results-count" aria-live="polite">Loading collection...</p>
+          </div>
+          <fieldset class="category-filters" id="category-filters">
+            <legend class="visually-hidden">Filter by category</legend>
+          </fieldset>
+          <div class="component-grid" id="component-grid" aria-live="polite"></div>
+          <div class="empty-state" id="empty-state" hidden>
+            <span class="empty-mark" aria-hidden="true">∅</span>
+            <h3>No components found</h3>
+            <p>Try another search or choose a different category.</p>
+          </div>
+          <div class="load-more-wrap"><button class="button button-secondary" id="load-more" type="button" hidden>Load more</button></div>
+        </section>
+
+        <section class="category-section section-wrap" id="categories" aria-labelledby="categories-title">
+          <div class="section-heading">
+            <div><p class="eyebrow">FIND A STARTING POINT</p><h2 id="categories-title">Categories</h2></div>
+            <p class="section-note">Grouped from the component names and folders.</p>
+          </div>
+          <div class="category-grid" id="category-grid"></div>
+        </section>
+      </div>
+
+      <section class="detail-view section-wrap" id="component-detail" aria-live="polite" hidden></section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="#home"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span><span>component<span class="brand-accent">/</span>field</span></a>
+      <p>Independent HTML, CSS, and JavaScript experiments.</p>
+      <div class="footer-meta"><span>Built for the open web</span><span id="footer-year"></span><a href="https://github.com/kindred-98/Libreria_HTML_CSS" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+    </footer>
+    <output class="toast" id="toast" aria-live="polite"></output>
+  </body>
+</html>

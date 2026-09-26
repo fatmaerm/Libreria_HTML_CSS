@@ -1,35 +1,105 @@
-# Biblioteca de efectos HTML y CSS
+# Biblioteca HTML y CSS
 
-Colección de ejemplos independientes de interfaces y animaciones web. Cada efecto se encuentra en su propia carpeta y, en general, incluye una página HTML y sus estilos; algunos ejemplos también usan JavaScript, SVG, imágenes o recursos externos.
+Biblioteca estática y con búsqueda de demos independientes de interfaces hechos con HTML, CSS y JavaScript. El repositorio contiene actualmente **116 páginas de demos** de botones, tarjetas, navegación, formularios, loaders, galerías, controles y efectos visuales.
 
-La colección contiene **114 carpetas de efectos**. Es una base de demos para explorar y probar componentes, no un paquete único listo para instalar mediante npm.
+La aplicación web está separada en `Web/`; los demos originales permanecen en `BibliotecaDeHtml_CSS/` y se cargan directamente para mostrar vistas previas reales.
 
-## Contenido
+## Características
 
-Entre los ejemplos hay botones, menús y barras de navegación, tarjetas, toggles, loaders, formularios, galerías, cursores y animaciones de texto. La estructura es directa: abre la carpeta del efecto que quieras revisar y busca su `index.html`.
+- Búsqueda por nombre, categoría, descripción y etiquetas.
+- Filtros por categorías inferidas de los nombres de los demos.
+- Sección de destacados con demos existentes.
+- Vistas previas interactivas que cargan el HTML original.
+- Inspección y copia del HTML, CSS y JavaScript local de cada demo.
+- Descargas ZIP solo después de verificar la fuente, los permisos de redistribución y la licencia individual.
+- Tema oscuro y claro con preferencia guardada en el navegador.
+- Diseño adaptable, controles accesibles con teclado y compatibilidad con movimiento reducido.
+- Sin frameworks, backend, instalación de paquetes ni dependencias de compilación.
 
-## Probar un efecto
+## Ejecutar en local
 
-1. Abre la carpeta del efecto en Visual Studio Code.
-2. Inicia un servidor local, por ejemplo con la extensión Live Server.
-3. Abre el `index.html` de esa carpeta en el navegador.
+Regenera el catálogo después de añadir o modificar demos:
 
-Algunas demos cargan fuentes, iconos, bibliotecas o imágenes desde servicios externos. Es posible que esos recursos necesiten conexión a Internet y que no se incluyan al descargar solo los archivos locales.
+```powershell
+node Web/scripts/generate-catalog.mjs
+```
+
+Inicia un servidor estático desde la raíz del repositorio. En Windows puedes usar Python:
+
+```powershell
+py -m http.server 8000
+```
+
+Abre <http://localhost:8000/>. La página raíz redirige a `/Web/`. También puedes iniciar Live Server en VS Code desde la raíz del repositorio. No abras el HTML directamente con `file://`: el navegador necesita acceso HTTP al catálogo y a los archivos fuente.
+
+Node.js 18 o posterior solo hace falta para regenerar el catálogo. El sitio utiliza HTML, CSS y módulos JavaScript.
+
+## Estructura
+
+```text
+.
+|-- BibliotecaDeHtml_CSS/       # Demos originales independientes y sus recursos
+|-- Web/
+|   |-- data/
+|   |   |-- catalog.json        # Índice generado de componentes
+|   |   `-- component-overrides.json
+|   |-- scripts/
+|   |   |-- app.js              # Búsqueda, filtros, detalle, copia y tema
+|   |   |-- build-site.mjs      # Prepara solo demos autorizados
+|   |   |-- generate-catalog.mjs
+|   |   `-- zip.js              # Crea archivos ZIP en el navegador
+|   |-- styles/site.css
+|   `-- index.html
+|-- .github/workflows/          # Despliegue con GitHub Pages
+|-- index.html                  # Entrada a la aplicación web
+|-- LICENSE
+|-- THIRD_PARTY_NOTICES.md
+`-- README.md
+```
+
+## Añadir un demo
+
+1. Crea una carpeta dentro de `BibliotecaDeHtml_CSS/` con un `index.html` y sus recursos locales.
+2. Enlaza el CSS y JavaScript locales desde ese HTML con `<link rel="stylesheet">` y `<script src="...">`.
+3. Ejecuta `node Web/scripts/generate-catalog.mjs`. El generador busca también en carpetas anidadas, lee títulos y referencias locales a CSS/JS, y actualiza `Web/data/catalog.json`.
+4. Si hace falta, añade metadatos revisados a `Web/data/component-overrides.json`. El ID del demo se forma con la ruta de su carpeta en minúsculas y guiones como separadores.
+
+Por ejemplo, la carpeta `My-Hover-Card/` produce el ID `my-hover-card`:
+
+```json
+{
+  "my-hover-card": {
+    "category": "Cards",
+    "description": "A concise, accurate description of the demo.",
+    "tags": ["card", "hover"],
+    "source": "https://example.com/original-source",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "redistributable": true
+  }
+}
+```
+
+Establece `redistributable` en `true` solo después de confirmar los permisos del código y de todos los recursos incluidos. Guarda la licencia completa o el aviso requerido en la ruta indicada por `licenseFile` dentro de la carpeta del demo. Sin esos campos revisados y un archivo de licencia válido, el botón ZIP permanece deshabilitado y el demo queda fuera del artefacto de despliegue.
+
+Las categorías se infieren de los nombres de carpetas y páginas, y se añaden automáticamente cuando aparecen. Usa un override si hay que corregir una categoría o descripción. La búsqueda no distingue mayúsculas y minúsculas.
+
+## Vistas previas y código
+
+Cada tarjeta y página de detalle carga el `index.html` original en un `iframe`, no una captura. El detalle muestra ese HTML y obtiene los archivos CSS y JavaScript locales para los controles de copia. Algunos demos dependen de imágenes, fuentes, iconos o bibliotecas remotas y pueden necesitar conexión a Internet. Los recursos de terceros no se copian automáticamente al repositorio.
+
+Se repararon las cinco referencias locales que estaban rotas: se eliminaron o reemplazaron scripts ausentes, el demo del cursor utiliza su hoja de estilos existente y la tarjeta de película apunta a su `pngwing.png` local con un fondo CSS. La auditoría ya no encuentra referencias locales rotas en HTML. Los derechos de esa imagen y de otros recursos de terceros aún deben verificarse.
 
 ## Procedencia y licencias
 
-**Revisión local realizada el 26 de septiembre de 2026.** Se revisaron las 114 carpetas en busca de archivos de licencia, documentación y menciones de atribución.
+La MIT de la raíz se limita al código original de la aplicación y a la documentación de `kindred-98`; no cubre los demos ni recursos de terceros. **Los 116 demos siguen sin estar verificados para redistribución.** El catálogo mantiene `source` y `license` como `Unverified` hasta que se revisen. Consulta [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Una URL de origen o un repositorio público no constituyen por sí mismos una licencia de redistribución.
 
-- Ninguna carpeta contiene un `README`, `LICENSE`, `LICENCE`, `COPYING` o `NOTICE` propio.
-- En 15 carpetas aparecen palabras o menciones que podrían ayudar a investigar la atribución. Son indicios, no una confirmación de autoría ni de permisos:
+Antes de publicar o distribuir un demo, verifica su procedencia y las condiciones de su código, imágenes, fuentes, iconos y dependencias. Conserva los avisos necesarios, solicita permiso cuando corresponda o excluye el material cuyos derechos no estén claros.
 
-`Animated-nav-bar`, `Blur-Text-Reveal`, `Circular-text-animation`, `Custom-tooltip-animation`, `Dark-text-animation`, `Emerging-tooltip`, `Hamburger-menu`, `Modern-contact-card`, `Neumorphic-range-slider`, `Pagination-animation`, `Pikachu-Card-Hover-Effect`, `Scroll-Effect`, `Stretching-Text-Animation`, `SVG Animated Footer part 01` y `Text-Hover-Effect`.
+## Despliegue
 
-- Varias demos enlazan recursos externos, como imágenes, fuentes, iconos o bibliotecas. Esos recursos pueden tener condiciones distintas a las del código de la demo.
-- El repositorio que contiene esta carpeta incluye una licencia MIT en su raíz. Esa licencia no demuestra por sí sola que todos los ejemplos o recursos de terceros puedan redistribuirse bajo MIT.
+La aplicación es estática y no necesita backend. El [workflow de GitHub Actions](.github/workflows/deploy-pages.yml) regenera el catálogo, prepara solo los componentes autorizados y despliega el artefacto. En la configuración del repositorio, selecciona **Settings → Pages → Source → GitHub Actions**. Para Netlify o Vercel, usa el comando `node Web/scripts/generate-catalog.mjs && node Web/scripts/build-site.mjs .github-pages-site` y configura `.github-pages-site` como directorio de publicación. Hasta que se autorice algún demo, Pages publicará la aplicación sin código de demos ni descargas ZIP.
 
-Por tanto, **la licencia y la procedencia de cada efecto siguen sin estar verificadas**. Antes de publicar descargas ZIP o presentar toda la colección como reutilizable, identifica la fuente y licencia de cada ejemplo y de sus recursos; conserva los avisos requeridos, solicita permiso cuando corresponda o sustituye/excluye lo que no tenga derechos claros. Esta revisión de archivos no es asesoramiento legal.
+## Contribuir
 
-## Preparación para un catálogo web
-
-Para habilitar una ficha y una descarga fiable por efecto, conviene registrar en cada uno su nombre, categoría, autor o fuente, licencia, dependencias externas y archivos que deben incluirse en el ZIP. Los efectos sin procedencia o permisos confirmados deberían quedar fuera de las descargas públicas hasta resolverlos.
+Mantén cada demo independiente, conserva su comportamiento original y evita añadir dependencias a la aplicación del catálogo. Regenera `Web/data/catalog.json` después de cambiar demos, revisa los overrides y prueba las vistas previas y los controles de copia mediante un servidor HTTP local.

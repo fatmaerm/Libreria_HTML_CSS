@@ -1,0 +1,39 @@
+import { cp, mkdir, readFile, writeFile } from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
+const repositoryDirectory = path.resolve(scriptDirectory, "../..");
+const libraryDirectory = path.join(repositoryDirectory, "BibliotecaDeHtml_CSS");
+const catalogFile = path.join(repositoryDirectory, "Web", "data", "catalog.json");
+const outputDirectory = path.resolve(repositoryDirectory, process.argv[2] ?? ".github-pages-site");
+
+if (outputDirectory === repositoryDirectory || !outputDirectory.startsWith(`${repositoryDirectory}${path.sep}`)) {
+  throw new Error("Choose a new output directory inside the repository.");
+}
+
+const catalog = JSON.parse(await readFile(catalogFile, "utf8"));
+const approvedComponents = catalog.filter((component) => component.downloadable === true);
+await mkdir(outputDirectory);
+await cp(path.join(repositoryDirectory, "Web"), path.join(outputDirectory, "Web"), { recursive: true });
+await cp(path.join(repositoryDirectory, "index.html"), path.join(outputDirectory, "index.html"));
+await cp(path.join(repositoryDirectory, "LICENSE"), path.join(outputDirectory, "LICENSE"));
+await cp(path.join(repositoryDirectory, "THIRD_PARTY_NOTICES.md"), path.join(outputDirectory, "THIRD_PARTY_NOTICES.md"));
+
+for (const component of approvedComponents) {
+  const sourceDirectory = path.resolve(libraryDirectory, ...component.folder.split("/"));
+  if (!sourceDirectory.startsWith(`${libraryDirectory}${path.sep}`)) {
+    throw new Error(`Component path escapes the library: ${component.id}`);
+  }
+  const destinationDirectory = path.join(outputDirectory, "BibliotecaDeHtml_CSS", ...component.folder.split("/"));
+  await mkdir(path.dirname(destinationDirectory), { recursive: true });
+  await cp(sourceDirectory, destinationDirectory, { recursive: true });
+}
+
+await writeFile(
+  path.join(outputDirectory, "Web", "data", "catalog.json"),
+  `${JSON.stringify(approvedComponents, null, 2)}\n`,
+  "utf8",
+);
+await writeFile(path.join(outputDirectory, ".nojekyll"), "", "utf8");
+console.log(`Prepared ${approvedComponents.length} cleared component(s) in ${path.relative(repositoryDirectory, outputDirectory)}.`);

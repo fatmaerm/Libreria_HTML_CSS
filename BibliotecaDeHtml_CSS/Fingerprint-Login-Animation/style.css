@@ -12,12 +12,15 @@ body {
   .container {
     align-items: center;
     background: #00539C;
+    border: 0;
     cursor: pointer;
     border-radius: 40px;
     box-shadow: rgba(40, 40, 122, 0.35) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.13) 0px 18px 36px -18px inset;
     display: flex;
     height: 80px;
     justify-content: center;
+    font: inherit;
+    padding: 0;
     position: relative;
     width: 200px;
   }
@@ -29,7 +32,6 @@ body {
     -moz-user-select: none;
   }
   .fingerprint {
-    /* height: 80px; */
     left: -8px;
     opacity: 0;
     position: absolute;

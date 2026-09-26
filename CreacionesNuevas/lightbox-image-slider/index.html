@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lightbox Image Slider</title>
+<meta name="description" content="Grid gallery that opens items in a full-screen lightbox slider.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="grid" id="grid">
+  <div class="thumb" data-i="0" style="background:#1a237e;"><span>🌃</span></div><div class="thumb" data-i="1" style="background:#b71c1c;"><span>🎨</span></div><div class="thumb" data-i="2" style="background:#1b5e20;"><span>🌳</span></div><div class="thumb" data-i="3" style="background:#4a148c;"><span>💜</span></div><div class="thumb" data-i="4" style="background:#e65100;"><span>🔥</span></div><div class="thumb" data-i="5" style="background:#006064;"><span>🌊</span></div>
+</div>
+<div class="lightbox" id="lb">
+  <button class="lb-close" id="lbClose">✕</button>
+  <button class="lb-arr lprev" id="lprev">‹</button>
+  <div class="lb-item" id="lbItem"></div>
+  <button class="lb-arr lnext" id="lnext">›</button>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Carousel Fade Gallery</title>
+<meta name="description" content="Auto-advancing image carousel with crossfade transition and dot controls.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="carousel">
+  <div class="slides" id="slides">
+    <div class="slide" style="background:#1a1a2e;opacity:1" aria-hidden="false"><span>🌌 Galaxy</span></div><div class="slide" style="background:#16213e;opacity:0" aria-hidden="true"><span>🏔️ Mountains</span></div><div class="slide" style="background:#0f3460;opacity:0" aria-hidden="true"><span>🌊 Ocean</span></div><div class="slide" style="background:#1e293b;opacity:0" aria-hidden="true"><span>🌇 City</span></div><div class="slide" style="background:#14532d;opacity:0" aria-hidden="true"><span>🌿 Forest</span></div>
+  </div>
+  <div class="dots" id="dots">
+    <button class="cdot active" data-i="0"></button><button class="cdot" data-i="1"></button><button class="cdot" data-i="2"></button><button class="cdot" data-i="3"></button><button class="cdot" data-i="4"></button>
+  </div>
+  <button class="arr prev" id="prev">‹</button>
+  <button class="arr next" id="next">›</button>
+</div>
+</body>
+</html>

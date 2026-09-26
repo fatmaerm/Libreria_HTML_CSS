@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spotify Music Card</title>
+<meta name="description" content="Music player card with animated progress bar and controls.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="music-card">
+  <div class="album" id="album">🎵</div>
+  <div class="info">
+    <h2 id="trackName">Midnight Drive</h2>
+    <p id="artistName">Neon Horizons</p>
+  </div>
+  <div class="progress-wrap">
+    <div class="bar"><div class="fill" id="fill"></div></div>
+    <div class="times"><span id="cur">0:00</span><span>3:42</span></div>
+  </div>
+  <div class="controls">
+    <button id="prev">⏮</button>
+    <button id="play" class="play-btn">▶</button>
+    <button id="next">⏭</button>
+  </div>
+</div>
+</body>
+</html>

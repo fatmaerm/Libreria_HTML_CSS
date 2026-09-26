@@ -1,0 +1,18 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;background:#121212;font-family:sans-serif}
+.music-card{background:#1e1e1e;border-radius:24px;padding:28px;width:300px;color:#fff;
+  box-shadow:0 20px 60px #000a}
+.album{font-size:5rem;text-align:center;background:linear-gradient(135deg,#1db954,#191414);
+  border-radius:16px;padding:20px;margin-bottom:20px;transition:transform .3s}
+.album.spin{animation:rot 3s linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+.info h2{font-size:1.1rem;margin-bottom:4px}
+.info p{color:#6b7280;font-size:.85rem;margin-bottom:16px}
+.bar{height:4px;background:#333;border-radius:2px;cursor:pointer;margin-bottom:4px}
+.fill{height:100%;background:#1db954;border-radius:2px;width:0%;transition:width .5s}
+.times{display:flex;justify-content:space-between;font-size:.7rem;color:#6b7280}
+.controls{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:16px}
+.controls button{background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;opacity:.7;transition:opacity .2s}
+.controls button:hover{opacity:1}
+.play-btn{font-size:2rem;opacity:1!important;background:#1db954!important;
+  border-radius:50%;width:48px;height:48px;display:grid;place-items:center;font-size:1.2rem}

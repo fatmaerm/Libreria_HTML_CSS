@@ -1,0 +1,10 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;background:#0f172a;font-family:sans-serif;overflow:hidden}
+.scroll-track{width:100%;overflow:hidden;mask:linear-gradient(90deg,transparent,black 15%,black 85%,transparent)}
+.scroll-inner{display:flex;gap:12px;animation:scroll 20s linear infinite;width:max-content}
+.scroll-track:hover .scroll-inner{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.scroll-card{flex:0 0 140px;height:80px;border-radius:12px;background:#1e293b;border:1px solid #334155;
+  display:grid;place-items:center}
+.scroll-card span{color:#94a3b8;font-size:.9rem;font-weight:600}
+@media(prefers-reduced-motion:reduce){.scroll-inner{animation:none}}

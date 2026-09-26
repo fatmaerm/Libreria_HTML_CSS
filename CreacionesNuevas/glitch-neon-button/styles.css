@@ -1,0 +1,15 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;background:#000;font-family:'Courier New',monospace}
+.glitch-btn{position:relative;padding:16px 48px;font-size:1.1rem;letter-spacing:.2em;
+  border:2px solid #0ff;background:transparent;color:#0ff;cursor:pointer;
+  text-transform:uppercase;overflow:hidden;transition:background .2s}
+.glitch-btn:hover{background:#0ff1;box-shadow:0 0 20px #0ff,inset 0 0 20px #0ff2}
+.glitch-btn::before,.glitch-btn::after{content:attr(data-text);position:absolute;
+  inset:0;display:flex;align-items:center;justify-content:center;opacity:0}
+.glitch-btn:hover::before{color:#f0f;opacity:.8;animation:glitch-r .3s infinite}
+.glitch-btn:hover::after{color:#ff0;opacity:.6;animation:glitch-l .3s infinite .15s}
+@keyframes glitch-r{0%{clip-path:inset(20% 0 60% 0);transform:translateX(4px)}
+  50%{clip-path:inset(60% 0 10% 0);transform:translateX(-4px)}100%{clip-path:inset(40% 0 30% 0);transform:translateX(3px)}}
+@keyframes glitch-l{0%{clip-path:inset(10% 0 70% 0);transform:translateX(-3px)}
+  50%{clip-path:inset(50% 0 20% 0);transform:translateX(3px)}100%{clip-path:inset(70% 0 5% 0);transform:translateX(-2px)}}
+@media(prefers-reduced-motion:reduce){.glitch-btn::before,.glitch-btn::after{animation:none}}

@@ -1,0 +1,7 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;background:#18181b}
+.ripple-btn{position:relative;padding:16px 48px;font-size:1rem;letter-spacing:.05em;
+  border:none;border-radius:8px;background:#6366f1;color:#fff;cursor:pointer;overflow:hidden;font-family:sans-serif}
+.ripple-btn .ripple{position:absolute;border-radius:50%;background:#ffffff55;
+  transform:scale(0);animation:ripple .6s linear;pointer-events:none}
+@keyframes ripple{to{transform:scale(4);opacity:0}}

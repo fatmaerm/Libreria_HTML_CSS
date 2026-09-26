@@ -1,0 +1,11 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;padding:24px;background:#0a0a0a;font-family:sans-serif}
+.masonry{columns:3;column-gap:12px}
+@media(max-width:600px){.masonry{columns:2}}
+.item{break-inside:avoid;border-radius:12px;margin-bottom:12px;position:relative;
+  overflow:hidden;cursor:pointer;transition:transform .3s}
+.item:hover{transform:scale(1.02)}
+.overlay{position:absolute;inset:0;background:#00000080;opacity:0;display:grid;
+  place-items:center;transition:opacity .3s;color:#fff;font-size:.9rem}
+.item:hover .overlay{opacity:1}
+@media(prefers-reduced-motion:reduce){.item,.overlay{transition:none}}

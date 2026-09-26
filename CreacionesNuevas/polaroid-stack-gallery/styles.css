@@ -1,0 +1,15 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;background:#0a0a0a;font-family:sans-serif}
+.polaroid-stack{position:relative;width:180px;height:220px}
+.polaroid{position:absolute;inset:0;background:#fff;border-radius:4px;padding:12px 12px 32px;
+  transform:rotate(var(--r));transform-origin:center bottom;
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1);cursor:pointer;
+  box-shadow:0 8px 24px #0008}
+.polaroid-stack:hover .polaroid:nth-child(1){transform:rotate(-35deg) translateX(-60px)}
+.polaroid-stack:hover .polaroid:nth-child(2){transform:rotate(-15deg) translateX(-30px)}
+.polaroid-stack:hover .polaroid:nth-child(3){transform:rotate(0deg)}
+.polaroid-stack:hover .polaroid:nth-child(4){transform:rotate(15deg) translateX(30px)}
+.polaroid-stack:hover .polaroid:nth-child(5){transform:rotate(35deg) translateX(60px)}
+.pol-img{width:100%;height:140px;border-radius:2px;display:grid;place-items:center;font-size:3.5rem}
+.polaroid p{text-align:center;font-size:.7rem;color:#666;margin-top:6px;font-family:'Courier New',monospace}
+@media(prefers-reduced-motion:reduce){.polaroid{transition:none}}

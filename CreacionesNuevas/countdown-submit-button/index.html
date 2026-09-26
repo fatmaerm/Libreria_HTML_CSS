@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Countdown Submit Button</title>
+<meta name="description" content="Submit button with animated countdown progress arc before submission.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<button class="cd-btn" id="cdBtn">
+  <svg class="cd-ring" viewBox="0 0 48 48">
+    <circle class="track" cx="24" cy="24" r="20"/>
+    <circle class="arc" cx="24" cy="24" r="20" id="arc"/>
+  </svg>
+  <span id="cdLabel">Hold to Submit</span>
+</button>
+</body>
+</html>

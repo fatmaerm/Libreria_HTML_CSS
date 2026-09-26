@@ -1,0 +1,16 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;background:#0c1445;font-family:sans-serif}
+.weather-card{background:linear-gradient(160deg,#1a237e,#283593,#1565c0);border-radius:24px;
+  width:300px;overflow:hidden;box-shadow:0 20px 60px #0005;color:#fff}
+.weather-main{padding:28px;text-align:center}
+.weather-icon{font-size:4rem;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.temp{font-size:4rem;font-weight:300;line-height:1}
+.condition{font-size:1rem;opacity:.8;margin:4px 0}
+.location{font-size:.8rem;opacity:.6}
+.forecast{display:flex;background:#ffffff10;backdrop-filter:blur(10px)}
+.day{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:14px 0;
+  font-size:.75rem;opacity:.8;border-left:1px solid #fff1}
+.day:first-child{border-left:none}
+.day span:nth-child(3){font-weight:700;opacity:1}
+@media(prefers-reduced-motion:reduce){.weather-icon{animation:none}}

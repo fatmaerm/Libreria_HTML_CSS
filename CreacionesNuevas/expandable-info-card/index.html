@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Expandable Info Card</title>
+<meta name="description" content="Accordion-style expandable card with smooth height animation.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="exp-card" id="card">
+  <div class="card-header" id="cardHeader">
+    <div class="card-icon">🧠</div>
+    <div>
+      <h2>AI Model Overview</h2>
+      <p>Click to expand details</p>
+    </div>
+    <span class="chevron" id="chev">▾</span>
+  </div>
+  <div class="card-body" id="cardBody">
+    <div class="body-inner">
+      <p>This model was trained on 1T tokens using a distributed pipeline across 512 A100 GPUs.</p>
+      <ul><li>Parameters: 70B</li><li>Context: 128K tokens</li><li>Latency: 40ms p50</li></ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>

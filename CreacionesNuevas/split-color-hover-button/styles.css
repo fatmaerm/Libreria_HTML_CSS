@@ -1,0 +1,10 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;background:#0f0f0f}
+.split-btn{position:relative;padding:16px 56px;font-size:1.1rem;border:2px solid #e11d48;
+  background:transparent;color:#e11d48;cursor:pointer;overflow:hidden;font-family:sans-serif;letter-spacing:.05em}
+.split-btn::after{content:'';position:absolute;inset:0;
+  background:#e11d48;transform:translateX(-101%);transition:transform .4s cubic-bezier(.76,0,.24,1)}
+.split-btn:hover::after{transform:translateX(0)}
+.split-btn:hover span{color:#fff}
+.split-btn span{position:relative;z-index:1;transition:color .4s}
+@media(prefers-reduced-motion:reduce){.split-btn::after{transition:none}.split-btn span{transition:none}}

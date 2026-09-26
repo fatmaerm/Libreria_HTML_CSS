@@ -1,0 +1,16 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;background:#1a1a1a;font-family:'Courier New',monospace}
+.receipt{background:#f5f0e8;width:280px;padding:24px 20px 0;color:#1a1a1a;position:relative;
+  box-shadow:0 20px 60px #0008,4px 4px 0 #d4c9a8,-4px 4px 0 #d4c9a8}
+.shop{font-size:.7rem;letter-spacing:.3em;text-align:center;opacity:.6}
+h2{text-align:center;font-size:1.3rem;margin:4px 0}
+.date{text-align:center;font-size:.7rem;opacity:.5;margin-bottom:16px}
+.dashed{border:none;border-top:2px dashed #888;margin:12px 0}
+.items{list-style:none;font-size:.85rem;display:flex;flex-direction:column;gap:6px}
+.items li{display:flex;justify-content:space-between}
+.total{display:flex;justify-content:space-between;font-weight:700;font-size:1rem;margin:8px 0 16px}
+.perforation{display:flex;gap:0;margin:0 -20px;overflow:hidden}
+.perforation::before{content:'';display:block;width:100%;height:20px;
+  background:radial-gradient(circle at 50% 0,#1a1a1a 10px,#f5f0e8 10px);
+  background-size:20px 20px;background-repeat:repeat-x}
+.thanks{text-align:center;padding:12px 0 16px;font-size:.8rem;opacity:.6}

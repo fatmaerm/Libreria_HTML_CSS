@@ -1,0 +1,15 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;background:#050510}
+.atom{position:relative;width:120px;height:120px}
+.ring{position:absolute;border-radius:50%;border:2px solid transparent;top:50%;left:50%;
+  transform:translate(-50%,-50%)}
+.r1{width:120px;height:40px;border-top-color:#f472b6;border-bottom-color:#f472b6;
+  animation:spin1 1.5s linear infinite}
+.r2{width:120px;height:40px;border-top-color:#818cf8;border-bottom-color:#818cf8;
+  transform:translate(-50%,-50%) rotateY(60deg);animation:spin1 2s linear infinite reverse}
+.r3{width:120px;height:40px;border-top-color:#34d399;border-bottom-color:#34d399;
+  transform:translate(-50%,-50%) rotateY(120deg);animation:spin1 2.5s linear infinite}
+.nucleus{position:absolute;width:18px;height:18px;border-radius:50%;
+  background:#fff;top:50%;left:50%;transform:translate(-50%,-50%);box-shadow:0 0 15px #fff}
+@keyframes spin1{to{transform:translate(-50%,-50%) rotateZ(360deg)}}
+@media(prefers-reduced-motion:reduce){.ring{animation:none}}

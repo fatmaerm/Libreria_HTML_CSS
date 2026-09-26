@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dot Step Pagination</title>
+<meta name="description" content="Animated dot stepper pagination with progress fill.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="stepper">
+  <div class="steps" id="steps">
+    <div class="step" data-n="1"><div class="dot"></div><span>Start</span></div><div class="step" data-n="2"><div class="dot"></div><span>Details</span></div><div class="step" data-n="3"><div class="dot"></div><span>Review</span></div><div class="step" data-n="4"><div class="dot"></div><span>Payment</span></div><div class="step" data-n="5"><div class="dot"></div><span>Done</span></div>
+    <div class="progress-line"><div class="progress-fill" id="pf"></div></div>
+  </div>
+  <div class="step-nav">
+    <button id="prev" disabled>← Back</button>
+    <button id="next">Next →</button>
+  </div>
+</div>
+</body>
+</html>

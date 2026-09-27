@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Voronoi Glass Shatter</title>
+<meta name="description" content="A tempered pane fractures along branching crack fronts into Voronoi shards that separate, spin, fall away and leave a glowing residual rim.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="stage">
+  <header class="mast">
+    <span class="kicker">Fracture Study 01</span>
+    <h1>Voronoi Glass Shatter</h1>
+    <p class="lede">Crack fronts propagate by random walk across the pane until every cell is bounded by a bisector, then the shards unlock, drift outward and fall through the frame.</p>
+  </header>
+
+  <section class="rig">
+    <div class="window">
+      <div class="glassroom" aria-hidden="true">
+        <span class="orb o1"></span>
+        <span class="orb o2"></span>
+        <span class="orb o3"></span>
+        <span class="orb o4"></span>
+        <span class="orb o5"></span>
+        <span class="orb o6"></span>
+        <span class="shaft"></span>
+        <span class="floorline"></span>
+      </div>
+      <canvas class="pane" id="pane" role="img" aria-label="A glass pane that fractures into Voronoi shards, which separate, rotate and fall away while their edges glow."></canvas>
+      <div class="sheen" aria-hidden="true"></div>
+      <div class="vignette" aria-hidden="true"></div>
+      <div class="grain" aria-hidden="true"></div>
+      <span class="corner tl" aria-hidden="true"></span>
+      <span class="corner tr" aria-hidden="true"></span>
+      <span class="corner bl" aria-hidden="true"></span>
+      <span class="corner br" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <div class="hud">
+    <div class="stat"><span class="k">Phase</span><span class="v" id="phase">Intact</span></div>
+    <div class="stat"><span class="k">Shards</span><span class="v" id="cells">0</span></div>
+    <div class="stat"><span class="k">Crack Fronts</span><span class="v" id="fronts">0</span></div>
+    <div class="stat"><span class="k">Integrity</span><span class="v" id="integrity">100%</span></div>
+    <div class="meter"><span id="bar"></span></div>
+  </div>
+
+  <p class="hint">Press anywhere on the pane to trigger the fracture from that point</p>
+</main>
+</body>
+</html>

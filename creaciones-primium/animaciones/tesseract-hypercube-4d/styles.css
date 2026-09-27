@@ -1,0 +1,258 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --ease:cubic-bezier(.42,0,.24,1);
+  --ink:#e6f1ff;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+
+html,body{height:100%}
+
+body{
+  background:#04060d;
+  color:var(--ink);
+  font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow:hidden;
+}
+
+.scene{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  isolation:isolate;
+}
+
+.field{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(112% 82% at 50% 12%,hsla(214,72%,26%,.6) 0%,hsla(214,72%,16%,0) 58%),
+    radial-gradient(90% 70% at 12% 78%,hsla(178,68%,26%,.42) 0%,hsla(178,68%,14%,0) 62%),
+    radial-gradient(96% 74% at 90% 84%,hsla(292,72%,30%,.44) 0%,hsla(292,72%,14%,0) 64%),
+    linear-gradient(180deg,#060a16 0%,#04060d 52%,#020308 100%);
+  animation:fieldPulse 30s var(--ease) infinite;
+}
+
+.nebula{
+  position:absolute;
+  border-radius:50%;
+  mix-blend-mode:screen;
+  pointer-events:none;
+}
+
+.nebula-a{
+  left:-18vmax;
+  top:-14vmax;
+  width:62vmax;
+  height:62vmax;
+  background:radial-gradient(circle at 50% 50%,hsla(188,.86,.44,.4) 0%,hsla(188,.86,.3,.12) 44%,transparent 72%);
+  animation:driftA 42s var(--ease) infinite;
+}
+
+.nebula-b{
+  right:-16vmax;
+  bottom:-18vmax;
+  width:66vmax;
+  height:66vmax;
+  background:radial-gradient(circle at 50% 50%,hsla(288,.84,.46,.38) 0%,hsla(288,.84,.3,.12) 44%,transparent 72%);
+  animation:driftB 50s var(--ease) infinite;
+}
+
+.floor{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:42%;
+  background:
+    linear-gradient(180deg,transparent 0%,hsla(206,60%,8%,.34) 34%,hsla(208,64%,4%,.72) 100%);
+  pointer-events:none;
+}
+
+#hyper{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  touch-action:none;
+  cursor:grab;
+}
+
+#hyper:active{cursor:grabbing}
+
+.grain{
+  position:absolute;
+  inset:-3%;
+  width:106%;
+  height:106%;
+  opacity:.05;
+  mix-blend-mode:overlay;
+  pointer-events:none;
+  animation:grainShift 2.2s steps(4,end) infinite;
+}
+
+.vignette{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(120% 90% at 50% 46%,transparent 40%,hsla(220,70%,3%,.55) 76%,hsla(222,76%,2%,.94) 100%),
+    linear-gradient(180deg,hsla(220,60%,3%,.55) 0%,transparent 16%,transparent 84%,hsla(220,60%,3%,.6) 100%);
+}
+
+.hud{
+  position:absolute;
+  left:clamp(18px,3.2vw,50px);
+  top:clamp(18px,3.2vw,44px);
+  max-width:min(34ch,58vw);
+}
+
+.eyebrow{
+  font-family:var(--mono);
+  font-size:clamp(9px,.78vw,11px);
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  color:hsla(186,90%,84%,.86);
+  text-shadow:0 0 20px hsla(186,90%,60%,.45);
+}
+
+.lede{
+  margin-top:.7em;
+  font-size:clamp(12px,1.02vw,15px);
+  line-height:1.55;
+  font-weight:300;
+  color:hsla(214,44%,86%,.6);
+}
+
+.panel{
+  position:absolute;
+  right:clamp(18px,3.2vw,50px);
+  top:clamp(18px,3.2vw,44px);
+  width:clamp(178px,15vw,232px);
+  padding:clamp(12px,1vw,16px) clamp(13px,1.1vw,18px);
+  border:1px solid hsla(196,70%,70%,.16);
+  border-radius:14px;
+  background:linear-gradient(180deg,hsla(212,60%,14%,.5),hsla(222,64%,6%,.34));
+  -webkit-backdrop-filter:blur(14px) saturate(1.2);
+  backdrop-filter:blur(14px) saturate(1.2);
+  box-shadow:0 22px 60px hsla(222,80%,2%,.5),inset 0 1px 0 hsla(190,80%,90%,.12);
+}
+
+.row{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:12px;
+  padding:.42em 0;
+  border-bottom:1px solid hsla(200,70%,80%,.08);
+}
+
+.row:last-of-type{border-bottom:0}
+
+.k{
+  font-family:var(--mono);
+  font-size:clamp(8.5px,.68vw,10px);
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:hsla(206,40%,80%,.46);
+}
+
+.v{
+  font-family:var(--mono);
+  font-size:clamp(10px,.8vw,12.5px);
+  font-variant-numeric:tabular-nums;
+  color:hsla(188,92%,84%,.92);
+  text-shadow:0 0 14px hsla(188,90%,60%,.4);
+}
+
+.meter{
+  height:3px;
+  margin:.7em 0 .3em;
+  border-radius:3px;
+  background:hsla(200,70%,80%,.12);
+  overflow:hidden;
+}
+
+.meter i{
+  display:block;
+  height:100%;
+  width:50%;
+  border-radius:3px;
+  background:linear-gradient(90deg,hsl(188,92%,62%),hsl(258,88%,72%),hsl(330,92%,72%));
+  box-shadow:0 0 12px hsla(258,90%,66%,.6);
+  transform-origin:left center;
+}
+
+.legend{
+  position:absolute;
+  left:clamp(18px,3.2vw,50px);
+  right:clamp(18px,3.2vw,50px);
+  bottom:clamp(16px,3vw,40px);
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  font-family:var(--mono);
+  font-size:clamp(9px,.72vw,11px);
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:hsla(206,40%,84%,.42);
+}
+
+.hint{
+  padding:.5em 1em;
+  border:1px solid hsla(196,70%,74%,.18);
+  border-radius:999px;
+  color:hsla(190,80%,84%,.66);
+  background:hsla(200,60%,20%,.24);
+}
+
+.readout{color:hsla(214,50%,80%,.34)}
+
+@keyframes fieldPulse{
+  0%,100%{filter:brightness(1) saturate(1)}
+  50%{filter:brightness(1.12) saturate(1.1)}
+}
+
+@keyframes grainShift{
+  0%{transform:translate3d(0,0,0)}
+  25%{transform:translate3d(-1.2%,1.1%,0)}
+  50%{transform:translate3d(1.2%,-1%,0)}
+  75%{transform:translate3d(1.1%,1.2%,0)}
+  100%{transform:translate3d(0,0,0)}
+}
+
+@keyframes driftA{
+  0%,100%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(12vmax,8vmax,0) scale(1.16)}
+}
+
+@keyframes driftB{
+  0%,100%{transform:translate3d(0,0,0) scale(1.06)}
+  50%{transform:translate3d(-13vmax,-7vmax,0) scale(.92)}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .field,.nebula,.grain{animation:none!important}
+  .panel{
+    -webkit-backdrop-filter:none;
+    backdrop-filter:none;
+    background:linear-gradient(180deg,hsla(212,60%,13%,.72),hsla(222,64%,5%,.5));
+  }
+  .field{filter:none}
+}
+
+@media (max-width:760px){
+  .panel{
+    top:auto;
+    bottom:clamp(58px,12vw,84px);
+    right:clamp(14px,3.6vw,24px);
+    width:clamp(150px,42vw,196px);
+    padding:10px 12px;
+  }
+  .row{padding:.3em 0}
+  .lede{font-size:12px;max-width:30ch}
+}

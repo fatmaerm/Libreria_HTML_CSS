@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ferrofluid Spike Crown</title>
+<meta name="description" content="A magnet sweeps above a pool of iron fluid, raising glossy black spikes crowned with iridescent highlights.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="scene">
+  <div class="field-a"></div>
+  <div class="field-b"></div>
+  <div class="horizon"></div>
+  <div class="grid-floor"></div>
+  <canvas class="stage" id="stage" role="img" aria-label="A black magnetic liquid pools in a basin while a magnet passes overhead, raising a crown of glossy spikes"></canvas>
+  <div class="grain"></div>
+  <div class="vignette"></div>
+  <div class="frame"></div>
+
+  <header class="hud">
+    <p class="kicker">Experiment 02 &middot; Ferrofluid</p>
+    <h1>Spike&nbsp;Crown</h1>
+    <p class="sub">Field strength is sampled along the meniscus, lifting jet&#8209;black columns that lean toward the magnet and shimmer with a thin film of interference colour.</p>
+  </header>
+
+  <section class="readout" aria-label="Field readout">
+    <dl class="stats">
+      <div class="stat"><dt>Columns</dt><dd id="rCols">&mdash;</dd></div>
+      <div class="stat"><dt>Peak</dt><dd id="rPeak">&mdash;</dd></div>
+      <div class="stat"><dt>Field</dt><dd id="rField">&mdash;</dd></div>
+      <div class="stat"><dt>State</dt><dd id="rState">Running</dd></div>
+    </dl>
+    <div class="meter" aria-hidden="true"><span class="meter-fill" id="rBar"></span></div>
+    <div class="controls">
+      <button class="btn" type="button" data-gain="0.55">Weak</button>
+      <button class="btn is-on" type="button" data-gain="1">Nominal</button>
+      <button class="btn" type="button" data-gain="1.75">Saturate</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>

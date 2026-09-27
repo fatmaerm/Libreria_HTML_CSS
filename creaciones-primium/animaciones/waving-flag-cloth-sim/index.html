@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Waving Flag Cloth Sim</title>
+<meta name="description" content="A verlet-integrated cloth lattice pinned to a mast ripples under layered wind with a woven emblem.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="scene">
+  <div class="sky"></div>
+  <div class="sun"></div>
+  <div="ridge ridge-far"></div>
+  <div class="ridge ridge-near"></div>
+  <div class="haze"></div>
+  <div class="ground"></div>
+  <canvas class="stage" id="stage" role="img" aria-label="A crimson banner simulated as a springy cloth lattice, rippling in the wind on a steel mast"></canvas>
+  <div class="grain"></div>
+  <div class="vignette"></div>
+  <div class="frame"></div>
+
+  <header class="hud">
+    <p class="kicker">Simulation 01 &middot; Textile Dynamics</p>
+    <h1>Cloth&nbsp;In&nbsp;Motion</h1>
+    <p class="sub">A twenty-two by fifteen verlet lattice, pinned to the hoist and pulled by three superimposed wind bands. Every link is solved six times per frame.</p>
+  </header>
+
+  <section class="readout" aria-label="Simulation readout">
+    <dl class="stats">
+      <div class="stat"><dt>Lattice</dt><dd id="rGrid">&mdash;</dd></div>
+      <div class="stat"><dt>Links</dt><dd id="rLinks">&mdash;</dd></div>
+      <div class="stat"><dt>Wind</dt><dd id="rWind">&mdash;</dd></div>
+      <div class="stat"><dt>State</dt><dd id="rState">Running</dd></div>
+    </dl>
+    <div class="meter" aria-hidden="true"><span class="meter-fill" id="rBar"></span></div>
+    <div class="controls">
+      <button class="btn" type="button" data-wind="0.45">Calm</button>
+      <button class="btn is-on" type="button" data-wind="1">Breeze</button>
+      <button class="btn" type="button" data-wind="2.1">Gale</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>

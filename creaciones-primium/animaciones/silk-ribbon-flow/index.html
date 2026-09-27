@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Silk Ribbon Flow</title>
+<meta name="description" content="Long iridescent silk ribbons twist through a layered violet depth field in a seamless perspective flow.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="scene">
+  <div class="field"></div>
+  <div class="aurora aurora-a"></div>
+  <div class="aurora aurora-b"></div>
+  <div class="aurora aurora-c"></div>
+  <div class="grid"></div>
+
+  <div class="stage">
+    <div class="slot s1">
+      <div class="ribbon">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+    </div>
+    <div class="slot s2">
+      <div class="ribbon">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+    </div>
+    <div class="slot s3">
+      <div class="ribbon">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+    </div>
+    <div class="slot s4">
+      <div class="ribbon">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+    </div>
+    <div class="slot s5">
+      <div class="ribbon">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="motes">
+    <b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b>
+    <b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b>
+  </div>
+
+  <svg class="grain" viewBox="0 0 800 500" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="silkGrain">
+        <feTurbulence type="fractalNoise" baseFrequency="0.86" numOctaves="2" stitchTiles="stitch"></feTurbulence>
+        <feColorMatrix type="saturate" values="0"></feColorMatrix>
+      </filter>
+    </defs>
+    <rect width="800" height="500" filter="url(#silkGrain)"></rect>
+  </svg>
+
+  <div class="vignette"></div>
+
+  <header class="hud">
+    <p class="eyebrow">Silk / Ribbon Flow</p>
+    <p class="lede">Woven strands of light drifting through a violet volume</p>
+  </header>
+
+  <footer class="legend">
+    <span class="key"><i class="sw sw-rose"></i>Rose</span>
+    <span class="key"><i class="sw sw-violet"></i>Violet</span>
+    <span class="key"><i class="sw sw-cyan"></i>Cyan</span>
+    <span class="readout">5 ribbons / 45 strips / 3d weave</span>
+  </footer>
+</main>
+</body>
+</html>

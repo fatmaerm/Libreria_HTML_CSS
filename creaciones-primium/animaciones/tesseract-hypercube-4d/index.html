@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tesseract Hypercube 4D</title>
+<meta name="description" content="A true four dimensional tesseract of sixteen vertices and thirty two edges rotating on two planes and projected through perspective.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="scene">
+  <div class="field"></div>
+  <div class="nebula nebula-a"></div>
+  <div class="nebula nebula-b"></div>
+  <div class="floor"></div>
+  <canvas id="hyper" aria-label="A rotating four dimensional tesseract rendered on canvas"></canvas>
+  <svg class="grain" viewBox="0 0 800 500" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="tessGrain">
+        <feTurbulence type="fractalNoise" baseFrequency="0.88" numOctaves="2" stitchTiles="stitch"></feTurbulence>
+        <feColorMatrix type="saturate" values="0"></feColorMatrix>
+      </filter>
+    </defs>
+    <rect width="800" height="500" filter="url(#tessGrain)"></rect>
+  </svg>
+  <div class="vignette"></div>
+
+  <header class="hud">
+    <p class="eyebrow">Tesseract / 4D Hypercube</p>
+    <p class="lede">Sixteen vertices, thirty two edges, eight cubic cells resolved through two rotating planes of the fourth dimension.</p>
+  </header>
+
+  <section class="panel">
+    <div class="row"><span class="k">Vertices</span><span class="v">16</span></div>
+    <div class="row"><span class="k">Edges</span><span class="v">32</span></div>
+    <div class="row"><span class="k">Cells</span><span class="v">8</span></div>
+    <div class="row"><span class="k">XW plane</span><span class="v" id="angXw">0&deg;</span></div>
+    <div class="row"><span class="k">YW plane</span><span class="v" id="angYw">0&deg;</span></div>
+    <div class="row"><span class="k">W depth</span><span class="v" id="wDepth">0.000</span></div>
+    <div class="meter"><i id="wBar"></i></div>
+    <div class="row"><span class="k">Frames</span><span class="v" id="fps">60 fps</span></div>
+  </section>
+
+  <footer class="legend">
+    <span class="hint">Drag to orbit</span>
+    <span class="readout">4D to 3D to 2D / perspective 3.4</span>
+  </footer>
+</main>
+</body>
+</html>

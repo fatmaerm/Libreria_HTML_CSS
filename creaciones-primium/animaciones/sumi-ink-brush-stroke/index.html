@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sumi Ink Brush Stroke</title>
+<meta name="description" content="A Japanese sumi-e brush stroke drawn by SVG stroke-dashoffset with an absorbing ink blot, capillary tendrils and a dry-brush tail on washi paper.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+
+<svg class="defs" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="inkBleedNear" x="-16%" y="-30%" width="132%" height="160%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.034 0.055" numOctaves="2" seed="8" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="13" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="5.5"/>
+    </filter>
+    <filter id="inkBleedFar" x="-20%" y="-36%" width="140%" height="172%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02 0.038" numOctaves="2" seed="31" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="26" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="13"/>
+    </filter>
+    <filter id="inkBlot" x="-70%" y="-70%" width="240%" height="240%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.055" numOctaves="3" seed="29" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="34" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="3"/>
+    </filter>
+    <filter id="dryNoise" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.014 0.48" numOctaves="2" seed="9" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  2.1 0 0 0 -0.62"/>
+    </filter>
+    <filter id="sealRough" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.14" numOctaves="3" seed="14" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="8" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="washiFibre" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.66 0.94" numOctaves="2" seed="77" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.44" intercept="0"/>
+      </feComponentTransfer>
+    </filter>
+    <filter id="washiCloud" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.0035 0.008" numOctaves="2" seed="52" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.46  0 0 0 0 0.43  0 0 0 0 0.36  0 0 0 0.46 0"/>
+    </filter>
+    <mask id="dryMask" maskUnits="userSpaceOnUse" x="620" y="190" width="340" height="180">
+      <rect x="620" y="190" width="340" height="180" fill="#fff" filter="url(#dryNoise)"/>
+    </mask>
+  </defs>
+</svg>
+
+<div class="studio" aria-hidden="true">
+  <div class="studio__key"></div>
+  <div class="studio__rim"></div>
+  <div class="studio__floor"></div>
+</div>
+
+<main class="stage">
+
+  <section class="scroll" aria-label="Sumi-e brush stroke on washi paper">
+
+    <div class="rod rod--top" aria-hidden="true"><i></i><b></b></div>
+    <div class="rod rod--bottom" aria-hidden="true"><i></i><b></b></div>
+
+    <div class="sheet" aria-hidden="true">
+      <div class="paper"></div>
+      <div class="paper-laid"></div>
+    </div>
+
+    <svg class="ink-stage" viewBox="0 0 1000 640" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+
+      <g class="ink">
+        <path class="halo halo--far" d="M 96 430 C 170 300 240 250 330 258 C 420 266 452 350 520 384 C 596 422 640 380 700 306 C 744 250 820 244 906 300"/>
+        <path class="halo halo--near" d="M 96 430 C 170 300 240 250 330 258 C 420 266 452 350 520 384 C 596 422 640 380 700 306 C 744 250 820 244 906 300"/>
+
+        <g class="body">
+          <path class="spine" d="M 96 430 C 170 300 240 250 330 258 C 420 266 452 350 520 384 C 596 422 640 380 700 306 C 744 250 820 244 906 300"/>
+          <path class="belly seg-c" d="M 520 384 C 596 422 640 380 700 306"/>
+          <path class="belly seg-b" d="M 330 258 C 420 266 452 350 520 384"/>
+          <path class="belly belly--thin seg-a" d="M 96 430 C 170 300 240 250 330 258"/>
+          <path class="tail" d="M 700 306 C 744 250 820 244 906 300" mask="url(#dryMask)"/>
+        </g>
+
+        <g class="gesture">
+          <path class="swipe swipe--wide" d="M 420 486 C 520 542 660 546 792 500"/>
+          <path class="swipe swipe--fine" d="M 150 202 C 300 168 470 176 618 224"/>
+        </g>
+
+        <g class="tendrils">
+          <path d="M 906 300 C 934 280 962 272 992 276"/>
+          <path d="M 906 300 C 886 328 878 358 882 388"/>
+          <path d="M 906 300 C 946 306 976 326 996 356"/>
+          <path d="M 906 300 C 892 272 888 244 896 218"/>
+          <path d="M 906 300 C 930 316 944 340 946 366"/>
+          <path d="M 906 300 C 880 302 858 314 842 332"/>
+        </g>
+
+        <g class="blot">
+          <ellipse class="blot__halo" cx="906" cy="300" rx="48" ry="40"/>
+          <ellipse class="blot__mass" cx="906" cy="300" rx="29" ry="24"/>
+          <circle class="blot__bead" cx="872" cy="332" r="7.5"/>
+          <circle class="blot__bead" cx="946" cy="271" r="5.2"/>
+          <circle class="blot__bead" cx="932" cy="354" r="3.4"/>
+          <circle class="blot__bead" cx="884" cy="266" r="2.6"/>
+        </g>
+      </g>
+
+      <g class="seal">
+        <rect class="seal__block" x="836" y="468" width="66" height="66" rx="2.5"/>
+        <g class="seal__glyph" filter="url(#sealRough)">
+          <path d="M 852 484 C 866 478 884 478 890 488 C 894 496 884 502 872 500 C 858 498 850 492 852 484 Z"/>
+          <path d="M 850 510 C 862 506 886 506 892 514 C 896 520 888 526 874 525 C 860 524 850 520 850 510 Z"/>
+          <path d="M 855 532 L 891 528 L 893 540 L 853 540 Z"/>
+        </g>
+      </g>
+    </svg>
+
+    <div class="rinse" aria-hidden="true"></div>
+    <div class="fibre" aria-hidden="true"><svg><rect width="100%" height="100%" filter="url(#washiFibre)"/></svg></div>
+    <div class="cloud" aria-hidden="true"><svg><rect width="100%" height="100%" filter="url(#washiCloud)"/></svg></div>
+    <div class="paper-vignette" aria-hidden="true"></div>
+    <div class="paper-light" aria-hidden="true"></div>
+    <div class="sheet-shadow" aria-hidden="true"></div>
+  </section>
+
+  <header class="hud hud--tl">
+    <p class="eyebrow">Ink Study Number One</p>
+    <h1 class="title">Sumi Ink Brush Stroke</h1>
+    <p class="lede">Pine-soot stick ink on hand-torn kozo washi</p>
+  </header>
+
+  <footer class="hud hud--br">
+    <p class="gauge"><span class="gauge__k">Phase</span><span class="gauge__v" id="phaseLabel">rest</span></p>
+    <p class="gauge"><span class="gauge__k">Path</span><span class="gauge__v" id="lenLabel">0 units</span></p>
+    <p class="gauge"><span class="gauge__k">Cycle</span><span class="gauge__v">13.0 s</span></p>
+  </footer>
+
+  <p class="hint hud--bl">One pass, then the sheet is rinsed for the next</p>
+
+</main>
+
+</body>
+</html>

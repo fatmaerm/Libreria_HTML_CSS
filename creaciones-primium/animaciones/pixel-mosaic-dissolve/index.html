@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pixel Mosaic Dissolve</title>
+<meta name="description" content="A procedurally generated gradient-and-shape landscape shatters into a staggered grid of squares and reforms along a glowing wavefront.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="aurora" aria-hidden="true"></div>
+<main class="mosaic">
+  <canvas class="mosaic-canvas" id="mosaic" role="img" aria-label="Animated pixel mosaic that dissolves into a grid of squares and reforms."></canvas>
+  <div class="mosaic-scan" aria-hidden="true"></div>
+  <div class="mosaic-edge" aria-hidden="true"></div>
+  <header class="mosaic-head">
+    <span class="eyebrow">Procedural Field</span>
+    <h1>Pixel Mosaic Dissolve</h1>
+    <p>Every square is a sampled gradient. The wavefront scatters them outward, then gathers them back.</p>
+  </header>
+  <div class="mosaic-hud">
+    <div class="hud-line">
+      <span class="hud-key">State</span>
+      <span class="hud-val" id="phaseLabel">Assembled</span>
+    </div>
+    <div class="hud-bar"><i id="barFill"></i></div>
+    <div class="hud-line hud-foot">
+      <span class="hud-dim" id="cellCount">0 cells</span>
+      <span class="hud-dim" id="pctLabel">0%</span>
+    </div>
+  </div>
+  <div class="mosaic-stamp" aria-hidden="true">
+    <span>Grid</span>
+    <span id="gridStamp">00 x 00</span>
+  </div>
+</main>
+</body>
+</html>

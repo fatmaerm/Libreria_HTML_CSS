@@ -1,0 +1,258 @@
+*,*::before,*,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --ink:#f6efe6;
+  --dim:#a99ba8;
+  --amber:#ffb46b;
+  --ember:#ff7a59;
+  --cool:#7fd8e6;
+  --panel:rgba(20,14,26,.6);
+  --line:rgba(255,196,150,.16);
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+
+html,body{height:100%}
+
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:
+    radial-gradient(120% 85% at 50% -14%, #3a2136 0%, #1c1226 40%, #0e0a16 72%, #07060c 100%),
+    #07060c;
+  display:grid;
+  place-items:center;
+  padding:clamp(14px,3.4vw,48px);
+  overflow:hidden;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:repeating-linear-gradient(to bottom, rgba(255,220,190,.028) 0 1px, transparent 1px 4px);
+  mask-image:radial-gradient(120% 100% at 50% 45%, #000 0%, transparent 78%);
+}
+
+.halo{
+  position:fixed;
+  inset:-25%;
+  pointer-events:none;
+  filter:blur(80px);
+  opacity:.55;
+  background:
+    radial-gradient(24% 28% at 26% 24%, rgba(255,150,90,.34), transparent 70%),
+    radial-gradient(28% 26% at 76% 30%, rgba(120,190,230,.22), transparent 72%),
+    radial-gradient(36% 24% at 52% 88%, rgba(255,110,80,.20), transparent 74%);
+  animation:halo 30s ease-in-out infinite alternate;
+}
+
+@keyframes halo{
+  0%{transform:translate3d(-1.5%,1%,0) scale(1)}
+  50%{transform:translate3d(1.5%,-1.5%,0) scale(1.05)}
+  100%{transform:translate3d(1%,2%,0) scale(1.01)}
+}
+
+.rig{
+  position:relative;
+  width:min(100%,1120px);
+  aspect-ratio:16/9;
+  max-height:82vh;
+  border-radius:clamp(12px,1.6vw,22px);
+  overflow:hidden;
+  isolation:isolate;
+  background:#0c0812;
+  border:1px solid rgba(255,190,150,.2);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.06) inset,
+    0 0 0 1px rgba(8,5,12,.9),
+    0 34px 90px -34px rgba(0,0,0,.95),
+    0 0 100px -34px rgba(255,140,90,.45);
+}
+
+.rig-canvas{
+  display:block;
+  width:100%;
+  height:100%;
+  cursor:pointer;
+  touch-action:manipulation;
+  outline:none;
+}
+
+.rig-canvas:focus-visible{
+  box-shadow:0 0 0 2px rgba(255,180,107,.85);
+}
+
+.rig-scan{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:radial-gradient(128% 108% at 50% 46%, transparent 42%, rgba(6,4,10,.6) 100%);
+}
+
+.rig-edge{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius:inherit;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.05) inset,
+    0 0 60px rgba(255,150,90,.10) inset;
+}
+
+.rig-head{
+  position:absolute;
+  top:clamp(14px,2.4vw,30px);
+  left:clamp(14px,2.4vw,30px);
+  max-width:min(56%,330px);
+  pointer-events:none;
+  text-shadow:0 2px 18px rgba(6,3,8,.95);
+}
+
+.eyebrow{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:clamp(8px,.72vw,10px);
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  color:var(--amber);
+  padding-bottom:.55em;
+}
+
+.rig-head h1{
+  font-size:clamp(17px,2.5vw,34px);
+  font-weight:620;
+  line-height:1.04;
+  letter-spacing:-.022em;
+}
+
+.rig-head p{
+  margin-top:.6em;
+  font-size:clamp(10px,.92vw,12.5px);
+  line-height:1.55;
+  color:var(--dim);
+  max-width:31ch;
+}
+
+.rig-hud{
+  position:absolute;
+  left:clamp(14px,2.4vw,30px);
+  bottom:clamp(14px,2.4vw,30px);
+  width:min(56%,290px);
+  padding:clamp(9px,1.1vw,14px) clamp(11px,1.3vw,16px);
+  border-radius:12px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  backdrop-filter:blur(9px) saturate(130%);
+  -webkit-backdrop-filter:blur(9px) saturate(130%);
+  box-shadow:0 16px 40px -22px rgba(0,0,0,.95);
+}
+
+.hud-line{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:10px;
+  font-family:var(--mono);
+  font-size:clamp(8.5px,.74vw,10.5px);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.hud-key{color:var(--dim)}
+
+.hud-val{
+  color:var(--ink);
+  text-shadow:0 0 14px rgba(255,150,90,.6);
+}
+
+.hud-bar{
+  margin:.7em 0 .55em;
+  height:3px;
+  border-radius:3px;
+  background:rgba(255,255,255,.09);
+  overflow:hidden;
+}
+
+.hud-bar i{
+  display:block;
+  height:100%;
+  width:100%;
+  transform-origin:left center;
+  transform:scaleX(0);
+  background:linear-gradient(90deg,var(--cool),var(--amber) 55%,var(--ember));
+  box-shadow:0 0 12px rgba(255,150,90,.65);
+}
+
+.hud-foot{color:var(--dim)}
+
+.rig-meta{
+  position:absolute;
+  right:clamp(14px,2.4vw,30px);
+  top:clamp(14px,2.4vw,30px);
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:.45em;
+  font-family:var(--mono);
+  font-size:clamp(8px,.7vw,10px);
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--dim);
+  pointer-events:none;
+}
+
+.rig-meta span:last-child{
+  color:var(--ink);
+  font-size:clamp(13px,1.35vw,19px);
+  letter-spacing:.12em;
+  padding:.3em .7em;
+  border-radius:8px;
+  background:rgba(14,9,18,.5);
+  border:1px solid var(--line);
+}
+
+.rig-replay{
+  position:absolute;
+  right:clamp(14px,2.4vw,30px);
+  bottom:clamp(14px,2.4vw,30px);
+  font-family:var(--mono);
+  font-size:clamp(9px,.76vw,11px);
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:#1a0f0a;
+  padding:.85em 1.5em;
+  border:0;
+  border-radius:999px;
+  cursor:pointer;
+  background:linear-gradient(140deg,#ffd7a8,var(--amber) 58%,#ff8f5c);
+  box-shadow:0 10px 26px -12px rgba(255,140,80,.9), 0 1px 0 rgba(255,255,255,.5) inset;
+  transition:transform .22s cubic-bezier(.2,.9,.3,1), box-shadow .22s ease, filter .22s ease;
+}
+
+.rig-replay:hover{
+  transform:translateY(-2px);
+  filter:saturate(1.1) brightness(1.04);
+  box-shadow:0 16px 34px -12px rgba(255,140,80,.95), 0 1px 0 rgba(255,255,255,.55) inset;
+}
+
+.rig-replay:active{transform:translateY(0) scale(.985)}
+
+.rig-replay:focus-visible{
+  outline:2px solid var(--cool);
+  outline-offset:3px;
+}
+
+@media (max-width:640px){
+  .rig{aspect-ratio:4/5;max-height:78vh}
+  .rig-head{max-width:72%}
+  .rig-hud{width:calc(100% - clamp(28px,4.8vw,60px));bottom:calc(clamp(14px,2.4vw,30px) + 46px)}
+  .rig-replay{left:clamp(14px,2.4vw,30px);right:auto}
+  .rig-meta{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .halo{animation:none;opacity:.45}
+  .rig-replay{transition:none}
+}

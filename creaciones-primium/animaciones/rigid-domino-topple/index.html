@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rigid Domino Topple</title>
+<meta name="description" content="A curved row of dominoes topples in a gapless chain reaction with gravity-driven angular acceleration and a damped impact rebound.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="halo" aria-hidden="true"></div>
+<main class="rig">
+  <canvas class="rig-canvas" id="stage" tabindex="0" role="img" aria-label="A curved row of dominoes toppling one after another. Press to replay the cascade."></canvas>
+  <div class="rig-scan" aria-hidden="true"></div>
+  <div class="rig-edge" aria-hidden="true"></div>
+  <header class="rig-head">
+    <span class="eyebrow">Rigid Body Cascade</span>
+    <h1>Rigid Domino Topple</h1>
+    <p>Each slab rotates about its base edge under gravity torque until its crown strikes the next one.</p>
+  </header>
+  <div class="rig-hud">
+    <div class="hud-line">
+      <span class="hud-key">Chain</span>
+      <span class="hud-val" id="chainState">Primed</span>
+    </div>
+    <div class="hud-bar"><i id="chainBar"></i></div>
+    <div class="hud-line hud-foot">
+      <span class="hud-dim" id="downCount">0 / 0 down</span>
+      <span class="hud-dim" id="impactCount">0 impacts</span>
+    </div>
+  </div>
+  <div class="rig-meta" aria-hidden="true">
+    <span>Gravity</span>
+    <span id="metaStamp">21.0 rad/s2</span>
+  </div>
+  <button class="rig-replay" id="replay" type="button">Replay cascade</button>
+</main>
+</body>
+</html>

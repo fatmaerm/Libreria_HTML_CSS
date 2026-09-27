@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fourier Epicycles</title>
+<meta name="description" content="Rotating vectors of geometrically decaying radius rebuild a word from its own Fourier spectrum while the tip draws a glowing epicycle trace.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="scene">
+  <div class="mesh" aria-hidden="true"></div>
+  <div class="halo halo-a" aria-hidden="true"></div>
+  <div class="halo halo-b" aria-hidden="true"></div>
+
+  <header class="masthead">
+    <p class="eyebrow"><span class="pip"></span>Harmonic analysis engine</p>
+    <h1>Fourier Epicycles</h1>
+    <p class="lede">A word is sampled, its centre subtracted, and the residual is expanded into a complex spectrum. Every kept coefficient becomes a rotating vector of fixed radius, and the chained tips redraw the letterforms one revolution at a time.</p>
+  </header>
+
+  <section class="stage">
+    <div class="plate">
+      <canvas id="plot"></canvas>
+      <div class="layer mesh-fine" aria-hidden="true"></div>
+      <div class="layer scan" aria-hidden="true"></div>
+      <div class="layer grain" aria-hidden="true"></div>
+      <div class="layer vignette" aria-hidden="true"></div>
+      <div class="split" aria-hidden="true">
+        <div class="cell"><span class="tag">A &middot; Spectrum</span></div>
+        <div class="cell"><span class="tag">B &middot; Reconstruction</span></div>
+      </div>
+    </div>
+
+    <div class="readout">
+      <div class="stat"><span class="sk">Harmonics</span><span class="sv" id="sHarm">0</span></div>
+      <div class="stat"><span class="sk">Live terms</span><span class="sv" id="sTerms">0</span></div>
+      <div class="stat"><span class="sk">Sweep</span><span class="sv" id="sSweep">0%</span></div>
+      <div class="stat"><span class="sk">Largest radius</span><span class="sv" id="sRad">0</span></div>
+      <div class="stat wide"><span class="sk">Cycle</span><span class="sv" id="sLoop">0.0 s</span></div>
+    </div>
+  </section>
+
+  <footer class="footing">
+    <ul class="legend">
+      <li><span class="swatch sw-a"></span>Harmonic vector</li>
+      <li><span class="swatch sw-b"></span>Construction circle</li>
+      <li><span class="swatch sw-c"></span>Accumulated trace</li>
+    </ul>
+    <p class="note">The trace never stops chasing the spectrum &mdash; each revolution closes the loop exactly where it began.</p>
+  </footer>
+</main>
+</body>
+</html>

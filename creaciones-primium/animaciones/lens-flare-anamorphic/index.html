@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lens Flare Anamorphic</title>
+<meta name="description" content="A pulsing light source drives a full cinema flare stack with a blue anamorphic streak, polygonal aperture ghosts on the optical axis and drifting iris rings.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="stage">
+  <header class="mast">
+    <span class="kicker">Optics Bench 02</span>
+    <h1>Lens Flare Anamorphic</h1>
+    <p class="lede">A single pulsing source feeds the whole stack: a bloomed core, a horizontal blue anamorphic streak, eleven polygonal ghosts mirrored along the optical axis, and slow iris rings.</p>
+  </header>
+
+  <section class="cine" id="cine">
+    <div class="backdrop" aria-hidden="true">
+      <span class="haze h1"></span>
+      <span class="haze h2"></span>
+      <span class="haze h3"></span>
+      <span class="haze h4"></span>
+      <span class="haze h5"></span>
+      <span class="shaft"></span>
+      <span class="horizon"></span>
+      <span class="band b1"></span>
+      <span class="band b2"></span>
+    </div>
+
+    <div class="element" aria-hidden="true">
+      <span class="coating"></span>
+      <span class="coating2"></span>
+    </div>
+
+    <div class="flarefield">
+      <div class="optical">
+        <div class="halo" aria-hidden="true"></div>
+
+        <div class="rings" aria-hidden="true">
+          <span class="ring r1"></span>
+          <span class="ring r2"></span>
+          <span class="ring r3"></span>
+          <span class="irisring"></span>
+        </div>
+
+        <div class="anamorphic" aria-hidden="true">
+          <span class="str haze"></span>
+          <span class="str wide"></span>
+          <span class="str mid"></span>
+          <span class="str core"></span>
+          <span class="str spike"></span>
+        </div>
+
+        <div class="stack" aria-hidden="true">
+          <span class="slot sA"><i class="ghost gA"></i></span>
+          <span class="slot sB"><i class="ghost gB"></i></span>
+          <span class="slot sC"><i class="ghost gC"></i></span>
+          <span class="slot sD"><i class="ghost gD"></i></span>
+          <span class="slot sE"><i class="ghost gE"></i></span>
+          <span class="slot sF"><i class="ghost gF"></i></span>
+          <span class="slot sG"><i class="ghost gG"></i></span>
+          <span class="slot sH"><i class="ghost gH"></i></span>
+          <span class="slot sI"><i class="ghost gI"></i></span>
+          <span class="slot sJ"><i class="ghost gJ"></i></span>
+          <span class="slot sK"><i class="ghost gK"></i></span>
+        </div>
+
+        <div class="source" aria-hidden="true">
+          <span class="srcGlow"></span>
+          <span class="srcSpikeH"></span>
+          <span class="srcSpikeV"></span>
+          <span class="srcHot"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="reticle" aria-hidden="true">
+      <span class="tick tk1"></span><span class="tick tk2"></span>
+      <span class="tick tk3"></span><span class="tick tk4"></span>
+      <span class="axisline"></span>
+    </div>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="bar top" aria-hidden="true"></div>
+    <div class="bar bottom" aria-hidden="true"></div>
+    <div class="mark tl" aria-hidden="true"></div>
+    <div class="mark tr" aria-hidden="true"></div>
+    <div class="mark bl" aria-hidden="true"></div>
+    <div class="mark br" aria-hidden="true"></div>
+  </section>
+
+  <div class="hud">
+    <div class="stat"><span class="k">Source Output</span><span class="v" id="out">50%</span></div>
+    <div class="stat"><span class="k">Ghost Chain</span><span class="v" id="ghosts">11</span></div>
+    <div class="stat"><span class="k">Anamorphic</span><span class="v" id="ana">2.00x</span></div>
+    <div class="stat"><span class="k">Bloom</span><span class="v" id="bloom">1.0</span></div>
+    <div class="meter"><span id="bar"></span></div>
+  </div>
+
+  <p class="hint">Move the pointer to steer the light source through the ghost chain</p>
+</main>
+</body>
+</html>

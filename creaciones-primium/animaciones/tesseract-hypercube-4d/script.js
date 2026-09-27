@@ -125,9 +125,9 @@
     W = cw;
     H = ch;
     CX = cw * 0.5;
-    CY = ch * 0.44;
-    RAD = Math.max(118, Math.min(cw * 0.42, ch * 0.32));
-    HZ = ch * 0.72;
+    CY = ch * 0.45;
+    RAD = Math.max(72, Math.min(cw * 0.2, ch * 0.165));
+    HZ = ch * 0.74;
   };
 
   const project = (t, yaw, pit) => {
@@ -298,15 +298,15 @@
     }
   };
 
-  const hud = (t, frames) => {
-    const degX = (TAU * t * 180) / Math.PI % 360;
-    const degY = (-TAU * t * 180) / Math.PI % 360;
+  const hud = (t, frames, yaw) => {
+    const degX = ((TAU * t + yaw) * 180) / Math.PI % 360;
+    const degY = ((-TAU * t + yaw * 0.6) * 180) / Math.PI % 360;
     angXw.textContent = degX.toFixed(1) + '\u00b0';
     angYw.textContent = degY.toFixed(1) + '\u00b0';
     const w = PW[0];
     wDepth.textContent = (w >= 0 ? '+' : '') + w.toFixed(3);
     wBar.style.transform = 'scaleX(' + (0.06 + 0.94 * (w * 0.5 + 0.5)).toFixed(3) + ')';
-    fpsOut.textContent = frames + ' fps';
+    fpsOut.textContent = frames < 0 ? 'still' : frames + ' fps';
   };
 
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -336,7 +336,7 @@
     draw(t, yaw, pit);
     fpsCount++;
     if (now - fpsStamp > 500) {
-      hud(t, Math.round((fpsCount * 1000) / (now - fpsStamp)));
+      hud(t, Math.round((fpsCount * 1000) / (now - fpsStamp)), yaw);
       fpsStamp = now;
       fpsCount = 0;
     }
@@ -358,8 +358,8 @@
   const sync = () => {
     if (motion.matches) {
       stop();
-      draw(0.12, 0.34, -0.26);
-      hud(0.12, 0);
+      draw(0.19, 0.5, -0.3);
+      hud(0.19, -1, 0.5);
     } else {
       start();
     }

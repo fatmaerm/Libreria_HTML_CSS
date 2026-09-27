@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bokeh Depth Of Field</title>
+<meta name="description" content="Night city lights float through eight depth planes as out-of-focus bokeh discs, and moving the pointer racks the focus plane to blur or sharpen each layer.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="stage">
+  <header class="mast">
+    <span class="kicker">Night Study 04</span>
+    <h1>Bokeh Depth Of Field</h1>
+    <p class="lede">Eight depth planes of city lights drift with parallax, each carrying a soft and a defocused copy, so sliding the focus plane cross-fades every disc from tack sharp to fully bloomed.</p>
+  </header>
+
+  <section class="view" id="view">
+    <div class="sky" aria-hidden="true">
+      <span class="cityglow a"></span>
+      <span class="cityglow b"></span>
+      <span class="cityglow c"></span>
+      <span class="haze h1"></span>
+      <span class="haze h2"></span>
+    </div>
+
+    <div class="skyline" id="skyline" aria-hidden="true">
+      <span class="bld b1"></span>
+      <span class="bld b2"></span>
+      <span class="bld b3"></span>
+      <span class="bld b4"></span>
+      <span class="bld b5"></span>
+      <span class="bld b6"></span>
+      <span class="ant a1"></span>
+      <span class="ant a2"></span>
+      <span class="beacon"></span>
+      <span class="street"></span>
+    </div>
+
+    <div class="city" id="city" aria-hidden="true"></div>
+
+    <div class="veil" aria-hidden="true"></div>
+    <div class="vf" aria-hidden="true">
+      <span class="br tl"></span><span class="br tr"></span>
+      <span class="br bl"></span><span class="br br2"></span>
+    </div>
+    <div class="topline" aria-hidden="true"><span>Night Plate</span><span id="tstop">T1.2</span><span>1/8 s</span><span>ISO 1600</span></div>
+    <div class="rail" aria-hidden="true">
+      <span class="railbar"></span>
+      <span class="railticks"></span>
+      <span class="railmark" id="railmark"></span>
+      <span class="raillabel">Focus Plane</span>
+    </div>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+  </section>
+
+  <div class="hud">
+    <div class="stat"><span class="k">Focus Plane</span><span class="v" id="zval">0.50</span></div>
+    <div class="stat"><span class="k">Subject</span><span class="v" id="dist">1.20 m</span></div>
+    <div class="stat"><span class="k">Aperture</span><span class="v" id="ap">T1.2</span></div>
+    <div class="stat"><span class="k">Bokeh Discs</span><span class="v" id="count">0</span></div>
+    <div class="meter"><span id="bar"></span></div>
+  </div>
+
+  <p class="hint">Move the pointer left and right to rack the focus plane across the scene</p>
+</main>
+</body>
+</html>

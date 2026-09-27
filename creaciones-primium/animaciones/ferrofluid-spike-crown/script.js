@@ -15,7 +15,7 @@
   var W = 0, H = 0, DPR = 1;
   var waterY = 0, basinRX = 0, sigma = 0, maxH = 0, idleH = 0;
   var count = 0;
-  var spX, spPhase, spW, spH, spLean, spGrad, edgeBuf, headBuf;
+  var spX, spPhase, spW, spH, spLean, spCx, spCy, spHr, spBy, spGrad, edgeBuf, headBuf;
   var fx = null, fctx = null, fb = null, bctx = null;
   var sparkWhite = null, sparkViolet = null, sparkCyan = null;
   var liquidGrad = null, backGrad = null, frontGrad = null, sheenGrad = null, iridGrad = null, edgeGrad = null;
@@ -73,6 +73,10 @@
     spW = new Float32Array(count);
     spH = new Float32Array(count);
     spLean = new Float32Array(count);
+    spCx = new Float32Array(count);
+    spCy = new Float32Array(count);
+    spHr = new Float32Array(count);
+    spBy = new Float32Array(count);
     edgeBuf = new Float32Array(count * 6);
     headBuf = new Float32Array(count * 3);
     spGrad = [];
@@ -80,7 +84,7 @@
     for (i = 0; i < count; i++) {
       spX[i] = W * 0.055 + (i + 0.5) * ((W * 0.89) / count);
       spPhase[i] = (i * 2.399963) % TAU;
-      spW[i] = Math.max(4.5, ((W * 0.89) / count) * 0.64);
+      spW[i] = Math.max(4, ((W * 0.89) / count) * 0.58);
       var g = ctx.createLinearGradient(spX[i] - spW[i], 0, spX[i] + spW[i], 0);
       g.addColorStop(0, "rgba(6,8,13,1)");
       g.addColorStop(0.16, "rgba(126,146,188,1)");
@@ -193,41 +197,30 @@
   }
 
   function drawSpikes() {
-    var i, x, f, bw, hr, cx, cy, baseY, q;
-    var t = simTime;
+    var i, x, bw, hr, cx, cy, baseY, q;
     fctx.clearRect(0, 0, W, H);
     fctx.globalCompositeOperation = "lighter";
 
     for (i = 0; i < count; i++) {
       x = spX[i];
-      f = fieldAt(x) * gainNow;
-      if (f > 1) f = 1;
-      var wave = idleH * (0.55 + 0.45 * Math.sin(t * 1.7 + spPhase[i] + x * 0.008));
-      var target = wave + f * maxH * (0.87 + 0.13 * Math.sin(t * 2.9 + spPhase[i] * 1.7));
-      spH[i] += (target - spH[i]) * 0.16;
-      spLean[i] += ((magX - x) * 0.05 * f - spLean[i]) * 0.13;
-
-      var h = spH[i];
       bw = spW[i];
-      var sway = Math.sin(t * 2.35 + spPhase[i]) * h * 0.035 + Math.sin(t * 5.1 + spPhase[i] * 2.3) * h * 0.012;
-      var lean = spLean[i] + sway;
-      baseY = waterY + 2 + Math.sin(x * 0.011 + t * 1.15) * H * 0.004;
-      hr = bw * 0.62 * (1 + f * 0.32);
-      cx = x + lean;
-      cy = baseY - h + hr;
+      hr = spHr[i];
+      cx = spCx[i];
+      cy = spCy[i];
+      baseY = spBy[i];
 
       ctx.beginPath();
       ctx.moveTo(x - bw, baseY);
-      ctx.bezierCurveTo(x - bw * 0.85, baseY - h * 0.5, cx - hr * 0.35, cy + hr * 1.7, cx - hr, cy);
+      ctx.bezierCurveTo(x - bw * 0.85, baseY - spH[i] * 0.5, cx - hr * 0.35, cy + hr * 1.7, cx - hr, cy);
       ctx.arc(cx, cy, hr, Math.PI, TAU, false);
-      ctx.bezierCurveTo(cx + hr * 0.35, cy + hr * 1.7, x + bw * 0.85, baseY - h * 0.5, x + bw, baseY);
+      ctx.bezierCurveTo(cx + hr * 0.35, cy + hr * 1.7, x + bw * 0.85, baseY - spH[i] * 0.5, x + bw, baseY);
       ctx.closePath();
       ctx.fillStyle = spGrad[i];
       ctx.fill();
 
       q = i * 6;
       edgeBuf[q] = x - bw * 0.5;
-      edgeBuf[q + 1] = baseY - h * 0.04;
+      edgeBuf[q + 1] = baseY - spH[i] * 0.04;
       edgeBuf[q + 2] = cx - hr * 0.9;
       edgeBuf[q + 3] = cy + hr * 0.5;
       edgeBuf[q + 4] = cx - hr * 0.82;
@@ -378,6 +371,27 @@
     ctx.restore();
   }
 
+  function integrate(dt) {
+    var i, x, f, h, t = simTime;
+    for (i = 0; i < count; i++) {
+      x = spX[i];
+      f = fieldAt(x) * gainNow;
+      if (f > 1) f = 1;
+      var wave = idleH * (0.55 + 0.45 * Math.sin(t * 1.7 + spPhase[i] + x * 0.008));
+      var target = wave + f * maxH * (0.88 + 0.12 * Math.sin(t * 2.9 + spPhase[i] * 1.7));
+      var k = 1 - Math.exp(-dt / 0.09);
+      spH[i] += (target - spH[i]) * k;
+      spLean[i] += ((magX - x) * 0.05 * f - spLean[i]) * (1 - Math.exp(-dt / 0.11));
+      h = spH[i];
+      var bw = spW[i];
+      var sway = Math.sin(t * 2.35 + spPhase[i]) * h * 0.035 + Math.sin(t * 5.1 + spPhase[i] * 2.3) * h * 0.012;
+      spCx[i] = x + spLean[i] + sway;
+      spBy[i] = waterY + 2 + Math.sin(x * 0.011 + t * 1.15) * H * 0.004;
+      spHr[i] = bw * 0.58 * (1 + f * 0.3);
+      spCy[i] = spBy[i] - h + spHr[i];
+    }
+  }
+
   function update(dt) {
     simTime += dt;
     var ph = (simTime / PERIOD) * TAU;
@@ -394,6 +408,7 @@
     magY += (autoY - magY) * k;
     magTilt = autoT;
     gainNow += (gain - gainNow) * 0.08;
+    integrate(dt);
   }
 
   function render() {
@@ -440,7 +455,7 @@
     live = false;
     gainNow = gain;
     var i;
-    for (i = 0; i < 48; i++) update(1 / 60);
+    for (i = 0; i < 90; i++) update(1 / 60);
     if (outState) outState.textContent = "Held";
     render();
   }

@@ -1,0 +1,94 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{overflow:hidden;background:#04141f;color:#dcedf2;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.shore{position:relative;width:100%;height:100vh;height:100svh;overflow:hidden;isolation:isolate;background:linear-gradient(180deg,#0a2740 0%,#154e63 34%,#3d8490 66%,#9fc4bd 88%,#e6cfa8 100%)}
+.shore__defs{position:absolute;left:0;top:0;width:0;height:0;overflow:hidden}
+.shore__sky{position:absolute;left:0;right:0;top:0;height:46%;background:radial-gradient(60% 120% at 66% 96%,rgba(255,224,168,.34),rgba(255,206,140,.08) 42%,transparent 74%)}
+.shore__cloud{position:absolute;left:0;width:200%;background-repeat:repeat-x;background-size:50% 100%;will-change:transform;pointer-events:none}
+.shore__cloud--a{top:6%;height:22%;opacity:.5;filter:blur(clamp(9px,1.3vw,20px));background-image:radial-gradient(46% 62% at 18% 60%,rgba(196,224,232,.5),transparent 72%),radial-gradient(34% 48% at 46% 42%,rgba(146,190,206,.4),transparent 74%),radial-gradient(52% 70% at 76% 66%,rgba(214,232,236,.44),transparent 72%);animation:drift 192s linear infinite}
+.shore__cloud--b{top:19%;height:18%;left:-100%;opacity:.4;filter:blur(clamp(12px,1.7vw,26px));background-image:radial-gradient(40% 58% at 30% 50%,rgba(255,226,182,.44),transparent 72%),radial-gradient(30% 44% at 66% 62%,rgba(226,236,240,.3),transparent 76%);animation:driftR 96s linear infinite}
+.shore__sun{position:absolute;left:66%;top:25%;width:clamp(58px,8.2vmin,124px);aspect-ratio:1;transform:translate(-50%,-50%)}
+.shore__sun::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,#fffaf0 8%,#ffe6b4 40%,rgba(255,206,140,.3) 66%,transparent 78%);box-shadow:0 0 70px 26px rgba(255,208,144,.2)}
+.shore__sun i{position:absolute;left:50%;top:50%;width:190%;height:190%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(255,224,172,.26),rgba(255,210,150,.08) 40%,transparent 68%);animation:halo 24s ease-in-out infinite alternate}
+.shore__rays{position:absolute;left:66%;top:25%;width:200vmax;height:200vmax;transform:translate(-50%,-50%);pointer-events:none;mix-blend-mode:screen;opacity:.46;filter:blur(7px);background:repeating-conic-gradient(from 0deg,rgba(255,238,204,.2) 0deg 1.1deg,rgba(255,238,204,.05) 1.1deg 3deg,transparent 3deg 9deg);-webkit-mask-image:radial-gradient(closest-side,#000,rgba(0,0,0,.55) 46%,transparent 74%);mask-image:radial-gradient(closest-side,#000,rgba(0,0,0,.55) 46%,transparent 74%);animation:spin 192s linear infinite}
+.shore__sea{position:absolute;left:0;right:0;top:44%;bottom:0;overflow:hidden}
+.shore__sea::before{content:"";position:absolute;left:0;right:0;top:0;bottom:0;background:linear-gradient(180deg,#2c6f81 0%,#1c5568 28%,#103e51 68%,#082b3a 100%)}
+.band{position:absolute;left:0;width:200%;will-change:transform;animation:drift 96s linear infinite}
+.band--r{left:-100%;animation-name:driftR}
+.band--far{top:0;height:34%;animation-duration:96s;filter:blur(.6px)}
+.band--mid{top:5.5%;height:41%;animation-duration:48s;filter:blur(.4px)}
+.band--near{top:12.5%;height:47%;animation-duration:32s}
+.band--front{top:21%;height:56%;animation-duration:24s}
+.band--wash{top:33%;height:74%;animation-duration:16s}
+.band__bob{width:100%;height:100%;will-change:transform;animation:bob 32s ease-in-out infinite alternate}
+.band--mid .band__bob{animation-duration:24s;animation-direction:alternate-reverse}
+.band--near .band__bob{animation-name:bobS;animation-duration:16s}
+.band--front .band__bob{animation-name:bobS;animation-duration:12s;animation-direction:alternate-reverse}
+.band--wash .band__bob{animation-name:bobS;animation-duration:8s}
+.band svg{display:block;width:100%;height:100%;overflow:visible}
+.crest{fill:none;stroke:rgba(214,244,248,.3);stroke-width:1.1;vector-effect:non-scaling-stroke}
+.band--mid .crest{stroke:rgba(212,242,248,.36);stroke-width:1.3}
+.band--near .crest{stroke:rgba(230,250,252,.5);stroke-width:1.5}
+.band--front .crest{stroke:rgba(240,253,255,.6);stroke-width:1.9}
+.band--wash .crest{stroke:rgba(242,255,255,.66);stroke-width:2.3}
+.foam{fill:#eafbff}
+.band--mid .foam{opacity:.5}
+.band--near .foam{opacity:.78}
+.band--front .foam{opacity:.92}
+.band--wash .foam{opacity:1}
+.shore__glint{position:absolute;left:0;right:0;top:44%;bottom:0;pointer-events:none;mix-blend-mode:screen;-webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.5) 44%,transparent 90%);mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.5) 44%,transparent 90%)}
+.shore__glint i{position:absolute;left:22%;right:6%;top:0;height:220%;background-image:repeating-linear-gradient(180deg,rgba(255,238,198,.19) 0 .16vh,rgba(255,238,198,0) .16vh 2.4vh);animation:glint 6s linear infinite}
+.shore__bloom{position:absolute;left:0;right:0;top:44%;bottom:0;pointer-events:none;mix-blend-mode:screen;background:radial-gradient(26% 92% at 66% 0%,rgba(255,232,186,.3),rgba(255,224,170,.07) 52%,transparent 82%);animation:bloom 12s ease-in-out infinite alternate}
+.shore__mist{position:absolute;left:-10%;right:-10%;top:40%;height:12%;pointer-events:none;background:linear-gradient(180deg,rgba(214,236,238,0),rgba(206,230,234,.2) 46%,rgba(198,224,230,0));filter:blur(clamp(6px,1vw,14px));animation:mist 24s ease-in-out infinite alternate}
+.shore__beach{position:absolute;left:0;right:0;bottom:0;height:16%;pointer-events:none;background:linear-gradient(180deg,rgba(3,14,22,0),rgba(3,13,20,.55) 62%,rgba(2,9,15,.85) 100%)}
+.shore__vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(122% 96% at 52% 40%,transparent 38%,rgba(3,14,22,.34) 74%,rgba(2,8,14,.82) 100%)}
+.shore__grain{position:absolute;left:-30%;top:-30%;width:160%;height:160%;pointer-events:none;opacity:.07;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px;animation:grain 1.3s steps(1,end) infinite}
+.plate{position:absolute;left:clamp(18px,4vw,58px);bottom:clamp(18px,4.2vh,52px);z-index:6;max-width:min(74vw,440px);pointer-events:none}
+.plate__eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:clamp(9px,.72vw,11px);letter-spacing:.36em;text-transform:uppercase;color:rgba(255,232,190,.72)}
+.plate__title{margin-top:.55rem;font-size:clamp(1.1rem,2.5vw,1.75rem);font-weight:500;letter-spacing:.005em;color:#f2fafc;text-shadow:0 2px 22px rgba(0,10,18,.7)}
+.plate__rule{height:1px;margin:.72rem 0;background:linear-gradient(90deg,rgba(255,226,178,.6),rgba(255,226,178,.06))}
+.plate__meta{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:clamp(9px,.72vw,11px);letter-spacing:.2em;color:rgba(206,234,240,.58)}
+@keyframes drift{to{transform:translate3d(-50%,0,0)}}
+@keyframes driftR{to{transform:translate3d(50%,0,0)}}
+@keyframes bob{
+  0%{transform:translate3d(0,-2.2%,0)}
+  100%{transform:translate3d(0,1.3%,0)}
+}
+@keyframes bobS{
+  0%{transform:translate3d(0,-3.6%,0)}
+  100%{transform:translate3d(0,2.2%,0)}
+}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes halo{
+  0%{transform:translate(-50%,-50%) scale(.86);opacity:.62}
+  100%{transform:translate(-50%,-50%) scale(1.16);opacity:1}
+}
+@keyframes glint{to{transform:translate3d(0,-1.2vh,0)}}
+@keyframes bloom{
+  0%{opacity:.5;transform:scaleY(.94)}
+  100%{opacity:1;transform:scaleY(1.06)}
+}
+@keyframes mist{
+  0%{transform:translate3d(-2%,0,0);opacity:.5}
+  100%{transform:translate3d(2%,.8%,0);opacity:1}
+}
+@keyframes grain{
+  0%{transform:translate3d(0,0,0)}
+  25%{transform:translate3d(-70px,48px,0)}
+  50%{transform:translate3d(58px,-66px,0)}
+  75%{transform:translate3d(-44px,-32px,0)}
+  100%{transform:translate3d(0,0,0)}
+}
+@media (prefers-reduced-motion:reduce){
+  .band,.band__bob,.shore__cloud,.shore__sun i,.shore__rays,.shore__glint i,.shore__bloom,.shore__mist,.shore__grain{animation:none}
+  .shore__rays{transform:translate(-50%,-50%)}
+  .shore__grain{opacity:.045}
+  .shore__cloud--a{transform:translate3d(-12%,0,0)}
+  .shore__cloud--b{transform:translate3d(14%,0,0)}
+  .band--far{transform:translate3d(-18%,0,0)}
+  .band--mid{transform:translate3d(16%,0,0)}
+  .band--near{transform:translate3d(-8%,0,0)}
+  .band--front{transform:translate3d(-11%,0,0)}
+  .band--wash{transform:translate3d(22%,0,0)}
+  .shore__glint i{transform:translate3d(0,-.6vh,0)}
+}

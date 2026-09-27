@@ -187,6 +187,8 @@ body::after{
 
 .hud-foot{color:var(--dim)}
 
+.hud-dim{color:var(--dim)}
+
 .rig-meta{
   position:absolute;
   right:clamp(14px,2.4vw,30px);

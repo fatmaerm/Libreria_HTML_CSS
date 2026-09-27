@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mandelbrot Fractal Zoom</title>
+<meta name="description" content="An uninterrupted dive into the Mandelbrot boundary, shaded by escape time on a low resolution buffer that is upscaled smoothly to hold a steady frame rate.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="scene">
+  <div class="mesh" aria-hidden="true"></div>
+  <div class="halo halo-a" aria-hidden="true"></div>
+  <div class="halo halo-b" aria-hidden="true"></div>
+
+  <header class="masthead">
+    <p class="eyebrow"><span class="pip"></span>Escape time field</p>
+    <h1>Mandelbrot Fractal Zoom</h1>
+    <p class="lede">Every cell of a tiny offscreen buffer is iterated against the escape radius, shaded by how many steps it survives, then stretched across the plate by the compositor. The camera descends to a filament on the boundary and climbs straight back out.</p>
+  </header>
+
+  <section class="stage">
+    <div class="plate">
+      <canvas id="plot"></canvas>
+      <div class="layer scan" aria-hidden="true"></div>
+      <div class="layer grain" aria-hidden="true"></div>
+      <div class="layer vignette" aria-hidden="true"></div>
+      <div class="hudlayer" aria-hidden="true">
+        <span class="tag tag-tl">c = <b id="sC">-0.7436 + 0.1318i</b></span>
+        <span class="tag tag-tr">iters <b id="sIter">90</b></span>
+        <span class="tag tag-bl">buffer <b id="sBuf">150 &times; 94</b></span>
+        <span class="tag tag-br"><b id="sFps">60</b> fps</span>
+      </div>
+    </div>
+
+    <div class="readout">
+      <div class="stat"><span class="sk">Magnification</span><span class="sv" id="sZoom">1&times;</span></div>
+      <div class="stat"><span class="sk">Half height</span><span class="sv" id="sSpan">0.000e+0</span></div>
+      <div class="stat"><span class="sk">Re centre</span><span class="sv" id="sDrift">0.0&times;</span></div>
+      <div class="stat"><span class="sk">Rows / frame</span><span class="sv" id="sRows">0</span></div>
+      <div class="stat wide"><span class="sk">Phase</span><span class="sv" id="sPhase">Descent</span></div>
+    </div>
+  </section>
+
+  <footer class="footing">
+    <ul class="legend">
+      <li><span class="swatch sw-1"></span>Short escape</li>
+      <li><span class="swatch sw-2"></span>Boundary band</li>
+      <li><span class="swatch sw-3"></span>Interior</li>
+    </ul>
+    <p class="note">Move the pointer across the plate to sample the escape count under the reticle.</p>
+  </footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Moire Interference Drift</title>
+<meta name="description" content="Two counter-rotating line lattices beat against each other in blended colour to drift a seamless interference field.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="scene">
+  <div class="backdrop"></div>
+  <div class="sheen"></div>
+  <div class="horizon"></div>
+  <div class="floor"></div>
+
+  <div class="lens">
+    <div class="plate">
+      <div class="grid grid-a"></div>
+      <div class="grid grid-b"></div>
+      <div class="grid grid-rings"></div>
+      <div class="grid grid-scan"></div>
+      <div class="sweep"></div>
+      <div class="reticle">
+        <span class="dial"></span>
+        <span class="dial dial-in"></span>
+        <span class="core"></span>
+      </div>
+    </div>
+    <div class="rim"></div>
+    <div class="halo"></div>
+  </div>
+
+  <div class="grain"></div>
+  <div class="vignette"></div>
+  <div class="frame"></div>
+
+  <header class="hud">
+    <p class="kicker">Study 03 &middot; Optics</p>
+    <h1>Moir&eacute; Drift</h1>
+    <p class="sub">Two line lattices at seven and nine pixels rotate against each other, their beat frequency sweeping the aperture as the fringe sets slide, lock and dissolve.</p>
+  </header>
+
+  <section class="readout" aria-label="Interference readout">
+    <dl class="stats">
+      <div class="stat"><dt>Lattice A</dt><dd>7 px</dd></div>
+      <div class="stat"><dt>Lattice B</dt><dd>9 px</dd></div>
+      <div class="stat"><dt>Rings</dt><dd>24 px</dd></div>
+      <div class="stat"><dt>Cycle</dt><dd>64 s</dd></div>
+    </dl>
+    <div class="meter" aria-hidden="true"><span class="meter-fill"></span></div>
+    <div class="tagline">
+      <span class="tag">Difference</span>
+      <span class="tag">Screen</span>
+      <span class="tag">Soft light</span>
+    </div>
+  </section>
+</main>
+</body>
+</html>

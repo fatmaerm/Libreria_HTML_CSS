@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lissajous Harmonograph</title>
+<meta name="description" content="Two damped pendulums of drifting phase superpose their motion to ink Lissajous figures that reveal themselves through an animated stroke dash.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="scene">
+  <div class="mesh" aria-hidden="true"></div>
+  <div class="halo halo-a" aria-hidden="true"></div>
+  <div class="halo halo-b" aria-hidden="true"></div>
+
+  <header class="masthead">
+    <p class="eyebrow"><span class="pip"></span>Dual pendulum plotter</p>
+    <h1>Lissajous Harmonograph</h1>
+    <p class="lede">Two independent oscillators swing with their own periods, phase offsets and damping. The pen rides the superposition, and because the amplitudes bleed away the figure closes on itself instead of repeating forever.</p>
+  </header>
+
+  <section class="stage">
+    <div class="plate">
+      <canvas id="plot"></canvas>
+      <div class="layer mesh-fine" aria-hidden="true"></div>
+      <div class="layer scan" aria-hidden="true"></div>
+      <div class="layer grain" aria-hidden="true"></div>
+      <div class="layer vignette" aria-hidden="true"></div>
+      <div class="tags" aria-hidden="true">
+        <span class="tag tag-a">Arm X &middot; 1.00 Hz</span>
+        <span class="tag tag-b">Arm Y &middot; 1.00 Hz</span>
+        <span class="tag tag-p">Pen carriage</span>
+      </div>
+      <div class="carriage" aria-hidden="true"></div>
+    </div>
+
+    <div class="readout">
+      <div class="stat"><span class="sk">Ratio</span><span class="sv" id="sRatio">0 : 0</span></div>
+      <div class="stat"><span class="sk">Phase drift</span><span class="sv" id="sPhase">0&deg;</span></div>
+      <div class="stat"><span class="sk">Damping</span><span class="sv" id="sDamp">0.00</span></div>
+      <div class="stat"><span class="sk">Ink laid</span><span class="sv" id="sInk">0%</span></div>
+      <div class="stat wide"><span class="sk">Figure</span><span class="sv" id="sFig">I / IV</span></div>
+    </div>
+  </section>
+
+  <footer class="footing">
+    <ul class="legend">
+      <li><span class="swatch sw-x"></span>Horizontal arm</li>
+      <li><span class="swatch sw-y"></span>Vertical arm</li>
+      <li><span class="swatch sw-p"></span>Superposed trace</li>
+    </ul>
+    <p class="note">Each figure is etched over fifteen seconds, held, then allowed to fade while the next ratio is wound in.</p>
+  </footer>
+</main>
+</body>
+</html>

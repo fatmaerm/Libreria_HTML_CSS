@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Voxel Block Builder</title>
+<meta name="description" content="An isometric voxel monolith assembles block by block with edge glow, a build progress readout and a slowly drifting camera.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="glowfield" aria-hidden="true"></div>
+<main class="vox">
+  <canvas class="vox-canvas" id="stage" role="img" aria-label="An isometric voxel structure assembling itself one block at a time on a glowing plinth."></canvas>
+  <div class="vox-scan" aria-hidden="true"></div>
+  <div class="vox-edge" aria-hidden="true"></div>
+  <header class="vox-head">
+    <span class="eyebrow">Isometric Assembly</span>
+    <h1>Voxel Block Builder</h1>
+    <p>Each cube drops into the lattice along the build order, edge-lit, while the camera drifts around the plinth.</p>
+  </header>
+  <div class="vox-hud">
+    <div class="hud-line">
+      <span class="hud-key">Stage</span>
+      <span class="hud-val" id="stageLabel">Standby</span>
+    </div>
+    <div class="vox-segs" id="segs" aria-hidden="true"></div>
+    <div class="hud-line hud-foot">
+      <span class="hud-dim" id="countLabel">000 / 000 voxels</span>
+      <span class="hud-dim" id="pctLabel">0%</span>
+    </div>
+  </div>
+  <div class="vox-meta" aria-hidden="true">
+    <span>Lattice</span>
+    <span id="metaStamp">7 x 7 x 7</span>
+  </div>
+</main>
+</body>
+</html>

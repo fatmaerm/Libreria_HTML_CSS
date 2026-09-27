@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ECG Heartbeat Pulse</title>
+<meta name="description" content="A PQRST electrocardiogram trace sweeps across medical grid paper with a glowing sweep line, live BPM readout and a heart pulse locked to the R spike.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="glowfield" aria-hidden="true"></div>
+<main class="ecg">
+  <section class="ecg-screen">
+    <canvas class="ecg-canvas" id="trace" role="img" aria-label="A live ECG trace sweeping across medical grid paper, repeating the P Q R S T waveform once per heartbeat."></canvas>
+    <div class="ecg-scan" aria-hidden="true"></div>
+    <div class="ecg-inner" aria-hidden="true"></div>
+    <header class="ecg-head">
+      <span class="eyebrow">Lead II</span>
+      <h1>Heartbeat Pulse</h1>
+      <p>One PQRST complex per cycle, drawn from gaussian pulses and scrolled by a constant sweep.</p>
+    </header>
+    <div class="ecg-monitor">
+      <div class="mon-heart" id="heartWrap">
+        <span class="heart-shape" id="heart"></span>
+        <span class="heart-ring" id="ring"></span>
+      </div>
+      <div class="mon-rate">
+        <span class="mon-num" id="bpm">72</span>
+        <span class="mon-unit">bpm</span>
+      </div>
+    </div>
+    <div class="ecg-meta">
+      <div class="meta-row"><span>RR</span><span id="rrVal">833 ms</span></div>
+      <div class="meta-row"><span>Beats</span><span id="beatVal">0000</span></div>
+      <div class="meta-row"><span>Gain</span><span>10 mm/mV</span></div>
+    </div>
+    <div class="ecg-phase" id="phaseBar" aria-hidden="true">
+      <span data-p="p">P</span>
+      <span data-p="qrs">QRS</span>
+      <span data-p="t">T</span>
+    </div>
+  </section>
+  <div class="ecg-strip">
+    <canvas class="ecg-strip-canvas" id="strip" role="img" aria-label="Reference strip labelling the P, Q, R, S and T components of a single cardiac cycle."></canvas>
+  </div>
+</main>
+</body>
+</html>

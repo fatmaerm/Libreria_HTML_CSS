@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fiber Optic Light Stream</title>
+<meta name="description" content="Pulses of light enter a branching fibre bundle, split at every junction and bloom where each strand ends.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="scene">
+  <div class="glow-a"></div>
+  <div class="glow-b"></div>
+  <div class="bench"></div>
+  <div class="bench-grid"></div>
+  <canvas class="stage" id="stage" role="img" aria-label="Light pulses travel a branching bundle of fibre optic strands and glow at each terminal end"></canvas>
+  <div class="grain"></div>
+  <div class="vignette"></div>
+  <div class="frame"></div>
+
+  <header class="hud">
+    <p class="kicker">Network 04 &middot; Photonics</p>
+    <h1>Light&nbsp;Stream</h1>
+    <p class="sub">Pulses enter a single trunk, then divide at every junction and travel the full length of the bundle, flaring to white where a strand terminates.</p>
+  </header>
+
+  <section class="readout" aria-label="Bundle readout">
+    <dl class="stats">
+      <div class="stat"><dt>Strands</dt><dd id="rStrands">&mdash;</dd></div>
+      <div class="stat"><dt>Junctions</dt><dd id="rJunc">&mdash;</dd></div>
+      <div class="stat"><dt>In flight</dt><dd id="rLive">&mdash;</dd></div>
+      <div class="stat"><dt>State</dt><dd id="rState">Running</dd></div>
+    </dl>
+    <div class="meter" aria-hidden="true"><span class="meter-fill" id="rBar"></span></div>
+    <div class="controls">
+      <button class="btn" type="button" data-rate="0.5">Half rate</button>
+      <button class="btn is-on" type="button" data-rate="1">Nominal</button>
+      <button class="btn" type="button" data-rate="1.9">Surge</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>

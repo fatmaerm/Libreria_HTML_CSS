@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chromatic Aberration Shutter</title>
+<meta name="description" content="Nine aperture blades stop down and reopen while RGB channel fringing splits the edges of a faceted subject and the focus racks as the iris closes.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="stage">
+  <header class="mast">
+    <span class="kicker">Lens Bay 03</span>
+    <h1>Chromatic Aberration Shutter</h1>
+    <p class="lede">Nine blades swing through their arc with a per-blade stagger, splitting the subject into red, green and blue planes while the follow focus lags behind the iris and the lateral fringing spikes on every fast move.</p>
+  </header>
+
+  <section class="view" id="view">
+    <div class="sweep" aria-hidden="true">
+      <span class="blob b1"></span>
+      <span class="blob b2"></span>
+      <span class="sweepline"></span>
+      <span class="table"></span>
+    </div>
+
+    <div class="barrel" aria-hidden="true">
+      <span class="ticks fine"></span>
+      <span class="ticks coarse"></span>
+      <span class="lip"></span>
+    </div>
+
+    <div class="iris" aria-hidden="true">
+      <span class="blade"></span>
+      <span class="blade"></span>
+      <span class="blade"></span>
+      <span class="blade"></span>
+      <span class="blade"></span>
+      <span class="blade"></span>
+      <span class="blade"></span>
+      <span class="blade"></span>
+      <span class="blade"></span>
+    </div>
+
+    <div class="subject" aria-hidden="true">
+      <span class="ca caR"></span>
+      <span class="ca caG"></span>
+      <span class="ca caB"></span>
+    </div>
+
+    <div class="reflection" aria-hidden="true"></div>
+    <div class="veil" aria-hidden="true"></div>
+
+    <div class="vf" aria-hidden="true">
+      <span class="br tl"></span><span class="br tr"></span>
+      <span class="br bl"></span><span class="br br2"></span>
+      <span class="rule v1"></span><span class="rule v2"></span>
+      <span class="rule h1"></span><span class="rule h2"></span>
+      <span class="retic"></span>
+      <span class="recdot"></span>
+    </div>
+
+    <div class="hudtop" aria-hidden="true">
+      <span>FRAME 04</span><span id="tcode">00:00:00</span><span id="tshutter">1/48</span><span>ISO 800</span>
+    </div>
+    <div class="hudbot" aria-hidden="true">
+      <span id="tiris">T1.4</span>
+      <span class="scale"><i class="tick"></i><i class="tick"></i><i class="tick"></i><i class="tick"></i><i class="tick"></i><i class="mark" id="fmark"></i></span>
+      <span id="tdist">0.35 m</span>
+    </div>
+    <div class="badge" aria-hidden="true">Rack Focus</div>
+    <div class="lenslabel top" aria-hidden="true">Multi Coated Optics</div>
+    <div class="lenslabel bl" aria-hidden="true">1:1.4 / 85 mm</div>
+    <div class="lenslabel br" aria-hidden="true">Aspherical 9 Blade</div>
+
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+  </section>
+
+  <div class="hud">
+    <div class="stat"><span class="k">Aperture</span><span class="v" id="fstop">T1.4</span></div>
+    <div class="stat"><span class="k">Focus</span><span class="v" id="focus">0.35 m</span></div>
+    <div class="stat"><span class="k">Channel Split</span><span class="v" id="split">0.0 px</span></div>
+    <div class="stat"><span class="k">Blades</span><span class="v">9</span></div>
+    <div class="meter"><span id="bar"></span></div>
+  </div>
+
+  <p class="hint">Move the pointer to orbit the subject, press it to force a full stop down</p>
+</main>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cymatics Chladni Figure</title>
+<meta name="description" content="Real Chladni nodal figures computed from the square-plate standing wave equation and rendered as accumulating sand grains on a vibrating steel plate.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+
+<div class="lab" aria-hidden="true">
+  <div class="lab__grid"></div>
+  <div class="lab__key"></div>
+  <div class="lab__floor"></div>
+</div>
+
+<main class="stage">
+
+  <section class="rig" aria-label="Chladni plate on an electrodynamic shaker">
+
+    <div class="plate">
+      <div class="plate__bezel" aria-hidden="true"></div>
+      <div class="plate__inner">
+        <canvas class="plate__canvas" id="plate" width="480" height="480" role="img" aria-label="Chladni nodal figure rendered from the square plate standing wave equation"></canvas>
+        <div class="plate__sheen" aria-hidden="true"></div>
+        <div class="plate__grain" aria-hidden="true">
+          <svg><filter id="steelGrain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="31" stitchTiles="stitch" result="n"/><feColorMatrix in="n" type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.5" intercept="0"/></feComponentTransfer></filter><rect width="100%" height="100%" filter="url(#steelGrain)"/></svg>
+        </div>
+        <div class="plate__vignette" aria-hidden="true"></div>
+        <div class="plate__axes" aria-hidden="true"><i></i><b></b></div>
+        <div class="ring" aria-hidden="true"></div>
+        <div class="ring ring--b" aria-hidden="true"></div>
+      </div>
+      <div class="plate__clamp" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="plate__stem" aria-hidden="true"></div>
+    </div>
+
+    <div class="readout" aria-hidden="true">
+      <p class="readout__head">
+        <span class="readout__dot"></span>
+        <span>Standing wave analysis</span>
+      </p>
+      <dl class="rows">
+        <div class="row"><dt>Mode</dt><dd id="modeOut">m 2 / n 3</dd></div>
+        <div class="row"><dt>Frequency</dt><dd id="freqOut">450 Hz</dd></div>
+        <div class="row"><dt>Wavelength</dt><dd id="waveOut">0.44 L</dd></div>
+        <div class="row"><dt>Symmetry</dt><dd id="symOut">4-fold</dd></div>
+        <div class="row"><dt>Loop</dt><dd id="loopOut">0 %</dd></div>
+        <div class="row"><dt>Drive</dt><dd><span class="meter"><span class="meter__fill" id="driveBar"></span></span></dd></div>
+      </dl>
+      <div class="spectrum" id="spectrum"></div>
+    </div>
+
+  </section>
+
+  <header class="hud hud--tl">
+    <p class="eyebrow">Acoustic Study Number Six</p>
+    <h1 class="title">Cymatics Chladni Figure</h1>
+    <p class="lede">Sand on a 240&nbsp;mm steel plate, electrodynamic exciter</p>
+  </header>
+
+  <footer class="hud hud--br">
+    <p class="gauge"><span class="gauge__k">Equation</span><span class="gauge__v">cos m&#960;x cos n&#960;y &#8722; cos n&#960;x cos m&#960;y</span></p>
+    <p class="gauge"><span class="gauge__k">Buffer</span><span class="gauge__v" id="bufOut">200 px</span></p>
+  </footer>
+
+  <p class="hint hud--bl">Tap the plate to jump to the next eigenmode</p>
+
+</main>
+
+</body>
+</html>

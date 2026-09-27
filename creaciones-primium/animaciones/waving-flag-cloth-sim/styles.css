@@ -59,10 +59,10 @@ body{
 .ridge-far{
   top:44%;
   height:36%;
-  background:linear-gradient(180deg,rgba(60,52,110,.5),rgba(28,24,58,.2));
+  background:linear-gradient(180deg,rgba(70,60,124,.55),rgba(32,28,66,.24));
   clip-path:polygon(0 62%,9% 40%,17% 52%,27% 24%,36% 44%,47% 18%,56% 38%,66% 26%,77% 50%,88% 34%,100% 54%,100% 100%,0 100%);
   filter:blur(1.5px);
-  opacity:.55;
+  opacity:.62;
 }
 
 .ridge-near{
@@ -105,13 +105,14 @@ body{
   right:-60%;
   bottom:-60%;
   pointer-events:none;
-  opacity:.07;
+  opacity:.05;
   mix-blend-mode:overlay;
   background-image:
-    repeating-linear-gradient(63deg,rgba(255,255,255,.6) 0 1px,transparent 1px 3px),
-    repeating-linear-gradient(-27deg,rgba(255,255,255,.45) 0 1px,transparent 1px 4px),
-    repeating-linear-gradient(117deg,rgba(0,0,0,.55) 0 1px,transparent 1px 5px);
-  background-size:7px 11px,13px 5px,9px 17px;
+    repeating-linear-gradient(41deg,rgba(255,255,255,.5) 0 1px,transparent 1px 3px),
+    repeating-linear-gradient(-67deg,rgba(255,255,255,.4) 0 1px,transparent 1px 4px),
+    repeating-linear-gradient(113deg,rgba(0,0,0,.5) 0 1px,transparent 1px 5px),
+    repeating-linear-gradient(-19deg,rgba(255,255,255,.32) 0 1px,transparent 1px 6px);
+  background-size:7px 13px,11px 6px,17px 9px,5px 19px;
   animation:grind 1.2s steps(1) infinite;
 }
 

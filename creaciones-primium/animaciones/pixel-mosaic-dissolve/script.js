@@ -27,6 +27,8 @@ for (let i = 0; i < 256; i++) HEX[i] = (i < 16 ? '0' : '') + i.toString(16);
 
 const srcCv = document.createElement('canvas');
 const srcCtx = srcCv.getContext('2d', { willReadFrequently: true });
+const ghostCv = document.createElement('canvas');
+const ghostCtx = ghostCv.getContext('2d', { alpha: true });
 
 let W = 0;
 let H = 0;
@@ -263,6 +265,17 @@ function build() {
   vignette.addColorStop(0.6, 'rgba(5,3,14,0.26)');
   vignette.addColorStop(1, 'rgba(3,2,9,0.86)');
 
+  ghostCv.width = canvas.width;
+  ghostCv.height = canvas.height;
+  ghostCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ghostCtx.clearRect(0, 0, W, H);
+  ghostCtx.fillStyle = '#93a8ff';
+  const gw = cellW - gap;
+  const gh = cellH - gap;
+  for (let i = 0; i < n; i++) {
+    ghostCtx.fillRect(FX[i] - gw / 2, FY[i] - gh / 2, gw, gh);
+  }
+
   if (!grainPattern) buildGrain();
 
   const cellLabel = n + ' cells';
@@ -302,34 +315,50 @@ function draw(tt) {
   let ghost = 0;
   if (mode === 1) {
     const f = (local - SPREAD_D * 0.3) / (DIM_D - SPREAD_D * 0.3);
-    ghost = (f < 0 ? 0 : f > 1 ? 1 : f) * 0.5;
+    ghost = (f < 0 ? 0 : f > 1 ? 1 : f) * 0.34;
   } else if (mode === 2) {
-    ghost = 0.5;
+    ghost = 0.34;
   } else if (mode === 3) {
     const f = 1 - local / (DIM_R * 0.6);
-    ghost = (f < 0 ? 0 : f > 1 ? 1 : f) * 0.5;
+    ghost = (f < 0 ? 0 : f > 1 ? 1 : f) * 0.34;
   }
 
   if (ghost > 0.012) {
     ctx.globalAlpha = ghost;
-    ctx.fillStyle = '#93a8ff';
-    for (let i = 0; i < n; i++) ctx.fillRect(FX[i] - halfW, FY[i] - halfH, bw, bh);
+    ctx.drawImage(ghostCv, 0, 0, W, H);
     ctx.globalAlpha = 1;
   }
 
   const dur = outward ? DUR_D : DUR_R;
   const inv = 1 / dur;
   const delay = outward ? DOUT : DIN;
-  const t = mode === 0 ? -1 : local;
+  const intact = mode === 0;
+  const t = mode === 0 ? 0 : local;
 
   for (let i = 0; i < n; i++) {
-    const p = (t - delay[i]) * inv;
-    if (outward ? p <= 0 : p >= 1) {
+    if (!intact) {
+      const raw = t - delay[i];
+      if (outward) {
+        if (raw <= 0) {
+          ctx.fillStyle = CS[i];
+          ctx.fillRect(FX[i] - halfW, FY[i] - halfH, bw, bh);
+          continue;
+        }
+        if (raw >= dur) continue;
+      } else {
+        if (raw <= 0) continue;
+        if (raw >= dur) {
+          ctx.fillStyle = CS[i];
+          ctx.fillRect(FX[i] - halfW, FY[i] - halfH, bw, bh);
+          continue;
+        }
+      }
+    } else {
       ctx.fillStyle = CS[i];
       ctx.fillRect(FX[i] - halfW, FY[i] - halfH, bw, bh);
       continue;
     }
-    if (p >= 1) continue;
+    const p = (t - delay[i]) * inv;
 
     const e = p * p * (3 - 2 * p);
     const arc = ARC[i] * e;
@@ -344,11 +373,11 @@ function draw(tt) {
     ctx.globalAlpha = 1 - p * p;
     ctx.fillStyle =
       '#' +
-      HEX[(r + (255 - r) * lit * 0.62) | 0] +
-      HEX[(g + (238 - g) * lit * 0.5) | 0] +
-      HEX[(b + (255 - b) * lit * 0.64) | 0];
+      HEX[Math.min(255, (r + (255 - r) * lit * 0.62) | 0)] +
+      HEX[Math.min(255, (g + (238 - g) * lit * 0.5) | 0)] +
+      HEX[Math.min(255, (b + (255 - b) * lit * 0.64) | 0)];
     ctx.fillRect(tx - w / 2, ty - h / 2, w, h);
-    if (lit > 0.3) {
+    if (lit > 0.4) {
       ctx.globalAlpha = lit * 0.42;
       ctx.fillRect(tx - w / 2 - 1.5, ty - h / 2 - 1.5, w + 3, h + 3);
     }

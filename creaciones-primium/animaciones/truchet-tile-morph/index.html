@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Truchet Tile Morph</title>
+<meta name="description" content="A grid of Truchet tiles whose glowing quarter circle arcs rotate ninety degrees and re-connect into a new continuous labyrinth.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="scene">
+  <div class="field"></div>
+  <div class="nebula nebula-a"></div>
+  <div class="nebula nebula-b"></div>
+  <div class="grid"></div>
+
+  <div class="stage">
+    <div class="board">
+      <div class="corner corner-a"></div>
+      <div class="corner corner-b"></div>
+      <div class="corner corner-c"></div>
+      <div class="corner corner-d"></div>
+      <svg class="labyrinth" id="lab" role="group" aria-label="Labyrinth of Truchet tiles, activate a tile to rotate its arcs">
+        <defs>
+          <linearGradient id="g0" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="100" y2="100">
+            <stop offset="0" stop-color="#22d3ee"></stop>
+            <stop offset=".52" stop-color="#4f8cf7"></stop>
+            <stop offset="1" stop-color="#a970f2"></stop>
+          </linearGradient>
+          <linearGradient id="g1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="100" y2="100">
+            <stop offset="0" stop-color="#38bdf8"></stop>
+            <stop offset=".52" stop-color="#7c74f4"></stop>
+            <stop offset="1" stop-color="#e879b9"></stop>
+          </linearGradient>
+          <linearGradient id="g2" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="100" y2="100">
+            <stop offset="0" stop-color="#2dd4bf"></stop>
+            <stop offset=".52" stop-color="#5f8ef0"></stop>
+            <stop offset="1" stop-color="#c084fc"></stop>
+          </linearGradient>
+          <linearGradient id="g3" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="100" y2="100">
+            <stop offset="0" stop-color="#67e8f9"></stop>
+            <stop offset=".52" stop-color="#6d7cf6"></stop>
+            <stop offset="1" stop-color="#f472b6"></stop>
+          </linearGradient>
+          <linearGradient id="g4" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="100" y2="100">
+            <stop offset="0" stop-color="#22d3ee"></stop>
+            <stop offset=".52" stop-color="#8b7bf7"></stop>
+            <stop offset="1" stop-color="#fbbf24"></stop>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+
+  <svg class="grain" viewBox="0 0 800 500" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="trGrain">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"></feTurbulence>
+        <feColorMatrix type="saturate" values="0"></feColorMatrix>
+      </filter>
+    </defs>
+    <rect width="800" height="500" filter="url(#trGrain)"></rect>
+  </svg>
+
+  <div class="vignette"></div>
+
+  <header class="hud">
+    <p class="eyebrow">Truchet / Tile Morph</p>
+    <p class="lede">Two quarter arcs per tile. Turn ninety degrees and the labyrinth finds a new way through itself.</p>
+  </header>
+
+  <section class="panel">
+    <div class="row"><span class="k">Tiles</span><span class="v" id="tileOut">0</span></div>
+    <div class="row"><span class="k">Links</span><span class="v" id="linkOut" aria-live="polite">0</span></div>
+    <div class="row"><span class="k">Loops</span><span class="v" id="loopOut">0</span></div>
+    <div class="meter"><i id="linkBar"></i></div>
+    <div class="row"><span class="k">Turns</span><span class="v" id="turnOut">0</span></div>
+    <div class="actions">
+      <button type="button" class="btn is-on" id="flowBtn" aria-pressed="true">Flow</button>
+      <button type="button" class="btn" id="shuffleBtn">Shuffle</button>
+    </div>
+  </section>
+
+  <footer class="legend">
+    <span class="hint">Tap a tile to turn it</span>
+    <span class="readout">arcs radius 70.71 / one-sided grid</span>
+  </footer>
+</main>
+</body>
+</html>

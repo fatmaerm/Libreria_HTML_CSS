@@ -8,8 +8,8 @@
   var outState = document.getElementById("rState");
   var still = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-  var DAMP = 0.9865;
-  var GRAV = 1150;
+  var DAMP = 0.9955;
+  var GRAV = 620;
   var ITER = 6;
   var STEP = 1 / 60;
   var TAU = Math.PI * 2;
@@ -19,31 +19,32 @@
   var flagX = 0, flagY = 0, flagW = 0, flagH = 0, pinX = 0;
   var poleTop = 0, poleBottom = 0, poleW = 0;
   var posX, posY, oldX, oldY, pinY;
-  var linkA, linkB, linkR, linkCount = 0;
+  var linkA, linkB, linkR, linkK, linkCount = 0;
   var tex = null, texW = 0, texH = 0, cellW = 1, cellH = 1;
   var windLevel = 1, windNow = 1;
   var ptrX = -1, ptrY = 0, ptrOn = false, ptrStrength = 0.5;
   var simTime = 0, acc = 0, last = 0, live = false, frameTick = 0;
 
   function buildLinks() {
-    var A = [], B = [], R = [];
+    var A = [], B = [], R = [], K = [];
     function idx(i, j) { return j * COLS + i; }
-    function push(a, b) {
+    function push(a, b, k) {
       var dx = posX[b] - posX[a], dy = posY[b] - posY[a];
-      A.push(a); B.push(b); R.push(Math.sqrt(dx * dx + dy * dy));
+      A.push(a); B.push(b); R.push(Math.sqrt(dx * dx + dy * dy)); K.push(k);
     }
     var i, j;
-    for (j = 0; j < ROWS; j++) for (i = 0; i < COLS - 1; i++) push(idx(i, j), idx(i + 1, j));
-    for (j = 0; j < ROWS - 1; j++) for (i = 0; i < COLS; i++) push(idx(i, j), idx(i, j + 1));
+    for (j = 0; j < ROWS; j++) for (i = 0; i < COLS - 1; i++) push(idx(i, j), idx(i + 1, j), 1);
+    for (j = 0; j < ROWS - 1; j++) for (i = 0; i < COLS; i++) push(idx(i, j), idx(i, j + 1), 1);
     for (j = 0; j < ROWS - 1; j++) for (i = 0; i < COLS - 1; i++) {
-      push(idx(i, j), idx(i + 1, j + 1));
-      push(idx(i + 1, j), idx(i, j + 1));
+      push(idx(i, j), idx(i + 1, j + 1), 0.9);
+      push(idx(i + 1, j), idx(i, j + 1), 0.9);
     }
-    for (j = 0; j < ROWS; j++) for (i = 0; i < COLS - 2; i++) push(idx(i, j), idx(i + 2, j));
-    for (j = 0; j < ROWS - 2; j++) for (i = 0; i < COLS; i++) push(idx(i, j), idx(i, j + 2));
+    for (j = 0; j < ROWS; j++) for (i = 0; i < COLS - 2; i++) push(idx(i, j), idx(i + 2, j), 0.05);
+    for (j = 0; j < ROWS - 2; j++) for (i = 0; i < COLS; i++) push(idx(i, j), idx(i, j + 2), 0.05);
     linkA = Int32Array.from(A);
     linkB = Int32Array.from(B);
     linkR = Float32Array.from(R);
+    linkK = Float32Array.from(K);
     linkCount = linkA.length;
     if (outLinks) outLinks.textContent = linkCount.toLocaleString("en-US");
   }
@@ -74,13 +75,13 @@
     c.fillStyle = sheen;
     c.fillRect(0, 0, tw, th);
 
-    c.globalAlpha = 0.08;
+    c.globalAlpha = 0.03;
     c.strokeStyle = "#2b0512";
     c.lineWidth = 1;
     c.beginPath();
     var x, y;
-    for (x = 0; x < tw; x += 4) { c.moveTo(x + 0.5, 0); c.lineTo(x + 0.5, th); }
-    for (y = 0; y < th; y += 4) { c.moveTo(0, y + 0.5); c.lineTo(tw, y + 0.5); }
+    for (x = 0; x < tw; x += 6) { c.moveTo(x + 0.5, 0); c.lineTo(x + 0.5, th); }
+    for (y = 0; y < th; y += 6) { c.moveTo(0, y + 0.5); c.lineTo(tw, y + 0.5); }
     c.stroke();
     c.globalAlpha = 1;
 
@@ -161,16 +162,21 @@
     c.arc(cx, cy, r * 0.1, 0, TAU);
     c.fill();
 
-    var label = "AERIS";
-    c.font = "600 " + Math.max(7, Math.round(r * 0.2)) + "px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif";
-    c.textBaseline = "middle";
-    c.fillStyle = "rgba(245,215,170,.78)";
-    var lw = 0, i2;
-    for (i2 = 0; i2 < label.length; i2++) lw += c.measureText(label[i2]).width + r * 0.16;
-    var startX = cx - (lw - r * 0.16) / 2;
-    for (i2 = 0; i2 < label.length; i2++) {
-      c.fillText(label[i2], startX, cy + r * 1.14);
-      startX += c.measureText(label[i2]).width + r * 0.16;
+    var ornaments = 5;
+    var gap = r * 0.62;
+    var ox = cx - (gap * (ornaments - 1)) / 2;
+    for (i2 = 0; i2 < ornaments; i2++) {
+      var dxx = ox + i2 * gap;
+      var dyy = cy + r * 1.16;
+      var s = r * (i2 === 2 ? 0.15 : 0.1);
+      c.beginPath();
+      c.moveTo(dxx, dyy - s);
+      c.lineTo(dxx + s * 0.72, dyy);
+      c.lineTo(dxx, dyy + s);
+      c.lineTo(dxx - s * 0.72, dyy);
+      c.closePath();
+      c.fillStyle = i2 === 2 ? gold : "rgba(245,215,170,.6)";
+      c.fill();
     }
 
     c.strokeStyle = "rgba(240,205,150,.28)";
@@ -200,7 +206,7 @@
     COLS = narrow ? 16 : 22;
     ROWS = narrow ? 12 : 15;
     var aspect = narrow ? 1.95 : 2.6;
-    var head = H * (narrow ? 0.27 : 0.285);
+    var head = H * (narrow ? 0.27 : 0.36);
     flagW = Math.min(W * (narrow ? 0.7 : 0.64), (H * 0.86 - head) * aspect);
     flagH = flagW / aspect;
     pinX = Math.max(38, W * (narrow ? 0.12 : 0.095));
@@ -234,7 +240,7 @@
   }
 
   function solve() {
-    var a, b, i, dx, dy, dist, diff, rx, ry, k;
+    var a, b, i, dx, dy, dist, diff, rx, ry, k, s;
     for (k = 0; k < linkCount; k++) {
       a = linkA[k];
       b = linkB[k];
@@ -242,7 +248,8 @@
       dy = posY[b] - posY[a];
       dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < 0.0001) continue;
-      diff = (dist - linkR[k]) / dist;
+      s = linkK[k];
+      diff = ((dist - linkR[k]) / dist) * s;
       rx = dx * diff * 0.5;
       ry = dy * diff * 0.5;
       posX[a] += rx;
@@ -253,17 +260,18 @@
   }
 
   function simulate(dt) {
-    var base = windNow * 1080;
+    var base = windNow * 1900;
     var j, i, k;
     for (j = 0; j < ROWS; j++) {
       for (i = 1; i < COLS; i++) {
         k = j * COLS + i;
         var x = posX[k], y = posY[k];
-        var fall = 0.55 + 0.45 * (i / (COLS - 1));
-        var g1 = Math.sin(simTime * 2.15 + y * 0.019) * 0.34;
-        var g2 = Math.sin(simTime * 5.1 + x * 0.012 - y * 0.009) * 0.2;
-        var ax = base * (fall * (1 + g1 + g2));
-        var ay = GRAV + ax * (0.22 * Math.sin(x * 0.021 - simTime * 2.7) + 0.1 * Math.sin(simTime * 1.35 + y * 0.03));
+        var fall = 0.6 + 0.4 * (i / (COLS - 1));
+        var g1 = Math.sin(simTime * 1.7 + y * 0.024) * 0.55;
+        var g2 = Math.sin(simTime * 3.6 + x * 0.015 - y * 0.011) * 0.34;
+        var g3 = Math.sin(simTime * 6.4 - x * 0.024 + y * 0.017) * 0.2;
+        var ax = base * (fall * (1 + g1 + g2 + g3));
+        var ay = GRAV + ax * (0.34 * Math.sin(x * 0.024 - simTime * 2.1) + 0.16 * Math.sin(simTime * 4.4 + y * 0.028));
         if (ptrOn) {
           var dxp = x - ptrX, dyp = y - ptrY;
           var dd = dxp * dxp + dyp * dyp;
@@ -425,15 +433,15 @@
     sheen.addColorStop(0.58, "rgba(255,238,214,.05)");
     sheen.addColorStop(1, "rgba(255,238,214,0)");
     ctx.fillStyle = sheen;
-    ctx.fillRect(flagX - 4, flagY - 8, flagW + 8, flagH + 16);
+    ctx.fillRect(0, 0, W, H);
 
     ctx.globalCompositeOperation = "multiply";
-    var depth = ctx.createLinearGradient(0, flagY, flagW * 0.6 + flagX, flagY + flagH);
+    var depth = ctx.createLinearGradient(0, flagY - flagH * 0.35, flagW * 0.6 + flagX, flagY + flagH * 1.15);
     depth.addColorStop(0, "rgba(255,255,255,1)");
-    depth.addColorStop(0.55, "rgba(196,178,178,1)");
-    depth.addColorStop(1, "rgba(78,60,80,1)");
+    depth.addColorStop(0.55, "rgba(198,180,180,1)");
+    depth.addColorStop(1, "rgba(74,56,76,1)");
     ctx.fillStyle = depth;
-    ctx.fillRect(flagX - 4, flagY - 8, flagW + 8, flagH + 16);
+    ctx.fillRect(0, 0, W, H);
 
     ctx.globalCompositeOperation = "source-over";
     ctx.restore();

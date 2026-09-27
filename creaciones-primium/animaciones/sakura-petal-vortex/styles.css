@@ -1,0 +1,83 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{overflow:hidden;background:#f7dfe9;color:#5c2039;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.sakura{position:relative;width:100%;height:100vh;height:100svh;overflow:hidden;isolation:isolate;background:linear-gradient(180deg,#fff4f8 0%,#ffe4ee 22%,#ffd2e2 48%,#f9b7cf 72%,#e79cb8 100%)}
+.sakura__sky{position:absolute;left:0;right:0;top:0;height:70%;background:radial-gradient(70% 52% at 22% 12%,rgba(255,255,255,.7),transparent 66%),radial-gradient(46% 34% at 84% 26%,rgba(255,196,220,.5),transparent 70%)}
+.sakura__sun{position:absolute;right:-10%;top:-12%;width:min(78vmin,780px);aspect-ratio:1;pointer-events:none;background:radial-gradient(circle,rgba(255,250,232,.8) 4%,rgba(255,226,204,.34) 32%,rgba(255,206,196,.12) 54%,transparent 74%);animation:sun 38s ease-in-out infinite alternate}
+.sakura__canopy{position:absolute;left:0;right:0;top:0;height:46%;pointer-events:none;opacity:.6;will-change:transform;background-image:radial-gradient(32% 46% at 10% 4%,rgba(122,44,78,.62),transparent 72%),radial-gradient(24% 40% at 66% 0%,rgba(142,56,90,.5),transparent 74%),radial-gradient(20% 34% at 92% 18%,rgba(108,38,70,.48),transparent 74%),radial-gradient(16% 26% at 40% 14%,rgba(96,32,62,.4),transparent 76%);animation:canopy 82s ease-in-out infinite alternate}
+.sakura__bokeh{position:absolute;left:0;width:200%;top:-6%;height:112%;background-repeat:repeat-x;background-size:50% 100%;pointer-events:none;will-change:transform}
+.sakura__bokeh--a{animation:bokehA 96s ease-in-out infinite alternate;background-image:radial-gradient(38vmin 38vmin at 12% 24%,rgba(255,212,230,.5),rgba(255,212,230,0) 70%),radial-gradient(26vmin 26vmin at 38% 62%,rgba(255,176,208,.42),rgba(255,176,208,0) 70%),radial-gradient(46vmin 46vmin at 64% 18%,rgba(255,240,246,.5),rgba(255,240,246,0) 70%),radial-gradient(22vmin 22vmin at 82% 56%,rgba(255,156,195,.38),rgba(255,156,195,0) 70%),radial-gradient(30vmin 30vmin at 26% 86%,rgba(255,222,235,.36),rgba(255,222,235,0) 70%)}
+.sakura__bokeh--b{animation:bokehB 128s ease-in-out infinite alternate;background-image:radial-gradient(16vmin 16vmin at 18% 34%,rgba(255,138,184,.5),rgba(255,138,184,0) 72%),radial-gradient(11vmin 11vmin at 44% 16%,rgba(255,204,225,.6),rgba(255,204,225,0) 72%),radial-gradient(19vmin 19vmin at 70% 70%,rgba(246,108,164,.42),rgba(246,108,164,0) 72%),radial-gradient(13vmin 13vmin at 88% 42%,rgba(255,178,208,.48),rgba(255,178,208,0) 72%)}
+.sakura__bokeh--c{animation:bokehC 168s ease-in-out infinite alternate;background-image:radial-gradient(58vmin 58vmin at 30% 78%,rgba(206,104,152,.24),rgba(206,104,152,0) 72%),radial-gradient(9vmin 9vmin at 8% 58%,rgba(255,255,255,.52),rgba(255,255,255,0) 74%),radial-gradient(7vmin 7vmin at 56% 30%,rgba(255,255,255,.4),rgba(255,255,255,0) 74%),radial-gradient(12vmin 12vmin at 92% 86%,rgba(255,170,204,.38),rgba(255,170,204,0) 72%)}
+.sakura__ring{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none;opacity:var(--vs,0);transform:translate3d(var(--px,50vw),var(--py,50vh),0);will-change:transform,opacity}
+.sakura__ring i{position:absolute;left:0;top:0;width:var(--d,190px);height:var(--d,190px);margin-left:calc(var(--d,190px)/-2);margin-top:calc(var(--d,190px)/-2);border-radius:50%;border:1px solid rgba(255,246,250,.8);box-shadow:0 0 26px rgba(255,146,192,.34),inset 0 0 26px rgba(255,178,214,.18);animation:ringSpin 16s linear infinite}
+.sakura__ring i:nth-child(2){width:calc(var(--d,190px)*1.7);height:calc(var(--d,190px)*1.7);border-style:dashed;border-color:rgba(255,224,238,.55);animation-duration:26s;animation-direction:reverse}
+.sakura__field{position:absolute;inset:0;pointer-events:none}
+.petal{position:absolute;left:0;top:0;width:0;height:0;transform:translate3d(var(--wx,0px),var(--wy,0px),0) rotate(var(--wr,0deg));will-change:transform}
+.fall{position:absolute;left:0;top:0;width:0;height:0;animation:fall var(--d) linear var(--dl) infinite}
+.sway{position:absolute;left:0;top:0;width:0;height:0;perspective:760px;transform-style:preserve-3d;animation:sway var(--sw) ease-in-out var(--swd) infinite alternate}
+.spin{position:absolute;left:calc(var(--w)*-.5);top:calc(var(--w)*-.7);width:var(--w);height:calc(var(--w)*1.4);border-radius:54% 6% 54% 46%/62% 8% 58% 38%;background:linear-gradient(150deg,rgba(255,255,255,.97),var(--c1) 44%,var(--c2));box-shadow:inset 0 -2px 7px rgba(186,68,114,.2),0 3px 9px rgba(150,40,80,.14);animation:tumble var(--t) linear var(--dl) infinite;backface-visibility:visible}
+.spin::after{content:"";position:absolute;left:50%;top:calc(100% - 1px);width:34%;height:16%;transform:translateX(-50%);border-radius:50% 50% 0 0;background:linear-gradient(0deg,rgba(176,58,104,.16),rgba(176,58,104,0))}
+.sakura__floor{position:absolute;left:0;right:0;bottom:0;height:34%;pointer-events:none;background:radial-gradient(58% 76% at 50% 118%,rgba(190,96,140,.32),rgba(190,96,140,0) 68%),linear-gradient(180deg,rgba(255,222,236,0),rgba(198,110,152,.24) 68%,rgba(176,88,128,.36) 100%)}
+.sakura__vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(122% 94% at 50% 34%,transparent 38%,rgba(126,44,80,.18) 70%,rgba(88,24,58,.46) 100%)}
+.sakura__grain{position:absolute;left:-30%;top:-30%;width:160%;height:160%;pointer-events:none;opacity:.075;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px;animation:grain 1.2s steps(1,end) infinite}
+.plate{position:absolute;left:clamp(18px,4vw,58px);bottom:clamp(18px,4.2vh,52px);z-index:6;max-width:min(74vw,430px);pointer-events:none}
+.plate__eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:clamp(9px,.72vw,11px);letter-spacing:.36em;text-transform:uppercase;color:rgba(150,44,86,.72)}
+.plate__title{margin-top:.55rem;font-size:clamp(1.1rem,2.5vw,1.75rem);font-weight:500;letter-spacing:.005em;color:#5d1a38;text-shadow:0 2px 20px rgba(255,255,255,.6)}
+.plate__rule{height:1px;margin:.72rem 0;background:linear-gradient(90deg,rgba(198,58,110,.55),rgba(198,58,110,.06))}
+.plate__meta{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:clamp(9px,.72vw,11px);letter-spacing:.2em;color:rgba(122,36,74,.6)}
+@keyframes sun{
+  0%{transform:scale(.94);opacity:.78}
+  100%{transform:scale(1.1);opacity:1}
+}
+@keyframes canopy{
+  0%{transform:translate3d(-1.6%,0,0) scale(1.02)}
+  100%{transform:translate3d(1.6%,1%,0) scale(1.06)}
+}
+@keyframes bokehA{
+  0%{transform:translate3d(0,0,0) scale(1)}
+  100%{transform:translate3d(-50%,1.4%,0) scale(1.05)}
+}
+@keyframes bokehB{
+  0%{transform:translate3d(-50%,-1%,0) scale(1.04)}
+  100%{transform:translate3d(0,1%,0) scale(1)}
+}
+@keyframes bokehC{
+  0%{transform:translate3d(-50%,0,0) scale(1)}
+  100%{transform:translate3d(0,-1.6%,0) scale(1.06)}
+}
+@keyframes ringSpin{to{transform:rotate(360deg)}}
+@keyframes fall{
+  0%{transform:translate3d(var(--x0),-14vh,0)}
+  100%{transform:translate3d(calc(var(--x0) + var(--xd)),114vh,0)}
+}
+@keyframes sway{
+  0%{transform:translate3d(calc(var(--sa) * -1),0,0)}
+  100%{transform:translate3d(var(--sa),0,0)}
+}
+@keyframes tumble{
+  0%{transform:rotate3d(.18,1,.1,0deg) rotateZ(0deg) scale3d(1,.94,1)}
+  25%{transform:rotate3d(.34,1,.22,88deg) rotateZ(23deg) scale3d(1.03,.9,1)}
+  50%{transform:rotate3d(-.22,1,.3,182deg) rotateZ(47deg) scale3d(.9,1.05,1)}
+  75%{transform:rotate3d(.3,1,-.2,272deg) rotateZ(71deg) scale3d(1.05,.92,1)}
+  100%{transform:rotate3d(.18,1,.1,360deg) rotateZ(95deg) scale3d(1,.94,1)}
+}
+@keyframes grain{
+  0%{transform:translate3d(0,0,0)}
+  25%{transform:translate3d(-52px,44px,0)}
+  50%{transform:translate3d(46px,-62px,0)}
+  75%{transform:translate3d(-34px,-26px,0)}
+  100%{transform:translate3d(0,0,0)}
+}
+@media (prefers-reduced-motion:reduce){
+  .sakura__sun,.sakura__canopy,.sakura__bokeh,.sakura__ring i,.sakura__grain{animation:none}
+  .sakura__grain{opacity:.045}
+  .sakura__bokeh--a{transform:translate3d(-16%,0,0)}
+  .sakura__bokeh--b{transform:translate3d(18%,0,0)}
+  .sakura__bokeh--c{transform:translate3d(-8%,0,0)}
+  .sakura__ring i{transform:rotate(18deg)}
+  .sakura__ring i:nth-child(2){transform:rotate(-32deg)}
+  .fall{animation:none;transform:translate3d(var(--x0),var(--y0),0)}
+  .sway{animation:none;transform:translate3d(0,0,0)}
+  .spin{animation:none;transform:rotate(var(--r0)) rotateY(var(--ry0))}
+}

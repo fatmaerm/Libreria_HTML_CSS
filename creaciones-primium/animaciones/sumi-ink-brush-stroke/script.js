@@ -1,6 +1,8 @@
 const root = document.documentElement;
 const spine = document.querySelector('.spine');
-const swipe = document.querySelector('.swipe--wide');
+const swipe = document.querySelector('.swipe');
+const fine = document.querySelector('.fine');
+const tendril = document.querySelector('.wisps path');
 const phaseOut = document.getElementById('phaseLabel');
 const lenOut = document.getElementById('lenLabel');
 const still = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -18,12 +20,18 @@ const STAGES = [
   [1.01, 'blank']
 ];
 
-if (spine) {
-  const len = spine.getTotalLength();
-  root.style.setProperty('--len', len.toFixed(2));
-  if (swipe) root.style.setProperty('--len2', swipe.getTotalLength().toFixed(2));
-  if (lenOut) lenOut.textContent = Math.round(len) + ' units';
+function setLen(node, name) {
+  if (!node || typeof node.getTotalLength !== 'function') return;
+  const value = node.getTotalLength();
+  if (value > 0) root.style.setProperty(name, value.toFixed(2));
 }
+
+setLen(spine, '--len');
+setLen(swipe, '--len2');
+setLen(fine, '--len3');
+setLen(tendril, '--len4');
+
+if (lenOut && spine) lenOut.textContent = Math.round(spine.getTotalLength()) + ' units';
 
 let shown = '';
 
@@ -52,7 +60,4 @@ if (still.matches) {
     requestAnimationFrame(tick);
   };
   requestAnimationFrame(tick);
-  document.addEventListener('visibilitychange', function () {
-    if (!document.hidden) requestAnimationFrame(function (now) { readout(now); });
-  });
 }

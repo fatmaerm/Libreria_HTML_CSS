@@ -5,10 +5,27 @@ import { toIndexEntry, writeSources } from "./catalog-format.mjs";
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryDirectory = path.resolve(scriptDirectory, "../..");
-const libraryRoots = ["BibliotecaDeHtml_CSS", "CreacionesNuevas"].map((name) => ({
-  name,
-  directory: path.join(repositoryDirectory, name),
-}));
+const libraryRoots = [
+  { name: "BibliotecaDeHtml_CSS", directory: path.join(repositoryDirectory, "BibliotecaDeHtml_CSS") },
+  { name: "CreacionesNuevas", directory: path.join(repositoryDirectory, "CreacionesNuevas") },
+  {
+    name: "creaciones-primium",
+    directory: path.join(repositoryDirectory, "creaciones-primium"),
+    // La carpeta superior ya declara la categoría, en castellano.
+    categories: {
+      animaciones: "Animations",
+      botones: "Buttons",
+      controles: "Controls",
+      efectos: "Effects",
+      formularios: "Forms",
+      galerias: "Galleries",
+      "indicadores-de-carga": "Loaders",
+      navegacion: "Navigation",
+      tarjetas: "Cards",
+      otros: "Other",
+    },
+  },
+];
 const catalogFile = path.join(repositoryDirectory, "Web", "data", "catalog.json");
 const catalogScriptFile = path.join(repositoryDirectory, "Web", "data", "catalog.js");
 const sourcesDirectory = path.join(repositoryDirectory, "Web", "data", "sources");
@@ -206,7 +223,8 @@ async function createComponent(root, pagePath) {
   const id = createSlug(folderPath);
   const override = catalogOverrides[id] ?? {};
   const name = override.name ?? (title || directoryName.replace(/[-_]+/g, " "));
-  const category = override.category ?? getCategory(`${directoryName} ${name}`);
+  const folderCategory = root.categories?.[folderPath.split("/")[0]];
+  const category = override.category ?? folderCategory ?? getCategory(`${directoryName} ${name}`);
   const descriptionMatch = html.match(/<meta\b(?=[^>]*\bname\s*=\s*["']description["'])[^>]*>/i);
   const descriptionType = category === "Other" ? "HTML and CSS" : category.toLowerCase();
   const description = override.description ?? (descriptionMatch

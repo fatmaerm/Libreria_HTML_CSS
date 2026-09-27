@@ -87,7 +87,7 @@
         z:z,
         size:layer.sizeMin+ (layer.sizeMax-layer.sizeMin)*Math.pow(z,1.35) * rnd(.78,1.24),
         alpha:layer.alphaMin+(layer.alphaMax-layer.alphaMin)*z*rnd(.7,1.3),
-        steady:layer.glowy?rnd(0,1)<.66?rnd(.35,1):rnd(0,.18):0,
+        steady:layer.glowy?(rnd(0,1)<.66?rnd(.35,1):rnd(0,.18)):rnd(.3,.9),
         period:rnd(layer.periodMin,layer.periodMax),
         off:r1(),
         duty:rnd(.08,.2),
@@ -135,7 +135,8 @@
     else if(f.x>W-m) f.vx-=(f.x-(W-m))*9*dt;
     if(f.y<top) f.vy+=(top-f.y)*9*dt;
     else if(f.y>bot) f.vy-=(f.y-bot)*9*dt;
-    var cap=6+f.z*26;    if(sp>cap){
+    var cap=6+f.z*26;
+    if(sp>cap){
       var k=cap/sp;
       f.vx*=k;
       f.vy*=k;
@@ -196,6 +197,7 @@
   }
 
   function fit(){
+    if(!layers[0].list) return;
     var rect=layers[0].el.getBoundingClientRect();
     var nw=Math.max(1,Math.round(rect.width));
     var nh=Math.max(1,Math.round(rect.height));

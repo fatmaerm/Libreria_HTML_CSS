@@ -1489,8 +1489,8 @@
       "gallery"
     ],
     "root": "BibliotecaDeHtml_CSS",
-    "folder": "Image-gallery",
-    "preview": "../BibliotecaDeHtml_CSS/Image-gallery/index.html",
+    "folder": "image-gallery",
+    "preview": "../BibliotecaDeHtml_CSS/image-gallery/index.html",
     "missingReferences": [],
     "license": "Unverified",
     "source": "https://github.com/gevendra2004/gevstack",
@@ -1499,7 +1499,7 @@
     "stylesheets": [
       {
         "name": "style.css",
-        "path": "../BibliotecaDeHtml_CSS/Image-gallery/style.css"
+        "path": "../BibliotecaDeHtml_CSS/image-gallery/style.css"
       }
     ],
     "scripts": []
@@ -11251,5 +11251,644 @@
       }
     ],
     "scripts": []
+  },
+  {
+    "id": "animaciones-cymatics-chladni-figure",
+    "name": "Cymatics Chladni Figure",
+    "category": "Animations",
+    "featured": false,
+    "description": "Real Chladni nodal figures computed from the square-plate standing wave equation and rendered as accumulating sand grains on a vibrating steel plate.",
+    "tags": [
+      "animations",
+      "cymatics",
+      "chladni",
+      "figure"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/cymatics-chladni-figure",
+    "preview": "../creaciones-primium/animaciones/cymatics-chladni-figure/index.html",
+    "missingReferences": [
+      "script.js"
+    ],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/cymatics-chladni-figure/styles.css"
+      }
+    ],
+    "scripts": []
+  },
+  {
+    "id": "animaciones-ferrofluid-spike-crown",
+    "name": "Ferrofluid Spike Crown",
+    "category": "Animations",
+    "featured": false,
+    "description": "A magnet sweeps above a pool of iron fluid, raising glossy black spikes crowned with iridescent highlights.",
+    "tags": [
+      "animations",
+      "ferrofluid",
+      "spike",
+      "crown"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/ferrofluid-spike-crown",
+    "preview": "../creaciones-primium/animaciones/ferrofluid-spike-crown/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/ferrofluid-spike-crown/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/ferrofluid-spike-crown/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-firefly-swarm-meadow",
+    "name": "Firefly Swarm Meadow",
+    "category": "Animations",
+    "featured": false,
+    "description": "A canvas firefly swarm wandering a dark meadow of layered grass silhouettes with soft glow sprites, blinking phases and out-of-focus foreground bokeh.",
+    "tags": [
+      "animations",
+      "firefly",
+      "swarm",
+      "meadow"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/firefly-swarm-meadow",
+    "preview": "../creaciones-primium/animaciones/firefly-swarm-meadow/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/firefly-swarm-meadow/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/firefly-swarm-meadow/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-fourier-epicycles",
+    "name": "Fourier Epicycles",
+    "category": "Animations",
+    "featured": false,
+    "description": "Rotating vectors of geometrically decaying radius rebuild a word from its own Fourier spectrum while the tip draws a glowing epicycle trace.",
+    "tags": [
+      "animations",
+      "fourier",
+      "epicycles"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/fourier-epicycles",
+    "preview": "../creaciones-primium/animaciones/fourier-epicycles/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/fourier-epicycles/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/fourier-epicycles/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-koi-pond-ripple-trail",
+    "name": "Koi Pond Ripple Trail",
+    "category": "Animations",
+    "featured": false,
+    "description": "Amber and cream koi steer beneath a dark reflective pond surface, trailing fading ripple rings through drifting caustic light.",
+    "tags": [
+      "animations",
+      "koi",
+      "pond",
+      "ripple",
+      "trail"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/koi-pond-ripple-trail",
+    "preview": "../creaciones-primium/animaciones/koi-pond-ripple-trail/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/koi-pond-ripple-trail/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/koi-pond-ripple-trail/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-lens-flare-anamorphic",
+    "name": "Lens Flare Anamorphic",
+    "category": "Animations",
+    "featured": false,
+    "description": "A pulsing light source drives a full cinema flare stack with a blue anamorphic streak, polygonal aperture ghosts on the optical axis and drifting iris rings.",
+    "tags": [
+      "animations",
+      "lens",
+      "flare",
+      "anamorphic"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/lens-flare-anamorphic",
+    "preview": "../creaciones-primium/animaciones/lens-flare-anamorphic/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/lens-flare-anamorphic/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/lens-flare-anamorphic/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-mobius-infinity-loop",
+    "name": "Mobius Infinity Loop",
+    "category": "Animations",
+    "featured": false,
+    "description": "A morphing Mobius strip drawn by an animated dash reveal while a rotating lemniscate links through its loop.",
+    "tags": [
+      "animations",
+      "mobius",
+      "infinity",
+      "loop"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/mobius-infinity-loop",
+    "preview": "../creaciones-primium/animaciones/mobius-infinity-loop/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/mobius-infinity-loop/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/mobius-infinity-loop/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-moire-interference-drift",
+    "name": "Moire Interference Drift",
+    "category": "Animations",
+    "featured": false,
+    "description": "Two counter-rotating line lattices beat against each other in blended colour to drift a seamless interference field.",
+    "tags": [
+      "animations",
+      "moire",
+      "interference",
+      "drift"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/moire-interference-drift",
+    "preview": "../creaciones-primium/animaciones/moire-interference-drift/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/moire-interference-drift/styles.css"
+      }
+    ],
+    "scripts": []
+  },
+  {
+    "id": "animaciones-ocean-wave-shore-cycle",
+    "name": "Ocean Wave Shore Cycle",
+    "category": "Animations",
+    "featured": false,
+    "description": "Six layered sea bands translate at different speeds with foam crests, drifting haze and a shimmering sun glint in one continuous cinematic swell.",
+    "tags": [
+      "animations",
+      "ocean",
+      "wave",
+      "shore",
+      "cycle"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/ocean-wave-shore-cycle",
+    "preview": "../creaciones-primium/animaciones/ocean-wave-shore-cycle/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/ocean-wave-shore-cycle/styles.css"
+      }
+    ],
+    "scripts": []
+  },
+  {
+    "id": "animaciones-pixel-mosaic-dissolve",
+    "name": "Pixel Mosaic Dissolve",
+    "category": "Animations",
+    "featured": false,
+    "description": "A procedurally generated gradient-and-shape landscape shatters into a staggered grid of squares and reforms along a glowing wavefront.",
+    "tags": [
+      "animations",
+      "pixel",
+      "mosaic",
+      "dissolve"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/pixel-mosaic-dissolve",
+    "preview": "../creaciones-primium/animaciones/pixel-mosaic-dissolve/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/pixel-mosaic-dissolve/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/pixel-mosaic-dissolve/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-rigid-domino-topple",
+    "name": "Rigid Domino Topple",
+    "category": "Animations",
+    "featured": false,
+    "description": "A curved row of dominoes topples in a gapless chain reaction with gravity-driven angular acceleration and a damped impact rebound.",
+    "tags": [
+      "animations",
+      "rigid",
+      "domino",
+      "topple"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/rigid-domino-topple",
+    "preview": "../creaciones-primium/animaciones/rigid-domino-topple/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/rigid-domino-topple/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/rigid-domino-topple/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-silk-ribbon-flow",
+    "name": "Silk Ribbon Flow",
+    "category": "Animations",
+    "featured": false,
+    "description": "Long iridescent silk ribbons twist through a layered violet depth field in a seamless perspective flow.",
+    "tags": [
+      "animations",
+      "silk",
+      "ribbon",
+      "flow"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/silk-ribbon-flow",
+    "preview": "../creaciones-primium/animaciones/silk-ribbon-flow/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/silk-ribbon-flow/styles.css"
+      }
+    ],
+    "scripts": []
+  },
+  {
+    "id": "animaciones-stained-glass-light-shaft",
+    "name": "Stained Glass Light Shaft",
+    "category": "Animations",
+    "featured": false,
+    "description": "A leaded gothic window of jewel-toned glass throws animated god rays across a dark stone nave while dust motes drift through the light.",
+    "tags": [
+      "animations",
+      "stained",
+      "glass",
+      "light",
+      "shaft"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/stained-glass-light-shaft",
+    "preview": "../creaciones-primium/animaciones/stained-glass-light-shaft/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/stained-glass-light-shaft/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/stained-glass-light-shaft/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-sumi-ink-brush-stroke",
+    "name": "Sumi Ink Brush Stroke",
+    "category": "Animations",
+    "featured": false,
+    "description": "A Japanese sumi-e brush stroke drawn by SVG stroke-dashoffset with an absorbing ink blot, capillary tendrils and a dry-brush tail on washi paper.",
+    "tags": [
+      "animations",
+      "sumi",
+      "ink",
+      "brush",
+      "stroke"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/sumi-ink-brush-stroke",
+    "preview": "../creaciones-primium/animaciones/sumi-ink-brush-stroke/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/sumi-ink-brush-stroke/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/sumi-ink-brush-stroke/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-tesseract-hypercube-4d",
+    "name": "Tesseract Hypercube 4D",
+    "category": "Animations",
+    "featured": false,
+    "description": "A true four dimensional tesseract of sixteen vertices and thirty two edges rotating on two planes and projected through perspective.",
+    "tags": [
+      "animations",
+      "tesseract",
+      "hypercube",
+      "4d"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/tesseract-hypercube-4d",
+    "preview": "../creaciones-primium/animaciones/tesseract-hypercube-4d/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/tesseract-hypercube-4d/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/tesseract-hypercube-4d/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-truchet-tile-morph",
+    "name": "Truchet Tile Morph",
+    "category": "Animations",
+    "featured": false,
+    "description": "A grid of Truchet tiles whose glowing quarter circle arcs rotate ninety degrees and re-connect into a new continuous labyrinth.",
+    "tags": [
+      "animations",
+      "truchet",
+      "tile",
+      "morph"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/truchet-tile-morph",
+    "preview": "../creaciones-primium/animaciones/truchet-tile-morph/index.html",
+    "missingReferences": [
+      "styles.css",
+      "script.js"
+    ],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [],
+    "scripts": []
+  },
+  {
+    "id": "animaciones-voronoi-glass-shatter",
+    "name": "Voronoi Glass Shatter",
+    "category": "Animations",
+    "featured": false,
+    "description": "A tempered pane fractures along branching crack fronts into Voronoi shards that separate, spin, fall away and leave a glowing residual rim.",
+    "tags": [
+      "animations",
+      "voronoi",
+      "glass",
+      "shatter"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/voronoi-glass-shatter",
+    "preview": "../creaciones-primium/animaciones/voronoi-glass-shatter/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/voronoi-glass-shatter/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/voronoi-glass-shatter/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-voxel-block-builder",
+    "name": "Voxel Block Builder",
+    "category": "Animations",
+    "featured": false,
+    "description": "An isometric voxel monolith assembles block by block with edge glow, a build progress readout and a slowly drifting camera.",
+    "tags": [
+      "animations",
+      "voxel",
+      "block",
+      "builder"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/voxel-block-builder",
+    "preview": "../creaciones-primium/animaciones/voxel-block-builder/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/voxel-block-builder/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/voxel-block-builder/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-watercolor-bleed-bloom",
+    "name": "Watercolor Bleed Bloom",
+    "category": "Animations",
+    "featured": false,
+    "description": "Pigment washes bloom and bleed across cotton rag paper through SVG turbulence, displacement and blur filters in a staggered seamless loop.",
+    "tags": [
+      "animations",
+      "watercolor",
+      "bleed",
+      "bloom"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/watercolor-bleed-bloom",
+    "preview": "../creaciones-primium/animaciones/watercolor-bleed-bloom/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/watercolor-bleed-bloom/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/watercolor-bleed-bloom/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-waving-flag-cloth-sim",
+    "name": "Waving Flag Cloth Sim",
+    "category": "Animations",
+    "featured": false,
+    "description": "A verlet-integrated cloth lattice pinned to a mast ripples under layered wind with a woven emblem.",
+    "tags": [
+      "animations",
+      "waving",
+      "flag",
+      "cloth",
+      "sim"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/waving-flag-cloth-sim",
+    "preview": "../creaciones-primium/animaciones/waving-flag-cloth-sim/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/waving-flag-cloth-sim/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/waving-flag-cloth-sim/script.js"
+      }
+    ]
   }
 ]

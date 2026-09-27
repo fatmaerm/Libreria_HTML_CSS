@@ -78,15 +78,28 @@ body{
   padding:clamp(56px,10vh,110px) clamp(14px,4vw,48px);
 }
 
+.stage::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:min(86vw,72vh,900px);
+  aspect-ratio:1;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:radial-gradient(circle at 50% 50%,hsla(258,.9,.34,.24) 0%,hsla(276,.9,.28,.09) 44%,transparent 70%);
+  pointer-events:none;
+}
+
 .figure{
   --sw:1;
+  position:relative;
   width:min(1080px,96vw);
   height:auto;
   max-height:74vh;
   overflow:visible;
   touch-action:none;
   cursor:grab;
-  filter:drop-shadow(0 30px 70px hsla(268,80%,3%,.6));
 }
 
 .figure:active{cursor:grabbing}

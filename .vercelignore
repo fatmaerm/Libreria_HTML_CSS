@@ -1,5 +1,9 @@
 # Documentación y herramientas internas: no hace falta en el despliegue.
-Docs/
+# Se publica solo el aviso de licencias, que es de consulta pública.
+Docs/**
+!Docs/Legalizacion/
+Docs/Legalizacion/**
+!Docs/Legalizacion/THIRD_PARTY_NOTICES.md
 .qodo/
 .github/
 .vercel/

@@ -28,9 +28,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/site.css?v=20260927-176543210">
-    <script defer src="./scripts/zip.js?v=20260927-176543210"></script>
-    <script defer src="./scripts/app.js?v=20260927-176543210"></script>
+    <link rel="stylesheet" href="./styles/site.css?v=20260927-2432109876543210">
+    <script defer src="./scripts/zip.js?v=20260927-2432109876543210"></script>
+    <script defer src="./scripts/app.js?v=20260927-2432109876543210"></script>
   </head>
   <body data-page-title="pageComponents">
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -55,7 +55,7 @@
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch theme">
         <span class="theme-icon" aria-hidden="true">☼</span>
         <span class="theme-label">Light</span>
-      </button>
+        </button>
     </header>
 
     <main id="main-content">
@@ -101,8 +101,15 @@
 
     <footer class="site-footer">
       <a class="brand footer-brand" href="./"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span><span>component<span class="brand-accent">/</span>field</span></a>
-      <p data-i18n="footerDescription">Independent HTML, CSS, and JavaScript experiments.</p>
-      <div class="footer-meta"><span data-i18n="footerBuilt">Built for the open web</span><span id="footer-year"></span><a href="https://github.com/kindred-98/Libreria_HTML_CSS" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+      <div class="footer-note">
+        <p data-i18n="footerDonate">Donate USDT through BNB Smart Chain (BEP20)</p>
+        <button class="footer-address" type="button" data-copy-address data-i18n-aria-label="copyWalletAddress">
+          <span data-i18n="footerDonateAddress">0xa8f0230135b4f6a959358be3e8e8531f3551fa81</span>
+          <span class="footer-address-hint" aria-hidden="true" data-i18n="copy">Copy</span>
+        </button>
+      </div>
+      <div class="footer-meta"><span data-i18n="footerBuilt">Code library</span><span id="footer-year"></span><a href="https://github.com/kindred-98/Libreria_HTML_CSS" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+
     </footer>
     <output class="toast" id="toast" aria-live="polite"></output>
   </body>

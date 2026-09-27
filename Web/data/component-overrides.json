@@ -15,7 +15,6 @@
 			"button",
 			"hover"
 		],
-		"featured": true,
 		"source": "https://github.com/gevendra2004/gevstack"
 	},
 	"animated-gradient-underglow": {
@@ -34,7 +33,6 @@
 			"social",
 			"hover"
 		],
-		"featured": true,
 		"source": "https://github.com/gevendra2004/gevstack"
 	},
 	"animated-tab-menu": {
@@ -42,7 +40,7 @@
 		"descriptionEs": "Barra de pestañas cuyo indicador se desliza entre las opciones al cambiar de pestaña.",
 		"source": "https://github.com/gevendra2004/gevstack"
 	},
-	"bicycle-preloader": {
+	"bicycle-preloader": {"featured": true,
 		"description": "A loading indicator built around a pedalling bicycle animation.",
 		"descriptionEs": "Indicador de carga basado en la animación de una bicicleta que pedalea.",
 		"source": "https://github.com/gevendra2004/gevstack"
@@ -103,7 +101,6 @@
 			"card",
 			"shimmer"
 		],
-		"featured": true,
 		"source": "https://github.com/gevendra2004/gevstack"
 	},
 	"card-transition": {
@@ -421,7 +418,7 @@
 		"descriptionEs": "Indicador de carga con forma de lápiz en movimiento.",
 		"source": "https://github.com/gevendra2004/gevstack"
 	},
-	"photo-gallery": {
+	"photo-gallery": {"featured": true,
 		"description": "A photo gallery layout with hover states for each image.",
 		"descriptionEs": "Distribución de galería de fotos con estados al pasar el cursor en cada imagen.",
 		"source": "https://github.com/gevendra2004/gevstack"
@@ -1619,7 +1616,7 @@
 		"licenseFile": "LICENSE",
 		"redistributable": true
 	},
-	"liquid-fill-button": {
+	"liquid-fill-button": {"featured": true,
 		"description": "A button that fills with liquid when you hover it.",
 		"descriptionEs": "Botón que se llena de líquido al pasar el cursor.",
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",
@@ -1945,7 +1942,7 @@
 		"licenseFile": "LICENSE",
 		"redistributable": true
 	},
-	"neural-synapse-network": {
+	"neural-synapse-network": {"featured": true,
 		"description": "Synapses firing between connected nodes in a neural network.",
 		"descriptionEs": "Sinapsis que se disparan entre nodos de una red neuronal.",
 		"source": "https://github.com/kindred-98/Libreria_HTML_CSS",

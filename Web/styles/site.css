@@ -751,8 +751,11 @@ input:focus-visible {
   border-bottom: 1px solid var(--line);
 }
 
+/* Padding abajo a proposito: es la ultima seccion de Inicio y sin este hueco el
+   border-top del footer queda pegado al borde inferior de las tarjetas y parece
+   la linea de otra. Antes de esto la tapaba la seccion de categorias. */
 .featured-section {
-  padding-block: 52px 0;
+  padding-block: 52px 44px;
 }
 
 .section-heading {
@@ -867,6 +870,37 @@ input:focus-visible {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
+}
+
+/* Los destacados de Inicio son cuatro y tienen que entrar en una sola fila, asi
+   que van a 4 columnas con la preview mas baja. No se toca .component-grid
+   porque esa tambien es la rejilla de components.html, que muestra 12. */
+#featured-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  /* El grid viene con align-items: center, y asi las tarjetas no se estiran a
+     la fila: segun si el titulo ocupa una o dos lineas quedan 284px o 263px y
+     descuadran. Con stretch todas miden lo mismo. */
+  align-items: stretch;
+}
+
+#featured-grid .card-preview {
+  height: 150px;
+}
+
+/* Titulo y descripcion como mucho en dos lineas, para que las cuatro tarjetas
+   midan exactamente lo mismo. */
+#featured-grid .component-card h3 {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+#featured-grid .card-content p {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .component-card {
@@ -1259,6 +1293,8 @@ input:focus-visible {
   align-items: center;
   gap: 20px;
   margin-inline: auto;
+  padding-block: 34px 26px;
+  border-top: 2px solid #d4f779;
   color: var(--muted);
 }
 
@@ -1266,17 +1302,100 @@ input:focus-visible {
   color: var(--text);
 }
 
-.site-footer > p {
+.footer-note p {
   margin: 0;
   font-size: 10px;
 }
 
+.footer-note p + p {
+  margin-top: 5px;
+}
+
+/* La direccion son 42 caracteres: monoespaciada y partida en cualquier punto,
+   que si no en movil empuja el footer y aparece scroll horizontal. Es un boton
+   para poder copiarla de un clic. */
+.footer-address {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font-family: "DM Mono", "Courier New", monospace;
+  font-size: 9px;
+  text-align: left;
+  overflow-wrap: anywhere;
+  transition: color 150ms ease;
+}
+
+/* Icono de copiar (dos cuadrados superpuestos). Traza con currentcolor, asi que
+   el SVG que inyecta app.js hereda el color del boton sin pedir nada. */
+.footer-address-icon {
+  order: 3;
+  display: inline-flex;
+  flex: 0 0 auto;
+  opacity: 0.55;
+  transition: opacity 150ms ease;
+}
+
+.footer-address-icon svg {
+  display: block;
+}
+
+.footer-address:hover,
+.footer-address:focus-visible {
+  color: var(--accent);
+}
+.footer-address:hover .footer-address-icon,
+.footer-address:focus-visible .footer-address-icon,
+.footer-address.is-copied .footer-address-icon {
+  opacity: 1;
+}
+
+/* "Copy" solo aparece al pasar por encima o al copiar, para no ensuciar el footer. */
+.footer-address-hint {
+  order: 2;
+  color: var(--accent);
+  font-family: "Manrope", "Trebuchet MS", sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 150ms ease, transform 150ms ease;
+  pointer-events: none;
+}
+
+.footer-address:hover .footer-address-hint,
+.footer-address:focus-visible .footer-address-hint,
+.footer-address.is-copied .footer-address-hint {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 .footer-meta {
   display: flex;
+  align-items: flex-start;
   justify-content: end;
   gap: 17px;
   color: var(--quiet);
   font-size: 9px;
+}
+
+/* El texto son dos frases separadas por \n; sin pre-line el salto se
+   colapsaria en un espacio y volverian a ser un solo renglon. */
+.footer-meta [data-i18n="footerBuilt"] {
+  white-space: pre-line;
+  text-align: right;
+}
+
+.footer-meta a {
+  white-space: nowrap;
 }
 
 .toast {
@@ -1334,6 +1453,10 @@ input:focus-visible {
   }
 
   .component-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #featured-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1472,7 +1595,7 @@ input:focus-visible {
   }
 
   .featured-section {
-    padding-top: 38px;
+    padding-block: 38px 34px;
   }
 
   .library-toolbar {
@@ -1488,6 +1611,20 @@ input:focus-visible {
   .component-grid {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+
+  #featured-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  #featured-grid .card-preview {
+    height: 110px;
+  }
+
+  #featured-grid .component-category,
+  #featured-grid .component-number {
+    font-size: 9px;
   }
 
   .team-section {

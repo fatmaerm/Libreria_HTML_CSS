@@ -68,8 +68,11 @@ const translations = {
     loadMore: "Load more",
     findStartingPoint: "FIND A STARTING POINT",
     categoriesNote: "Grouped from the component names and folders.",
-    footerDescription: "Independent HTML, CSS, and JavaScript experiments.",
-    footerBuilt: "Built for the open web",
+    footerDonate: "Donate USDT through BNB Smart Chain (BEP20)",
+    footerDonateAddress: "0xa8f0230135b4f6a959358be3e8e8531f3551fa81",
+    walletAddress: "Wallet address",
+    copyWalletAddress: "Copy the wallet address to the clipboard",
+    footerBuilt: "Open source code library, open to contributions.\nGot a creative idea? OPEN A PR.",
     component: "component",
     components: "components",
     browseCategory: "Browse {category} components",
@@ -180,8 +183,11 @@ const translations = {
     loadMore: "Cargar más",
     findStartingPoint: "ENCUENTRA UN PUNTO DE PARTIDA",
     categoriesNote: "Agrupados según los nombres de los componentes y sus carpetas.",
-    footerDescription: "Experimentos independientes de HTML, CSS y JavaScript.",
-    footerBuilt: "Hecho para la web abierta",
+    footerDonate: "Puedes donar USDT a través de BNB Smart Chain (BEP20)",
+    footerDonateAddress: "0xa8f0230135b4f6a959358be3e8e8531f3551fa81",
+    walletAddress: "Dirección de la cartera",
+    copyWalletAddress: "Copiar la dirección de la cartera al portapapeles",
+    footerBuilt: "Librería de código abierto, abierta a contribuciones.\nSi tiene una idea creativa de nuevo componente, HAS UNA PR.",
     component: "componente",
     components: "componentes",
     browseCategory: "Explorar componentes de {category}",
@@ -246,7 +252,6 @@ const elements = {
   search: document.querySelector("#component-search"),
   filters: document.querySelector("#category-filters"),
   grid: document.querySelector("#component-grid"),
-  categoryGrid: document.querySelector("#category-grid"),
   resultsCount: document.querySelector("#results-count"),
   emptyState: document.querySelector("#empty-state"),
   loadMore: document.querySelector("#load-more"),
@@ -380,14 +385,44 @@ function renderMarquee() {
 }
 
 function initializeMarquee() {
-  if (!document.querySelector(".skew-marquee")) return;
-  renderMarquee();
-  let resizeTimer = null;
-  window.addEventListener("resize", () => {
-    window.clearTimeout(resizeTimer);
-    resizeTimer = window.setTimeout(renderMarquee, 180);
-  });
+    if (!document.querySelector(".skew-marquee")) return;
+    renderMarquee();
+    let resizeTimer = null;
+    window.addEventListener("resize", () => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(renderMarquee, 180);
+    });
 }
+
+function initializeCopyAddress() {
+  for (const button of document.querySelectorAll("[data-copy-address]")) {
+    // El icono va inyectado aqui y no en el HTML para no repetirlo en las tres
+    // paginas. Traza con currentcolor, asi que hereda el color del boton.
+    const icon = document.createElement("span");
+    icon.className = "footer-address-icon";
+    icon.setAttribute("aria-hidden", "true");
+    icon.innerHTML = '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" '
+      + 'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">'
+      + '<rect x="8" y="8" width="14" height="14" rx="2" ry="2"/>'
+      + '<path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>'
+      + "</svg>";
+    button.append(icon);
+
+    button.addEventListener("click", async () => {
+      // Se copia la direccion del diccionario y no la del HTML, para que siga
+      // siendo la correcta despues de cambiar de idioma.
+      try {
+        await copyText(t("footerDonateAddress"));
+        button.classList.add("is-copied");
+        showToast(t("copiedToClipboard", { label: t("walletAddress") }));
+        window.setTimeout(() => button.classList.remove("is-copied"), 1400);
+      } catch {
+        showToast(t("clipboardUnavailable"));
+      }
+    });
+  }
+}
+
 
 function applyStaticTranslations() {
   for (const element of document.querySelectorAll("[data-i18n]")) {
@@ -559,33 +594,15 @@ function renderComponents() {
 
 function renderFeaturedComponents() {
   if (!elements.featuredGrid) return;
-  const featuredComponents = state.components.filter((component) => component.featured);
+  // El catalogo viene ordenado por carpeta, asi que sin ordenar los destacados
+  // salen en un orden que no encaja con como se eligen. Por nombre queda
+  // Bicycle, Liquid Fill Button, Neural Synapse Network, Photo Gallery.
+  const featuredComponents = state.components
+    .filter((component) => component.featured)
+    .sort((first, second) => first.name.localeCompare(second.name));
   elements.featuredGrid.replaceChildren(...featuredComponents.map((component, index) => createComponentCard(component, index)));
   elements.featuredGrid.closest(".featured-section").hidden = featuredComponents.length === 0;
   refreshQueuedPreviews();
-}
-
-function renderCategories() {
-  if (!elements.categoryGrid) return;
-  const counts = new Map();
-  for (const component of state.components) {
-    counts.set(component.category, (counts.get(component.category) ?? 0) + 1);
-  }
-
-  elements.categoryGrid.replaceChildren();
-  for (const category of getCategories()) {
-    const translatedCategory = getCategoryLabel(category);
-    // Las categorias viven en Inicio, asi que enlazan a la pagina de la coleccion
-    // llevando la categoria elegida en la query.
-    const link = createElement("a", "category-card");
-    link.href = `./components.html?category=${encodeURIComponent(category)}`;
-    link.setAttribute("aria-label", t("browseCategory", { category: translatedCategory }));
-    link.append(
-      createElement("span", "category-card-name", translatedCategory),
-      createElement("span", "category-card-count", `${counts.get(category)} ${counts.get(category) === 1 ? t("component") : t("components")}`),
-    );
-    elements.categoryGrid.append(link);
-  }
 }
 
 function createCodeBlock(label, code) {
@@ -966,7 +983,6 @@ function applyLanguage(language, rerender = true) {
     renderMarquee();
     renderFeaturedComponents();
     renderFilters();
-    renderCategories();
     renderRoute();
   }
 }
@@ -1065,6 +1081,7 @@ async function initializeApp() {
   initializeNavigation();
   initializeSearch();
   initializeMarquee();
+  initializeCopyAddress();
   document.querySelector("#footer-year").textContent = String(new Date().getFullYear());
 
   // El ancho medido depende de la fuente; si DM Mono llegase tarde, el texto
@@ -1085,7 +1102,6 @@ async function initializeApp() {
     renderMarquee();
     renderFeaturedComponents();
     renderFilters();
-    renderCategories();
     renderRoute();
   } catch (error) {
     if (elements.resultsCount) elements.resultsCount.textContent = t("catalogUnavailable");

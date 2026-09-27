@@ -33,7 +33,7 @@
     "id": "among-us-button",
     "name": "Among Us Button Animation",
     "category": "Buttons",
-    "featured": true,
+    "featured": false,
     "description": "A playful button with an animated character reveal on hover.",
     "descriptionEs": "Botón divertido con la aparición animada de un personaje al pasar el cursor.",
     "tags": [
@@ -90,7 +90,7 @@
     "id": "animated-nav-bar",
     "name": "Animated Social Navigation",
     "category": "Navigation",
-    "featured": true,
+    "featured": false,
     "description": "A social-link menu with a hover highlight and waving-hand animation.",
     "descriptionEs": "Menú de enlaces sociales con resaltado y una mano animada al pasar el cursor.",
     "tags": [
@@ -148,7 +148,7 @@
     "id": "bicycle-preloader",
     "name": "Bicycle Preloader",
     "category": "Loaders",
-    "featured": false,
+    "featured": true,
     "description": "A loading indicator built around a pedalling bicycle animation.",
     "descriptionEs": "Indicador de carga basado en la animación de una bicicleta que pedalea.",
     "tags": [
@@ -446,7 +446,7 @@
     "id": "card-skeleton",
     "name": "Skeleton Loading Card",
     "category": "Loaders",
-    "featured": true,
+    "featured": false,
     "description": "A profile-card placeholder with a moving shimmer effect.",
     "descriptionEs": "Marcador de posición de una tarjeta de perfil con un brillo en movimiento.",
     "tags": [
@@ -2294,7 +2294,7 @@
     "id": "photo-gallery",
     "name": "Photo Gallery",
     "category": "Galleries",
-    "featured": false,
+    "featured": true,
     "description": "A photo gallery layout with hover states for each image.",
     "descriptionEs": "Distribución de galería de fotos con estados al pasar el cursor en cada imagen.",
     "tags": [
@@ -7197,7 +7197,7 @@
     "id": "liquid-fill-button",
     "name": "Liquid Fill Button",
     "category": "Buttons",
-    "featured": false,
+    "featured": true,
     "description": "A button that fills with liquid when you hover it.",
     "descriptionEs": "Botón que se llena de líquido al pasar el cursor.",
     "tags": [
@@ -8404,7 +8404,7 @@
     "id": "neural-synapse-network",
     "name": "Neural Synapse Network",
     "category": "Other",
-    "featured": false,
+    "featured": true,
     "description": "Synapses firing between connected nodes in a neural network.",
     "descriptionEs": "Sinapsis que se disparan entre nodos de una red neuronal.",
     "tags": [

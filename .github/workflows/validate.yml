@@ -1,0 +1,38 @@
+name: Validar sitio
+
+# No despliega. El build de Vercel genera el catalogo por su cuenta
+# (buildCommand en vercel.json); este workflow ejecuta exactamente los mismos
+# pasos en cada push y pull request, para ver aqui el error si falla.
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validar-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validar:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      # El catalogo no se versiona, asi que este clon parte de cero: se genera
+      # aqui igual que lo hara Vercel.
+      - name: Generar el catalogo (mismo comando que el build de Vercel)
+        run: node Web/scripts/generate-catalog.mjs
+
+      - name: Comprobar el catalogo generado
+        run: node Web/scripts/validate.mjs

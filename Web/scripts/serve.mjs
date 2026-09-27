@@ -27,9 +27,12 @@ const contentTypes = {
 
 function resolveRequest(url) {
   const requested = decodeURIComponent(url.split("?")[0].split("#")[0]);
-  const base = path.join(repositoryDirectory, requested);
-  // Nunca dejar que una ruta salga de la raiz del repositorio.
-  if (!base.startsWith(repositoryDirectory)) return null;
+  const base = path.resolve(repositoryDirectory, `.${path.posix.sep}${requested}`);
+  // Nunca dejar que una ruta salga de la raiz del repositorio. path.relative es
+  // la comprobacion correcta: un startsWith sin separador final dejaria pasar
+  // una carpeta vecina cuyo nombre empiece por el del repositorio.
+  const relative = path.relative(repositoryDirectory, base);
+  if (relative.startsWith("..") || path.isAbsolute(relative)) return null;
   return base;
 }
 

@@ -1,4 +1,4 @@
-import { mkdir, readdir, readFile, unlink, writeFile } from "node:fs/promises";
+import { mkdir, readdir, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 /**
@@ -44,8 +44,4 @@ export async function writeSources(sourcesDirectory, components, { removeOrphans
       "utf8",
     );
   }
-}
-
-export async function readSource(sourcesDirectory, componentId) {
-  return JSON.parse(await readFile(path.join(sourcesDirectory, `${componentId}.json`), "utf8"));
 }

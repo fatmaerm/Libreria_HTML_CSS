@@ -64,7 +64,7 @@ Los archivos locales, como `Movie-Card-UI/pngwing.png`, y las imágenes, fuentes
 ## Consecuencias asumidas en el proyecto
 
 - El botón **ZIP está deshabilitado en los 116 componentes de terceros** y **habilitado en los 248 propios**. No es un bug pendiente: es el estado correcto según los derechos de cada grupo.
-- `node Web/scripts/build-site.mjs` genera un artefacto con **248 componentes** (los autorizados) y excluye los 116 sin licencia. **No se recomienda usarlo como build command de Vercel**: el sitio se despliega mejor sirviendo la raíz del repositorio, que muestra los 364 componentes y evita que las previews de `BibliotecaDeHtml_CSS/` den 404.
+- El sitio se despliega en **Vercel sirviendo la raíz del repositorio**, que muestra los 396 componentes y evita que las previews de `BibliotecaDeHtml_CSS/` den 404. No existe un artefacto de publicación alternativo: el constructor que filtraba por licencias se eliminó junto con el despliegue en GitHub Pages, para que solo haya una copia del sitio y no se puedan publicar por error los componentes sin permiso de redistribución.
 - La atribución de origen se muestra en el detalle de cada componente («Source: …»), tanto si está verificado como si no.
 
 ## Autorizar un componente

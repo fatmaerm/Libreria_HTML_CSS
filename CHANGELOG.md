@@ -7,6 +7,145 @@ Formato: [Keep a Changelog](https://keepachangelog.com/es/1.1.0/).
 Cada fase terminada se registra aquí con su fecha. Las fases están definidas en
 [`Docs/Opencode/Plan.md`](./Docs/Opencode/Plan.md).
 
+## [El catálogo se genera en el despliegue] — 2026-09-27
+
+Continuidad de la [segunda auditoría](./Docs/auditoria/segunda-auditoria.md). Resuelve
+el problema que aquella dejó abierto: el catálogo había que regenerarlo a mano, así que
+un demo nuevo no aparecía en la web hasta que alguien se acordaba.
+
+### Hecho — el build de Vercel genera el catálogo
+
+`vercel.json` pasa de `"buildCommand": null` a:
+
+```json
+"buildCommand": "node Web/scripts/generate-catalog.mjs"
+```
+
+El catálogo refleja siempre lo que hay en disco. Da igual si el demo lo añade una
+persona o un agente: no hay ningún paso manual que recordar.
+
+### Hecho — los datos generados dejan de versionarse
+
+`Web/data/catalog.json`, `Web/data/catalog.js` y `Web/data/sources/` pasan a
+`.gitignore`: son 474 ficheros que se reescriben enteros cada vez que se añade un demo.
+
+El beneficio mayor no es el tamaño, son los conflictos: al no estar versionados, **dos
+agentes pueden añadir demos a la vez sin que sus cambios choquen sobre los mismos
+473 ficheros de `sources/`**. Con ellos versionados, cualquier adición simultánea
+provocaba un conflicto de merge en casi todos los ficheros de datos.
+
+`git rm --cached` de `catalog.json` y `sources/`. `Web/data/component-overrides.json`
+**se mantiene versionado** porque se edita a mano.
+
+### Hecho — el CI hace lo mismo que producción
+
+Antes, `validate.yml` regeneraba el catálogo y comparaba con `git diff` sobre
+`Web/data/`. Ese paso dejó de tener sentido al dejar de estar versionado, así que se
+sustituyó por los dos comandos reales:
+
+1. `node Web/scripts/generate-catalog.mjs` — el mismo comando que ejecuta Vercel.
+2. `node Web/scripts/validate.mjs` — sobre el catálogo recién generado.
+
+El job ahora prueba exactamente lo que hará producción, y no necesita `git` para nada.
+
+`validate.mjs` comprueba al principio que el catálogo exista y, si no, dice qué comando
+ejecutar en lugar de soltar un error de Node. Probado sobre un árbol vacío: `exit=1` con
+el mensaje correcto.
+
+### Documentación
+
+- `README.md`: sección *El catálogo se genera en el despliegue*, aviso explícito de que
+  el **Build Command no debe quedar vacío en el panel de Vercel** (si se deja en blanco
+  sobrescribe el valor de `vercel.json` y el catálogo no se genera), y *Contribuir* con
+  los dos comandos de siempre.
+- `Web/README.md`: *Ejecución local* actualizado con la nota de que en un clon nuevo el
+  catálogo no existe, y `serve.mjs` como forma recomendada de servir en local.
+
+### Nota
+
+`.vercelignore` **no** incluye los datos generados a propósito. Si se ignoraran ahí, el
+build los crearía y luego Vercel los eliminaría de la salida, dejando el sitio sin
+catálogo. Se suben (~1,6 MB) y el build los sobrescribe.
+
+## [Auditoría, CI de validación y cabeceras de seguridad] — 2026-09-27
+
+Trabajo posterior a la [primera auditoría](./Docs/auditoria/primera-auditoria.md), que
+limpió 13,64 MB de ficheros sin uso. Aquí se registra lo que no es una fase del plan.
+
+### Hecho — un solo sitio: se elimina el despliegue en GitHub Pages
+
+El workflow `deploy-pages.yml` fallaba en **todas** las subidas con
+`HttpError: Not Found` de `actions/configure-pages@v5`, que llama a
+`GET /repos/{owner}/{repo}/pages` y recibe 404 porque **GitHub Pages no está
+habilitado** en el repositorio. El parámetro `enablement` no lo arregla: exige un
+token distinto de `GITHUB_TOKEN` con permisos de administración.
+
+Más allá del error, publicar en Pages solo habría servido el artefacto de
+`build-site.mjs`, filtrado por licencias: **248 de los 396** componentes. Vercel
+sirve la raíz del repositorio y muestra los 396. Dos webs distintas, una incompleta.
+
+- Borrado `.github/workflows/deploy-pages.yml` y `Web/scripts/build-site.mjs`.
+- `catalog-format.mjs`: fuera `readSource()`, que solo usaba `build-site.mjs`, y el
+  import `readFile` que quedaba sin uso. `toIndexEntry`, `toSourceEntry` y
+  `writeSources` los sigue usando `generate-catalog.mjs`, así que el módulo se queda.
+- `README.md`, `Web/README.md` y `THIRD_PARTY_NOTICES.md`: secciones *Despliegue*
+  actualizadas y cifras corregidas de 364 a 396 demos en tres colecciones.
+
+### Hecho — `validate.mjs`: el fallo que más avisa
+
+Un demo añadido sin regenerar el catálogo **no aparece en la web y no da ningún
+síntoma**. `Web/scripts/validate.mjs` lo detecta:
+
+| Comprobación | Qué evita |
+| --- | --- |
+| `node --check` en los 6 `.js` | La web en blanco por un error de sintaxis |
+| Catálogo ↔ `sources/` bidireccional | Un demo que abre a error |
+| Cada `preview` apunta a un `index.html` real | Previews con 404 |
+| `missingReferences` vacío | Referencias locales rotas |
+| Todo `index.html` del disco está en el catálogo | **Demos que existen pero no se ven** |
+
+Al escribirlo ya detectó **77 demos** de `creaciones-primium/botones/` presentes en
+disco y ausentes del catálogo, y **0** fallos de sintaxis, `sources`, `preview` o
+referencias. El workflow `validate.yml` lo ejecuta en cada `push` a `main` y en cada
+pull request, más un `git diff` sobre `Web/data/` que falla si el catálogo quedó
+desactualizado. **No despliega**, así que no depende de GitHub Pages.
+
+### Hecho — cabeceras de seguridad
+
+`vercel.json` tenía tres cabeceras. Se añaden `Content-Security-Policy`,
+`Strict-Transport-Security` y `Permissions-Policy`.
+
+La CSP se diseñó contra lo que la app usa de verdad, comprobado antes de aplicarla:
+las tres páginas **no tienen ni un script ni un estilo inline** (el único script inline
+del repositorio es la redirección de `index.html`), `app.js` solo usa la API CSSOM
+(`.style.setProperty`), que la CSP no restringe, y no hay `eval` ni `new Function`.
+Los recursos remotos que quedan son Google Fonts y los avatares de GitHub.
+
+`frame-src 'self'` no rompe las previews porque están en el mismo origen, y los 148
+demos de terceros **no quedan sujetos a esta CSP**: van dentro de un `iframe` y cada
+documento aplica la suya, así que siguen pudiendo cargar sus recursos remotos.
+
+### Corregido
+
+- **Cache-busting desincronizado.** El HTML pedía `?v=20260927-27` y
+  `app.js` llevaba `previewRevision = "20260926-2"` como literal suelto, así que
+  tocar `app.js` no invalidaba la caché del navegador. Ahora `appVersion` se **deriva**
+  del `?v=` que ya ponen las tres páginas: una sola fuente de verdad.
+- **`robots.txt` no bloqueaba nada.** Decía `Disallow: /Web/?component=`, pero el
+  detalle ya vive en `components.html?component=<id>` desde que la web se partió en
+  tres páginas. Los 396 detalles eran indexables pese a su meta `noindex`. Corregido a
+  `Disallow: /Web/components.html?component=`. Se eliminó también
+  `Disallow: /.github-pages-site/`, ruta que no se publica en ningún hosting.
+- **Código muerto: `?category=`.** `applyCategoryFromUrl()` leía un parámetro que
+  nada generaba: la sección de categorías ya no existe en ninguna página y los filtros
+  de `components.html` son `<button>`, no enlaces. Función y llamada eliminadas.
+- **Path traversal en `serve.mjs`.** `base.startsWith(repositoryDirectory)` sin
+  separador final dejaba pasar carpetas vecinas cuyo nombre empezara por el del
+  repositorio: `/../Libreria_HTML_CSS_vecino/secreto.txt` se servía. Sustituido por
+  `path.relative` con comprobación de `..` y de ruta absoluta. Verificado con
+  `/../../Windows/win.ini` y el intento codificado en URL, ambos bloqueados. Solo
+  afectaba al servidor local, nunca al sitio publicado.
+
 ## [Fase 10 — Clasificación de componentes y previews en producción] — 2026-09-27
 
 ### Hecho — previews que se veían rotas

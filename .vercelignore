@@ -8,9 +8,8 @@ Docs/Legalizacion/**
 .github/
 .vercel/
 CHANGELOG.md
-
-# Artefactos de build de GitHub Pages (regenerados en cada despliegue).
-.github-pages-*
+CONTRIBUTING.md
+SECURITY.md
 
 # El catálogo completo solo se carga al abrir con file://; en HTTP se usa
 # catalog.json. Se regenera con Web/scripts/generate-catalog.mjs.

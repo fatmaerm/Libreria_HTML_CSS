@@ -1,6 +1,13 @@
 const catalogPath = "./data/catalog.json";
 const fullCatalogPath = "./data/catalog.js";
-const previewRevision = "20260926-2";
+// Una sola version para todo. Las tres paginas cargan este mismo script con
+// "?v=<version>", asi que se lee de ahi en vez de repetirla aqui: cambiar el
+// HTML invalida a la vez la cache de la app y la de las vistas previas.
+const appVersion = new URL(
+  document.querySelector('script[src*="/scripts/app.js"]')?.src ?? "./scripts/app.js",
+  document.baseURI,
+).searchParams.get("v") ?? "dev";
+const previewRevision = appVersion;
 const pageSize = 12;
 const translations = {
   en: {
@@ -22,7 +29,20 @@ const translations = {
     pageTeamCore: "Team Core",
     teamCoreEyebrow: "TEAM CORE",
     teamCoreTitle: "The people behind the library",
-    teamCoreLead: "A small independent group building and maintaining every demo in this collection.",
+    teamCoreLead: "Three programming students and one repository that lit the fuse.",
+    pcbChipLabel: "NEXO",
+    storyEyebrow: "HOW IT STARTED",
+    storyNote: "Where the idea came from, told properly.",
+    storyP1: "It started at 10 in the morning, in an analysis and programming course on Java. We had an HTML and CSS practice session, and our teacher showed us how far you can push those two languages, using a few examples from gevendra2004's repository. What was in there looked far too good to just look at.",
+    storyP2: "davoker started practising on his computer. Twenty minutes later, he called me to show me what he had built: it was something else. So I asked him: why don't we set up a library? Building components is his thing, and that is where he stands out: obsessive about every detail, with ideas nobody else comes up with.",
+    storyP3: "fatmaerm saw it from the start: he told us there are already plenty of HTML and CSS libraries, but for anyone just beginning that is not the same thing. I'm in: it is real practice, and it settles the foundations of both languages.",
+    storyP4: "davoker signed up with one sentence: \"I'm in, this thing is fascinating.\" And just like that, almost without noticing, a library started.",
+    fromVenezuela: "Venezuela",
+    fromAlgeria: "Algeria",
+    fromSpain: "Spain",
+    fromIndia: "India",
+    teamNoteClassmate: "Classmate from the course",
+    teamNotePermission: "We have permission to use his work",
     teamRosterEyebrow: "THE ROSTER",
     teamRosterTitle: "Who maintains it",
     teamRosterNote: "Four accounts, one library.",
@@ -36,6 +56,14 @@ const translations = {
     donationsNote: "Every demo stays free and open source.",
     donationsText: "If this library saves you time, a small contribution keeps the demos maintained, documented, and free for everyone.",
     donateNow: "Donate",
+    donationsNetwork: "Network: BNB Smart Chain (BEP20)",
+    depositTitle: "Deposit USDT on Binance",
+    depositQrAlt: "QR code with the wallet address to deposit USDT on BNB Smart Chain",
+    depositNetworkLabel: "Network",
+    depositNetworkValue: "BNB Smart Chain (BEP20)",
+    depositAddressLabel: "Wallet address",
+    depositWarning: "Do not send NFTs to this address.",
+    depositBrand: "BINANCE",
     switchToLight: "Switch to light theme",
     switchToDark: "Switch to dark theme",
     switchTheme: "Switch theme",
@@ -137,7 +165,20 @@ const translations = {
     pageTeamCore: "Núcleo del equipo",
     teamCoreEyebrow: "NÚCLEO DEL EQUIPO",
     teamCoreTitle: "Quién está detrás de la biblioteca",
-    teamCoreLead: "Un grupo independiente y pequeño que construye y mantiene cada demo de esta colección.",
+    teamCoreLead: "Tres estudiantes de programación y un repositorio que encendió la mecha.",
+    pcbChipLabel: "NEXO",
+    storyEyebrow: "CÓMO NACIÓ",
+    storyNote: "De dónde salió la idea, contado como fue.",
+    storyP1: "Todo empezó a las 10 de la mañana, en una clase de análisis y programación en Java. Teníamos práctica de HTML y CSS y la profesora nos mostró hasta dónde se puede llegar con esos dos lenguajes, enseñándonos algunos ejemplos del repositorio de gevendra2004. Lo que había dentro nos pareció demasiado bueno como para quedarnos solo mirándolo.",
+    storyP2: "davoker empezó a practicar en su ordenador. A los veinte minutos, me llamó para enseñarme lo que había hecho: era una chulada. Le dije: ¿por qué no montábamos una biblioteca? Crear componentes es lo suyo, y en eso se distingue: maniático con cada detalle y con ideas que no se le ocurren a nadie más.",
+    storyP3: "fatmaerm lo vio claro desde el principio: nos dijo que ya existían un montón de bibliotecas de HTML y CSS, pero para quien está empezando eso no vale igual. Me apunto sirve para practicar de verdad y para asentar la base de los dos lenguajes.",
+    storyP4: "davoker se apuntó con una frase: \u00abMe apunto, esta mierda me fascina\u00bb. Y así, casi sin querer, empezó una biblioteca.",
+    fromVenezuela: "Venezuela",
+    fromAlgeria: "Argelia",
+    fromSpain: "España",
+    fromIndia: "India",
+    teamNoteClassmate: "Compañero del curso",
+    teamNotePermission: "Tenemos autorización para usar su trabajo",
     teamRosterEyebrow: "LA PLANTILLA",
     teamRosterTitle: "Quién lo mantiene",
     teamRosterNote: "Cuatro cuentas, una biblioteca.",
@@ -151,6 +192,14 @@ const translations = {
     donationsNote: "Cada demo se mantiene gratis y de código abierto.",
     donationsText: "Si esta biblioteca te ahorra tiempo, una pequeña aportación mantiene los demos actualizados, documentados y disponibles para todos.",
     donateNow: "Donar",
+    donationsNetwork: "Red: BNB Smart Chain (BEP20)",
+    depositTitle: "Depositar USDT en Binance",
+    depositQrAlt: "Código QR con la dirección de la billetera para depositar USDT en BNB Smart Chain",
+    depositNetworkLabel: "Red",
+    depositNetworkValue: "BNB Smart Chain (BEP20)",
+    depositAddressLabel: "Dirección de la billetera",
+    depositWarning: "No envíes NFT a esta dirección.",
+    depositBrand: "BINANCE",
     switchToLight: "Cambiar al tema claro",
     switchToDark: "Cambiar al tema oscuro",
     switchTheme: "Cambiar tema",
@@ -423,6 +472,25 @@ function initializeCopyAddress() {
   }
 }
 
+function initializeDonationLink() {
+  // El boton Donar no lleva a ninguna pagina externa: la "cuenta de donacion" es la
+  // direccion de la cartera, asi que al pulsarlo se copia y se avisa con el toast.
+  // preventDefault evita que el href="#" suba al principio con el ancla vacia.
+  for (const link of document.querySelectorAll("[data-donation-link]")) {
+    link.addEventListener("click", async (event) => {
+      event.preventDefault();
+      try {
+        await copyText(t("footerDonateAddress"));
+        link.classList.add("is-copied");
+        showToast(t("copiedToClipboard", { label: t("walletAddress") }));
+        window.setTimeout(() => link.classList.remove("is-copied"), 1400);
+      } catch {
+        showToast(t("clipboardUnavailable"));
+      }
+    });
+  }
+}
+
 
 function applyStaticTranslations() {
   for (const element of document.querySelectorAll("[data-i18n]")) {
@@ -430,6 +498,9 @@ function applyStaticTranslations() {
   }
   for (const element of document.querySelectorAll("[data-i18n-placeholder]")) {
     element.placeholder = t(element.dataset.i18nPlaceholder);
+  }
+  for (const element of document.querySelectorAll("[data-i18n-alt]")) {
+    element.alt = t(element.dataset.i18nAlt);
   }
   for (const element of document.querySelectorAll("[data-i18n-aria-label]")) {
     element.setAttribute("aria-label", t(element.dataset.i18nAriaLabel));
@@ -1067,21 +1138,15 @@ function initializeSearch() {
   });
 }
 
-// Las tarjetas de categoria de Inicio llegan aqui como ?category=Botones
-function applyCategoryFromUrl() {
-  const requested = new URLSearchParams(window.location.search).get("category");
-  if (!requested) return;
-  const known = ["All", ...getCategories()];
-  state.category = known.includes(requested) ? requested : "All";
-}
-
 async function initializeApp() {
   initializeLanguage();
   initializeTheme();
   initializeNavigation();
   initializeSearch();
   initializeMarquee();
-  initializeCopyAddress();
+    initializeCopyAddress();
+    initializeDonationLink();
+
   document.querySelector("#footer-year").textContent = String(new Date().getFullYear());
 
   // El ancho medido depende de la fuente; si DM Mono llegase tarde, el texto
@@ -1098,7 +1163,6 @@ async function initializeApp() {
     const statCategories = document.querySelector("#stat-categories");
     if (statComponents) statComponents.textContent = String(state.components.length);
     if (statCategories) statCategories.textContent = String(getCategories().length);
-    applyCategoryFromUrl();
     renderMarquee();
     renderFeaturedComponents();
     renderFilters();

@@ -1,11 +1,12 @@
 # Biblioteca HTML y CSS
 
-Biblioteca estática y con búsqueda de demos independientes de interfaces hechos con HTML, CSS y JavaScript. El repositorio contiene actualmente **364 páginas de demos** repartidas en dos colecciones:
+Biblioteca estática y con búsqueda de demos independientes de interfaces hechos con HTML, CSS y JavaScript. El repositorio contiene actualmente **396 páginas de demos** repartidas en tres colecciones:
 
 - `BibliotecaDeHtml_CSS/` — **116 demos** de terceros (botones, tarjetas, navegación, formularios, loaders, galerías, controles y efectos visuales). Ver *Procedencia y licencias*: su repositorio de origen no declara licencia, así que **no se pueden redistribuir**.
 - `CreacionesNuevas/` — **248 demos** originales creados para este repositorio, cada uno con su propio archivo `LICENSE` MIT y **descarga ZIP habilitada**.
+- `creaciones-primium/` — **32 demos** organizados por categoría, en desarrollo. Sin `LICENSE` en la carpeta, todavía **sin descarga ZIP**.
 
-La aplicación web está separada en `Web/`; los demos originales permanecen en `BibliotecaDeHtml_CSS/` y se cargan directamente para mostrar vistas previas reales.
+De los 396, **248 son descargables**. La aplicación web está separada en `Web/` y se divide en tres páginas —`index.html` (portada), `components.html` (listado y detalle) y `team-core.html` (equipo y donación)—; los demos originales se cargan directamente para mostrar vistas previas reales.
 
 ## Características
 
@@ -46,25 +47,31 @@ Node.js 18 o posterior solo hace falta para regenerar el catálogo. El sitio uti
 .
 |-- BibliotecaDeHtml_CSS/       # 116 demos de terceros (sin licencia: ZIP deshabilitado)
 |-- CreacionesNuevas/           # 248 creaciones propias del autor (MIT, ZIP habilitado)
+|-- creaciones-primium/         # 32 creaciones en curso, por categorías
 |-- Web/
 |   |-- data/
 |   |   |-- catalog.json        # Índice ligero generado (sin código fuente)
-|   |   |-- catalog.js          # Catálogo completo, solo para abrir con file://
+|   |   |-- catalog.js          # Catálogo completo, solo para abrir con file:// (no se despliega)
 |   |   |-- sources/            # Código de cada componente, se paga al abrir el detalle
 |   |   `-- component-overrides.json
 |   |-- scripts/
 |   |   |-- app.js              # Búsqueda, filtros, detalle, copia, tema y metadatos
-|   |   |-- build-site.mjs      # Prepara solo demos autorizados
-|   |   |-- catalog-format.mjs  # Formato compartido por los dos scripts de build
+|   |   |-- catalog-format.mjs  # Formato compartido por el generador y el validador
 |   |   |-- generate-catalog.mjs
+|   |   |-- serve.mjs           # Servidor estático local, sin dependencias
+|   |   |-- validate.mjs        # Comprueba que el catálogo cuadra con el disco
 |   |   `-- zip.js              # Crea archivos ZIP comprimidos en el navegador
 |   |-- styles/site.css
+|   |-- assets/
+|   |-- components.html          # Listado de componentes y detalle
 |   |-- favicon.svg
 |   |-- og-image.png
 |   |-- robots.txt
 |   |-- sitemap.xml
+|   |-- team-core.html           # Equipo y donación
 |   `-- index.html
-|-- .github/workflows/          # Despliegue con GitHub Pages
+|-- .github/workflows/          # Validación en CI (no despliega)
+|-- Docs/auditoria/             # Informes de limpieza del repositorio
 |-- Docs/Opencode/Plan.md       # Plan de mejora por fases
 |-- CHANGELOG.md
 |-- Docs/Legalizacion/
@@ -127,28 +134,54 @@ La aplicación es estática y no necesita backend ni base de datos.
 
 ### Vercel
 
-El repositorio incluye [`vercel.json`](./vercel.json) y [`.vercelignore`](./vercelignore). Configura el proyecto con **Framework Preset: Other**, **Build Command vacío** y **Output Directory: `.`** (la raíz del repositorio); es lo que ya fija `vercel.json`.
+El repositorio incluye [`vercel.json`](./vercel.json) y [`.vercelignore`](./.vercelignore). Configura el proyecto con **Framework Preset: Other** y **Output Directory: `.`** (la raíz del repositorio). El **Build Command no va vacío**: `vercel.json` ya lo fija como `node Web/scripts/generate-catalog.mjs`. Si en el panel lo dejas en blanco, sobrescribes el valor del fichero y el catálogo no se generará.
 
-Se despliega **la raíz del repositorio**, no un subdirectorio: las vistas previas cargan `../BibliotecaDeHtml_CSS/...`, así que esa carpeta tiene que publicarse también. `vercel.json` redirige `/` → `/Web/` y `/Web` → `/Web/` (sin barra final rompería las rutas relativas) y añade cabeceras de seguridad.
+Se despliega **la raíz del repositorio**, no un subdirectorio: las vistas previas cargan `../BibliotecaDeHtml_CSS/...`, así que esa carpeta tiene que publicarse también. `vercel.json` redirige `/` → `/Web/` y `/Web` → `/Web/` (sin barra final rompería las rutas relativas) y añade las cabeceras de seguridad: `Content-Security-Policy`, `Strict-Transport-Security`, `Permissions-Policy`, `X-Content-Type-Options`, `X-Frame-Options` y `Referrer-Policy`.
 
-> ℹ️ `node Web/scripts/build-site.mjs` ahora produce un artefacto **útil**: publica los **248 componentes autorizados** de `CreacionesNuevas/` (con su código, su `LICENSE` y sus fuentes) y **excluye los 116 de terceros**, que no tienen permiso de redistribución. Sigue sin ser la opción recomendada para Vercel, porque el sitio se despliega mejor sirviendo la raíz del repositorio: así se muestran los **364** componentes y las previews de `BibliotecaDeHtml_CSS/` no dan 404. Úsalo solo si quieres publicar únicamente lo que se puede redistribuir.
+La CSP usa `frame-src 'self'`, así que las vistas previas siguen cargando porque viven en el mismo origen. Los demos de terceros van dentro de un `iframe` y **no** quedan sujetos a esta CSP: cada documento aplica la suya. Por eso añadirla no afecta a los demos que cargan recursos remotos.
 
-### GitHub Pages
+### El catálogo se genera en el despliegue
 
-El [workflow de GitHub Actions](.github/workflows/deploy-pages.yml) regenera el catálogo, prepara solo los componentes autorizados y despliega el artefacto. En la configuración del repositorio, selecciona **Settings → Pages → Source → GitHub Actions**. Hasta que se autorice algún demo, Pages publicará la aplicación sin código de demos ni descargas ZIP.
+`Web/data/catalog.json`, `Web/data/catalog.js` y `Web/data/sources/` son **artefactos generados** y **no están versionados**. Se producen en el build de Vercel, antes de servir nada.
 
-### Netlify
+La razón práctica: añadir un demo ya no exige ningún paso manual. Da igual si lo añade una persona o un agente, el catálogo siempre refleja lo que hay en el disco. Y como esos ficheros no se versionan, dos agentes pueden añadir demos a la vez sin que sus cambios choquen sobre los mismos 473 ficheros de `sources/`.
 
-Publica la raíz del repositorio con **Build Command vacío**. Si quieres regenerar el catálogo en cada despliegue, usa `node Web/scripts/generate-catalog.mjs` (Node 18+), pero **no** encadenes `build-site.mjs` mientras no haya demos autorizados.
-
-### Después de añadir o modificar demos
-
-Regenera y versiona el catálogo antes de desplegar:
+Lo único que hay que recordar en local, antes de abrir el sitio:
 
 ```powershell
 node Web/scripts/generate-catalog.mjs
 ```
 
+`Web/data/component-overrides.json` **sí** está versionado, porque se edita a mano.
+
+### GitHub Pages
+
+**No se usa.** El sitio se despliega en Vercel y GitHub Pages solo podría publicar una versión recortada por licencias, nunca la colección completa. Se eliminó el workflow que lo publicaba.
+
+### Netlify
+
+También innecesario. Si algún día se usa: raíz del repositorio, y **Build Command** `node Web/scripts/generate-catalog.mjs`.
+
+## Validación continua
+
+El workflow [`validate.yml`](.github/workflows/validate.yml) se ejecuta en cada `push` a `main` y en cada pull request. **No despliega nada**. Ejecuta los mismos dos pasos que el build de Vercel, de modo que si el catálogo falla al generarse o al comprobarse, se ve en GitHub antes de llegar a producción:
+
+1. `node Web/scripts/generate-catalog.mjs` — el mismo comando que ejecuta Vercel.
+2. `node Web/scripts/validate.mjs` — sintaxis e integridad del catálogo ya generado.
+
+`validate.mjs` comprueba la sintaxis de todos los `.js`, que cada entrada del catálogo tenga su fichero en `sources/` y viceversa, que cada `preview` apunte a un `index.html` real, que no queden referencias locales rotas, y que **ningún demo del disco falte en el catálogo**. Ese último punto es el que más avisa: un demo nuevo sin indexar no aparece en la web sin ningún otro síntoma.
+
+Usa `actions/checkout@v5` y `actions/setup-node@v5` (ambos ya sobre Node 24) y se fija `ubuntu-24.04` para no depender de la migración de `ubuntu-latest` a Ubuntu 26.
+
 ## Contribuir
 
-Mantén cada demo independiente, conserva su comportamiento original y evita añadir dependencias a la aplicación del catálogo. Regenera `Web/data/catalog.json` después de cambiar demos, revisa los overrides y prueba las vistas previas y los controles de copia mediante un servidor HTTP local.
+Mantén cada demo independiente, conserva su comportamiento original y evita añadir dependencias a la aplicación del catálogo. Prueba las vistas previas y los controles de copia mediante un servidor HTTP local:
+
+```powershell
+node Web/scripts/generate-catalog.mjs
+node Web/scripts/serve.mjs
+```
+
+Abre <http://localhost:8000/>.
+
+Si quieres añadir un componente o un pull request, lee antes [`CONTRIBUTING.md`](./CONTRIBUTING.md). Si has encontrado un fallo de seguridad, no lo reportes por issue: lee [`SECURITY.md`](./SECURITY.md).

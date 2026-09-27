@@ -1,9 +1,12 @@
-# Artefactos de build (se regeneran con Web/scripts/build-site.mjs)
-.github-pages-*
-
-# Catálogo completo: solo lo usa la apertura con file://, nunca en HTTP.
-# Se regenera con Web/scripts/generate-catalog.mjs
+# Datos del catálogo: artefactos generados, no se versionan.
+# Vercel los produce en el build ("buildCommand" en vercel.json) y en local se
+# regeneran con: node Web/scripts/generate-catalog.mjs
+# Así el repositorio solo contiene los demos, que es su fuente de verdad, y dos
+# agentes pueden añadir demos a la vez sin tocar los mismos 473 ficheros.
+# component-overrides.json SI se versiona: se edita a mano.
+Web/data/catalog.json
 Web/data/catalog.js
+Web/data/sources/
 
 # Despliegue
 .vercel/

@@ -1,6 +1,17 @@
 const heading = document.querySelector(".heading");
-const headingSplitText = new SplitText(heading, { type: "chars" });
-const headingChars = headingSplitText.chars;
+
+// Antes esto usaba SplitText desde assets.codepen.io, pero ese CDN ya devuelve
+// 403 y dejaba el titulo sin animar. El plugin solo envolvia cada letra en un
+// <div>, que es justo lo que estiliza .heading > div, asi que se hace aqui.
+const headingText = heading.textContent.trim();
+heading.replaceChildren(...[...headingText].map((character) => {
+  const chunk = document.createElement("div");
+  // espacio duro, si no el navegador lo colapsa y las letras se juntan
+  chunk.textContent = character === " " ? "\u00a0" : character;
+  return chunk;
+}));
+
+const headingChars = [...heading.children];
 
 gsap.from(headingChars, {
   filter: "blur(0.15em)",

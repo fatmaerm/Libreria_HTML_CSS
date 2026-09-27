@@ -1016,17 +1016,10 @@ function initializeTheme() {
 }
 
 function initializeNavigation() {
-  document.querySelectorAll('.main-nav a[href^="#"], .brand[href^="#"], .hero-actions a[href^="#"]').forEach((link) => {
-    link.addEventListener("click", (event) => {
-      if (new URLSearchParams(window.location.search).has("component")) {
-        event.preventDefault();
-        const destination = link.getAttribute("href");
-        window.history.pushState({}, "", `${window.location.pathname}${destination}`);
-        renderRoute();
-        document.querySelector(destination)?.scrollIntoView({ behavior: "smooth" });
-      }
-    });
-  });
+  // El menu ya no usa anclas: cada entrada lleva a otra pagina (./components.html,
+  // ./team-core.html), asi que no hace falta interceptar clics. Lo que si hace
+  // falta es popstate, porque el enlace "volver" del detalle hace pushState y al
+  // pulsar atras hay que volver a pintar el catalogo.
   window.addEventListener("popstate", renderRoute);
   window.addEventListener("hashchange", () => {
     if (!new URLSearchParams(window.location.search).has("component")) renderRoute();

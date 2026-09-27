@@ -288,32 +288,258 @@ input:focus-visible {
 }
 
 /* Pagina Team Core */
-.team-hero {
-  padding-block: 72px 56px;
-  border-bottom: 1px solid var(--line);
-}
+  .team-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 48px;
+    padding-block: 72px 56px;
+    border-bottom: 1px solid var(--line);
+  }
 
-.team-hero h1 {
-  max-width: 20ch;
-  margin-top: 14px;
-  font-size: clamp(38px, 5.2vw, 64px);
-  line-height: 1.03;
-  letter-spacing: -0.03em;
-}
+  .team-hero h1 {
+    max-width: 20ch;
+    margin-top: 14px;
+    font-size: clamp(38px, 5.2vw, 64px);
+    line-height: 1.03;
+    letter-spacing: -0.03em;
+  }
 
-.team-lead {
-  max-width: 62ch;
-  margin-top: 22px;
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 1.7;
-}
+  .team-lead {
+    max-width: 62ch;
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* Circuit Board Energy Pulse, el componente de CreacionesNuevas. La estructura y
+     los tiempos son los del original; lo unico que cambia es la paleta, que pasa
+     de los azules internos a var(--accent) para que no choque con el verde de la
+     web. Al usar --accent el tema claro se ajusta solo. */
+  .team-hero-visual {
+    display: grid;
+    place-items: center;
+    /* Cuanto mas ancha la pantalla, mas se acerca la escena al centro, pero sin
+       llegar a pisar el texto: la correccion sube sola hasta 0 segun se estrecha
+       el hueco real. Asi -170px en pantallas anchas y nada en tablet, que es
+       donde el titulo y la escena se tocaban. El signo es negativo porque
+       translateX positivo va hacia la derecha, o sea hacia fuera de la pagina. */
+    transform: translateX(clamp(-170px, calc((1300px - 100vw) * 0.8 - 170px), 0px));
+  }
+
+
+  .pcb-scene {
+    position: relative;
+    display: grid;
+    width: clamp(220px, 26vw, 300px);
+    aspect-ratio: 1;
+    place-items: center;
+  }
+
+  .pcb-chip {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    width: 30%;
+    aspect-ratio: 1;
+    place-items: center;
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    background: var(--surface-raised);
+    box-shadow: 0 0 25px color-mix(in srgb, var(--accent) 40%, transparent),
+      inset 0 0 15px color-mix(in srgb, var(--accent) 20%, transparent);
+  }
+
+  .pcb-chip .chip-label {
+    color: var(--accent);
+    font-family: "DM Mono", "Courier New", monospace;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 60%, transparent);
+  }
+
+  .pcb-scene .trace {
+    position: absolute;
+    background: color-mix(in srgb, var(--accent) 20%, transparent);
+  }
+
+  .pcb-scene .trace-top,
+  .pcb-scene .trace-bottom {
+    left: 50%;
+    width: 2px;
+    height: 30%;
+    transform: translateX(-50%);
+  }
+
+  .pcb-scene .trace-top {
+    top: 6%;
+  }
+
+  .pcb-scene .trace-bottom {
+    bottom: 6%;
+  }
+
+  .pcb-scene .trace-left,
+  .pcb-scene .trace-right {
+    top: 50%;
+    height: 2px;
+    width: 30%;
+    transform: translateY(-50%);
+  }
+
+  .pcb-scene .trace-left {
+    left: 6%;
+  }
+
+  .pcb-scene .trace-right {
+    right: 6%;
+  }
+
+  .pcb-scene .pulse {
+    position: absolute;
+    border-radius: 999px;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+  }
+
+  .pcb-scene .trace-top .pulse,
+  .pcb-scene .trace-bottom .pulse {
+    width: 6px;
+    height: 18px;
+    left: -2px;
+  }
+
+  .pcb-scene .trace-left .pulse,
+  .pcb-scene .trace-right .pulse {
+    width: 18px;
+    height: 6px;
+    top: -2px;
+  }
+
+  .pcb-scene .trace-top .pulse {
+    animation: pcb-pulse-down 1.8s ease-in-out infinite;
+  }
+
+  .pcb-scene .trace-bottom .pulse {
+    animation: pcb-pulse-up 1.8s ease-in-out infinite 0.5s;
+  }
+
+  .pcb-scene .trace-left .pulse {
+    animation: pcb-pulse-right 1.8s ease-in-out infinite 0.9s;
+  }
+
+  .pcb-scene .trace-right .pulse {
+    animation: pcb-pulse-left 1.8s ease-in-out infinite 1.3s;
+  }
+
+  @keyframes pcb-pulse-down {
+    0% { top: 0; opacity: 0; }
+    50% { opacity: 1; }
+    100% { top: 88%; opacity: 0; }
+  }
+
+  @keyframes pcb-pulse-up {
+    0% { bottom: 0; opacity: 0; }
+    50% { opacity: 1; }
+    100% { bottom: 88%; opacity: 0; }
+  }
+
+  @keyframes pcb-pulse-right {
+    0% { left: 0; opacity: 0; }
+    50% { opacity: 1; }
+    100% { left: 88%; opacity: 0; }
+  }
+
+  @keyframes pcb-pulse-left {
+    0% { right: 0; opacity: 0; }
+    50% { opacity: 1; }
+    100% { right: 88%; opacity: 0; }
+  }
+
+  /* Nombre de cada integrante, pegado a la punta de su pista y con la misma caja
+     que la pillora de Kindred-98, pero mas pequena. Se quedan dentro de la escena
+     a proposito: si se salieran, en escritorio empujarian el ancho de la pagina.
+     La punta de abajo no lleva nombre porque justo debajo esta esa pillora. */
+  .pcb-scene .pcb-node {
+    position: absolute;
+    padding: 3px 8px;
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
+    color: var(--accent);
+    font-family: "DM Mono", "Courier New", monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .pcb-scene .trace-top .pcb-node {
+    top: -30px;
+    left: -30px;
+  }
+
+  .pcb-scene .trace-right .pcb-node {
+    top: -10px;
+    right: -105px;
+
+  }
+
+  .pcb-scene .trace-left .pcb-node {
+    bottom: -10px;
+    left: -80px;
+  }
+
+  .pcb-status {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    margin: 0;
+    padding: 0.4rem 1.2rem;
+    transform: translateX(-50%);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
+    color: var(--accent);
+    font-family: "DM Mono", "Courier New", monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
 
 .donations-section {
   padding-block: 76px 82px;
 }
 
 /* Roster de Team Core: tarjeta con brillo que la recorre al pasar el raton. */
+/* Seccion de la historia: el texto va en dos columnas para que no sea una
+   columna de 400 lineas, y los datos sueltos van en una tira monoespaciada. */
+.story-section {
+  padding-block: 76px 0;
+}
+
+.story-body {
+  columns: 2;
+  column-gap: 44px;
+}
+
+.story-body p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.75;
+  break-inside: avoid;
+}
+
+.story-body p:last-child {
+  margin-bottom: 0;
+}
+
+  /* La formula que resume la historia: 3 estudiantes, 1 repositorio, 4 nacionalidades.
+     Va dentro de .story-body, que es multicolumna, asi que column-span: all la deja
+     entera de ancho completo debajo de las columnas en vez de partirse entre ellas. */
 .team-section {
   padding-block: 76px 0;
 }
@@ -397,12 +623,47 @@ input:focus-visible {
   font-weight: 500;
 }
 
+/* Pais de cada uno. La bandera va en SVG y no en emoji porque en Windows los
+   emoji de pais salen como un par de letras ("VE", "DZ") en vez de la bandera. */
+.team-from {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.team-flag {
+  display: inline-block;
+  width: 17px;
+  height: 11px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px var(--line);
+}
+
+.team-flag svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .team-role {
   color: var(--accent);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+/* Distingue a los tres del curso de gevendra, que entro por su repositorio. */
+.team-note {
+  margin-top: 2px;
+  color: var(--quiet);
+  font-size: 10px;
+  line-height: 1.45;
 }
 
 .team-handle {
@@ -421,7 +682,7 @@ input:focus-visible {
 .donations-card {
   display: grid;
   gap: 26px;
-  max-width: 720px;
+  max-width: 600px;
   padding: 30px;
   border: 1px solid var(--line);
   background: var(--surface);
@@ -433,9 +694,144 @@ input:focus-visible {
   line-height: 1.7;
 }
 
-.donations-card .hero-actions {
-  margin-top: 0;
-}
+  .donations-card .hero-actions {
+    margin-top: 0;
+  }
+
+  /* Red de la cartera, debajo de los botones de Donar y Ver en GitHub. */
+  .donations-network {
+    margin: 14px 0 0;
+    color: var(--quiet);
+    font-family: "DM Mono", "Courier New", monospace;
+    font-size: 11px;
+    letter-spacing: 0.02em;
+  }
+
+  /* Donaciones a dos columnas: a la izquierda la tarjeta con los botones y a la
+     derecha, bajo la nota de la cabecera, la tarjeta de depósito con el QR. */
+  .donations-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 26px;
+    align-items: start;
+  }
+
+  .deposit-card {
+    display: grid;
+    justify-items: center;
+    gap: 16px;
+    padding: 24px 22px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    text-align: center;
+  }
+
+  .deposit-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .deposit-qr {
+    display: block;
+    width: 100%;
+    max-width: 228px;
+    height: auto;
+    aspect-ratio: 1;
+    background: #fff;
+  }
+
+  /* Red y direccion, en dos filas label + valor como en la tarjeta de Binance. */
+  .deposit-rows {
+    display: grid;
+    gap: 12px;
+    width: 100%;
+    margin: 0;
+    text-align: left;
+  }
+
+  .deposit-row {
+    display: grid;
+    gap: 3px;
+  }
+
+  .deposit-row dt {
+    color: var(--quiet);
+    font-size: 12px;
+  }
+
+  .deposit-row dd {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+  /* La direccion se puede copiar: initializeCopyAddress() le inyecta el icono. */
+  .deposit-address {
+    display: inline;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+    overflow-wrap: anywhere;
+  }
+
+  .deposit-address:hover {
+    color: var(--accent);
+  }
+
+  .deposit-address .footer-address-icon {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    margin-left: 5px;
+    vertical-align: -1px;
+  }
+
+  .deposit-warning {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .deposit-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    color: var(--accent);
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+  }
+
+  .deposit-brand-mark {
+    width: 19px;
+    height: 19px;
+  }
+
+  /* En Team Core solo estos textos van en color de acento: el h1 del hero y las
+     etiquetas y notas de Historia, Plantilla y Donaciones. Se eligen por id de
+     seccion para no repintar el eyebrow "TEAM CORE" de la cabecera del hero, que
+     se queda en su color apagado. Se usa var(--accent) y no el hex fijo porque
+     --accent ya es #d4f779 en oscuro y #315c42 en claro, asi que el tema blanco
+     no necesita override propio. */
+  #team-core-title,
+  #story .eyebrow,
+  #story .section-note,
+  #team .eyebrow,
+  #team .section-note,
+  #donations .eyebrow,
+  #donations .section-note {
+    color: var(--accent);
+  }
+
 
 .hero {
   display: grid;
@@ -560,9 +956,24 @@ input:focus-visible {
   color: var(--accent-ink);
 }
 
-.button-primary:hover {
-  filter: brightness(1.06);
-}
+  .button-primary:hover {
+    filter: brightness(1.06);
+  }
+
+  /* El boton Donar no navega: copia la direccion de la cartera. Durante el
+     is-copied la flecha se sustituye por un check, para que el aviso se vea en el
+     boton y no solo en el toast. El contenido del check va en el CSS y no en el
+     HTML para no duplicarlo en las traducciones. */
+  .button.is-copied > span[aria-hidden="true"] {
+    visibility: hidden;
+  }
+
+  .button.is-copied::after {
+    content: "\2713";
+    font-size: 13px;
+    line-height: 1;
+  }
+
 
 .button-secondary {
   border-color: var(--line);
@@ -1294,7 +1705,8 @@ input:focus-visible {
   gap: 20px;
   margin-inline: auto;
   padding-block: 34px 26px;
-  border-top: 2px solid #d4f779;
+    border-top: 2px solid var(--accent);
+
   color: var(--muted);
 }
 
@@ -1433,6 +1845,32 @@ input:focus-visible {
   to { transform: translateY(0); opacity: 1; }
 }
 
+/* Los nombres de las puntas laterales cuelgan fuera de la escena, asi que
+   necesitan sitio a los lados. En pantallas anchas hay de sobra, pero a partir
+   de 1200px la escena se acerca al borde y gevendra2004 se salia de la seccion,
+   creando scroll horizontal. Por debajo de ese ancho se recogen las etiquetas y
+   se achica el chip, porque en escenas de 220-266px el hueco entre el chip y el
+   borde ya no da para una etiqueta de tamano fijo. */
+@media (max-width: 1200px) {
+  .pcb-scene .pcb-chip {
+    width: 26%;
+  }
+
+  .pcb-scene .pcb-node {
+    padding: 2px 6px;
+    font-size: 0.5rem;
+    letter-spacing: 0.04em;
+  }
+
+  .pcb-scene .trace-right .pcb-node {
+    right: -10px;
+  }
+
+  .pcb-scene .trace-left .pcb-node {
+    left: -10px;
+  }
+}
+
 @media (max-width: 900px) {
   .site-header {
     gap: 16px;
@@ -1460,6 +1898,10 @@ input:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .story-body {
+    columns: 1;
+  }
+
   .team-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1477,7 +1919,35 @@ input:focus-visible {
     grid-column: 1 / -1;
     justify-content: start;
   }
+
+  /* En tablet la tarjeta de deposito se pasa debajo de los botones, en una sola
+     columna, para que ni el QR ni la direccion se aprieten. */
+  .donations-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .deposit-card {
+    max-width: 420px;
+  }
+
+  /* La escena del hero se estrecha y el texto de abajo tiene que bajar con ella,
+     o la pagina gana scroll horizontal. Aqui si se permite partir en dos lineas. */
+  .pcb-status {
+    max-width: 100%;
+    padding-inline: 0.8rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .pcb-scene .pcb-node {
+    padding: 2px 6px;
+    font-size: 0.52rem;
+    letter-spacing: 0.04em;
+  }
 }
+
 
 @media (max-width: 620px) {
   html {
@@ -1520,14 +1990,34 @@ input:focus-visible {
     font-size: 12px;
   }
 
-  .team-hero {
-    padding-block: 48px 40px;
-  }
+    .team-hero {
+      padding-block: 48px 40px;
+    }
+  
+    .team-lead {
+      margin-top: 16px;
+      font-size: 15px;
+    }
 
-  .team-lead {
-    margin-top: 16px;
-    font-size: 15px;
-  }
+    /* En movil la animacion baja debajo del texto y se centra. */
+    .team-hero {
+      grid-template-columns: minmax(0, 1fr);
+      justify-items: center;
+      gap: 40px;
+    }
+
+    .pcb-scene {
+      width: min(260px, 74vw);
+    }
+
+    /* En movil la escena ya va centrada, asi que el desplazamiento de escritorio
+       se anula para no dejarla torcida a la izquierda. */
+    .team-hero-visual {
+      transform: none;
+    }
+
+
+
 
   .donations-section {
     padding-block: 52px 58px;
@@ -1625,6 +2115,10 @@ input:focus-visible {
   #featured-grid .component-category,
   #featured-grid .component-number {
     font-size: 9px;
+  }
+
+  .story-section {
+    padding-block: 52px 0;
   }
 
   .team-section {

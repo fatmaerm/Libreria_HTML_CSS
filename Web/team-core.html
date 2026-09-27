@@ -28,9 +28,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/site.css?v=20260927-2432109876543210">
-    <script defer src="./scripts/zip.js?v=20260927-2432109876543210"></script>
-    <script defer src="./scripts/app.js?v=20260927-2432109876543210"></script>
+    <link rel="stylesheet" href="./styles/site.css?v=20260927-27">
+    <script defer src="./scripts/zip.js?v=20260927-27"></script>
+    <script defer src="./scripts/app.js?v=20260927-27"></script>
   </head>
   <body data-page-title="pageTeamCore">
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -55,7 +55,7 @@
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch theme">
         <span class="theme-icon" aria-hidden="true">☼</span>
         <span class="theme-label">Light</span>
-        </button>
+      </button>
     </header>
 
     <main id="main-content">
@@ -68,12 +68,41 @@
         </aside>
 
         <section class="team-hero section-wrap" id="team-core" aria-labelledby="team-core-title">
-          <p class="eyebrow" data-i18n="teamCoreEyebrow">TEAM CORE</p>
-          <h1 id="team-core-title" data-i18n="teamCoreTitle">The people behind the library</h1>
-          <p class="team-lead" data-i18n="teamCoreLead">A small independent group building and maintaining every demo in this collection.</p>
+          <div class="team-hero-copy">
+            <p class="eyebrow" data-i18n="teamCoreEyebrow">TEAM CORE</p>
+            <h1 id="team-core-title" data-i18n="teamCoreTitle">The people behind the library</h1>
+            <p class="team-lead" data-i18n="teamCoreLead">Three programming students and one repository that lit the fuse.</p>
+          </div>
+          <!-- Circuit Board Energy Pulse. Es decorativo, asi que aria-hidden para que
+               el texto de la animacion no se lea en voz alta. El CSS vive en
+               site.css bajo .pcb-scene y los dos textos se traducen con data-i18n. -->
+          <div class="team-hero-visual" aria-hidden="true">
+            <div class="pcb-scene">
+              <div class="pcb-chip">
+                <span class="chip-label" data-i18n="pcbChipLabel">NEXO</span>
+              </div>
+              <div class="trace trace-top"><div class="pulse"></div><span class="pcb-node">davoker</span></div>
+              <div class="trace trace-right"><div class="pulse"></div><span class="pcb-node">gevendra2004</span></div>
+              <div class="trace trace-bottom"><div class="pulse"></div></div>
+              <div class="trace trace-left"><div class="pulse"></div><span class="pcb-node">fatmaerm</span></div>
+              <p class="pcb-status">Kindred-98</p>
+            </div>
+          </div>
         </section>
 
-        <section class="team-section section-wrap" id="team" aria-labelledby="team-title">
+        <section class="story-section section-wrap" id="story" aria-labelledby="story-eyebrow">
+          <div class="section-heading">
+            <p class="eyebrow" id="story-eyebrow" data-i18n="storyEyebrow">HOW IT STARTED</p>
+            <p class="section-note" data-i18n="storyNote">Where the idea came from, told properly.</p>
+          </div>
+          <div class="story-body">
+            <p data-i18n="storyP1">It started at 10 in the morning, in an analysis and programming course on Java. We had an HTML and CSS practice session, and our teacher showed us how far you can push those two languages, using a few examples from gevendra2004's repository. What was in there looked far too good to just look at.</p>
+            <p data-i18n="storyP2">davoker started practising on his computer. Twenty minutes later, he called me to show me what he had built: it was something else. So I asked him: why don't we set up a library? Building components is his thing, and that is where he stands out: obsessive about every detail, with ideas nobody else comes up with.</p>
+            <p data-i18n="storyP3">fatmaerm saw it from the start: he told us there are already plenty of HTML and CSS libraries, but for anyone just beginning that is not the same thing. I'm in: it is real practice, and it settles the foundations of both languages.</p>
+            <p data-i18n="storyP4">davoker signed up with one sentence: "I'm in, this thing is fascinating." And just like that, almost without noticing, a library started.</p>
+          </div>
+        </section>
+<section class="team-section section-wrap" id="team" aria-labelledby="team-title">
           <div class="section-heading">
             <div>
               <p class="eyebrow" data-i18n="teamRosterEyebrow">THE ROSTER</p>
@@ -86,15 +115,20 @@
               <a class="team-card-link" href="https://github.com/kindred-98" target="_blank" rel="noreferrer">
                 <span class="team-avatar"><img src="https://github.com/kindred-98.png?size=240" alt="kindred-98" width="240" height="240" loading="lazy" decoding="async"></span>
                 <span class="team-name">kindred-98</span>
+                <span class="team-from"><span class="team-flag" aria-hidden="true"><svg viewBox="0 0 3 2" focusable="false"><path fill="#FCFF13" d="M0 0h3v.67H0z"/><path fill="#00247D" d="M0 .67h3v.66H0z"/><path fill="#CF142B" d="M0 1.33h3v.67H0z"/><g fill="#fff"><circle cx="1.5" cy=".26" r=".07"/><circle cx="1.76" cy=".33" r=".07"/><circle cx="1.9" cy=".47" r=".07"/><circle cx="1.24" cy=".33" r=".07"/><circle cx="1.1" cy=".47" r=".07"/><circle cx="1.04" cy=".67" r=".07"/></g></svg></span><span data-i18n="fromVenezuela">Venezuela</span></span>
                 <span class="team-role" data-i18n="roleFounder">Founder &amp; Lead Developer</span>
+                <span class="team-note" data-i18n="teamNoteClassmate">Classmate from the course</span>
                 <span class="team-handle" data-i18n="teamViewProfile">View profile ↗</span>
               </a>
             </li>
+
             <li class="team-card">
               <a class="team-card-link" href="https://github.com/fatmaerm" target="_blank" rel="noreferrer">
                 <span class="team-avatar"><img src="https://github.com/fatmaerm.png?size=240" alt="fatmaerm" width="240" height="240" loading="lazy" decoding="async"></span>
                 <span class="team-name">fatmaerm</span>
+                <span class="team-from"><span class="team-flag" aria-hidden="true"><svg viewBox="0 0 3 2" focusable="false"><path fill="#fff" d="M0 0h3v2H0z"/><path fill="#006233" d="M0 0h1.5v2H0z"/><circle cx="1.42" cy="1" r=".52" fill="#D21034"/><circle cx="1.56" cy="1" r=".43" fill="#fff"/><path fill="#D21034" d="M1.38.6l.06.19.2.01-.15.13.05.19-.16-.11-.16.11.05-.19-.15-.13.2-.01z"/></svg></span><span data-i18n="fromAlgeria">Algeria</span></span>
                 <span class="team-role" data-i18n="roleCoreContributor">Core Contributor</span>
+                <span class="team-note" data-i18n="teamNoteClassmate">Classmate from the course</span>
                 <span class="team-handle" data-i18n="teamViewProfile">View profile ↗</span>
               </a>
             </li>
@@ -102,7 +136,9 @@
               <a class="team-card-link" href="https://github.com/davoker" target="_blank" rel="noreferrer">
                 <span class="team-avatar"><img src="https://github.com/davoker.png?size=240" alt="davoker" width="240" height="240" loading="lazy" decoding="async"></span>
                 <span class="team-name">davoker</span>
+                <span class="team-from"><span class="team-flag" aria-hidden="true"><svg viewBox="0 0 3 2" focusable="false"><path fill="#AA151B" d="M0 0h3v.75H0z"/><path fill="#F1BF00" d="M0 .75h3v.5H0z"/><path fill="#AA151B" d="M0 1.25h3v.75H0z"/><rect x=".52" y=".7" width=".2" height=".3" rx=".05" fill="#8B0F14"/></svg></span><span data-i18n="fromSpain">Spain</span></span>
                 <span class="team-role" data-i18n="roleMaintainer">Maintainer &amp; Designer</span>
+                <span class="team-note" data-i18n="teamNoteClassmate">Classmate from the course</span>
                 <span class="team-handle" data-i18n="teamViewProfile">View profile ↗</span>
               </a>
             </li>
@@ -110,7 +146,9 @@
               <a class="team-card-link" href="https://github.com/gevendra2004" target="_blank" rel="noreferrer">
                 <span class="team-avatar"><img src="https://github.com/gevendra2004.png?size=240" alt="gevendra2004" width="240" height="240" loading="lazy" decoding="async"></span>
                 <span class="team-name">gevendra2004</span>
+                <span class="team-from"><span class="team-flag" aria-hidden="true"><svg viewBox="0 0 3 2" focusable="false"><path fill="#FF9933" d="M0 0h3v.67H0z"/><path fill="#fff" d="M0 .67h3v.66H0z"/><path fill="#138808" d="M0 1.33h3v.67H0z"/><g stroke="#000080" stroke-width=".06" fill="none"><circle cx="1.5" cy="1" r=".22"/><path d="M1.5 .78v.44M1.28 1h.44M1.35 .85l.3.3M1.35 1.15l.3-.3"/></g></svg></span><span data-i18n="fromIndia">India</span></span>
                 <span class="team-role" data-i18n="roleExternalContributor">External Contributor</span>
+                <span class="team-note" data-i18n="teamNotePermission">We have permission to use his work</span>
                 <span class="team-handle" data-i18n="teamViewProfile">View profile ↗</span>
               </a>
             </li>
@@ -125,14 +163,49 @@
             </div>
             <p class="section-note" data-i18n="donationsNote">Every demo stays free and open source.</p>
           </div>
-          <div class="donations-card">
-            <p data-i18n="donationsText">If this library saves you time, a small contribution keeps the demos maintained, documented, and free for everyone.</p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="#" data-donation-link><span data-i18n="donateNow">Donate</span> <span aria-hidden="true">↗</span></a>
-              <a class="button button-secondary" href="https://github.com/kindred-98/Libreria_HTML_CSS" target="_blank" rel="noreferrer"><span data-i18n="viewGitHub">View on GitHub</span> <span aria-hidden="true">↗</span></a>
+            <div class="donations-layout">
+              <div class="donations-card">
+                <p data-i18n="donationsText">If this library saves you time, a small contribution keeps the demos maintained, documented, and free for everyone.</p>
+                <div class="hero-actions">
+                  <a class="button button-primary" href="#" data-donation-link><span data-i18n="donateNow">Donate</span> <span aria-hidden="true">&#8599;</span></a>
+                  <a class="button button-secondary" href="https://github.com/kindred-98/Libreria_HTML_CSS" target="_blank" rel="noreferrer"><span data-i18n="viewGitHub">View on GitHub</span> <span aria-hidden="true">&#8599;</span></a>
+                </div>
+                <p class="donations-network" data-i18n="donationsNetwork">Network: BNB Smart Chain (BEP20)</p>
+              </div>
+              <aside class="deposit-card" aria-labelledby="deposit-title">
+                <h3 class="deposit-title" id="deposit-title" data-i18n="depositTitle">Deposit USDT on Binance</h3>
+                <img class="deposit-qr" src="./assets/donate-qr.png" width="630" height="630" loading="lazy" decoding="async" data-i18n-alt="depositQrAlt" alt="QR code with the wallet address to deposit USDT on BNB Smart Chain">
+                <dl class="deposit-rows">
+                  <div class="deposit-row">
+                    <dt data-i18n="depositNetworkLabel">Network</dt>
+                    <dd data-i18n="depositNetworkValue">BNB Smart Chain (BEP20)</dd>
+                  </div>
+                  <div class="deposit-row">
+                    <dt data-i18n="depositAddressLabel">Wallet address</dt>
+                    <dd>
+                      <button class="deposit-address" type="button" data-copy-address data-i18n-aria-label="copyWalletAddress">
+                        <span data-i18n="footerDonateAddress">0xa8f0230135b4f6a959358be3e8e8531f3551fa81</span>
+                      </button>
+                    </dd>
+                  </div>
+                </dl>
+                <p class="deposit-warning" data-i18n="depositWarning">Do not send NFTs to this address.</p>
+                <p class="deposit-brand">
+                  <svg class="deposit-brand-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                    <g fill="currentColor">
+                      <rect x="36" y="5" width="28" height="28" transform="rotate(45 50 19)" />
+                      <rect x="7" y="36" width="28" height="28" transform="rotate(45 21 50)" />
+                      <rect x="34" y="34" width="32" height="32" transform="rotate(45 50 50)" />
+                      <rect x="65" y="36" width="28" height="28" transform="rotate(45 79 50)" />
+                      <rect x="36" y="67" width="28" height="28" transform="rotate(45 50 81)" />
+                    </g>
+                  </svg>
+                  <span data-i18n="depositBrand">BINANCE</span>
+                </p>
+              </aside>
             </div>
-          </div>
-        </section>
+          </section>
+
       </div>
     </main>
 

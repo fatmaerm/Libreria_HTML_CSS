@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quantum Superposition Button</title>
+<meta name="description" content="Four identical controls stacked in a column, each locked to a different point in the same oscillation, so the label flickers between idle and armed at four different rates at once.">
+<meta name="description-es" content="Cuatro controles idénticos apilados en columna, cada uno fijado a un punto distinto de la misma oscilación, de modo que la etiqueta parpadea entre reposo y armada a cuatro ritmos diferentes a la vez.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="rack">
+  <button class="qbtn" type="button" style="--dur:8.4s;--dly:0s;--k:.32" aria-label="Slot one, slow oscillation">
+    <span class="qbtn__field" aria-hidden="true"></span>
+    <span class="qbtn__vac" aria-hidden="true"></span>
+    <span class="qbtn__scan" aria-hidden="true"></span>
+    <span class="qbtn__idx" aria-hidden="true">01</span>
+    <span class="qbtn__label" aria-hidden="true">Deploy</span>
+    <span class="qbtn__alt" aria-hidden="true">Armed</span>
+    <span class="qbtn__rail" aria-hidden="true"><span class="qbtn__prob"></span></span>
+    <span class="qbtn__read" aria-hidden="true">p 0.500</span>
+    <span class="qbtn__brk" aria-hidden="true"></span>
+  </button>
+  <button class="qbtn" type="button" style="--dur:6.2s;--dly:-2.1s;--k:.55" aria-label="Slot two, medium oscillation">
+    <span class="qbtn__field" aria-hidden="true"></span>
+    <span class="qbtn__vac" aria-hidden="true"></span>
+    <span class="qbtn__scan" aria-hidden="true"></span>
+    <span class="qbtn__idx" aria-hidden="true">02</span>
+    <span class="qbtn__label" aria-hidden="true">Deploy</span>
+    <span class="qbtn__alt" aria-hidden="true">Armed</span>
+    <span class="qbtn__rail" aria-hidden="true"><span class="qbtn__prob"></span></span>
+    <span class="qbtn__read" aria-hidden="true">p 0.500</span>
+    <span class="qbtn__brk" aria-hidden="true"></span>
+  </button>
+  <button class="qbtn" type="button" style="--dur:4.4s;--dly:-3.4s;--k:.78" aria-label="Slot three, fast oscillation">
+    <span class="qbtn__field" aria-hidden="true"></span>
+    <span class="qbtn__vac" aria-hidden="true"></span>
+    <span class="qbtn__scan" aria-hidden="true"></span>
+    <span class="qbtn__idx" aria-hidden="true">03</span>
+    <span class="qbtn__label" aria-hidden="true">Deploy</span>
+    <span class="qbtn__alt" aria-hidden="true">Armed</span>
+    <span class="qbtn__rail" aria-hidden="true"><span class="qbtn__prob"></span></span>
+    <span class="qbtn__read" aria-hidden="true">p 0.500</span>
+    <span class="qbtn__brk" aria-hidden="true"></span>
+  </button>
+  <button class="qbtn" type="button" style="--dur:3s;--dly:-1.2s;--k:1" aria-label="Slot four, fastest oscillation">
+    <span class="qbtn__field" aria-hidden="true"></span>
+    <span class="qbtn__vac" aria-hidden="true"></span>
+    <span class="qbtn__scan" aria-hidden="true"></span>
+    <span class="qbtn__idx" aria-hidden="true">04</span>
+    <span class="qbtn__label" aria-hidden="true">Deploy</span>
+    <span class="qbtn__alt" aria-hidden="true">Armed</span>
+    <span class="qbtn__rail" aria-hidden="true"><span class="qbtn__prob"></span></span>
+    <span class="qbtn__read" aria-hidden="true">p 0.500</span>
+    <span class="qbtn__brk" aria-hidden="true"></span>
+  </button>
+</main>
+</body>
+</html>

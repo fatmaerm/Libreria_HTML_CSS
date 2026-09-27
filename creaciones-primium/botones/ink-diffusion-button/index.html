@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ink Diffusion Sketch</title>
+<meta name="description" content="Three hand-inked buttons drawn on fibrous paper, each already soaked with a diffused blot that feathers along the grain and pools darker at its rim.">
+<meta name="description-es" content="Tres botones dibujados a mano con tinta sobre papel fibroso, cada uno ya empapado en una mancha difusa que se derrama siguiendo la fibra y se acumula más oscura en su borde.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<svg class="defs" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="rough" x="-12%" y="-30%" width="124%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.022 0.05" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="5.5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="rough2" x="-12%" y="-30%" width="124%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.034 0.062" numOctaves="2" seed="19" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<main class="sheet">
+  <div class="rule"></div>
+
+  <div class="row row--1">
+    <span class="mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5C31 5 35 12 35 20C35 29 30 35 20 35C10 35 5 29 5 20C5 11 10 5 20 5Z" filter="url(#rough2)"/><text x="20" y="26">1</text></svg></span>
+    <button class="ink" type="button" data-n="1">
+      <svg class="ink__line" viewBox="0 0 320 92" preserveAspectRatio="none" aria-hidden="true">
+        <path class="ln ln--a" filter="url(#rough)" d="M20 5C64 2 118 7 176 4C232 1 282 7 301 6C305 24 302 46 304 66C306 80 302 86 299 88C246 91 198 86 146 90C96 93 52 89 21 88C17 70 20 48 17 28C15 16 17 9 20 5Z"/>
+        <path class="ln ln--b" filter="url(#rough2)" d="M22 7C66 4 120 9 178 6C234 3 280 9 299 8C302 26 300 48 302 68C303 80 300 84 297 86C244 89 196 84 144 88C94 91 54 87 23 86C19 68 22 46 19 26C17 15 19 10 22 7Z"/>
+      </svg>
+      <span class="ink__hatch"></span>
+      <span class="ink__pool"></span>
+      <span class="ink__bleed"></span>
+      <span class="ink__type">Sign</span>
+      <span class="ink__stain"></span>
+    </button>
+  </div>
+
+  <div class="row row--2">
+    <span class="mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4C32 6 36 13 34 22C32 31 26 36 17 35C8 34 4 27 6 18C8 9 12 3 20 4Z" filter="url(#rough)"/><text x="20" y="26">2</text></svg></span>
+    <button class="ink" type="button" data-n="2">
+      <svg class="ink__line" viewBox="0 0 320 92" preserveAspectRatio="none" aria-hidden="true">
+        <path class="ln ln--a" filter="url(#rough2)" d="M18 4C60 7 116 2 174 6C228 9 280 3 302 7C300 25 305 44 301 64C299 79 303 85 300 89C248 86 200 91 148 87C98 84 50 90 19 87C22 68 15 48 20 28C22 14 15 8 18 4Z"/>
+        <path class="ln ln--b" filter="url(#rough)" d="M20 6C62 9 118 4 176 8C230 11 278 5 300 9C298 27 303 46 299 66C297 77 301 83 298 87C246 84 198 89 146 85C96 82 52 88 21 85C24 66 17 46 22 26C24 13 17 9 20 6Z"/>
+      </svg>
+      <span class="ink__hatch"></span>
+      <span class="ink__pool"></span>
+      <span class="ink__bleed"></span>
+      <span class="ink__type">Blot</span>
+      <span class="ink__stain"></span>
+    </button>
+  </div>
+
+  <div class="row row--3">
+    <span class="mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M19 6C30 3 37 11 35 20C34 29 27 36 18 34C9 33 3 26 6 16C8 8 12 8 19 6Z" filter="url(#rough2)"/><text x="20" y="26">3</text></svg></span>
+    <button class="ink" type="button" data-n="3">
+      <svg class="ink__line" viewBox="0 0 320 92" preserveAspectRatio="none" aria-hidden="true">
+        <path class="ln ln--a" filter="url(#rough)" d="M21 3C63 6 117 1 175 5C229 8 279 2 301 6C304 24 300 45 303 65C305 79 300 87 297 89C245 92 197 87 145 91C95 94 53 88 20 90C18 71 21 49 18 27C16 14 18 6 21 3Z"/>
+        <path class="ln ln--b" filter="url(#rough)" d="M23 5C65 8 119 3 177 7C231 10 277 4 299 8C302 26 298 47 301 67C303 77 298 85 295 87C243 90 195 85 143 89C93 92 55 86 22 88C20 69 23 47 20 25C18 13 20 8 23 5Z"/>
+      </svg>
+      <span class="ink__hatch"></span>
+      <span class="ink__pool"></span>
+      <span class="ink__bleed"></span>
+      <span class="ink__type">Wash</span>
+      <span class="ink__stain"></span>
+    </button>
+  </div>
+
+  <div class="rule rule--b"></div>
+</main>
+</body>
+</html>

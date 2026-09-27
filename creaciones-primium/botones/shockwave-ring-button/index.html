@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shockwave Ring</title>
+<meta name="description" content="A blast-plate initiator on a desert test range that fires a directional shockwave ring across the floor, cracking and displacing the plates the wave crosses.">
+<meta name="description-es" content="Un detonador de placa en un campo de pruebas del desierto que dispara una onda de choque direccional por el suelo, agrietando y desplazando las placas que la onda alcanza.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="range">
+  <div class="sky"></div>
+  <div class="sun"></div>
+  <div class="ridge">
+    <span style="--w:30px;--h:118px;--x:4%;--t:.95"></span>
+    <span style="--w:20px;--h:84px;--x:9%;--t:.85"></span>
+    <span style="--w:40px;--h:150px;--x:15%;--t:.9"></span>
+    <span style="--w:16px;--h:64px;--x:21%;--t:.8"></span>
+    <span style="--w:48px;--h:168px;--x:26%;--t:.88"></span>
+    <span style="--w:22px;--h:92px;--x:34%;--t:.84"></span>
+    <span style="--w:34px;--h:130px;--x:40%;--t:.9"></span>
+    <span style="--w:18px;--h:72px;--x:47%;--t:.8"></span>
+    <span style="--w:44px;--h:158px;--x:53%;--t:.88"></span>
+    <span style="--w:24px;--h:100px;--x:61%;--t:.84"></span>
+    <span style="--w:36px;--h:142px;--x:67%;--t:.9"></span>
+    <span style="--w:20px;--h:78px;--x:74%;--t:.82"></span>
+    <span style="--w:42px;--h:160px;--x:80%;--t:.88"></span>
+    <span style="--w:18px;--h:70px;--x:88%;--t:.8"></span>
+    <span style="--w:28px;--h:110px;--x:93%;--t:.86"></span>
+  </div>
+  <div class="rig"></div>
+  <span class="beacon b1"></span>
+  <span class="beacon b2"></span>
+  <span class="beacon b3"></span>
+  <div class="haze h1"></div>
+  <div class="haze h2"></div>
+  <div class="ground" id="ground">
+    <div class="flood f1"></div>
+    <div class="flood f2"></div>
+    <div class="mark mark--ring"></div>
+    <div class="mark mark--ring2"></div>
+    <div class="mark mark--chev"></div>
+    <div class="mark mark--num">7</div>
+    <div class="plates" id="plates"></div>
+    <svg class="wv" id="wv" aria-hidden="true"><g id="rl"></g></svg>
+    <div class="puffs" id="puffs"></div>
+    <div class="pool"></div>
+    <div class="post" id="post">
+      <div class="post__foot"></div>
+      <div class="post__deck">
+        <span class="post__cable c1"></span>
+        <span class="post__cable c2"></span>
+      </div>
+      <div class="post__col">
+        <div class="post__head">
+          <span class="post__lamp" id="lamp"></span>
+          <span class="post__txt" id="rd">RDY</span>
+        </div>
+        <button class="btn" id="btn" type="button" aria-label="Initiate shockwave">
+          <span class="btn__bez"></span>
+          <span class="btn__cap">
+            <span class="btn__hatch"></span>
+            <span class="btn__label">FIRE</span>
+            <span class="btn__sub">MK IV</span>
+          </span>
+          <span class="btn__gloss"></span>
+        </button>
+        <div class="post__bolts">
+          <span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="motes" aria-hidden="true">
+    <i style="--x:9%;--y:20%;--d:0s"></i>
+    <i style="--x:22%;--y:11%;--d:-6s"></i>
+    <i style="--x:33%;--y:26%;--d:-11s"></i>
+    <i style="--x:46%;--y:7%;--d:-3s"></i>
+    <i style="--x:57%;--y:23%;--d:-14s"></i>
+    <i style="--x:68%;--y:14%;--d:-8s"></i>
+    <i style="--x:79%;--y:28%;--d:-17s"></i>
+    <i style="--x:92%;--y:10%;--d:-2s"></i>
+  </div>
+  <header class="top">
+    <span class="top__k">SECTOR 7</span>
+    <h1>Blast Range</h1>
+    <span class="top__r">STONE GROUND TEST FACILITY</span>
+  </header>
+  <aside class="hud">
+    <div class="hud__dial">
+      <span class="hud__ring"></span>
+      <span class="hud__needle" id="needle"></span>
+      <span class="pip p1"></span><span class="pip p2"></span>
+      <span class="pip p3"></span><span class="pip p4"></span>
+    </div>
+    <div class="hud__rows">
+      <div class="hud__row"><span>BEARING</span><b id="bearing">000&deg;</b></div>
+      <div class="hud__row"><span>WAVES</span><b id="waves">0</b></div>
+      <div class="hud__row"><span>PLATES</span><b id="platesn">0</b></div>
+    </div>
+    <div class="hud__bar"><span id="charge"></span></div>
+  </aside>
+  <div class="stamp">MK IV &middot; 2400 J &middot; 0.4 MS</div>
+</main>
+</body>
+</html>

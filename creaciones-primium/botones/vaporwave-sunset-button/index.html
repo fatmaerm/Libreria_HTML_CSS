@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vaporwave Sunset</title>
+<meta name="description" content="An enormous chrome display-type button stretched across a vaporwave sun and a rushing grid horizon that slams the scene forward when pressed.">
+<meta name="description-es" content="Un enorme pulsador de tipografía cromada estirado a lo ancho de un sol vaporwave y de un horizonte de rejilla en movimiento, que lanza la escena hacia delante al pulsarlo.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="scene" id="scene">
+  <div class="sky">
+    <div class="stars" aria-hidden="true"></div>
+    <div class="bands" aria-hidden="true"></div>
+    <div class="sun" aria-hidden="true"><i></i></div>
+  </div>
+  <div class="ground" aria-hidden="true">
+    <div class="spokes">
+      <i style="--a:11deg"></i><i style="--a:22deg"></i><i style="--a:33deg"></i>
+      <i style="--a:44deg"></i><i style="--a:55deg"></i><i style="--a:66deg"></i>
+      <i style="--a:77deg"></i><i style="--a:88deg"></i><i style="--a:99deg"></i>
+      <i style="--a:110deg"></i><i style="--a:121deg"></i><i style="--a:132deg"></i>
+      <i style="--a:143deg"></i><i style="--a:154deg"></i><i style="--a:165deg"></i>
+    </div>
+    <div class="rush">
+      <i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i><i style="--k:3"></i>
+      <i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i>
+      <i style="--k:8"></i><i style="--k:9"></i><i style="--k:10"></i><i style="--k:11"></i>
+      <i style="--k:12"></i><i style="--k:13"></i><i style="--k:14"></i><i style="--k:15"></i>
+    </div>
+    <div class="floorglow"></div>
+  </div>
+  <div class="echo" aria-hidden="true">SUNSET</div>
+  <button class="key" id="key" type="button" aria-label="Sunset">
+    <span class="key__row">
+      <i style="--i:0">S</i><i style="--i:1">U</i><i style="--i:2">N</i>
+      <i style="--i:3">S</i><i style="--i:4">E</i><i style="--i:5">T</i>
+    </span>
+    <span class="key__glare" aria-hidden="true">SUNSET</span>
+    <span class="key__press" aria-hidden="true"></span>
+  </button>
+  <div class="wave" aria-hidden="true"></div>
+  <div class="flash" aria-hidden="true"></div>
+  <h1 class="stamp"><b>Chrome Overdrive</b><i>1986</i></h1>
+  <div class="grain" aria-hidden="true"></div>
+</main>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Plasma Arc Button</title>
+<meta name="description" content="Three gas plates wired at three voltages sit side by side, so the violet bolt that leaps to the rim can be compared strike for strike as it crawls each border.">
+<meta name="description-es" content="Tres placas de gas conectadas a tres voltajes distintos, colocadas en fila, para poder comparar descarga a descarga el rayo violeta que salta al borde mientras avanza por cada contorno.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="bench">
+  <header class="head">
+    <h1>Plasma Arc</h1>
+    <p>Three plates cut from the same gas and wired at three different voltages. The bolt that leaps from the glyphs to the rim is the same bolt every time; what changes is how often it fires and how hard it lands.</p>
+  </header>
+  <div class="rig">
+    <section class="slot slot--sealed">
+      <p class="cap"><span class="cap__id">A</span><span class="cap__name">Sealed</span><span class="cap__mode">press only</span></p>
+      <button class="plate" type="button" style="--clk:1.9s" aria-label="Plate A, sealed gas, fires on press only">
+        <span class="plate__field" aria-hidden="true"></span>
+        <span class="plate__chamber" aria-hidden="true"></span>
+        <span class="plate__flood" aria-hidden="true"></span>
+        <span class="plate__sheen" aria-hidden="true"></span>
+        <span class="plate__bolt plate__bolt--a" aria-hidden="true"></span>
+        <span class="plate__bolt plate__bolt--b" aria-hidden="true"></span>
+        <span class="plate__rim" aria-hidden="true"></span>
+        <span class="plate__rim plate__rim--b" aria-hidden="true"></span>
+        <span class="plate__ticks" aria-hidden="true"></span>
+        <span class="plate__brk" aria-hidden="true"></span>
+        <canvas class="plate__arc" aria-hidden="true"></canvas>
+        <span class="plate__flash" aria-hidden="true"></span>
+        <span class="plate__label" aria-hidden="true">Ignite</span>
+        <span class="plate__kv" aria-hidden="true">0.00 kV</span>
+      </button>
+      <div class="meter" aria-hidden="true"><span class="meter__fill"></span></div>
+    </section>
+    <section class="slot">
+      <p class="cap"><span class="cap__id">B</span><span class="cap__name">Nominal</span><span class="cap__mode">1.4 s clock</span></p>
+      <button class="plate" type="button" style="--clk:1.55s" aria-label="Plate B, nominal gas, self-firing on a slow clock">
+        <span class="plate__field" aria-hidden="true"></span>
+        <span class="plate__chamber" aria-hidden="true"></span>
+        <span class="plate__flood" aria-hidden="true"></span>
+        <span class="plate__sheen" aria-hidden="true"></span>
+        <span class="plate__bolt plate__bolt--a" aria-hidden="true"></span>
+        <span class="plate__bolt plate__bolt--b" aria-hidden="true"></span>
+        <span class="plate__rim" aria-hidden="true"></span>
+        <span class="plate__rim plate__rim--b" aria-hidden="true"></span>
+        <span class="plate__ticks" aria-hidden="true"></span>
+        <span class="plate__brk" aria-hidden="true"></span>
+        <canvas class="plate__arc" aria-hidden="true"></canvas>
+        <span class="plate__flash" aria-hidden="true"></span>
+        <span class="plate__label" aria-hidden="true">Ignite</span>
+        <span class="plate__kv" aria-hidden="true">0.00 kV</span>
+      </button>
+      <div class="meter" aria-hidden="true"><span class="meter__fill"></span></div>
+    </section>
+    <section class="slot">
+      <p class="cap"><span class="cap__id">C</span><span class="cap__name">Driven</span><span class="cap__mode">0.4 s clock</span></p>
+      <button class="plate" type="button" style="--clk:0.52s" aria-label="Plate C, overdriven gas, self-firing on a fast clock">
+        <span class="plate__field" aria-hidden="true"></span>
+        <span class="plate__chamber" aria-hidden="true"></span>
+        <span class="plate__flood" aria-hidden="true"></span>
+        <span class="plate__sheen" aria-hidden="true"></span>
+        <span class="plate__bolt plate__bolt--a" aria-hidden="true"></span>
+        <span class="plate__bolt plate__bolt--b" aria-hidden="true"></span>
+        <span class="plate__rim" aria-hidden="true"></span>
+        <span class="plate__rim plate__rim--b" aria-hidden="true"></span>
+        <span class="plate__ticks" aria-hidden="true"></span>
+        <span class="plate__brk" aria-hidden="true"></span>
+        <canvas class="plate__arc" aria-hidden="true"></canvas>
+        <span class="plate__flash" aria-hidden="true"></span>
+        <span class="plate__label" aria-hidden="true">Ignite</span>
+        <span class="plate__kv" aria-hidden="true">0.00 kV</span>
+      </button>
+      <div class="meter" aria-hidden="true"><span class="meter__fill"></span></div>
+    </section>
+  </div>
+</main>
+</body>
+</html>

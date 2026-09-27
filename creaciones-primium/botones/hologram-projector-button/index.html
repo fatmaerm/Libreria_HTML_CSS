@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hologram Projector Button</title>
+<meta name="description" content="A darkened museum vitrine where a floor projector casts a volumetric hologram of a button built from scan bands, flicker, chromatic fringing, drifting dust and a keystone wobble.">
+<meta name="description-es" content="Vitrina de museo a oscuras donde un proyector del suelo lanza un holograma volumétrico de un botón formado por bandas de barrido, titileo, franjas cromáticas, polvo a la deriva y una oscilación de trapecio.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="room">
+  <div class="wall" aria-hidden="true"></div>
+  <div class="floor" aria-hidden="true"></div>
+
+  <h1 class="title">Hologram Projector</h1>
+
+  <div class="case">
+    <div class="back-panel" aria-hidden="true">
+      <span class="bp-grid"></span>
+      <span class="bp-etch">Projection Chamber 04</span>
+      <span class="bp-ticks"></span>
+    </div>
+
+    <div class="ceiling" aria-hidden="true">
+      <span class="lamp"></span>
+      <span class="lamp-cone"></span>
+      <span class="housing"><span class="housing-lip"></span></span>
+    </div>
+
+    <div class="fieldbox" aria-hidden="true">
+      <span class="fb-dash d-t"></span>
+      <span class="fb-dash d-b"></span>
+      <span class="fb-dash d-l"></span>
+      <span class="fb-dash d-r"></span>
+      <span class="fb-corner c-tl"></span>
+      <span class="fb-corner c-tr"></span>
+      <span class="fb-corner c-bl"></span>
+      <span class="fb-corner c-br"></span>
+      <span class="fb-tag">Field 0.9 &times; 0.4 m</span>
+    </div>
+
+    <div class="floor-plate" aria-hidden="true">
+      <span class="fp-edge"></span>
+      <span class="fp-grid"></span>
+    </div>
+
+    <div class="stage">
+      <div class="pool" aria-hidden="true"><span class="pool-core"></span></div>
+      <div class="beam" aria-hidden="true">
+        <span class="beam-shape"></span>
+        <span class="beam-shape core"></span>
+      </div>
+      <div class="beam beam-front" aria-hidden="true">
+        <span class="beam-shape"></span>
+      </div>
+      <div class="dust" id="dust" aria-hidden="true"></div>
+
+      <div class="holo" id="holo">
+        <div class="field" id="field">
+          <span class="aura" aria-hidden="true"></span>
+          <div class="plate">
+            <span class="p-grid" aria-hidden="true"></span>
+            <span class="p-scan" aria-hidden="true"></span>
+            <span class="p-bar" aria-hidden="true"></span>
+            <span class="cut c1" aria-hidden="true"></span>
+            <span class="cut c2" aria-hidden="true"></span>
+            <span class="cut c3" aria-hidden="true"></span>
+            <span class="cut c4" aria-hidden="true"></span>
+            <div class="words" aria-hidden="true">
+              <span class="ghost g-cyan">Project</span>
+              <span class="ghost g-mag">Project</span>
+            </div>
+            <button class="trigger" id="trigger" type="button">
+              <span class="word">Project</span>
+              <span class="sub">volume 04</span>
+            </button>
+          </div>
+          <span class="fringe f-cyan" aria-hidden="true"></span>
+          <span class="fringe f-mag" aria-hidden="true"></span>
+        </div>
+        <div class="mirror" aria-hidden="true"><span class="mword">Project</span></div>
+      </div>
+
+      <div class="unit" aria-hidden="true">
+        <span class="unit-body"></span>
+        <span class="vent v1"></span>
+        <span class="vent v2"></span>
+        <span class="lens"><span class="lens-core"></span><span class="lens-ring"></span></span>
+        <span class="flare"></span>
+        <span class="led"></span>
+        <span class="unit-foot"></span>
+        <span class="unit-smear"></span>
+      </div>
+    </div>
+
+    <div class="glass" aria-hidden="true">
+      <span class="sheen"></span>
+      <span class="streak"></span>
+      <span class="edge"></span>
+    </div>
+    <span class="post p1" aria-hidden="true"></span>
+    <span class="post p2" aria-hidden="true"></span>
+    <span class="post p3" aria-hidden="true"></span>
+    <span class="post p4" aria-hidden="true"></span>
+
+    <div class="plaque">
+      <span class="plaque-in">
+        <b>Fig. 04</b>
+        <span>Holographic Volume &mdash; Field Active</span>
+        <span class="plaque-meta">0x4F &middot; 1200 lm &middot; 60 Hz</span>
+      </span>
+    </div>
+  </div>
+</main>
+</body>
+</html>

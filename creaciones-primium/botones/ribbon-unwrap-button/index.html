@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ribbon Unwrap Button</title>
+<meta name="description" content="A gift box whose satin ribbon unties, falls to the table and lets the lid lift to reveal a gold button inside, then rewraps and settles into a different drape each loop.">
+<meta name="description-es" content="Una caja de regalo cuya cinta de satín se desata, cae sobre la mesa y deja que la tapa se levante para descubrir un pulsador dorado dentro; después vuelve a envolverla y se asienta en un pliegue distinto en cada bucle.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="scene">
+  <h1>Ribbon Unwrap</h1>
+
+  <div class="table">
+    <i class="table__spot"></i>
+    <i class="table__grain"></i>
+    <i class="table__edge"></i>
+
+    <div class="gift" id="gift">
+      <i class="gift__cast"></i>
+
+      <div class="tray">
+        <i class="tray__wall"></i>
+        <i class="tray__win" id="trayWin"></i>
+        <i class="tray__glow" id="trayGlow"></i>
+        <i class="tray__foam"></i>
+        <i class="tray__well" id="trayWell"></i>
+      </div>
+
+      <div class="base">
+        <span class="base__face"></span>
+        <span class="base__rim"></span>
+        <span class="band band--v" id="bandV"></span>
+        <span class="band band--h" id="bandH"></span>
+        <span class="plate">no. 07 · a</span>
+        <span class="cnt">opened <b id="cnt">02</b></span>
+      </div>
+
+      <div class="lid">
+        <span class="lid__face"></span>
+        <span class="lid__under" id="lidUnder"></span>
+        <span class="lid__seam"></span>
+        <span class="lid__bandV" id="lidV"></span>
+        <span class="lid__bandH" id="lidH"></span>
+        <span class="bow" id="bow">
+          <i class="bow__loop bow__loop--l"></i>
+          <i class="bow__loop bow__loop--r"></i>
+          <i class="bow__knot"></i>
+          <i class="tail tail--l"></i>
+          <i class="tail tail--r"></i>
+        </span>
+      </div>
+
+      <div class="gbtn" id="gbtn">
+        <button class="gbtn__btn" type="button" id="open" aria-label="Open the gift">
+          <span class="gbtn__face"></span>
+          <span class="gbtn__spec"></span>
+          <span class="gbtn__rim"></span>
+          <svg class="gbtn__art" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3.4 11.4h17.2v9.2H3.4z"/>
+            <path d="M2.2 7.2h19.6v4.2H2.2z"/>
+            <path d="M12 7.2v13.4"/>
+            <path d="M12 7.2C10.2 4.4 8 3.2 6.6 4.4 5.2 5.6 6.6 8 9 7.2M12 7.2c1.8-2.8 4-4 5.4-2.8 1.4 1.2 0 3.6-2.4 2.8"/>
+          </svg>
+          <i class="gbtn__pulse"></i>
+        </button>
+        <i class="conf">
+          <s style="--dx:-42px;--dy:-58px;--dr:-140deg"></s>
+          <s style="--dx:38px;--dy:-64px;--dr:190deg"></s>
+          <s style="--dx:-56px;--dy:-30px;--dr:-90deg"></s>
+          <s style="--dx:52px;--dy:-34px;--dr:120deg"></s>
+          <s style="--dx:-24px;--dy:-72px;--dr:-220deg"></s>
+          <s style="--dx:24px;--dy:-70px;--dr:240deg"></s>
+          <s style="--dx:0px;--dy:-84px;--dr:80deg"></s>
+          <s style="--dx:-8px;--dy:-46px;--dr:-40deg"></s>
+        </i>
+      </div>
+    </div>
+
+    <i class="tag" id="tag"><b>sealed</b><i>wax · 12g</i></i>
+    <span class="drape" id="drapeNote">drape 01</span>
+  </div>
+</main>
+</body>
+</html>

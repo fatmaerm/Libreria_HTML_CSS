@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stroke To Fill Button</title>
+<meta name="description" content="A hand-sketched pair of buttons drawn in rough double strokes on paper that flood with wet ink, the edges bleeding and a sheen sliding across the fresh surface.">
+<meta name="description-es" content="Un par de pulsadores dibujados a mano con trazos dobles y toscos sobre papel, que se inundan de tinta húmeda: los bordes sangran y un brillo resbala por la superficie recién pintada.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="page">
+  <div class="sheet">
+    <span class="hatch" aria-hidden="true"></span>
+    <span class="stain" aria-hidden="true"></span>
+    <span class="mote mote--a" aria-hidden="true"></span>
+    <span class="mote mote--b" aria-hidden="true"></span>
+    <span class="mote mote--c" aria-hidden="true"></span>
+    <span class="drop drop--a" aria-hidden="true"></span>
+    <span class="drop drop--b" aria-hidden="true"></span>
+    <span class="edge" aria-hidden="true"></span>
+
+    <div class="row row--a">
+      <button class="sk" type="button" aria-label="Approve">
+        <svg class="sk__art" viewBox="0 0 320 96" aria-hidden="true">
+          <defs>
+            <filter id="roughA" x="-12%" y="-30%" width="124%" height="160%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.035 0.06" numOctaves="3" seed="7" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="2.6" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+            <filter id="bleedA" x="-25%" y="-45%" width="150%" height="190%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.09 0.15" numOctaves="4" seed="19" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="5.5" xChannelSelector="R" yChannelSelector="G" result="d"/>
+              <feGaussianBlur in="d" stdDeviation="0.55"/>
+            </filter>
+          </defs>
+          <g class="pen" filter="url(#roughA)">
+            <path class="pen__line pen__line--a" d="M26 3.4C96 1.2 208 5.8 292 2.8 306 2.2 315 9 314 22l1.6 52C315 88 306 93.4 292 92c-82 3.4-192-2.4-266 1C12 93.4 5 87 5.4 74L4 22C4 9.6 13 3.8 26 3.4Z"/>
+            <path class="pen__line pen__line--b" d="M25 6.4c76-2.6 180 2 267-1.2 15-.4 24 6 23.4 19L313 72c0 14-8 19-22 17.6-83 3.4-191-2.6-266 1-14 .4-22-5.6-20.6-18.4L6 24C6.4 12 14 6.8 25 6.4Z"/>
+            <path class="pen__tick" d="M4.6 21.6C4.2 12 10 5.6 22 3.8"/>
+          </g>
+          <g class="base" filter="url(#roughA)">
+            <text class="base__type" x="160" y="60" text-anchor="middle">APPROVE</text>
+          </g>
+          <g class="wet wet--auto">
+            <text class="wet__type wet__type--halo" x="160" y="60" text-anchor="middle" filter="url(#bleedA)">APPROVE</text>
+            <text class="wet__type" x="160" y="60" text-anchor="middle">APPROVE</text>
+          </g>
+          <g class="wet wet--hover">
+            <text class="wet__type wet__type--halo" x="160" y="60" text-anchor="middle" filter="url(#bleedA)">APPROVE</text>
+            <text class="wet__type" x="160" y="60" text-anchor="middle">APPROVE</text>
+          </g>
+          <g class="nib">
+            <path d="M0-7 5.4 3.4 0 6.6-5.4 3.4Z"/><path d="M0-1 2.4 4 0 6-2.4 4Z" fill="#5a6d80"/>
+            <circle cx="0" cy="0" r="2.1"/>
+          </g>
+        </svg>
+        <span class="sk__rule" aria-hidden="true"></span>
+        <span class="sk__sheen" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <div class="row row--b">
+      <button class="sk" type="button" aria-label="Reject">
+        <svg class="sk__art" viewBox="0 0 320 96" aria-hidden="true">
+          <defs>
+            <filter id="roughB" x="-12%" y="-30%" width="124%" height="160%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.04 0.055" numOctaves="3" seed="23" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+            <filter id="bleedB" x="-25%" y="-45%" width="150%" height="190%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.1 0.13" numOctaves="4" seed="41" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G" result="d"/>
+              <feGaussianBlur in="d" stdDeviation="0.5"/>
+            </filter>
+          </defs>
+          <g class="pen" filter="url(#roughB)">
+            <path class="pen__line pen__line--a" d="M28 2.6C100 5 206 .8 290 3.6c14 .6 23 7 22 20l1 50c0 14-9 20-23 18.4-80-3-188 2.6-260-.8-14-.6-21-7-20.4-20L5 22C4.6 10 14 2 28 2.6Z"/>
+            <path class="pen__line pen__line--b" d="M26 6c76 2.4 178-1.6 265 1 15 .6 24 6.6 23.4 19.6L313 72c.4 14-7 19.4-21 18-81-2.6-189 3-265 .6-14-.6-22-6.4-20.6-19.4L6 24C6.6 12 14 5.6 26 6Z"/>
+            <path class="pen__tick" d="M296 4.4c12.6.8 18 6 19.4 17"/>
+          </g>
+          <g class="base" filter="url(#roughB)">
+            <text class="base__type" x="160" y="60" text-anchor="middle">REJECT</text>
+          </g>
+          <g class="wet wet--auto">
+            <text class="wet__type wet__type--halo" x="160" y="60" text-anchor="middle" filter="url(#bleedB)">REJECT</text>
+            <text class="wet__type" x="160" y="60" text-anchor="middle">REJECT</text>
+          </g>
+          <g class="wet wet--hover">
+            <text class="wet__type wet__type--halo" x="160" y="60" text-anchor="middle" filter="url(#bleedB)">REJECT</text>
+            <text class="wet__type" x="160" y="60" text-anchor="middle">REJECT</text>
+          </g>
+          <g class="nib">
+            <path d="M0-7 5.4 3.4 0 6.6-5.4 3.4Z"/><path d="M0-1 2.4 4 0 6-2.4 4Z" fill="#5a6d80"/>
+            <circle cx="0" cy="0" r="2.1"/>
+          </g>
+        </svg>
+        <span class="sk__rule" aria-hidden="true"></span>
+        <span class="sk__sheen" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</main>
+</body>
+</html>

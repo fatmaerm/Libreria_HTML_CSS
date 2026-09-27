@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fusion Reactor Control</title>
+<meta name="description" content="A cockpit heads-up display wraps two counter-rotating containment rings and a plasma bead, and every press drives the core temperature readout and the reticle lock state.">
+<meta name="description-es" content="Un visor de cabina con dos anillos de contención contrarrotantes y una gota de plasma, y cada pulsación mueve la lectura de temperatura del núcleo y el estado de bloqueo de la retícula.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="hud">
+  <div class="hud__field"></div>
+  <header class="hud__head">
+    <p class="hud__eye">Reactor control \ RX-04 \ channel A</p>
+    <h1 class="hud__title">Fusion Reactor</h1>
+    <p class="hud__desc">Two containment rings turn against each other around a bead of plasma that never quite settles. Ignite it and the pellet detonates, the core spikes and the reticle locks.</p>
+  </header>
+
+  <section class="hud__rail hud__rail--l" aria-hidden="true">
+    <div class="gauge"><span class="gauge__k">Plasma density</span><span class="gauge__v" id="v1">2.62e20</span><span class="gauge__bar"><i class="gauge__fill gauge__fill--c" id="b1"></i></span></div>
+    <div class="gauge"><span class="gauge__k">Field B</span><span class="gauge__v" id="v2">6.40 T</span><span class="gauge__bar"><i class="gauge__fill gauge__fill--c" id="b2"></i></span></div>
+    <div class="gauge"><span class="gauge__k">Pellet radius</span><span class="gauge__v" id="v3">0.42 mm</span><span class="gauge__bar"><i class="gauge__fill gauge__fill--c" id="b3"></i></span></div>
+  </section>
+
+  <section class="hud__core">
+    <div class="reticle" aria-hidden="true">
+      <span class="reticle__ring"></span>
+      <span class="reticle__arc reticle__arc--a"></span>
+      <span class="reticle__arc reticle__arc--b"></span>
+      <span class="reticle__cross reticle__cross--h"></span>
+      <span class="reticle__cross reticle__cross--v"></span>
+      <span class="reticle__tick reticle__tick--t"></span>
+      <span class="reticle__tick reticle__tick--r"></span>
+      <span class="reticle__tick reticle__tick--b"></span>
+      <span class="reticle__tick reticle__tick--l"></span>
+      <span class="reticle__tag" id="lock">Seeking</span>
+    </div>
+    <button class="btn" type="button" id="ig">
+      <span class="btn__vessel"></span>
+      <span class="btn__hatch"></span>
+      <span class="btn__coil"></span>
+      <span class="btn__glow"></span>
+      <span class="btn__ring btn__ring--a"></span>
+      <span class="btn__ring btn__ring--b"></span>
+      <span class="btn__bore"><span class="btn__bead"></span></span>
+      <span class="btn__bloom"></span>
+      <span class="btn__flash"></span>
+      <span class="btn__label">Ignite</span>
+      <span class="btn__fx" id="fx"></span>
+    </button>
+  </section>
+
+  <section class="hud__rail hud__rail--r" aria-hidden="true">
+    <div class="gauge gauge--hot"><span class="gauge__k">Core temp</span><span class="gauge__v" id="v4">61.4 MK</span><span class="gauge__bar"><i class="gauge__fill gauge__fill--h" id="b4"></i></span></div>
+    <div class="gauge"><span class="gauge__k">Neutron yield</span><span class="gauge__v" id="v5">0.31e19</span><span class="gauge__bar"><i class="gauge__fill gauge__fill--h" id="b5"></i></span></div>
+    <div class="gauge"><span class="gauge__k">Flux</span><span class="gauge__v" id="v6">8.02e14</span><span class="gauge__bar"><i class="gauge__fill gauge__fill--h" id="b6"></i></span></div>
+  </section>
+
+  <footer class="hud__foot">
+    <span class="hud__state" id="st">Containment nominal</span>
+    <span class="hud__ticks" aria-hidden="true"></span>
+    <span class="hud__code" id="code">SEQ 000 \ IDLE</span>
+  </footer>
+</main>
+</body>
+</html>

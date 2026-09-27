@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Antimatter Annihilate Button</title>
+<meta name="description" content="A collider chamber where the button splits its word into matter and antimatter halves that strain against a membrane, annihilate in a flash of charged particles and reassemble.">
+<meta name="description-es" content="Una cámara de colisión donde el botón divide su palabra en mitades de materia y antimateria que se estiran contra una membrana, se aniquilan en un fogonazo de partículas cargadas y vuelven a ensamblarse.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="chamber">
+  <div class="scene" aria-hidden="true">
+    <div class="sg-wall"></div>
+    <div class="sg-arch"></div>
+    <div class="sg-arch sg-arch--in"></div>
+    <div class="sg-ring sg-ring--a"></div>
+    <div class="sg-ring sg-ring--b"></div>
+    <div class="sg-ring sg-ring--c"></div>
+    <div class="sg-pipe">
+      <span class="pipe__cone pipe__cone--l"></span>
+      <span class="pipe__cone pipe__cone--r"></span>
+      <span class="pipe__halo"></span>
+      <span class="pipe__spine"></span>
+      <span class="coil coil--1"></span>
+      <span class="coil coil--2"></span>
+      <span class="coil coil--3"></span>
+      <span class="coil coil--4"></span>
+    </div>
+    <div class="sg-shaft sg-shaft--l"></div>
+    <div class="sg-shaft sg-shaft--r"></div>
+    <div class="sg-ceil sg-ceil--a"></div>
+    <div class="sg-ceil sg-ceil--b"></div>
+    <div class="sg-floor"></div>
+    <div class="sg-stripe"></div>
+    <div class="sg-mark sg-mark--l"><i></i></div>
+    <div class="sg-mark sg-mark--r"><i></i></div>
+    <div class="sg-pip sg-pip--l"></div>
+    <div class="sg-pip sg-pip--r"></div>
+    <div class="sg-motes"></div>
+  </div>
+
+  <div class="fg" aria-hidden="true"></div>
+  <div class="flash" aria-hidden="true"></div>
+
+  <header class="sign">
+    <span class="sign__bar"></span>
+    <span class="sign__body">
+      <h1 class="sign__title">Antimatter Collision Chamber</h1>
+      <span class="sign__tag">Section 04-C</span>
+    </span>
+    <span class="sign__bar"></span>
+  </header>
+
+  <div class="core">
+    <button class="btn" type="button" id="strike">
+      <span class="btn__grid" aria-hidden="true"></span>
+      <span class="btn__field" aria-hidden="true"></span>
+      <span class="btn__mem" aria-hidden="true"></span>
+      <span class="btn__label">Annihilate</span>
+      <span class="btn__read btn__read--l" aria-hidden="true">M +0.511</span>
+      <span class="btn__read btn__read--r" aria-hidden="true">A -0.511</span>
+      <span class="btn__brk btn__brk--a" aria-hidden="true"></span>
+      <span class="btn__brk btn__brk--b" aria-hidden="true"></span>
+      <span class="btn__flare" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <footer class="desk">
+    <span class="desk__lamp"></span>
+    <span class="desk__cell"><b>Flux</b><i id="rq-flux">0.00</i></span>
+    <span class="desk__cell"><b>Coil</b><i id="rq-coil">Standby</i></span>
+    <span class="desk__cell"><b>Seal</b><i id="rq-seal">Nominal</i></span>
+    <span class="desk__cell desk__cell--warn"><b>Events</b><i id="rq-hit">0</i></span>
+  </footer>
+
+  <div class="burst" id="burst" aria-hidden="true"></div>
+</main>
+</body>
+</html>

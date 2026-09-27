@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Neon Knuckle Credit Fight</title>
+<meta name="description" content="An arcade cabinet where the big action button spends a credit, cracks the combo meter, throws a score burst up the screen and decays the multiplier before the next credit runs out.">
+<meta name="description-es" content="Una máquina recreativa donde el botón de acción grande gasta un crédito, rompe el medidor de combo, lanza una explosión de puntos hacia arriba y hace decaer el multiplicador antes de que se acaben los créditos.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="stage">
+  <header class="lede">
+    <p class="lede__eye">Cabinet four \ floor two \ credits on</p>
+    <h1 class="lede__title">Neon Knuckle</h1>
+    <p class="lede__desc">The button on the control panel is the whole game. Every press burns a credit, cracks the screen, throws a score burst and charges the combo meter, which drains away while you watch the credits count down.</p>
+    <dl class="stat">
+      <div><dt>Score</dt><dd id="hudScore">0</dd></div>
+      <div><dt>Hi</dt><dd>64000</dd></div>
+      <div><dt>Credits</dt><dd id="hudCred">3</dd></div>
+    </dl>
+  </header>
+
+  <div class="slot">
+  <div class="cab">
+    <div class="cab__shell">
+      <header class="marquee">
+        <span class="marquee__tube">
+          <b>N</b><b>E</b><b>O</b><b>N</b><b class="sp"></b><b>K</b><b>N</b><b>U</b><b>C</b><b>K</b><b>L</b><b>E</b>
+        </span>
+        <span class="marquee__rail"><i></i>two player \ one credit each<i></i></span>
+      </header>
+
+      <div class="bezel">
+        <div class="screen" id="screen">
+          <div class="hud">
+            <span class="hud__s hud__s--l"><em>Score</em><b id="hScore">0</b></span>
+            <span class="hud__s hud__s--c"><em>Hi</em><b>64000</b></span>
+            <span class="hud__s hud__s--r"><em>Credits</em><b id="hCred">3</b></span>
+          </div>
+
+          <div class="boss">
+            <span class="boss__lb">Vesper</span>
+            <span class="boss__bar"><i id="bossFill"></i></span>
+          </div>
+
+          <div class="lives"><em>Fighters</em><i class="lv"></i><i class="lv"></i><i class="lv"></i><i class="lv is-out"></i></div>
+
+          <div class="combo">
+            <span class="combo__lb">Combo</span>
+            <span class="combo__track"><i class="combo__fill" id="comboFill"></i></span>
+            <span class="combo__v" id="comboV">x1</span>
+          </div>
+
+          <div class="stage-area">
+            <span class="sun"></span>
+            <span class="mtn mtn--f"></span>
+            <span class="mtn mtn--b"></span>
+            <span class="crowd"></span>
+            <span class="horizon"></span>
+            <span class="grid"></span>
+            <span class="fig fig--p" id="figP">
+              <i class="fig__shadow"></i>
+              <i class="fig__head"></i><i class="fig__torso"></i><i class="fig__arm"></i><i class="fig__fist"></i><i class="fig__leg fig__leg--l"></i><i class="fig__leg fig__leg--r"></i>
+              <b class="fig__tag">you</b>
+            </span>
+            <span class="fig fig--e" id="figE">
+              <i class="fig__shadow"></i>
+              <i class="fig__head"></i><i class="fig__torso"></i><i class="fig__arm"></i><i class="fig__fist"></i><i class="fig__leg fig__leg--l"></i><i class="fig__leg fig__leg--r"></i>
+              <b class="fig__tag">vesper</b>
+            </span>
+            <span class="hit" id="hit"></span>
+            <span class="cue" id="cue">Punish</span>
+          </div>
+
+          <div class="flash" id="flash"></div>
+
+          <div class="bursts" id="bursts">
+            <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+            <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+          </div>
+
+          <div class="flourish" id="flourish"><b></b><em></em></div>
+
+          <div class="attract" id="attract">Insert coin</div>
+        </div>
+        <span class="bezel__lip"></span>
+      </div>
+
+      <div class="deck">
+        <span class="deck__art"></span>
+        <div class="stick" aria-hidden="true">
+          <span class="stick__ball"></span>
+          <span class="stick__shaft"></span>
+          <span class="stick__washer"></span>
+        </div>
+        <span class="mini" aria-hidden="true"></span>
+        <span class="mini mini--b" aria-hidden="true"></span>
+
+        <button class="act" id="act" type="button" aria-label="Spend a credit and strike">
+          <span class="act__ring"></span>
+          <span class="act__ring2"></span>
+          <span class="act__led"></span>
+          <span class="act__cap">
+            <span class="act__bolt"></span>
+          </span>
+        </button>
+        <span class="act__legend" id="legend">Strike</span>
+      </div>
+    </div>
+    <span class="cab__foot"></span>
+  </div>
+  </div>
+</main>
+</body>
+</html>

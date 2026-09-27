@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dark Matter Lens Button</title>
+<meta name="description" content="An annotated specimen plate breaks down a lensing button into its aperture, chromatic split, accretion rim and event horizon while the mass behind the glass keeps bending the label.">
+<meta name="description-es" content="Una placa de espécimen anotada descompone un botón de lenteo en su apertura, su división cromática, su aro de acreción y su horizonte de eventos, mientras la masa tras el cristal sigue curvando la etiqueta.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="fig">
+  <header class="fig__head">
+    <div class="fig__titles">
+      <h1 class="fig__title">Dark Matter Lens</h1>
+      <p class="fig__note">A dark mass hangs behind the glass and everything near it bends, so the label rides a curved, slowly breathing surface.</p>
+    </div>
+    <span class="fig__tag">Specimen DM-4.1e5</span>
+  </header>
+
+  <div class="plate" id="plate">
+    <span class="plate__grid" aria-hidden="true"></span>
+    <span class="plate__major" aria-hidden="true"></span>
+    <span class="plate__ticks" aria-hidden="true"></span>
+    <span class="plate__cross plate__cross--h" aria-hidden="true"></span>
+    <span class="plate__cross plate__cross--v" aria-hidden="true"></span>
+
+    <div class="cal cal--l" style="--ey:20%;--ty:41%">
+      <span class="cal__tx"><b>01</b>Aperture glass</span>
+      <span class="cal__hline"></span><span class="cal__vstub"></span><span class="cal__dot"></span>
+    </div>
+    <div class="cal cal--l" style="--ey:41%;--ty:50%">
+      <span class="cal__tx"><b>02</b>Chromatic split</span>
+      <span class="cal__hline"></span><span class="cal__vstub"></span><span class="cal__dot"></span>
+    </div>
+    <div class="cal cal--l" style="--ey:58%;--ty:61%">
+      <span class="cal__tx"><b>03</b>Refracted surface</span>
+      <span class="cal__hline"></span><span class="cal__vstub"></span><span class="cal__dot"></span>
+    </div>
+
+    <div class="cal cal--r" style="--ey:24%;--ty:43%">
+      <span class="cal__tx"><b>06</b>Lensing field</span>
+      <span class="cal__hline"></span><span class="cal__vstub"></span><span class="cal__dot"></span>
+    </div>
+    <div class="cal cal--r" style="--ey:45%;--ty:53%">
+      <span class="cal__tx"><b>05</b>Accretion rim</span>
+      <span class="cal__hline"></span><span class="cal__vstub"></span><span class="cal__dot"></span>
+    </div>
+    <div class="cal cal--r" style="--ey:61%;--ty:62%">
+      <span class="cal__tx"><b>04</b>Photometric edge</span>
+      <span class="cal__hline"></span><span class="cal__vstub"></span><span class="cal__dot"></span>
+    </div>
+
+    <div class="lead" aria-hidden="true">
+      <span class="lead__line"></span>
+      <span class="lead__dot"></span>
+      <span class="lead__tx">Event horizon &middot; R 0.14 rs</span>
+    </div>
+
+    <div class="dim dim--h" aria-hidden="true">
+      <span class="dim__line"></span>
+      <span class="dim__cap dim__cap--a"></span>
+      <span class="dim__cap dim__cap--b"></span>
+      <span class="dim__tx">Aperture 352 mm</span>
+    </div>
+
+    <div class="dim dim--v" aria-hidden="true">
+      <span class="dim__line"></span>
+      <span class="dim__cap dim__cap--a"></span>
+      <span class="dim__cap dim__cap--b"></span>
+      <span class="dim__tx">Depth 118 mm</span>
+    </div>
+
+    <button class="btn" type="button" id="lens">
+      <span class="btn__rim" aria-hidden="true"></span>
+      <span class="btn__field" aria-hidden="true"></span>
+      <span class="btn__core" aria-hidden="true"></span>
+      <span class="btn__ring" aria-hidden="true"></span>
+      <span class="btn__label">Deploy</span>
+      <span class="btn__glint" aria-hidden="true"></span>
+      <span class="btn__bar" aria-hidden="true"></span>
+      <span class="btn__sink" aria-hidden="true"></span>
+    </button>
+
+    <div class="scale" aria-hidden="true">
+      <span class="scale__bar"></span>
+      <span class="scale__n scale__n--a">0</span>
+      <span class="scale__n scale__n--b">50</span>
+      <span class="scale__n scale__n--c">100 kpc</span>
+    </div>
+  </div>
+
+  <footer class="legend">
+    <span class="legend__cell"><b>Lens K</b><i>0.71</i></span>
+    <span class="legend__cell"><b>Mass</b><i>4.1e5 Msun</i></span>
+    <span class="legend__cell"><b>Redshift</b><i>z 1.84</i></span>
+    <span class="legend__cell legend__cell--hot"><b>Cycles</b><i id="rq-n">0</i></span>
+  </footer>
+</main>
+</body>
+</html>

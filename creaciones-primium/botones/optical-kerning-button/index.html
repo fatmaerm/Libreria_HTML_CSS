@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Optical Kerning Button</title>
+<meta name="description" content="A type-composing bench where a specimen's letter pairs drift out of kern, are measured live by a ruler and side bearings, and snap onto the optical measure lines when pressed.">
+<meta name="description-es" content="Banco de composición tipográfica donde los pares de letras de una muestra pierden el ajuste de espaciado, se miden en vivo con una regla y los cuerpos laterales, y encajan en las líneas de medida óptica al pulsarlos.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="page">
+  <header class="head">
+    <h1>Optical Kerning Bench</h1>
+    <p>While the bench idles the pairs drift off the measure. Drop the slug to lock every pair onto its optical side bearing and watch the deviation trace flatline.</p>
+  </header>
+
+  <section class="bench">
+    <span class="bench__grid" aria-hidden="true"></span>
+    <span class="bench__silk" aria-hidden="true">Bench 04 &middot; optical comparator &middot; 1000 upm</span>
+    <span class="screw screw--tl" aria-hidden="true"></span>
+    <span class="screw screw--tr" aria-hidden="true"></span>
+    <span class="screw screw--bl" aria-hidden="true"></span>
+    <span class="screw screw--br" aria-hidden="true"></span>
+
+    <div class="stage" id="stage">
+      <span class="optics" id="optics" aria-hidden="true">
+        <i class="optics__line"></i>
+        <i class="optics__line"></i>
+        <i class="optics__line"></i>
+        <i class="optics__line"></i>
+        <i class="optics__line"></i>
+        <i class="optics__line"></i>
+      </span>
+
+      <span class="gantry" aria-hidden="true"><i></i><i></i></span>
+
+      <span class="probe probe--l" aria-hidden="true"><i class="probe__stem"></i><i class="probe__tip"></i><i class="probe__body"></i></span>
+      <span class="probe probe--r" aria-hidden="true"><i class="probe__stem"></i><i class="probe__tip"></i><i class="probe__body"></i></span>
+
+      <button class="slug" id="slug" type="button" aria-label="Lock the specimen to optical kerning">
+        <span class="slug__plate" aria-hidden="true">
+          <i class="slug__bed"></i>
+          <i class="slug__fibre"></i>
+          <i class="slug__rules"></i>
+          <i class="slug__sweep"></i>
+          <i class="slug__ink"></i>
+        </span>
+        <span class="slug__type" id="type" aria-hidden="true">
+          <i class="gstrut"></i>
+          <b class="g">A</b><b class="g">V</b><b class="g">A</b><b class="g">T</b><b class="g">A</b><b class="g">R</b>
+        </span>
+        <span class="slug__lock" aria-hidden="true"><i></i>OPTICAL</span>
+        <span class="slug__edge" aria-hidden="true"></span>
+      </button>
+
+      <div class="meas" id="meas" aria-hidden="true">
+        <i class="meas__line meas__line--l"></i>
+        <i class="meas__line meas__line--r"></i>
+        <i class="meas__dim" id="dim">A V</i>
+      </div>
+
+      <div class="ruler" aria-hidden="true">
+        <span class="ruler__rail"></span>
+        <span class="ruler__ticks"></span>
+        <span class="ruler__cursor"></span>
+        <span class="ruler__span" id="rspan"></span>
+        <span class="ruler__read" id="rread">0.000</span>
+      </div>
+    </div>
+
+    <div class="chans">
+      <span class="chan"><b>pair</b><i id="cPair">A V</i></span>
+      <span class="chan"><b>kern</b><i id="cKern">-0.072</i></span>
+      <span class="chan"><b>optical</b><i id="cOpt">-0.072</i></span>
+      <span class="chan"><b>fit</b><i id="cFit">0.00</i></span>
+      <span class="chan chan--state"><b>state</b><i id="cState">drift</i></span>
+    </div>
+
+    <div class="log">
+      <span class="log__tag">log</span>
+      <span class="log__line" id="logline">cycle 01 &middot; slug up &middot; pairs drifting off measure</span>
+    </div>
+
+    <div class="scope">
+      <span class="scope__tag">kern deviation</span>
+      <svg class="scope__svg" viewBox="0 0 340 48" preserveAspectRatio="none" focusable="false" aria-hidden="true">
+        <polyline class="scope__mid" points="0,24 340,24"></polyline>
+        <polyline class="scope__line" id="trace" points=""></polyline>
+      </svg>
+      <span class="scope__scale" aria-hidden="true">-50 &nbsp;&middot;&nbsp; 0 &nbsp;&middot;&nbsp; +50</span>
+    </div>
+  </section>
+</main>
+</body>
+</html>

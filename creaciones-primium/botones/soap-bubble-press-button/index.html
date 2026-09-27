@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Soap Bubble Press Button</title>
+<meta name="description" content="A pointer avatar flies in on its own, presses the button, and retreats while the soap film bulges, flares iridescent and lets go in a ring.">
+<meta name="description-es" content="Un avatar con puntero llega por su cuenta, pulsa el botón y se retira mientras la película de jabón se hincha, brilla con tonos iridiscentes y se desprende en forma de anillo.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="page">
+  <header class="head">
+    <h1>Soap Bubble Press</h1>
+    <p>A cursor arrives on its own, presses the face, and withdraws: the film bulges under the pressure, flares, then lets go in a ring you can watch all the way out.</p>
+  </header>
+  <section class="scene">
+    <span class="scene__pool" aria-hidden="true"></span>
+    <span class="scene__bench" aria-hidden="true"></span>
+    <span class="scene__stamp" aria-hidden="true">Surface tension 0.031</span>
+    <div class="seat">
+      <button class="bub" type="button" aria-label="Press the bubble">
+        <span class="bub__film" aria-hidden="true"></span>
+        <span class="bub__sheen" aria-hidden="true"></span>
+        <span class="bub__rim" aria-hidden="true"></span>
+        <span class="bub__meniscus" aria-hidden="true"></span>
+        <span class="bub__label" aria-hidden="true">Burst</span>
+        <span class="bub__gauge" aria-hidden="true"><span class="bub__thin"></span></span>
+        <span class="bub__ring" aria-hidden="true"></span>
+        <span class="bub__ring bub__ring--b" aria-hidden="true"></span>
+      </button>
+      <span class="seat__refl" aria-hidden="true"></span>
+    </div>
+    <div class="agent" aria-hidden="true">
+      <span class="agent__halo"></span>
+      <svg class="agent__cursor" viewBox="0 0 24 26" focusable="false">
+        <path d="M4 2 L4 18.4 L8.3 14.5 L10.9 21.4 L14.1 19.9 L11.5 13.2 L18 13 Z"></path>
+      </svg>
+      <span class="agent__press"></span>
+    </div>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prism Spectrum Sweep Button</title>
+<meta name="description" content="A dark glass button driven by a refracting prism: white light enters the icon, the prism unfurls a full spectrum and the band that leaves it paints the label in colour.">
+<meta name="description-es" content="Un pulsador de cristal oscuro dirigido por un prisma: la luz blanca entra en el icono, el prisma despliega todo el espectro y la banda que sale de él pinta la etiqueta de color.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="stage">
+  <button class="btn" type="button" aria-label="Disperse">
+    <span class="btn__bed" aria-hidden="true"></span>
+    <span class="btn__sweep" aria-hidden="true"></span>
+    <span class="btn__gloss" aria-hidden="true"></span>
+    <span class="btn__ticks" aria-hidden="true"></span>
+    <span class="btn__brk" aria-hidden="true"></span>
+    <span class="prism" aria-hidden="true">
+      <span class="prism__beam"></span>
+      <span class="prism__hit"></span>
+      <span class="prism__body"></span>
+      <span class="prism__seat"></span>
+      <span class="prism__exit"></span>
+      <span class="prism__fan">
+        <span class="ray ray--1"></span>
+        <span class="ray ray--2"></span>
+        <span class="ray ray--3"></span>
+        <span class="ray ray--4"></span>
+        <span class="ray ray--5"></span>
+        <span class="ray ray--6"></span>
+        <span class="ray ray--7"></span>
+      </span>
+      <span class="prism__scale"></span>
+    </span>
+    <span class="btn__label">Disperse</span>
+    <span class="ladder" aria-hidden="true">
+      <i></i><i></i><i></i><i></i><i></i><i></i>
+    </span>
+  </button>
+</main>
+</body>
+</html>

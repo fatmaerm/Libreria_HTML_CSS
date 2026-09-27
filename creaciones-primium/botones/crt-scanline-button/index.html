@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Scanline Sync Tuner</title>
+<meta name="description" content="Inside a phone tuner app a curved cathode ray screen carries the sync control, so pressing it drags the rolling bar, blooms the phosphor and pulls the snow into a locked test card.">
+<meta name="description-es" content="Dentro de una app de sintonizador en el móvil, una pantalla curva de rayo catódico lleva el control de sincronía, así que al pulsarla arrastras la barra de barrido, florece el fósforo y la nieve se convierte en una carta de ajuste bloqueada.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="stage">
+  <header class="lede">
+    <p class="lede__eye">Phosphor app \ analogue tuner \ build 412</p>
+    <h1 class="lede__title">Scanline Sync</h1>
+    <p class="lede__desc">The whole app is a preview monitor for a dead channel. Its sync control lives on the tube itself, so pressing it drags the roll bar, bleeds the chroma off centre and then pulls the snow apart into a clean card.</p>
+    <dl class="spec">
+      <div><dt>Standard</dt><dd>4.43 NTSC</dd></div>
+      <div><dt>Carrier</dt><dd id="carrier">61.75 MHz</dd></div>
+      <div><dt>Lock</dt><dd id="lock">Seeking</dd></div>
+    </dl>
+  </header>
+
+  <div class="slot">
+  <div class="phone">
+    <span class="phone__side phone__side--l"></span>
+    <span class="phone__side phone__side--r"></span>
+    <div class="screen">
+      <div class="status">
+        <span class="status__time" id="clock">21:47</span>
+        <span class="notch"></span>
+        <span class="status__right">
+          <i class="sig"><b></b><b></b><b></b><b></b></i>
+          <i class="wifi"></i>
+          <i class="batt"><em></em></i>
+        </span>
+      </div>
+
+      <div class="app">
+        <header class="app__bar">
+          <span class="app__mark"></span>
+          <span class="app__id">PHOSPHOR<em>tuner</em></span>
+          <span class="app__chip" id="chip">Seeking</span>
+        </header>
+
+        <div class="crt" id="crt">
+          <div class="crt__tube">
+            <div class="crt__card">
+              <span class="crt__ghost">No signal</span>
+              <span class="crt__ring"></span>
+              <span class="crt__cross"></span>
+              <span class="crt__chan">CH 03</span>
+              <span class="crt__foot">Night signal \ 23:47</span>
+              <button class="tube-btn" id="tubeBtn" type="button" aria-label="Sync the tuner and pull the picture into lock">
+                <span class="tube-btn__bloom" aria-hidden="true">Sync</span>
+                <span class="tube-btn__fringe tube-btn__fringe--r" aria-hidden="true">Sync</span>
+                <span class="tube-btn__fringe tube-btn__fringe--c" aria-hidden="true">Sync</span>
+                <span class="tube-btn__word" aria-hidden="true">
+                  <i style="--i:0">S</i><i style="--i:1">Y</i><i style="--i:2">N</i><i style="--i:3">C</i>
+                </span>
+                <span class="tube-btn__rule" aria-hidden="true"></span>
+                <span class="tube-btn__glow" aria-hidden="true"></span>
+              </button>
+            </div>
+            <span class="crt__snow crt__snow--a"></span>
+            <span class="crt__snow crt__snow--b"></span>
+            <span class="crt__snow crt__snow--c"></span>
+            <span class="crt__chroma"></span>
+            <span class="crt__scan"></span>
+            <span class="crt__roll"></span>
+            <span class="crt__fold"></span>
+            <span class="crt__glass"></span>
+          </div>
+        </div>
+
+        <div class="dial">
+          <div class="dial__scale">
+            <i class="dial__tick" style="--k:0"></i><i class="dial__tick" style="--k:1"></i><i class="dial__tick" style="--k:2"></i><i class="dial__tick" style="--k:3"></i><i class="dial__tick" style="--k:4"></i><i class="dial__tick" style="--k:5"></i><i class="dial__tick" style="--k:6"></i><i class="dial__tick" style="--k:7"></i><i class="dial__tick" style="--k:8"></i><i class="dial__tick" style="--k:9"></i><i class="dial__tick" style="--k:10"></i><i class="dial__tick" style="--k:11"></i><i class="dial__tick" style="--k:12"></i>
+            <span class="dial__needle" id="needle"></span>
+          </div>
+          <div class="dial__row">
+            <span>48.50</span><span class="dial__on">61.75</span><span>174.20</span>
+          </div>
+        </div>
+
+        <ul class="list">
+          <li><b>01</b><span>Evening Report</span><em>48.50</em></li>
+          <li class="is-on"><b>03</b><span>Night Signal</span><em>61.75</em></li>
+          <li><b>07</b><span>Weather Loop</span><em>174.20</em></li>
+        </ul>
+
+        <div class="meter">
+          <span class="meter__lb">Signal</span>
+          <span class="meter__bar" id="bar">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </span>
+          <span class="meter__val" id="barVal">31%</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <span class="nav__i nav__i--on"><i class="nav__g nav__g--dial"></i>Tune</span>
+        <span class="nav__i"><i class="nav__g nav__g--scan"></i>Scan</span>
+        <span class="nav__i"><i class="nav__g nav__g--log"></i>Log</span>
+        <span class="nav__i"><i class="nav__g nav__g--set"></i>Setup</span>
+        <span class="homebar"></span>
+      </nav>
+    </div>
+  </div>
+  </div>
+</main>
+</body>
+</html>

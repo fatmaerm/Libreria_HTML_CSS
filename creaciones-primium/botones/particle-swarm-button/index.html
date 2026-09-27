@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Particle Swarm Button</title>
+<meta name="description" content="A control-room matrix of nine panel buttons, each holding its own orbiting particle swarm that bursts apart and slowly re-forms when pressed.">
+<meta name="description-es" content="Una matriz de sala de control con nueve pulsadores de panel, cada uno con su propio enjambre de partículas en órbita, que se dispersa al pulsarlo y se vuelve a formar poco a poco.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="rack">
+  <header class="rack__head">
+    <div class="rack__title">
+      <h1>Swarm Control</h1>
+      <p>Nine panel nodes on bay four, each holding a particle swarm at its own rhythm — press a node to scatter its swarm and watch it re-form.</p>
+    </div>
+    <div class="rack__badge">
+      <span class="rack__led"></span>
+      <b>Live</b>
+      <i>Bay 04 · 9 nodes</i>
+    </div>
+  </header>
+
+  <section class="grid">
+    <div class="cell" data-st="idle" style="--hue:#4fd8ff">
+      <canvas class="cell__cv"></canvas>
+      <span class="cell__id">01</span>
+      <button class="node" type="button" aria-label="Node 01">
+        <i class="node__ring"></i><i class="node__led"></i><em class="node__cap">A1</em>
+      </button>
+      <div class="cell__meta"><b>Node 01</b><em>Idle</em></div>
+      <div class="cell__meter"><i></i></div>
+    </div>
+    <div class="cell" data-st="seek" style="--hue:#7ce8c0">
+      <canvas class="cell__cv"></canvas>
+      <span class="cell__id">02</span>
+      <button class="node" type="button" aria-label="Node 02">
+        <i class="node__ring"></i><i class="node__led"></i><em class="node__cap">A2</em>
+      </button>
+      <div class="cell__meta"><b>Node 02</b><em>Seek</em></div>
+      <div class="cell__meter"><i></i></div>
+    </div>
+    <div class="cell" data-st="lock" style="--hue:#9dffd2">
+      <canvas class="cell__cv"></canvas>
+      <span class="cell__id">03</span>
+      <button class="node" type="button" aria-label="Node 03">
+        <i class="node__ring"></i><i class="node__led"></i><em class="node__cap">A3</em>
+      </button>
+      <div class="cell__meta"><b>Node 03</b><em>Lock</em></div>
+      <div class="cell__meter"><i></i></div>
+    </div>
+    <div class="cell" data-st="hold" style="--hue:#b07bff">
+      <canvas class="cell__cv"></canvas>
+      <span class="cell__id">04</span>
+      <button class="node" type="button" aria-label="Node 04">
+        <i class="node__ring"></i><i class="node__led"></i><em class="node__cap">A4</em>
+      </button>
+      <div class="cell__meta"><b>Node 04</b><em>Hold</em></div>
+      <div class="cell__meter"><i></i></div>
+    </div>
+    <div class="cell" data-st="charge" style="--hue:#ffd166">
+      <canvas class="cell__cv"></canvas>
+      <span class="cell__id">05</span>
+      <button class="node" type="button" aria-label="Node 05">
+        <i class="node__ring"></i><i class="node__led"></i><em class="node__cap">A5</em>
+      </button>
+      <div class="cell__meta"><b>Node 05</b><em>Charge</em></div>
+      <div class="cell__meter"><i></i></div>
+    </div>
+    <div class="cell" data-st="storm" style="--hue:#ff8a5c">
+      <canvas class="cell__cv"></canvas>
+      <span class="cell__id">06</span>
+      <button class="node" type="button" aria-label="Node 06">
+        <i class="node__ring"></i><i class="node__led"></i><em class="node__cap">A6</em>
+      </button>
+      <div class="cell__meta"><b>Node 06</b><em>Storm</em></div>
+      <div class="cell__meter"><i></i></div>
+    </div>
+    <div class="cell" data-st="wait" style="--hue:#ffb545">
+      <canvas class="cell__cv"></canvas>
+      <span class="cell__id">07</span>
+      <button class="node" type="button" aria-label="Node 07">
+        <i class="node__ring"></i><i class="node__led"></i><em class="node__cap">A7</em>
+      </button>
+      <div class="cell__meta"><b>Node 07</b><em>Wait</em></div>
+      <div class="cell__meter"><i></i></div>
+    </div>
+    <div class="cell" data-st="fault" style="--hue:#ff4d5e">
+      <canvas class="cell__cv"></canvas>
+      <span class="cell__id">08</span>
+      <button class="node" type="button" aria-label="Node 08">
+        <i class="node__ring"></i><i class="node__led"></i><em class="node__cap">A8</em>
+      </button>
+      <div class="cell__meta"><b>Node 08</b><em>Fault</em></div>
+      <div class="cell__meter"><i></i></div>
+    </div>
+    <div class="cell cell--off" data-st="dark" style="--hue:#5b6b78">
+      <canvas class="cell__cv"></canvas>
+      <span class="cell__id">09</span>
+      <button class="node" type="button" aria-label="Node 09" disabled>
+        <i class="node__ring"></i><i class="node__led"></i><em class="node__cap">A9</em>
+      </button>
+      <div class="cell__meta"><b>Node 09</b><em>Dark</em></div>
+      <div class="cell__meter"><i></i></div>
+    </div>
+  </section>
+
+  <footer class="rack__foot">
+    <div class="log" id="log">
+      <div><b>NODE-08</b> fault latched · reform inhibited</div>
+      <div>harmonic base locked to 0.42 hz</div>
+      <div>coil temp 18.4 c · within band</div>
+    </div>
+    <div class="rack__strip">
+      <span class="tick"></span><span class="tick"></span><span class="tick"></span>
+      <span class="tick"></span><span class="tick"></span><span class="tick"></span>
+      <b>Reform</b><i>rate nominal</i>
+    </div>
+  </footer>
+  <div class="screw screw--tl"></div>
+  <div class="screw screw--tr"></div>
+  <div class="screw screw--bl"></div>
+  <div class="screw screw--br"></div>
+</main>
+</body>
+</html>

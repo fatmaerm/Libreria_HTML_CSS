@@ -1,0 +1,329 @@
+:root{
+  --void:#04050a;
+  --w:clamp(292px,62vmin,536px);
+  --h:clamp(110px,22vmin,190px);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html,body{height:100%}
+
+body{
+  min-height:100dvh;
+  overflow:hidden;
+  background:var(--void);
+  font-family:ui-sans-serif,"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  -webkit-font-smoothing:antialiased;
+}
+
+.solo{
+  position:relative;
+  display:grid;
+  place-items:center;
+  width:100%;
+  padding:24px;
+}
+
+.halo{
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(38% 30% at 50% 50%,rgba(120,150,220,.10),transparent 70%),
+    radial-gradient(70% 60% at 50% 46%,rgba(60,80,140,.07),transparent 74%),
+    radial-gradient(120% 100% at 50% 50%,#0a0c14,#04050a 62%,#020307);
+}
+
+.halo::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.014) 0 1px,transparent 1px 3px);
+  opacity:.6;
+}
+
+.shadow{
+  position:absolute;
+  top:calc(50% + var(--h) * 0.42);
+  left:50%;
+  width:calc(var(--w) * 0.86);
+  height:calc(var(--h) * 0.30);
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:radial-gradient(50% 50% at 50% 50%,rgba(0,0,0,.85),rgba(0,0,0,.4) 52%,transparent 76%);
+  filter:blur(6px);
+}
+
+.bubble{
+  position:relative;
+  width:var(--w);
+  height:var(--h);
+  isolation:isolate;
+}
+
+.rim{
+  position:absolute;
+  inset:-5px;
+  border-radius:calc(var(--h) / 2 + 5px);
+  background:conic-gradient(from 210deg,
+    #ff2d6f,#ff8a1f,#ffe62e,#3dff88,#22e0ff,#3d6bff,#b04bff,#ff2d6f);
+  filter:blur(2.5px);
+  opacity:.5;
+  -webkit-mask-image:radial-gradient(96% 160% at 40% 76%,#000 0%,rgba(0,0,0,.78) 42%,rgba(0,0,0,.22) 74%,transparent 100%);
+  mask-image:radial-gradient(96% 160% at 40% 76%,#000 0%,rgba(0,0,0,.78) 42%,rgba(0,0,0,.22) 74%,transparent 100%);
+  animation:rimTurn 12s linear infinite;
+}
+
+@keyframes rimTurn{
+  0%{transform:rotate(0deg) scale(1)}
+  50%{transform:rotate(180deg) scale(1.03)}
+  100%{transform:rotate(360deg) scale(1)}
+}
+
+.film{
+  position:absolute;
+  inset:0;
+  border:0;
+  padding:0;
+  border-radius:var(--h);
+  cursor:pointer;
+  overflow:hidden;
+  isolation:isolate;
+  background:
+    radial-gradient(130% 170% at 24% 6%,#3d4c66 0%,#202c42 30%,#141b2b 62%,#2b3650 100%);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.16),
+    0 30px 60px -24px rgba(0,0,0,.9),
+    0 0 70px -10px rgba(140,170,255,.20);
+  transform:translateZ(0);
+  transition:transform .5s cubic-bezier(.2,.85,.25,1),box-shadow .5s ease,filter .5s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.l1,.l2,.l3,.l4,.l5,.sheen{
+  position:absolute;
+  top:-45%;
+  bottom:-45%;
+  left:-45%;
+  right:-45%;
+  pointer-events:none;
+}
+
+.l1{
+  background:conic-gradient(from 0deg at 50% 50%,
+    #ff2f7a,#ff9d1c,#ffe83a,#4dff9b,#1fe0ff,#4a7bff,#b24dff,#ff2f7a);
+  filter:blur(26px) saturate(1.7);
+  mix-blend-mode:screen;
+  opacity:.74;
+  animation:l1Turn 16s linear infinite;
+}
+
+@keyframes l1Turn{
+  0%{transform:rotate(0deg) scale(1.1)}
+  100%{transform:rotate(360deg) scale(1.1)}
+}
+
+.l2{
+  background:repeating-linear-gradient(102deg,
+    rgba(255,255,255,.9) 0 1.1%,
+    rgba(255,110,190,.62) 1.1% 3.2%,
+    rgba(255,255,255,.84) 3.2% 4.1%,
+    rgba(96,232,255,.56) 4.1% 7.4%,
+    rgba(255,255,255,.8) 7.4% 8.2%,
+    rgba(180,255,190,.5) 8.2% 9.9%,
+    rgba(255,255,255,.86) 9.9% 12.4%);
+  mix-blend-mode:overlay;
+  opacity:.7;
+  animation:l2Run 8s linear infinite;
+}
+
+@keyframes l2Run{
+  0%{transform:translate3d(0,0,0)}
+  100%{transform:translate3d(38%,26%,0)}
+}
+
+.l3{
+  background:repeating-linear-gradient(62deg,
+    rgba(150,255,235,.62) 0 2%,
+    rgba(255,242,160,.5) 2% 4%,
+    rgba(255,130,200,.58) 4% 6%,
+    rgba(165,185,255,.52) 6% 8%);
+  mix-blend-mode:soft-light;
+  opacity:1;
+  animation:l3Run 10.5s linear infinite;
+}
+
+@keyframes l3Run{
+  0%{transform:translate3d(0,0,0)}
+  100%{transform:translate3d(-32%,22%,0)}
+}
+
+.l5{
+  background:repeating-radial-gradient(circle at 50% 128%,
+    rgba(255,255,255,.55) 0 1.6%,
+    rgba(150,235,255,.4) 1.6% 3.4%,
+    rgba(255,190,240,.34) 3.4% 5.2%,
+    transparent 5.2% 7.4%);
+  mix-blend-mode:soft-light;
+  opacity:.9;
+  animation:l5Grow 7s ease-in-out infinite alternate;
+}
+
+@keyframes l5Grow{
+  0%{transform:scale(1)}
+  100%{transform:scale(1.14)}
+}
+
+.l4{
+  background:
+    radial-gradient(72% 100% at 22% 8%,rgba(255,255,255,.75),transparent 58%),
+    radial-gradient(90% 120% at 82% 96%,rgba(0,0,0,.85),transparent 62%);
+  mix-blend-mode:soft-light;
+  animation:l4Breathe 8s ease-in-out infinite;
+}
+
+@keyframes l4Breathe{
+  0%,100%{transform:scale(1) translate3d(0,0,0);opacity:.9}
+  50%{transform:scale(1.06) translate3d(-1.5%,1%,0);opacity:1}
+}
+
+.sheen{
+  background:linear-gradient(102deg,transparent 34%,rgba(255,255,255,.34) 46%,rgba(255,255,255,.08) 54%,transparent 64%);
+  mix-blend-mode:screen;
+  opacity:.75;
+  animation:sheenRun 7s cubic-bezier(.5,0,.5,1) infinite;
+}
+
+@keyframes sheenRun{
+  0%{transform:translate3d(-64%,0,0)}
+  55%,100%{transform:translate3d(64%,0,0)}
+}
+
+.bead{
+  position:absolute;
+  left:8%;
+  right:8%;
+  bottom:2.5%;
+  height:34%;
+  border-radius:50%;
+  background:conic-gradient(from 20deg at 50% 100%,#ff2d6f,#ffb01f,#ffe62e,#39ff9e,#22e0ff,#4a6bff,#b04bff,#ff2d6f);
+  filter:blur(7px) saturate(1.7);
+  opacity:.5;
+  mix-blend-mode:color;
+  transform-origin:50% 100%;
+  animation:beadRoll 9s linear infinite;
+  pointer-events:none;
+}
+
+@keyframes beadRoll{
+  0%{transform:rotate(0deg) scaleY(1)}
+  50%{transform:rotate(180deg) scaleY(1.1)}
+  100%{transform:rotate(360deg) scaleY(1)}
+}
+
+.meniscus{
+  position:absolute;
+  inset:0;
+  border-radius:var(--h);
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.42) 0%,rgba(255,255,255,.06) 9%,transparent 22%),
+    linear-gradient(0deg,rgba(255,255,255,.16) 0%,transparent 12%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.34),
+    inset 0 2px 3px rgba(255,255,255,.5),
+    inset 0 -3px 8px rgba(0,0,0,.42),
+    inset 0 0 26px rgba(255,255,255,.07);
+}
+
+.pop{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:20%;
+  height:60%;
+  border-radius:50%;
+  transform:translate(-50%,-50%) scale(.2);
+  background:radial-gradient(50% 50% at 50% 50%,rgba(255,255,255,.85),rgba(180,220,255,.25) 46%,transparent 72%);
+  opacity:0;
+  pointer-events:none;
+  mix-blend-mode:screen;
+  transition:transform .75s cubic-bezier(.15,.8,.3,1),opacity .75s ease;
+}
+
+.label{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-content:center;
+  justify-items:center;
+  gap:.3em;
+  pointer-events:none;
+}
+
+.label b{
+  font-size:clamp(16px,2.7vmin,25px);
+  font-weight:600;
+  letter-spacing:.34em;
+  text-indent:.34em;
+  text-transform:uppercase;
+  color:rgba(9,12,20,.88);
+  text-shadow:
+    0 1px 0 rgba(255,255,255,.34),
+    0 -1px 2px rgba(0,0,0,.34),
+    0 0 18px rgba(255,255,255,.16);
+}
+
+.label i{
+  font-style:normal;
+  font-size:clamp(7px,1.2vmin,10.5px);
+  font-weight:500;
+  letter-spacing:.3em;
+  text-indent:.3em;
+  text-transform:uppercase;
+  color:rgba(12,16,26,.62);
+  text-shadow:0 1px 0 rgba(255,255,255,.26);
+}
+
+.film:hover{
+  transform:translateY(-3px) scale(1.012);
+  filter:saturate(1.22) brightness(1.06);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.3),
+    0 38px 74px -24px rgba(0,0,0,.92),
+    0 0 96px -6px rgba(150,190,255,.34);
+}
+
+.film:active{transform:translateY(1px) scale(.982)}
+
+.film:active .pop{
+  transform:translate(-50%,-50%) scale(4.4);
+  opacity:0;
+  transition:transform .8s cubic-bezier(.15,.8,.3,1),opacity .8s ease;
+}
+
+.film:focus-visible{
+  outline:2px solid rgba(210,232,255,.95);
+  outline-offset:5px;
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+  .l1{transform:rotate(24deg) scale(1.1)}
+  .l2{transform:translate3d(14%,9%,0)}
+  .l3{transform:translate3d(-12%,8%,0)}
+  .l4{transform:scale(1.02)}
+  .l5{transform:scale(1.06)}
+  .sheen{transform:translate3d(18%,0,0);opacity:.6}
+  .bead{transform:rotate(28deg)}
+  .rim{opacity:.3}
+  .film{filter:saturate(1.16)}
+  .film:hover{transform:none}
+  .film:active{transform:none}
+}

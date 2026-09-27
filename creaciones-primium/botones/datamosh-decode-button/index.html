@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datamosh Decode Button</title>
+<meta name="description" content="A pointer avatar scrolls a corrupted datamosh stream on a loop, decoding the macroblocks into a clean button and letting the corruption wash back over it.">
+<meta name="description-es" content="Un avatar de puntero recorre en bucle un flujo de datamosh corrupto, descodificando los macrobloques hasta un botón limpio y dejando que la corrupción vuelva a cubrirlo.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="room">
+  <div class="amb" aria-hidden="true"></div>
+
+  <header class="head">
+    <h1>Datamosh Decode</h1>
+    <p>A pointer avatar scrolls the corrupted stream; the macroblocks resolve into the button, then the mosh washes back over it.</p>
+  </header>
+
+  <div class="deck">
+    <div class="tape" aria-hidden="true">
+      <div class="tape-win">
+        <div class="tape-run" id="tapeRun"></div>
+      </div>
+      <span class="tape-lb l1">GOP 0142</span>
+      <span class="tape-lb l2">DELTA FRAME</span>
+    </div>
+
+    <div class="rail" aria-hidden="true">
+      <span class="rail-line"></span>
+      <span class="rail-head" id="railHead"></span>
+    </div>
+
+    <div class="mon">
+      <span class="mon-c c1" aria-hidden="true"></span>
+      <span class="mon-c c2" aria-hidden="true"></span>
+      <span class="mon-c c3" aria-hidden="true"></span>
+      <span class="mon-c c4" aria-hidden="true"></span>
+      <div class="mon-bar" aria-hidden="true">
+        <span class="mb-l">DEC.BUF 04</span>
+        <span class="mb-m" id="mbMode">SCROLL</span>
+        <span class="mb-r">18&times;6 MACRO</span>
+      </div>
+
+      <div class="plate" id="plate">
+        <button class="btn" id="btn" type="button">
+          <span class="b-face"></span>
+          <span class="b-grid"></span>
+          <span class="b-in"></span>
+          <span class="b-rim"></span>
+          <span class="b-spec"></span>
+          <span class="b-txt">Decode</span>
+        </button>
+        <div class="mosh" id="mosh" aria-hidden="true"></div>
+        <div class="smears" id="smears" aria-hidden="true"></div>
+        <div class="wave" id="wave" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <div class="tele">
+      <div class="t-row"><span>Decode</span><b id="tDec">00</b><i>%</i></div>
+      <div class="t-row"><span>Block err</span><b id="tErr">00</b><i>%</i></div>
+      <div class="t-row"><span>Frame</span><b id="tFrm">0000</b><i>f</i></div>
+      <div class="t-meter"><span id="tBar"></span></div>
+    </div>
+  </div>
+
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <span class="cur-ring"></span>
+    <span class="cur-arrow"></span>
+    <span class="cur-txt" id="curTxt">SEEK</span>
+  </div>
+</main>
+</body>
+</html>

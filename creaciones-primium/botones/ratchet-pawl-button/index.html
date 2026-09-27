@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ratchet Pawl Button</title>
+<meta name="description" content="A single machined button whose engraved ratchet wheel clicks one tooth at a time under a sprung pawl, and bursts forward under a press.">
+<meta name="description-es" content="Un botón y nada más: una rueda de trinquete de latón que avanza un diente cada vez con un paro seco, mientras el gatillo sube y cae sobre su tope con un temblor de bloqueo. Al pulsar dispara una ráfaga de ocho dientes.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="stage">
+  <button class="rat" type="button" aria-label="Advance the ratchet">
+    <span class="rat__plate" aria-hidden="true"></span>
+    <span class="rat__ticks" aria-hidden="true"></span>
+    <span class="rat__wheel" aria-hidden="true"></span>
+    <span class="rat__hub" aria-hidden="true">
+      <span class="rat__count">000</span>
+      <span class="rat__word">Advance</span>
+    </span>
+    <span class="rat__pawl" aria-hidden="true">
+      <span class="rat__arm"></span>
+      <span class="rat__tip"></span>
+      <span class="rat__spring"></span>
+      <span class="rat__pivot"></span>
+      <span class="rat__stop"></span>
+    </span>
+    <span class="rat__arc" aria-hidden="true">
+      <span class="rat__arrow"></span>
+    </span>
+    <span class="rat__gloss" aria-hidden="true"></span>
+    <span class="rat__led" aria-hidden="true"></span>
+  </button>
+  <span class="shadow" aria-hidden="true"></span>
+</main>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Circuit Trace Charge Button</title>
+<meta name="description" content="A laboratory bench holds a charge module whose button caps a 470 microfarad bank that bleeds into copper traces, and a press dumps the whole bank into the bus in one arc.">
+<meta name="description-es" content="Un banco de laboratorio con un módulo de carga cuyo botón tapa un banco de condensadores de 470 microfaradios que se descarga hacia las pistas de cobre, y una pulsación vierte todo el banco al bus en un solo arco.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="lab">
+  <div class="bench" aria-hidden="true">
+    <div class="bench__wall"></div>
+    <div class="bench__lamp"></div>
+    <div class="bench__lamp bench__lamp--b"></div>
+    <div class="bench__shelf"></div>
+    <div class="bench__top"></div>
+    <div class="bench__grid"></div>
+    <div class="bench__front"></div>
+  </div>
+
+  <header class="card">
+    <span class="card__tab">Test Bench 03</span>
+    <h1 class="card__title">Circuit Trace Charge</h1>
+    <p class="card__note">A 470 microfarad bank bleeds into the copper bus on its own. Press the cap and the whole bank dumps into the traces in a single arc.</p>
+  </header>
+
+  <div class="rig">
+    <div class="chan">
+      <span class="chan__tag chan__tag--a"><i></i>CH1 Sig</span>
+      <span class="chan__tag chan__tag--b"><i></i>CH2 Vout</span>
+      <span class="chan__tag chan__tag--g"><i></i>Gnd</span>
+      <span class="chan__legend">Probe taps on the bus</span>
+    </div>
+
+    <div class="mount">
+      <span class="probe probe--a" aria-hidden="true"><i class="probe__lead"></i><i class="probe__body"></i><i class="probe__jaw"></i></span>
+      <span class="probe probe--g" aria-hidden="true"><i class="probe__lead"></i><i class="probe__body"></i><i class="probe__jaw"></i></span>
+
+      <button class="btn" type="button" id="charge">
+        <span class="board__grain" aria-hidden="true"></span>
+        <span class="board__silk" aria-hidden="true">CT-4 / 470u / 25V</span>
+        <i class="hole hole--tl" aria-hidden="true"></i>
+        <i class="hole hole--tr" aria-hidden="true"></i>
+        <i class="hole hole--bl" aria-hidden="true"></i>
+        <i class="hole hole--br" aria-hidden="true"></i>
+
+        <span class="bus" aria-hidden="true">
+          <i class="trace trace--h1"></i><i class="trace trace--v1"></i>
+          <i class="trace trace--h2"></i><i class="trace trace--v2"></i>
+          <i class="trace trace--h3"></i><i class="trace trace--v3"></i>
+          <i class="trace trace--h4"></i><i class="trace trace--v4"></i>
+          <i class="trace trace--h5"></i><i class="trace trace--v6"></i>
+          <i class="trace trace--h6"></i><i class="trace trace--v5"></i>
+          <i class="pad pad--a"></i><i class="pad pad--b"></i><i class="pad pad--c"></i>
+          <i class="pad pad--d"></i><i class="pad pad--e"></i><i class="pad pad--f"></i>
+          <i class="pulse pulse--1"></i><i class="pulse pulse--2"></i>
+          <i class="pulse pulse--3"></i><i class="pulse pulse--4"></i>
+        </span>
+
+        <span class="cell" aria-hidden="true">
+          <span class="cell__tube"><span class="cell__fill"></span></span>
+          <span class="cell__lbl">470u</span>
+        </span>
+
+        <span class="cap" aria-hidden="true">
+          <span class="cap__ring"></span>
+          <span class="cap__dome"><span class="cap__glint"></span></span>
+          <span class="cap__screw"></span>
+          <span class="cap__arc"></span>
+        </span>
+
+        <span class="bank" aria-hidden="true">
+          <i class="chip chip--1"></i><i class="chip chip--2"></i><i class="chip chip--3"></i>
+        </span>
+        <span class="pins" aria-hidden="true"></span>
+        <span class="arc" aria-hidden="true"></span>
+        <span class="flash" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <div class="scope">
+      <span class="scope__bezel"></span>
+      <span class="scope__screen">
+        <span class="scope__grid"></span>
+        <svg class="scope__svg" viewBox="0 0 200 76" preserveAspectRatio="none" aria-hidden="true">
+          <path class="scope__trace" d="M0 64 L16 64 L18 20 L21 64 L30 64 L32 40 L34 64 L44 64 L46 46 L48 64 L58 64 L60 52 L62 64 L74 64 L76 58 L78 64 L92 64 L94 60 L96 64 L200 64" />
+          <path class="scope__trace scope__trace--idle" d="M0 64 L26 64 L28 54 L30 64 L46 64 L48 58 L50 64 L70 64 L72 61 L74 64 L200 64" />
+        </svg>
+        <span class="scope__sweep"></span>
+        <span class="scope__base"></span>
+        <span class="scope__rdg">4.88 V/pk</span>
+      </span>
+      <span class="scope__knobs"><i></i><i></i><i></i></span>
+    </div>
+  </div>
+
+  <div class="strip">
+    <span class="strip__cell"><b>Bank</b><i id="rq-v">0.00 V</i></span>
+    <span class="strip__cell"><b>Bus</b><i id="rq-i">0.00 A</i></span>
+    <span class="strip__cell strip__cell--hot"><b>Dumps</b><i id="rq-n">0</i></span>
+    <span class="strip__rule"></span>
+    <span class="strip__cell"><b>Ambient</b><i>21.4 C</i></span>
+  </div>
+
+  <div class="ruler" aria-hidden="true">
+    <span class="ruler__ticks"></span>
+    <span class="ruler__n ruler__n--0">0</span>
+    <span class="ruler__n ruler__n--1">20</span>
+    <span class="ruler__n ruler__n--2">40</span>
+    <span class="ruler__n ruler__n--3">60</span>
+    <span class="ruler__n ruler__n--4">80</span>
+    <span class="ruler__unit">mm</span>
+  </div>
+</main>
+</body>
+</html>

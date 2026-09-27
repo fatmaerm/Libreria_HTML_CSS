@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hud Target Lock</title>
+<meta name="description" content="An aircraft master-arm release button wrapped in a head-up reticle that converges on a target, tones up to lock and flashes the cue back to safe when pressed.">
+<meta name="description-es" content="Botón de armado maestro de un avión, rodeado por una retícula de proyección que converge sobre un blanco: el tono sube hasta el bloqueo y, al pulsarlo, la señal parpadea y vuelve a seguro.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="hud">
+  <div class="hud__bed" aria-hidden="true"></div>
+
+  <header class="bar">
+    <div class="bar__grp">
+      <b>Strike Computer</b>
+      <i>Sc-9 · Gunsight</i>
+    </div>
+    <div class="bar__grp bar__grp--mid">
+      <span class="lamp lamp--ok">Link</span>
+      <span class="lamp lamp--ok">Power</span>
+      <span class="lamp lamp--warn" id="lampCaution">Master Caution</span>
+    </div>
+    <div class="bar__grp bar__grp--r">
+      <i>Mode A/A</i>
+      <b>G 9.4</b>
+    </div>
+  </header>
+
+  <div class="tape tape--l" aria-hidden="true">
+    <div class="tape__win"><span class="tape__ptr"></span></div>
+    <div class="tape__strip" id="spd"></div>
+  </div>
+  <div class="tape tape--r" aria-hidden="true">
+    <div class="tape__win"><span class="tape__ptr"></span></div>
+    <div class="tape__strip" id="alt"></div>
+  </div>
+  <div class="tape tape--t" aria-hidden="true"><div class="tape__strip" id="hdg"></div></div>
+
+  <section class="stage">
+    <div class="retic" id="retic">
+      <svg class="retic__svg" viewBox="0 0 240 240" aria-hidden="true">
+        <circle class="rr rr--dash" cx="120" cy="120" r="104"></circle>
+        <circle class="rr rr--fine" cx="120" cy="120" r="92"></circle>
+        <circle class="rr rr--arc" id="arc" cx="120" cy="120" r="80"></circle>
+        <g class="ticks" id="ticks"></g>
+        <path class="cross" d="M120 6v26M120 208v26M6 120h26M208 120h26"></path>
+      </svg>
+      <i class="brk brk--tl"></i><i class="brk brk--tr"></i>
+      <i class="brk brk--bl"></i><i class="brk brk--br"></i>
+      <div class="locktag" id="locktag"><b>Lock</b><i>Tone 6.4 kHz</i></div>
+      <div class="target" id="target" aria-hidden="true">
+        <i class="target__dia"></i>
+        <i class="target__ring"></i>
+        <i class="target__pip"></i>
+      </div>
+    </div>
+
+    <button class="rel" id="rel" type="button" aria-label="Master arm weapon release">
+      <i class="rel__guard" id="guard"><span></span></i>
+      <i class="rel__cover" id="cover"></i>
+      <span class="rel__face">
+        <em class="rel__legend">Master Arm</em>
+        <em class="rel__state" id="armState">Safe</em>
+        <em class="rel__id">Mk 7</em>
+      </span>
+      <i class="rel__cue" id="cue"></i>
+      <i class="rel__flash" id="flash"></i>
+    </button>
+  </section>
+
+  <aside class="tele" id="tele">
+    <div class="tele__row"><span>Rng</span><b id="vRng">06.40</b><i>km</i></div>
+    <div class="tele__row"><span>Closure</span><b id="vClo">1140</b><i>m/s</i></div>
+    <div class="tele__row"><span>Aspect</span><b id="vAsp">00.86</b><i>rad</i></div>
+    <div class="tele__row"><span>Iff</span><b id="vIff">4271</b><i>mode 4</i></div>
+    <div class="tele__row"><span>Tone</span><b id="vTone">1.10</b><i>khz</i></div>
+    <div class="tele__row"><span>Missile</span><b>Aim 9L</b><i>2 ready</i></div>
+  </aside>
+
+  <div class="readout">
+    <div class="readout__cell"><span>Spd</span><b id="vSpd">0480</b><i>kt</i></div>
+    <div class="readout__cell"><span>Alt</span><b id="vAlt">06200</b><i>ft</i></div>
+    <div class="readout__cell"><span>Hdg</span><b id="vHdg">271</b><i>°</i></div>
+    <div class="readout__cell"><span>Tone</span>
+      <span class="tonebar"><i id="toneFill"></i></span>
+    </div>
+  </div>
+
+  <header class="head">
+    <h1>Target Lock</h1>
+    <p>The reticle converges on the track, the tone climbs to six point four kilohertz and the arming cue goes green — press the release to flash the cue back to safe and start the lock again.</p>
+  </header>
+
+  <div class="hud__glass" aria-hidden="true"></div>
+</main>
+</body>
+</html>

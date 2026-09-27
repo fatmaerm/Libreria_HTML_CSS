@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Oil Slick Iridescent Button</title>
+<meta name="description" content="A droplet button wearing a thin-film interference layer, sweeping a full spectrum of hue with the viewing angle and fringing its rim in split cyan and magenta.">
+<meta name="description-es" content="Botón con forma de gota cubierto por una capa de interferencia de película fina, que barre todo el espectro de tonos con el ángulo de observación y descompone su borde en cian y magenta.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="stage">
+  <span class="pool" aria-hidden="true"></span>
+  <span class="pool pool--b" aria-hidden="true"></span>
+  <span class="surf" aria-hidden="true"></span>
+  <span class="halo halo--a" aria-hidden="true"></span>
+  <span class="halo halo--b" aria-hidden="true"></span>
+  <button class="slick" type="button" aria-label="Press the iridescent droplet">
+    <span class="slick__base" aria-hidden="true"></span>
+    <span class="slick__wash" aria-hidden="true"></span>
+    <span class="slick__film" aria-hidden="true"></span>
+    <span class="slick__micro" aria-hidden="true"></span>
+    <span class="slick__sheen" aria-hidden="true"></span>
+    <span class="slick__fringe slick__fringe--cy" aria-hidden="true"></span>
+    <span class="slick__fringe slick__fringe--mg" aria-hidden="true"></span>
+    <span class="slick__bevel" aria-hidden="true"></span>
+    <span class="slick__arc" aria-hidden="true"><i></i></span>
+    <span class="slick__face">
+      <span class="drop" aria-hidden="true">
+        <svg viewBox="0 0 40 50" focusable="false">
+          <defs>
+            <linearGradient id="oilDrop" x1="0.1" y1="0" x2="0.9" y2="1">
+              <stop class="stopA" offset="0"></stop>
+              <stop class="stopB" offset=".46"></stop>
+              <stop class="stopC" offset="1"></stop>
+            </linearGradient>
+          </defs>
+          <path class="drop__body" d="M20 2.2C20 2.2 5.6 18.6 5.6 30.4 5.6 40.1 11.9 47.8 20 47.8c8.1 0 14.4-7.7 14.4-17.4C34.4 18.6 20 2.2 20 2.2Z"></path>
+          <path class="drop__gloss" d="M13.6 21.1c-2.2 2.9-3 6.3-2.3 9 .5 1.8 2.3 2.5 3.5 1.1 1.4-1.6 1.8-4.7.6-6.9-.8-1.5-.8-2.5-.1-3.5a1.1 1.1 0 0 0-1.7.3Z"></path>
+        </svg>
+        <span class="drop__bead"></span>
+      </span>
+      <span class="slick__label" aria-hidden="true">Slick</span>
+    </span>
+    <span class="slick__nm" aria-hidden="true">film 486 nm</span>
+    <span class="slick__ticks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+    <span class="rip" aria-hidden="true"></span>
+    <span class="rip rip--2" aria-hidden="true"></span>
+  </button>
+  <span class="cast" aria-hidden="true"></span>
+</main>
+</body>
+</html>

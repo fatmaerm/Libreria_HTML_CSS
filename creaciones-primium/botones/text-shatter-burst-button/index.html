@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Text Shatter Burst Button</title>
+<meta name="description" content="Two identical buttons side by side, one left intact and one resolving its label into twelve shards that scatter on the press and are drawn back into place.">
+<meta name="description-es" content="Dos pulsadores idénticos uno al lado del otro, uno intacto y otro que deshace su etiqueta en doce fragmentos que se dispersan al pulsarlo y vuelven a colocarse en su sitio.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="page">
+  <header class="head">
+    <h1>Text Shatter Burst</h1>
+    <p>Both keys carry the same label and the same slab. The right one is resolved into twelve shards on every press, thrown clear of the outline and then gathered back into the identical shape.</p>
+  </header>
+
+  <div class="pair">
+    <section class="cell">
+      <span class="cell__tag">a &middot; intact</span>
+      <button class="btn btn--a" id="btnA" type="button" aria-label="Intact label">
+        <svg class="btn__svg" viewBox="-30 -42 420 220" aria-hidden="true">
+          <defs>
+            <linearGradient id="gradA" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#2b3240"/>
+              <stop offset=".46" stop-color="#1b202a"/>
+              <stop offset="1" stop-color="#10131a"/>
+            </linearGradient>
+            <g id="artA">
+              <rect id="rectA" x="2" y="2" width="356" height="116" rx="58" fill="url(#gradA)" stroke="#454d5c" stroke-width="1.4"/>
+              <rect x="10" y="9" width="340" height="46" rx="24" fill="#ffffff" opacity=".045"/>
+              <text id="textA" x="180" y="76" text-anchor="middle" font-size="44" font-weight="700" letter-spacing="1.5" fill="#e9e6df">SHATTER</text>
+            </g>
+          </defs>
+          <use id="useA" href="#artA"/>
+        </svg>
+      </button>
+      <p class="cell__note">one continuous outline, no seam, glyph advance unchanged</p>
+    </section>
+
+    <section class="cell">
+      <span class="cell__tag cell__tag--b">b &middot; resolved</span>
+      <button class="btn btn--b" id="btnB" type="button" aria-label="Shatter the label into shards">
+        <svg class="btn__svg" viewBox="-30 -42 420 220" aria-hidden="true">
+          <defs>
+            <linearGradient id="gradB" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#2b3240"/>
+              <stop offset=".46" stop-color="#1b202a"/>
+              <stop offset="1" stop-color="#10131a"/>
+            </linearGradient>
+            <g id="artB">
+              <rect id="rectB" x="2" y="2" width="356" height="116" rx="58" fill="url(#gradB)" stroke="#454d5c" stroke-width="1.4"/>
+              <rect x="10" y="9" width="340" height="46" rx="24" fill="#ffffff" opacity=".045"/>
+              <text id="textB" x="180" y="76" text-anchor="middle" font-size="44" font-weight="700" letter-spacing="1.5" fill="#e9e6df">SHATTER</text>
+            </g>
+            <clipPath id="c0"><polygon points="0,0 90,0 86,44 0,40"/></clipPath>
+            <clipPath id="c1"><polygon points="90,0 180,0 184,37 86,44"/></clipPath>
+            <clipPath id="c2"><polygon points="180,0 270,0 266,43 184,37"/></clipPath>
+            <clipPath id="c3"><polygon points="270,0 360,0 360,40 266,43"/></clipPath>
+            <clipPath id="c4"><polygon points="0,40 86,44 93,77 0,80"/></clipPath>
+            <clipPath id="c5"><polygon points="86,44 184,37 177,83 93,77"/></clipPath>
+            <clipPath id="c6"><polygon points="184,37 266,43 272,78 177,83"/></clipPath>
+            <clipPath id="c7"><polygon points="266,43 360,40 360,80 272,78"/></clipPath>
+            <clipPath id="c8"><polygon points="0,80 93,77 90,120 0,120"/></clipPath>
+            <clipPath id="c9"><polygon points="93,77 177,83 180,120 90,120"/></clipPath>
+            <clipPath id="c10"><polygon points="177,83 272,78 270,120 180,120"/></clipPath>
+            <clipPath id="c11"><polygon points="272,78 360,80 360,120 270,120"/></clipPath>
+          </defs>
+          <use id="useB" href="#artB"/>
+          <g id="shards">
+            <g id="s0" clip-path="url(#c0)"><use href="#artB"/></g>
+            <g id="s1" clip-path="url(#c1)"><use href="#artB"/></g>
+            <g id="s2" clip-path="url(#c2)"><use href="#artB"/></g>
+            <g id="s3" clip-path="url(#c3)"><use href="#artB"/></g>
+            <g id="s4" clip-path="url(#c4)"><use href="#artB"/></g>
+            <g id="s5" clip-path="url(#c5)"><use href="#artB"/></g>
+            <g id="s6" clip-path="url(#c6)"><use href="#artB"/></g>
+            <g id="s7" clip-path="url(#c7)"><use href="#artB"/></g>
+            <g id="s8" clip-path="url(#c8)"><use href="#artB"/></g>
+            <g id="s9" clip-path="url(#c9)"><use href="#artB"/></g>
+            <g id="s10" clip-path="url(#c10)"><use href="#artB"/></g>
+            <g id="s11" clip-path="url(#c11)"><use href="#artB"/></g>
+          </g>
+          <path id="frac" fill="none" stroke="#8fd8ef" stroke-width="0" stroke-linejoin="round"
+            d="M0,0 90,0 86,44 0,40Z M90,0 180,0 184,37 86,44Z M180,0 270,0 266,43 184,37Z M270,0 360,0 360,40 266,43Z M0,40 86,44 93,77 0,80Z M86,44 184,37 177,83 93,77Z M184,37 266,43 272,78 177,83Z M266,43 360,40 360,80 272,78Z M0,80 93,77 90,120 0,120Z M93,77 177,83 180,120 90,120Z M177,83 272,78 270,120 180,120Z M272,78 360,80 360,120 270,120Z"/>
+        </svg>
+      </button>
+      <p class="cell__note" id="noteB">twelve shards at rest, flush with the outline</p>
+    </section>
+  </div>
+
+  <footer class="delta">
+    <span class="delta__k">shards</span><span class="delta__v" id="dCount">12</span>
+    <span class="delta__k">max travel</span><span class="delta__v" id="dTravel">0 px</span>
+    <span class="delta__k">state</span><span class="delta__v" id="dState">intact</span>
+    <span class="delta__bar" aria-hidden="true"><i id="dBar"></i></span>
+  </footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Magma Core Crack</title>
+<meta name="description" content="A boss fight against a cooling magma core: molten cracks spread across the button face on every strike, the heat bar flares and the crust closes over as it cools.">
+<meta name="description-es" content="Un combate contra un núcleo de magma que se enfría: cada golpe extiende grietas fundidas por la cara del botón, la barra de calor se aviva y la costra las sella al enfriarse.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="stage">
+  <div class="sky"></div>
+  <div class="cavern">
+    <span class="rock r1"></span>
+    <span class="rock r2"></span>
+    <span class="rock r3"></span>
+    <span class="rock r4"></span>
+    <span class="rock r5"></span>
+  </div>
+  <div class="embers" id="embers" aria-hidden="true"></div>
+  <div class="hud">
+    <div class="hud__row hud__row--top">
+      <h1 class="hud__boss">Magma Core</h1>
+      <span class="hud__sub">Obsidian Vein</span>
+      <span class="hud__wave" id="wave">WAVE 01</span>
+    </div>
+    <div class="heat">
+      <i class="heat__t"><u id="heat"></u><s id="ghost"></s></i>
+      <span class="heat__l">HEAT</span>
+      <span class="heat__v" id="heatv">0%</span>
+    </div>
+  </div>
+  <div class="duel">
+    <div class="core">
+      <canvas id="cracks" aria-hidden="true"></canvas>
+      <div class="core__crust"></div>
+      <div class="core__hot"></div>
+      <button class="btn" id="btn" type="button" aria-label="Strike the core">
+        <span class="btn__rim"></span>
+        <span class="btn__rock">
+          <span class="btn__grain"></span>
+          <span class="btn__glyph"></span>
+        </span>
+        <span class="btn__glow"></span>
+        <span class="btn__flash"></span>
+      </button>
+      <div class="float" id="float"></div>
+    </div>
+  </div>
+  <div class="foot">
+    <div class="foot__c"><span>STRIKES</span><b id="strikes">0</b></div>
+    <div class="foot__c"><span>CRACKS</span><b id="ncr">0</b></div>
+    <div class="foot__c"><span>PEAK K</span><b id="peak">0</b></div>
+    <div class="foot__c foot__c--hp"><span>SHELL</span><i class="hp"><u id="shell"></u></i><b id="shellv">100%</b></div>
+  </div>
+  <p class="lede">Strike the core to spread the fracture. Every hit flares the heat bar, then the crust closes back over as it cools.</p>
+</main>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cursor Attract Well Button</title>
+<meta name="description" content="A pointer avatar flies into a gravity well button, spirals down through the rim, is swallowed at the horizon and flung back out on the far side while telemetry counts the captures.">
+<meta name="description-es" content="Un avatar de puntero cae en un botón-pozo de gravedad, desciende en espiral por el borde, es tragado en el horizonte y lanzado de vuelta por el lado opuesto mientras la telemetría cuenta las capturas.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="stage">
+  <header class="head">
+    <p class="kicker"><i class="kicker__dot"></i>agent demonstration<i class="sep">·</i>loop 6.4 s</p>
+    <h1>Gravity Well Capture</h1>
+    <p class="lede">A pointer avatar flies in from the rim, spirals down through the lens, is swallowed at the horizon and is thrown clear out the far side. Every capture tightens the well.</p>
+  </header>
+
+  <div class="field" id="field">
+    <i class="field__grid"></i>
+    <i class="field__vign"></i>
+    <i class="field__scan"></i>
+
+    <svg class="orbit" viewBox="-110 -110 220 220" aria-hidden="true">
+      <circle class="orbit__trk" r="58"/>
+      <circle class="orbit__dash" r="58"/>
+      <circle class="orbit__trk2" r="30"/>
+    </svg>
+
+    <div class="specks">
+      <s style="--sx:8%;--sy:14%"></s><s style="--sx:24%;--sy:78%"></s><s style="--sx:41%;--sy:9%"></s>
+      <s style="--sx:57%;--sy:86%"></s><s style="--sx:72%;--sy:22%"></s><s style="--sx:88%;--sy:63%"></s>
+      <s style="--sx:15%;--sy:47%"></s><s style="--sx:33%;--sy:33%"></s><s style="--sx:50%;--sy:60%"></s>
+      <s style="--sx:66%;--sy:41%"></s><s style="--sx:79%;--sy:90%"></s><s style="--sx:93%;--sy:37%"></s>
+      <s style="--sx:6%;--sy:88%"></s><s style="--sx:44%;--sy:94%"></s><s style="--sx:69%;--sy:6%"></s>
+    </div>
+
+    <div class="well" id="well">
+      <i class="well__ticks"></i>
+      <i class="well__lens"></i>
+      <i class="well__horizon"></i>
+      <i class="well__flash"></i>
+      <button class="core" id="core" type="button" aria-label="Collapse the field">
+        <span class="core__face"></span>
+        <span class="core__mesh"></span>
+        <span class="core__num" id="num">0.40</span>
+        <span class="core__cap">field g</span>
+      </button>
+    </div>
+
+    <div class="trail" aria-hidden="true">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+
+    <div class="crs" id="crs" aria-hidden="true">
+      <i class="crs__glow"></i>
+      <svg class="crs__art" viewBox="0 0 24 24"><path d="M4.6 2.2 4.6 19.6 9.1 15.2 11.9 20.9 15 19.4 12.3 13.7 18.5 13.4Z"/></svg>
+      <i class="crs__ring"></i>
+    </div>
+
+    <div class="tele">
+      <span><i>alt</i><b id="tAlt">1.000</b><u>r</u></span>
+      <span><i>vel</i><b id="tVel">0.00</b><u>c</u></span>
+      <span><i>well</i><b id="tFld">0.40</b><u>g</u></span>
+      <span><i>captures</i><b id="tCap">000</b></span>
+    </div>
+
+    <div class="phase"><i class="phase__led"></i><b id="phase">ingress</b></div>
+  </div>
+</main>
+</body>
+</html>

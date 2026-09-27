@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dot Matrix Impact Matrix</title>
+<meta name="description" content="A control room matrix of dot matrix keys where a strike sends a shockwave across the face and lifts each dot in turn, one channel at a time.">
+<meta name="description-es" content="Una matriz de sala de control con teclas de puntos donde un golpe envía una onda de choque por la cara y levanta cada punto por turnos, canal a canal.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="wrap">
+  <header class="lede">
+    <p class="lede__eye">Control room \ matrix bus \ six channels</p>
+    <h1 class="lede__title">Dot Matrix Impact</h1>
+    <p class="lede__desc">Six keys, one face each, all of them dot matrix. Strike one and the shockwave rolls out from the point you hit, lifting the individual dots in sequence as the ring crosses them.</p>
+  </header>
+
+  <section class="panel">
+    <span class="panel__screw panel__screw--tl"></span>
+    <span class="panel__screw panel__screw--tr"></span>
+    <span class="panel__screw panel__screw--bl"></span>
+    <span class="panel__screw panel__screw--br"></span>
+
+    <header class="panel__hd">
+      <span class="panel__ttl">Matrix bus \ ch 01 to 06</span>
+      <span class="panel__tick"><i id="tick">bus idle</i></span>
+    </header>
+
+    <div class="grid">
+      <div class="cell">
+        <span class="cell__id">Ch 01</span><span class="cell__tag">Armed</span>
+        <button class="dm dm--armed" type="button" data-ch="01" aria-label="Channel 01 armed">
+          <span class="dm__well">
+            <span class="dm__dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="dm__ring"></span>
+            <span class="dm__sheen"></span>
+          </span>
+        </button>
+        <span class="cell__ft">momentary \ 24 v</span>
+      </div>
+
+      <div class="cell">
+        <span class="cell__id">Ch 02</span><span class="cell__tag cell__tag--on">Latched</span>
+        <button class="dm dm--latch" type="button" data-ch="02" aria-label="Channel 02 latched">
+          <span class="dm__well">
+            <span class="dm__dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="dm__ring"></span>
+            <span class="dm__sheen"></span>
+          </span>
+        </button>
+        <span class="cell__ft">hold \ 12 v</span>
+      </div>
+
+      <div class="cell">
+        <span class="cell__id">Ch 03</span><span class="cell__tag">Sweep</span>
+        <button class="dm dm--sweep" type="button" data-ch="03" aria-label="Channel 03 sweeping">
+          <span class="dm__well">
+            <span class="dm__dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="dm__ring"></span>
+            <span class="dm__scan"></span>
+            <span class="dm__sheen"></span>
+          </span>
+        </button>
+        <span class="cell__ft">self test \ 6 hz</span>
+      </div>
+
+      <div class="cell">
+        <span class="cell__id">Ch 04</span><span class="cell__tag cell__tag--bad">Fault</span>
+        <button class="dm dm--fault" type="button" data-ch="04" aria-label="Channel 04 fault">
+          <span class="dm__well">
+            <span class="dm__dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="dm__ring"></span>
+            <span class="dm__sheen"></span>
+          </span>
+        </button>
+        <span class="cell__ft">open loop \ check</span>
+      </div>
+
+      <div class="cell">
+        <span class="cell__id">Aux 05</span><span class="cell__tag cell__tag--mute">Offline</span>
+        <button class="dm dm--off" type="button" data-ch="05" aria-label="Auxiliary 05 offline" disabled>
+          <span class="dm__well">
+            <span class="dm__dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="dm__ring"></span>
+            <span class="dm__sheen"></span>
+          </span>
+        </button>
+        <span class="cell__ft">no bus \ 0 v</span>
+      </div>
+
+      <div class="cell">
+        <span class="cell__id">Ch 06</span><span class="cell__tag">Ready</span>
+        <button class="dm dm--ready" type="button" data-ch="06" aria-label="Channel 06 ready">
+          <span class="dm__well">
+            <span class="dm__dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="dm__ring"></span>
+            <span class="dm__sheen"></span>
+          </span>
+        </button>
+        <span class="cell__ft">armed \ 24 v</span>
+      </div>
+    </div>
+
+    <footer class="panel__ft">
+      <span class="legend"><i class="legend__d legend__d--a"></i>armed</span>
+      <span class="legend"><i class="legend__d legend__d--l"></i>latched</span>
+      <span class="legend"><i class="legend__d legend__d--f"></i>fault</span>
+      <span class="legend"><i class="legend__d legend__d--o"></i>offline</span>
+      <span class="panel__mst">master <b id="last">awaiting strike</b></span>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

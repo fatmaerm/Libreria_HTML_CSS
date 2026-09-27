@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Typewriter Carriage Button</title>
+<meta name="description" content="A terminal window wired to a carriage-return key: pressing it slams the carriage home, spins the ribbon spools and prints a fresh log line one struck character at a time.">
+<meta name="description-es" content="Una ventana de terminal conectada a una tecla de retorno de carro: al pulsarla, el carro regresa de golpe, giran las bobinas de la cinta y se imprime una nueva línea de registro, carácter a carácter.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="page">
+  <header class="head">
+    <h1>Typewriter Carriage</h1>
+    <p>The carriage slams home against the margin, the spools take up their slack and the strike is logged one character at a time. The key never waits for you.</p>
+  </header>
+  <div class="term">
+    <div class="term__bar">
+      <span class="term__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="term__name">corvus-7 &middot; carriage.log</span>
+      <span class="term__rec" aria-hidden="true">rec</span>
+    </div>
+    <div class="term__body">
+      <div class="log" id="log" aria-live="off">
+        <p class="ln ln--sys">corvus-7 console 7.2 &middot; carriage unit online</p>
+        <p class="ln ln--sys">ribbon 12.5 mm &middot; spools seated &middot; margin 0</p>
+        <p class="ln">carriage return armed</p>
+        <p class="ln ln--ok">line 001 struck in 41 ms</p>
+        <p class="ln ln--warn">take-up slack 0.4 mm &middot; tension low</p>
+        <p class="ln ln--sys">platen roll 2.1 mm &middot; impression even</p>
+        <p class="ln">awaiting key</p>
+      </div>
+      <p class="prompt"><span class="prompt__path">corvus:~/log</span><span class="prompt__sep">$</span><span class="prompt__cmd">carriage return</span><span class="caret" aria-hidden="true"></span></p>
+    </div>
+    <div class="keypad">
+      <button class="tw" type="button" aria-label="Strike the carriage return key">
+        <span class="tw__basket" aria-hidden="true"></span>
+        <span class="tw__ribbon" aria-hidden="true"></span>
+        <span class="tw__spool tw__spool--l" aria-hidden="true"></span>
+        <span class="tw__spool tw__spool--r" aria-hidden="true"></span>
+        <span class="tw__paper" aria-hidden="true"><span class="tw__label">CARRIAGE RETURN</span><span class="tw__ink">CARRIAGE RETURN</span></span>
+        <span class="tw__carriage" aria-hidden="true"><span class="tw__bar"></span><span class="tw__spark"></span></span>
+        <span class="tw__plate" aria-hidden="true">Corvus 7</span>
+        <span class="tw__key" aria-hidden="true">Return</span>
+        <span class="tw__spec" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cavitation Bubble</title>
+<meta name="description" content="A six cell control matrix where bubbles nucleate on every face, swell and then collapse implosively with a flash and a shock ring, each cell running at its own phase.">
+<meta name="description-es" content="Una matriz de control de seis celdas donde las burbujas se forman en cada cara, crecen y luego colapsan hacia dentro con un fogonazo y un anillo de choque, y cada celda funciona a su propio ritmo.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="bay">
+  <div class="glowtop"></div>
+  <header class="head">
+    <h1>Cavitation Matrix</h1>
+    <p>Six pressure faces on one manifold. Every cell cavitates on its own clock, so the bank never pulses in step.</p>
+  </header>
+  <section class="matrix" id="matrix">
+    <div class="cell" data-i="0">
+      <div class="cell__top"><span class="cell__id">CAV-01</span><span class="cell__led"></span></div>
+      <button class="face" type="button" aria-label="Cell one face">
+        <span class="face__plate"></span>
+        <span class="bub b1"><i class="bb"></i><i class="br"></i><i class="bf"></i></span>
+        <span class="bub b2"><i class="bb"></i><i class="br"></i><i class="bf"></i></span>
+        <span class="face__grid"></span>
+        <span class="face__label">A</span>
+      </button>
+      <div class="cell__bot"><span class="cell__st">STEADY</span><i class="cell__bar"><u></u></i></div>
+    </div>
+    <div class="cell" data-i="1">
+      <div class="cell__top"><span class="cell__id">CAV-02</span><span class="cell__led"></span></div>
+      <button class="face" type="button" aria-label="Cell two face">
+        <span class="face__plate"></span>
+        <span class="bub b1"><i class="bb"></i><i class="br"></i><i class="bf"></i></span>
+        <span class="bub b2"><i class="bb"></i><i class="br"></i><i class="bf"></i></span>
+        <span class="face__grid"></span>
+        <span class="face__label">B</span>
+      </button>
+      <div class="cell__bot"><span class="cell__st">STEADY</span><i class="cell__bar"><u></u></i></div>
+    </div>
+    <div class="cell" data-i="2">
+      <div class="cell__top"><span class="cell__id">CAV-03</span><span class="cell__led"></span></div>
+      <button class="face" type="button" aria-label="Cell three face">
+        <span class="face__plate"></span>
+        <span class="bub b1"><i class="bb"></i><i class="br"></i><i class="bf"></i></span>
+        <span class="bub b2"><i class="bb"></i><i class="br"></i><i class="bf"></i></span>
+        <span class="face__grid"></span>
+        <span class="face__label">C</span>
+      </button>
+      <div class="cell__bot"><span class="cell__st">STEADY</span><i class="cell__bar"><u></u></i></div>
+    </div>
+    <div class="cell" data-i="3">
+      <div class="cell__top"><span class="cell__id">CAV-04</span><span class="cell__led"></span></div>
+      <button class="face" type="button" aria-label="Cell four face">
+        <span class="face__plate"></span>
+        <span class="bub b1"><i class="bb"></i><i class="br"></i><i class="bf"></i></span>
+        <span class="bub b2"><i class="bb"></i><i class="br"></i><i class="bf"></i></span>
+        <span class="face__grid"></span>
+        <span class="face__label">D</span>
+      </button>
+      <div class="cell__bot"><span class="cell__st">STEADY</span><i class="cell__bar"><u></u></i></div>
+    </div>
+    <div class="cell" data-i="4">
+      <div class="cell__top"><span class="cell__id">CAV-05</span><span class="cell__led"></span></div>
+      <button class="face" type="button" aria-label="Cell five face">
+        <span class="face__plate"></span>
+        <span class="bub b1"><i class="bb"></i><i class="br"></i><i class="bf"></i></span>
+        <span class="bub b2"><i class="bb"></i><i class="br"></i><i class="bf"></i></span>
+        <span class="face__grid"></span>
+        <span class="face__label">E</span>
+      </button>
+      <div class="cell__bot"><span class="cell__st">STEADY</span><i class="cell__bar"><u></u></i></div>
+    </div>
+    <div class="cell" data-i="5">
+      <div class="cell__top"><span class="cell__id">CAV-06</span><span class="cell__led"></span></div>
+      <button class="face" type="button" aria-label="Cell six face">
+        <span class="face__plate"></span>
+        <span class="bub b1"><i class="bb"></i><i class="br"></i><i class="bf"></i></span>
+        <span class="bub b2"><i class="bb"></i><i class="br"></i><i class="bf"></i></span>
+        <span class="face__grid"></span>
+        <span class="face__label">F</span>
+      </button>
+      <div class="cell__bot"><span class="cell__st">STEADY</span><i class="cell__bar"><u></u></i></div>
+    </div>
+  </section>
+  <footer class="strip">
+    <div class="strip__c"><span>MANIFOLD</span><b id="mp">6 / 6</b></div>
+    <div class="strip__c"><span>COLLAPSE</span><b id="mc">0</b></div>
+    <div class="strip__c"><span>PEAK R</span><b id="mr">0.0</b></div>
+    <div class="strip__c strip__c--wide"><span>PRESSURE</span><i class="bar"><u id="bp"></u></i><b id="bv">2.1</b></div>
+  </footer>
+  <div class="rackrail"></div>
+</main>
+</body>
+</html>

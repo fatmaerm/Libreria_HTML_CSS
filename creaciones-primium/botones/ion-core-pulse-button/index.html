@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ion Core Pulse App</title>
+<meta name="description" content="A phone app screen holds a single charged core control whose plasma bead breathes under frosted glass and swallows orbiting ions the moment you press it.">
+<meta name="description-es" content="En la pantalla de una app del móvil hay un único control de núcleo cargado: la perla de plasma respira bajo el vidrio esmerilado y se traga los iones que la orbitan en cuanto lo pulsas.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="wrap">
+  <header class="intro">
+    <p class="intro__eye">Field kit \ app 04 \ build 118</p>
+    <h1 class="intro__title">Ion Core Pulse</h1>
+    <p class="intro__desc">The core sits under a sheet of frosted glass on the app's main screen. It breathes on its own, and a press inverts the field so the orbiting ions fall in and are swallowed.</p>
+    <ul class="intro__list">
+      <li><span>Draw</span>4.20 kV nominal</li>
+      <li><span>Sink</span>frosted borosilicate</li>
+      <li><span>Yield</span>one flare per press</li>
+    </ul>
+  </header>
+
+  <div class="phone">
+    <span class="phone__rim"></span>
+    <span class="phone__btn phone__btn--pwr"></span>
+    <span class="phone__btn phone__btn--v1"></span>
+    <span class="phone__btn phone__btn--v2"></span>
+    <div class="screen">
+      <span class="notch"></span>
+      <div class="status">
+        <span class="status__time">9:41</span>
+        <span class="status__right">
+          <i class="sig"><b></b><b></b><b></b><b></b></i>
+          <i class="wifi"></i>
+          <i class="bat"><b></b></i>
+        </span>
+      </div>
+
+      <div class="app">
+        <div class="app__bar">
+          <span class="app__name">Ion Core</span>
+          <span class="app__pill" id="pill">Live</span>
+        </div>
+
+        <div class="card">
+          <div class="card__row"><span>Containment</span><b id="c1">Sealed</b></div>
+          <div class="card__row"><span>Ion drift</span><b id="c2">0.00 e/s</b></div>
+          <div class="card__row"><span>Last flare</span><b id="c3">Never</b></div>
+          <span class="card__graph"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        </div>
+
+        <button class="btn" type="button" id="core">
+          <span class="btn__grid"></span>
+          <span class="btn__halo"></span>
+          <span class="btn__lens"></span>
+          <span class="btn__orb" id="orb"></span>
+          <span class="btn__ring"></span>
+          <span class="btn__ring btn__ring--b"></span>
+          <span class="btn__bead"></span>
+          <span class="btn__surge"></span>
+          <span class="btn__glass"></span>
+          <span class="btn__label">Charge</span>
+          <span class="btn__kv" id="kv">4.20 kV</span>
+        </button>
+
+        <div class="card card--log">
+          <div class="card__row"><span>Chamber</span><b id="c4">Vacuum 2.1e-6</b></div>
+          <div class="card__row"><span>Draw</span><b id="c5">186 mA</b></div>
+          <div class="card__row"><span>Plate</span><b>Cold</b></div>
+        </div>
+
+        <div class="hint" id="hint">Tap the core to invert the field</div>
+      </div>
+
+      <nav class="nav">
+        <span class="nav__i nav__i--on"><i class="ico ico--home"></i></span>
+        <span class="nav__i"><i class="ico ico--bars"></i></span>
+        <span class="nav__i"><i class="ico ico--gem"></i></span>
+        <span class="nav__i"><i class="ico ico--user"></i></span>
+      </nav>
+    </div>
+  </div>
+</main>
+</body>
+</html>

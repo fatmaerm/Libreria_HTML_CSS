@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Synthwave Grid Rush</title>
+<meta name="description" content="A neon toll gate standing on a rushing synthwave road that fires a light pulse toward the glowing horizon when pressed.">
+<meta name="description-es" content="Una peaje de neón levantada sobre una carretera synthwave que sale disparada, que lanza un pulso de luz hacia el horizonte luminoso al pulsar el botón.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="scene" id="scene">
+  <div class="sky">
+    <div class="stars" aria-hidden="true"></div>
+    <div class="sun" aria-hidden="true"><i></i></div>
+    <div class="peaks peaks--far" aria-hidden="true"></div>
+    <div class="peaks peaks--near" aria-hidden="true"></div>
+    <div class="city" aria-hidden="true"></div>
+    <div class="haze" aria-hidden="true"></div>
+  </div>
+  <div class="floor" aria-hidden="true">
+    <div class="floor__glow"></div>
+    <canvas class="floor__cv" id="floor"></canvas>
+  </div>
+  <button class="gate" id="gate" type="button" aria-label="Ignition">
+    <i class="gate__post gate__post--l"></i>
+    <i class="gate__post gate__post--r"></i>
+    <i class="gate__lamp gate__lamp--l"></i>
+    <i class="gate__lamp gate__lamp--r"></i>
+    <span class="gate__beam">
+      <em class="gate__tape gate__tape--l"></em>
+      <em class="gate__tape gate__tape--r"></em>
+      <em class="gate__label">Ignition</em>
+      <em class="gate__rail"></em>
+    </span>
+    <i class="gate__shadow"></i>
+  </button>
+  <div class="flash" id="flash" aria-hidden="true"></div>
+  <h1 class="placard"><b>Checkpoint 09</b><i>Neon Overpass</i></h1>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="probe" aria-hidden="true"></div>
+</main>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Circular Progress Dial Button</title>
+<meta name="description" content="Six sequenced drum keys whose circular progress arcs sweep, complete and reset at staggered offsets so the whole grid cascades like a step sequencer.">
+<meta name="description-es" content="Seis teclas de tambor secuenciadas cuyos arcos de progreso circular barren, se completan y se reinician con desfases escalonados, de modo que toda la rejilla se encadena como un secuenciador de pasos.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="rig">
+  <div class="rig__top">
+    <div class="ruler">
+      <i class="ruler__nums"><b>1</b><b>5</b><b>9</b><b>13</b></i>
+      <i class="ruler__ticks">
+        <s></s><s></s><s></s><s class="mk"></s><s></s><s></s><s></s><s class="mk"></s>
+        <s></s><s></s><s></s><s class="mk"></s><s></s><s></s><s></s><s class="mk"></s>
+      </i>
+      <i class="ruler__head"></i>
+    </div>
+    <div class="lcd">
+      <span class="lcd__bpm"><b>122</b><i>bpm</i></span>
+      <span class="lcd__sw">swing<i>54%</i></span>
+      <span class="lcd__bars">bar<i id="bar">01</i></span>
+    </div>
+  </div>
+
+  <div class="grid" id="grid">
+    <button class="key key--a" style="--k:0" type="button" aria-label="Kick, arc one">
+      <span class="key__plate"></span>
+      <span class="key__spec"></span>
+      <span class="key__pad">
+        <span class="halo"></span>
+        <svg class="dial" viewBox="0 0 100 100" aria-hidden="true">
+          <circle class="dial__track" cx="50" cy="50" r="41"/>
+          <circle class="dial__notch" cx="50" cy="50" r="35.5"/>
+          <circle class="dial__arc" cx="50" cy="50" r="41"/>
+        </svg>
+        <span class="key__glyph">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="1.9" class="fill"/></svg>
+        </span>
+        <span class="key__led"></span>
+      </span>
+      <span class="key__ticks"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      <span class="key__foot"><b>K1</b><i>kick</i></span>
+      <span class="key__sweep"><i></i></span>
+    </button>
+
+    <button class="key" style="--k:1" type="button" aria-label="Snare, arc two">
+      <span class="key__plate"></span>
+      <span class="key__spec"></span>
+      <span class="key__pad">
+        <span class="halo"></span>
+        <svg class="dial" viewBox="0 0 100 100" aria-hidden="true">
+          <circle class="dial__track" cx="50" cy="50" r="41"/>
+          <circle class="dial__notch" cx="50" cy="50" r="35.5"/>
+          <circle class="dial__arc" cx="50" cy="50" r="41"/>
+        </svg>
+        <span class="key__glyph">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7.5h11M6.5 16.5h11M8 7.5l8 9M16 7.5l-8 9"/></svg>
+        </span>
+        <span class="key__led"></span>
+      </span>
+      <span class="key__ticks"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      <span class="key__foot"><b>K2</b><i>snare</i></span>
+      <span class="key__sweep"><i></i></span>
+    </button>
+
+    <button class="key" style="--k:2" type="button" aria-label="Closed hat, arc three">
+      <span class="key__plate"></span>
+      <span class="key__spec"></span>
+      <span class="key__pad">
+        <span class="halo"></span>
+        <svg class="dial" viewBox="0 0 100 100" aria-hidden="true">
+          <circle class="dial__track" cx="50" cy="50" r="41"/>
+          <circle class="dial__notch" cx="50" cy="50" r="35.5"/>
+          <circle class="dial__arc" cx="50" cy="50" r="41"/>
+        </svg>
+        <span class="key__glyph">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15.5 12 7.5l8 8M7 19h10"/></svg>
+        </span>
+        <span class="key__led"></span>
+      </span>
+      <span class="key__ticks"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      <span class="key__foot"><b>K3</b><i>hat</i></span>
+      <span class="key__sweep"><i></i></span>
+    </button>
+
+    <button class="key key--a" style="--k:3" type="button" aria-label="Clap, arc four">
+      <span class="key__plate"></span>
+      <span class="key__spec"></span>
+      <span class="key__pad">
+        <span class="halo"></span>
+        <svg class="dial" viewBox="0 0 100 100" aria-hidden="true">
+          <circle class="dial__track" cx="50" cy="50" r="41"/>
+          <circle class="dial__notch" cx="50" cy="50" r="35.5"/>
+          <circle class="dial__arc" cx="50" cy="50" r="41"/>
+        </svg>
+        <span class="key__glyph">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="12" r="1.7" class="fill"/><circle cx="12" cy="12" r="1.7" class="fill"/><circle cx="16.5" cy="12" r="1.7" class="fill"/><path d="M5 19h14"/></svg>
+        </span>
+        <span class="key__led"></span>
+      </span>
+      <span class="key__ticks"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      <span class="key__foot"><b>K4</b><i>clap</i></span>
+      <span class="key__sweep"><i></i></span>
+    </button>
+
+    <button class="key" style="--k:4" type="button" aria-label="Tom, arc five">
+      <span class="key__plate"></span>
+      <span class="key__spec"></span>
+      <span class="key__pad">
+        <span class="halo"></span>
+        <svg class="dial" viewBox="0 0 100 100" aria-hidden="true">
+          <circle class="dial__track" cx="50" cy="50" r="41"/>
+          <circle class="dial__notch" cx="50" cy="50" r="35.5"/>
+          <circle class="dial__arc" cx="50" cy="50" r="41"/>
+        </svg>
+        <span class="key__glyph">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M12 4.5v3M12 16.5v3"/></svg>
+        </span>
+        <span class="key__led"></span>
+      </span>
+      <span class="key__ticks"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      <span class="key__foot"><b>K5</b><i>tom</i></span>
+      <span class="key__sweep"><i></i></span>
+    </button>
+
+    <button class="key" style="--k:5" type="button" aria-label="Rim, arc six">
+      <span class="key__plate"></span>
+      <span class="key__spec"></span>
+      <span class="key__pad">
+        <span class="halo"></span>
+        <svg class="dial" viewBox="0 0 100 100" aria-hidden="true">
+          <circle class="dial__track" cx="50" cy="50" r="41"/>
+          <circle class="dial__notch" cx="50" cy="50" r="35.5"/>
+          <circle class="dial__arc" cx="50" cy="50" r="41"/>
+        </svg>
+        <span class="key__glyph">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg>
+        </span>
+        <span class="key__led"></span>
+      </span>
+      <span class="key__ticks"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      <span class="key__foot"><b>K6</b><i>rim</i></span>
+      <span class="key__sweep"><i></i></span>
+    </button>
+  </div>
+
+  <div class="rig__bot">
+    <div class="chain" id="chain">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+    <div class="stamp">
+      <span>seq 6 · 8 step</span>
+      <span class="stamp__dot"></span>
+      <span>arc 1.92s</span>
+      <span class="stamp__dot"></span>
+      <span>offset × 0.24s</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

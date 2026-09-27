@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thermal Print Button</title>
+<meta name="description" content="Six keys on a thermal printer fire in staggered sequence, heating the head and feeding a paper strip out of the slot with one dot matrix line printed per press.">
+<meta name="description-es" content="Seis teclas de una impresora térmica se disparan en secuencia escalonada, calentando el cabezal y haciendo salir por la ranura una tira de papel con una línea de matriz de puntos impresa por pulsación.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="stage">
+  <div class="unit" id="unit">
+    <span class="shell">
+      <span class="shell__sheen"></span>
+      <span class="shell__vents"></span>
+      <span class="shell__brand">thermal 58 mm</span>
+      <span class="shell__lamps"><i class="lp lp--pwr"></i><i class="lp lp--heat"></i><i class="lp lp--pap"></i></span>
+      <div class="pad" id="pad">
+        <button class="tk" type="button" data-k="1"><b>1</b><i>a</i></button>
+        <button class="tk" type="button" data-k="2"><b>2</b><i>b</i></button>
+        <button class="tk" type="button" data-k="3"><b>3</b><i>c</i></button>
+        <button class="tk" type="button" data-k="4"><b>4</b><i>d</i></button>
+        <button class="tk" type="button" data-k="5"><b>5</b><i>e</i></button>
+        <button class="tk" type="button" data-k="6"><b>6</b><i>f</i></button>
+      </div>
+      <span class="slot">
+        <span class="slot__rail"></span>
+        <span class="slot__head"></span>
+        <span class="slot__car"></span>
+        <span class="slot__tear"></span>
+      </span>
+    </span>
+    <span class="feed" id="feed">
+      <span class="paper" id="paper"></span>
+    </span>
+    <span class="heat" id="heat"></span>
+  </div>
+</main>
+</body>
+</html>

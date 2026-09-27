@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Morph Play Pause Button</title>
+<meta name="description" content="A play and pause button whose glyph splits a triangle at its optical centre and swings each half into a bar, presented as a six frame contact sheet with every stage numbered.">
+<meta name="description-es" content="Botón de reproducir y pausar cuyo glifo parte un triángulo por su centro óptico y hace girar cada mitad hasta convertirla en una barra, presentado en una hoja de contactos de seis fotogramas con cada etapa numerada.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="reel">
+  <header class="head">
+    <p class="kicker"><i class="kicker__dot"></i>contact sheet<i class="sep">·</i>six frames<i class="sep">·</i>24 fps</p>
+    <h1>Morph Play&nbsp;/&nbsp;Pause</h1>
+    <p class="lede">A triangle splits at its optical centre. Each half swings out, squares up and becomes a bar. Every stage of that fold is exposed below as a numbered frame.</p>
+  </header>
+
+  <div class="bench">
+    <section class="gate" aria-label="Master frame">
+      <div class="gate__band">
+        <span>pan 400t</span>
+        <span class="gate__idx">frame 00 · master</span>
+      </div>
+      <div class="gate__img">
+        <i class="corner corner--tl"></i>
+        <i class="corner corner--tr"></i>
+        <i class="corner corner--bl"></i>
+        <i class="corner corner--br"></i>
+        <i class="gate__leak"></i>
+        <i class="gate__sweep"></i>
+        <i class="gate__grain"></i>
+        <button class="pbtn" id="pbtn" type="button" aria-pressed="false" aria-label="Play">
+          <span class="pbtn__face"></span>
+          <span class="pbtn__spec"></span>
+          <span class="pbtn__rim"></span>
+          <span class="pbtn__well"></span>
+          <span class="glyph"><i class="glyph__l"></i><i class="glyph__r"></i></span>
+          <span class="pbtn__pulse"></span>
+        </button>
+        <span class="burn burn--tl">master</span>
+        <span class="burn burn--tr" id="tc">00:00:00:00</span>
+        <span class="burn burn--bl">state · <b id="state">play</b></span>
+        <span class="gate__tc"><i class="gate__tcbar"></i></span>
+      </div>
+      <div class="gate__foot">
+        <span class="tell"><i class="tell__led"></i><b id="lbl">auto cycle</b></span>
+        <span class="gate__note">2 pieces · 4 vertices</span>
+      </div>
+    </section>
+
+    <section class="sheet" aria-label="Contact sheet">
+      <div class="band band--t">
+        <span>morph stages · play to pause</span>
+        <span>exposure index</span>
+      </div>
+
+      <div class="sheet__row">
+        <figure class="fr" style="--t:0">
+          <span class="fr__img">
+            <i class="fr__grain"></i>
+            <span class="glyph glyph--sm"><i class="glyph__l"></i><i class="glyph__r"></i></span>
+            <i class="fr__fill"></i>
+          </span>
+          <figcaption class="fr__cap"><b>F01</b><i>00:00</i></figcaption>
+          <span class="fr__name">triangle</span>
+          <span class="fr__bar"><i></i></span>
+        </figure>
+
+        <figure class="fr" style="--t:.2">
+          <span class="fr__img">
+            <i class="fr__grain"></i>
+            <span class="glyph glyph--sm"><i class="glyph__l"></i><i class="glyph__r"></i></span>
+            <i class="fr__fill"></i>
+          </span>
+          <figcaption class="fr__cap"><b>F02</b><i>00:02</i></figcaption>
+          <span class="fr__name">split</span>
+          <span class="fr__bar"><i></i></span>
+        </figure>
+
+        <figure class="fr" style="--t:.4">
+          <span class="fr__img">
+            <i class="fr__grain"></i>
+            <span class="glyph glyph--sm"><i class="glyph__l"></i><i class="glyph__r"></i></span>
+            <i class="fr__fill"></i>
+          </span>
+          <figcaption class="fr__cap"><b>F03</b><i>00:05</i></figcaption>
+          <span class="fr__name">splay</span>
+          <span class="fr__bar"><i></i></span>
+        </figure>
+
+        <figure class="fr" style="--t:.6">
+          <span class="fr__img">
+            <i class="fr__grain"></i>
+            <span class="glyph glyph--sm"><i class="glyph__l"></i><i class="glyph__r"></i></span>
+            <i class="fr__fill"></i>
+          </span>
+          <figcaption class="fr__cap"><b>F04</b><i>00:07</i></figcaption>
+          <span class="fr__name">fold</span>
+          <span class="fr__bar"><i></i></span>
+        </figure>
+
+        <figure class="fr" style="--t:.8">
+          <span class="fr__img">
+            <i class="fr__grain"></i>
+            <span class="glyph glyph--sm"><i class="glyph__l"></i><i class="glyph__r"></i></span>
+            <i class="fr__fill"></i>
+          </span>
+          <figcaption class="fr__cap"><b>F05</b><i>00:10</i></figcaption>
+          <span class="fr__name">bars</span>
+          <span class="fr__bar"><i></i></span>
+        </figure>
+
+        <figure class="fr" style="--t:1">
+          <span class="fr__img">
+            <i class="fr__grain"></i>
+            <span class="glyph glyph--sm"><i class="glyph__l"></i><i class="glyph__r"></i></span>
+            <i class="fr__fill"></i>
+          </span>
+          <figcaption class="fr__cap"><b>F06</b><i>00:12</i></figcaption>
+          <span class="fr__name">pause</span>
+          <span class="fr__bar"><i></i></span>
+        </figure>
+      </div>
+
+      <div class="prog"><i class="prog__bar"></i></div>
+      <div class="band band--b">
+        <span>vertex sweep 0 → 12.5%</span>
+        <span>sheet 1 / 1</span>
+      </div>
+    </section>
+  </div>
+</main>
+</body>
+</html>

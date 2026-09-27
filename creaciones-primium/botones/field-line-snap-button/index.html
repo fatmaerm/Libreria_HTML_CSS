@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Field Line Snap Button</title>
+<meta name="description" content="A magnetometer app on a phone where the button is a copper coil that snaps its magnetic field lines inward and jumps the vector readout when energised.">
+<meta name="description-es" content="Una app de magnetómetro en un móvil donde el botón es una bobina de cobre que retrae sus líneas de campo hacia dentro y da un salto en la lectura del vector al excitarla.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="brief">
+    <h1>Field Line Snap</h1>
+    <p>The coil is the control: energise it and the field lines snap onto the core, the vector readout jumps and the field strength pegs before everything relaxes back to ambient.</p>
+    <dl class="spec">
+      <div><dt>Core</dt><dd>Ferrite 8&times;4</dd></div>
+      <div><dt>Turns</dt><dd>420</dd></div>
+      <div><dt>Current</dt><dd>3.2 A</dd></div>
+      <div><dt>Sample</dt><dd>120 Hz</dd></div>
+    </dl>
+    <div class="brief__bar">
+      <span class="brief__lab">Ambient</span>
+      <span class="brief__meter"><i id="ambBar"></i></span>
+      <span class="brief__val" id="ambVal">0.42 mG</span>
+    </div>
+  </section>
+
+  <div class="phone">
+    <div class="phone__shell">
+      <div class="phone__screen">
+        <div class="statusbar">
+          <span class="statusbar__time" id="clock">9:41</span>
+          <span class="statusbar__right">
+            <i class="sig"><b></b><b></b><b></b><b></b></i>
+            <i class="wifi"></i>
+            <i class="batt"><b></b></i>
+          </span>
+        </div>
+        <div class="notch" aria-hidden="true"></div>
+
+        <div class="app">
+          <header class="app__head">
+            <div>
+              <h2>Field Probe</h2>
+              <p>Triaxial magnetometer</p>
+            </div>
+            <span class="pill"><i></i>Live</span>
+          </header>
+
+          <div class="scope">
+            <canvas class="scope__cv" id="cv"></canvas>
+            <span class="scope__scale scope__scale--t"><b>90</b><b>45</b><b>0</b><b>45</b><b>90</b></span>
+            <span class="scope__tag">B-field · nT/div</span>
+            <button class="coil" id="coil" type="button" aria-label="Energise coil">
+              <i class="coil__winding"></i>
+              <i class="coil__cap coil__cap--t"></i>
+              <i class="coil__cap coil__cap--b"></i>
+              <i class="coil__glyph"></i>
+              <i class="coil__ring" id="ring"></i>
+            </button>
+          </div>
+
+          <div class="readout">
+            <div class="readout__row">
+              <div class="rd rd--x"><span>X</span><b id="vX">+0.31</b><i>mT</i></div>
+              <div class="rd rd--y"><span>Y</span><b id="vY">-0.19</b><i>mT</i></div>
+              <div class="rd rd--z"><span>Z</span><b id="vZ">+0.44</b><i>mT</i></div>
+            </div>
+            <div class="readout__main">
+              <div class="field">
+                <span class="field__lab">|B|</span>
+                <b class="field__num" id="vB">0.42</b>
+                <span class="field__unit">mG</span>
+              </div>
+              <div class="needle" aria-hidden="true">
+                <i class="needle__rose"></i>
+                <i class="needle__pin" id="pin"></i>
+              </div>
+              <div class="field field--hdg">
+                <span class="field__lab">Hdg</span>
+                <b class="field__num" id="vHdg">014</b>
+                <span class="field__unit">&deg;</span>
+              </div>
+            </div>
+            <div class="gauge"><i id="gaugeFill"></i><span class="gauge__tick"></span></div>
+            <div class="trace" aria-hidden="true">
+              <i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i>
+              <i style="--n:4"></i><i style="--n:5"></i><i style="--n:6"></i><i style="--n:7"></i>
+              <i style="--n:8"></i><i style="--n:9"></i><i style="--n:10"></i><i style="--n:11"></i>
+              <i style="--n:12"></i><i style="--n:13"></i><i style="--n:14"></i><i style="--n:15"></i>
+              <i style="--n:16"></i><i style="--n:17"></i><i style="--n:18"></i><i style="--n:19"></i>
+              <i style="--n:20"></i><i style="--n:21"></i><i style="--n:22"></i><i style="--n:23"></i>
+              <span class="trace__lab">History 6 s</span>
+            </div>
+          </div>
+        </div>
+
+        <nav class="navbar">
+          <a class="nav__item"><i class="ico ico--compass"></i><span>Compass</span></a>
+          <a class="nav__item is-on"><i class="ico ico--field"></i><span>Field</span></a>
+          <a class="nav__item"><i class="ico ico--graph"></i><span>Trace</span></a>
+          <a class="nav__item"><i class="ico ico--gear"></i><span>Setup</span></a>
+        </nav>
+        <div class="homebar" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

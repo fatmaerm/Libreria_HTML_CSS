@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Long Press Charge Button</title>
+<meta name="description" content="A hold to purge control inside a storage manager screen where a ring charges while pressed, cancels when released early and wipes the listed items when the charge completes.">
+<meta name="description-es" content="Control de mantener pulsado para vaciar, dentro de la pantalla de un gestor de archivos: un anillo se carga mientras lo mantienes, se cancela si lo sueltas antes y borra los elementos de la lista al completarse la carga.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="app">
+  <header class="app__bar">
+    <span class="app__id">
+      <i class="app__mark"></i>
+      <b>Vault</b>
+      <i class="app__crumb">/ Archive</i>
+    </span>
+    <span class="app__sys">
+      <i class="dot dot--ok"></i>encrypted
+      <i class="app__batt"><s></s></i>
+    </span>
+  </header>
+
+  <section class="meter">
+    <div class="meter__top">
+      <span class="meter__ttl">Local storage</span>
+      <span class="meter__val"><b id="pct">72</b><i>% used</i></span>
+    </div>
+    <div class="meter__track" id="track">
+      <i class="meter__fill"></i>
+      <i class="meter__cursor"></i>
+    </div>
+    <div class="meter__foot">
+      <span><b id="used">148.6</b> GB of 512 GB</span>
+      <span class="meter__warn" id="warn">4 items can be purged</span>
+    </div>
+  </section>
+
+  <section class="list" id="list">
+    <article class="row">
+      <i class="row__ic row__ic--a"></i>
+      <span class="row__main"><b>Session capture 0412</b><i>raw · 4K 60p</i></span>
+      <span class="row__sz">62.4 GB</span>
+      <i class="row__chip">purge</i>
+    </article>
+    <article class="row">
+      <i class="row__ic row__ic--b"></i>
+      <span class="row__main"><b>Offline cache</b><i>sync queue</i></span>
+      <span class="row__sz">38.1 GB</span>
+      <i class="row__chip">purge</i>
+    </article>
+    <article class="row">
+      <i class="row__ic row__ic--c"></i>
+      <span class="row__main"><b>Old device backups</b><i>3 snapshots</i></span>
+      <span class="row__sz">31.7 GB</span>
+      <i class="row__chip">purge</i>
+    </article>
+    <article class="row">
+      <i class="row__ic row__ic--d"></i>
+      <span class="row__main"><b>Diagnostic dumps</b><i>auto collected</i></span>
+      <span class="row__sz">16.4 GB</span>
+      <i class="row__chip">purge</i>
+    </article>
+  </section>
+
+  <section class="dock">
+    <div class="dock__copy">
+      <span class="dock__ttl" id="actTitle">Purge 4 items permanently</span>
+      <span class="dock__sub" id="actSub">Hold the control until the ring closes</span>
+    </div>
+    <div class="hold" id="hold">
+      <svg class="hold__ring" viewBox="0 0 100 100" aria-hidden="true">
+        <circle class="hold__trk" cx="50" cy="50" r="43"/>
+        <circle class="hold__arc" cx="50" cy="50" r="43"/>
+      </svg>
+      <button class="hold__btn" id="purge" type="button" aria-label="Hold to purge four items">
+        <span class="hold__face"></span>
+        <span class="hold__spec"></span>
+        <span class="hold__ico">
+          <i class="hold__trash"></i>
+        </span>
+        <span class="hold__pct" id="hpct">0</span>
+        <span class="hold__ticks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      </button>
+      <i class="hold__wave" id="wave"></i>
+    </div>
+  </section>
+
+  <div class="toast" id="toast" role="status">
+    <i class="toast__ic" id="toastIc"></i>
+    <span class="toast__tx"><b id="toastTitle">Purged 4 items</b><i id="toastSub">148.6 GB reclaimed</i></span>
+    <i class="toast__bar"><s id="toastBar"></s></i>
+  </div>
+</div>
+</body>
+</html>

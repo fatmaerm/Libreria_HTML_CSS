@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chrome Liquid Letter Button</title>
+<meta name="description" content="The button is one enormous word cast in liquid chrome that keeps re-forming above a pool of flowing mercury, and collapses into the pool for a moment when pressed.">
+<meta name="description-es" content="El botón es una palabra enorme fundida en cromo líquido que no para de rehecerse sobre un charco de mercurio que fluye, y se desploma dentro del charco durante un instante al pulsarlo.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="stage">
+  <div class="room" aria-hidden="true">
+    <span class="room__horizon"></span>
+    <span class="room__bloom"></span>
+    <span class="room__dust"></span>
+  </div>
+
+  <header class="stamp">
+    <span class="stamp__rule"></span>
+    <h1 class="stamp__title">Chrome Liquid Letter</h1>
+    <span class="stamp__spec">Alloy 1188 &middot; Ni 99.9</span>
+  </header>
+
+  <button class="btn" type="button" id="pour" aria-label="Chrome">
+    <span class="type"><span class="stack">
+      <span class="pool">
+        <span class="pool__body"></span>
+        <span class="pool__edge"></span>
+        <span class="pool__ripple pool__ripple--a"></span>
+        <span class="pool__ripple pool__ripple--b"></span>
+        <span class="pool__ripple pool__ripple--c"></span>
+      </span>
+      <span class="word word--pool">
+        <span class="ltr" style="--i:0">C</span><span class="ltr" style="--i:1">H</span><span class="ltr" style="--i:2">R</span><span class="ltr" style="--i:3">O</span><span class="ltr" style="--i:4">M</span><span class="ltr" style="--i:5">E</span>
+      </span>
+      <span class="word">
+        <span class="ltr" style="--i:0">C</span><span class="ltr" style="--i:1">H</span><span class="ltr" style="--i:2">R</span><span class="ltr" style="--i:3">O</span><span class="ltr" style="--i:4">M</span><span class="ltr" style="--i:5">E</span>
+      </span>
+      <span class="word word--ridge">
+        <span class="ltr" style="--i:0">C</span><span class="ltr" style="--i:1">H</span><span class="ltr" style="--i:2">R</span><span class="ltr" style="--i:3">O</span><span class="ltr" style="--i:4">M</span><span class="ltr" style="--i:5">E</span>
+      </span>
+      <span class="cast"></span>
+      <span class="tick"></span>
+    </span></span>
+    <span class="btn__flash" aria-hidden="true"></span>
+    <span class="drops" aria-hidden="true"></span>
+  </button>
+
+  <div class="readout">
+    <span class="readout__cell"><b>Viscosity</b><i>0.42</i></span>
+    <span class="readout__rule"></span>
+    <span class="readout__cell"><b>Surface</b><i>Free</i></span>
+    <span class="readout__rule"></span>
+    <span class="readout__cell readout__cell--hot"><b>Cast</b><i id="rq-cast">0</i></span>
+  </div>
+</main>
+</body>
+</html>

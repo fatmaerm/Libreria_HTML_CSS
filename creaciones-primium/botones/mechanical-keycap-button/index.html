@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mechanical Keycap Composer</title>
+<meta name="description" content="A machined send keycap rides its stem inside a support chat, and pressing it drops the message into the thread, flips the room to typing and lights its housing amber.">
+<meta name="description-es" content="Una tecla mecanizada de enviar cabalga sobre su vástago dentro de un chat de soporte: al pulsarla suelta el mensaje en el hilo, la sala pasa a escribiendo y su carcasa se enciende en ámbar.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="wrap">
+  <header class="intro">
+    <p class="intro__eye">Switch lab \ desk 03 \ plate five</p>
+    <h1 class="intro__title">Mechanical Keycap</h1>
+    <p class="intro__desc">The cap rides four millimetres down its stem, meets a hard stop and floods its housing with amber side light. Here it is the send key of a support thread, so the message, the typing state and the room status all move when you press it.</p>
+    <dl class="spec">
+      <div><dt>Travel</dt><dd>4.0 mm</dd></div>
+      <div><dt>Spring</dt><dd>62 g</dd></div>
+      <div><dt>Plate</dt><dd>Aluminium</dd></div>
+    </dl>
+  </header>
+
+  <section class="app">
+    <header class="app__top">
+      <span class="app__av">O</span>
+      <span class="app__id">
+        <b>Orbit Desk</b>
+        <i id="room"><em class="dot"></em>Ops online \ replies in 2 min</i>
+      </span>
+      <span class="app__count" id="count">2 unread</span>
+    </header>
+
+    <div class="thread" id="thread" aria-live="polite">
+      <div class="msg msg--in">
+        <span class="msg__av">O</span>
+        <div class="msg__b"><p>Night shift handover: the 04:20 build is on the board and the plate is warm.</p><time>09:12</time></div>
+      </div>
+      <div class="msg msg--out">
+        <div class="msg__b"><p>Copy that. I will run the sweep before anyone touches the rig.</p><time>09:14</time></div>
+      </div>
+      <div class="msg msg--in">
+        <span class="msg__av">O</span>
+        <div class="msg__b"><p>Switch on the desk is a two unit cap. It travels properly, no mush.</p><time>09:15</time></div>
+      </div>
+      <div class="msg msg--out">
+        <div class="msg__b"><p>Then it is the send key from now on.</p><time>09:16</time></div>
+      </div>
+    </div>
+
+    <form class="composer" id="composer" autocomplete="off">
+      <span class="composer__slot">
+        <input class="composer__in" id="inp" type="text" value="Roll the 04:20 build back one plate" aria-label="Message">
+        <span class="composer__lead"></span>
+      </span>
+      <button class="key" type="submit" id="key">
+        <span class="key__bay">
+          <span class="key__glow"></span>
+          <span class="key__screws"></span>
+          <span class="key__cap">
+            <span class="key__top"></span>
+            <span class="key__legend">Send</span>
+            <span class="key__bar"></span>
+            <span class="key__lip"></span>
+          </span>
+          <span class="key__pulse"></span>
+        </span>
+      </button>
+    </form>
+  </section>
+</main>
+</body>
+</html>

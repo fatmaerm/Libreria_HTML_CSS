@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fingerprint Scan Button</title>
+<meta name="description" content="A capacitive fingerprint pad on a phone lock screen that lights, draws a ridge pattern under a scanning line, unlocks the handset on a good print and shakes off a bad one before rescanning.">
+<meta name="description-es" content="Un sensor capacitivo de huella en la pantalla de bloqueo de un móvil que se ilumina, dibuja el patrón de crestas bajo una línea de barrido, desbloquea el terminal con una buena huella y lo sacude con una mala antes de volver a escanear.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="wrap">
+  <header class="head">
+    <h1>Touch Sensor</h1>
+    <p class="lede">The pad lights, the ridge pattern draws in under a scanning line and the match percentage climbs. A good print opens the handset; a bad one shakes off and starts over.</p>
+  </header>
+
+  <div class="phone">
+    <span class="phone__glare" aria-hidden="true"></span>
+    <div class="screen" id="screen">
+      <i class="wall"></i>
+      <i class="wall__grain"></i>
+
+      <div class="lock" id="lock">
+        <div class="sb">
+          <b class="sb__t">9:41</b>
+          <span class="sb__r">
+            <i class="sb__sig"><s></s><s></s><s></s><s></s></i>
+            <i class="sb__wifi"></i>
+            <i class="sb__bat"><s></s></i>
+          </span>
+        </div>
+
+        <div class="lock__mid">
+          <b class="lock__clock" id="clock">9:41</b>
+          <span class="lock__date">Tuesday, 24 September</span>
+        </div>
+
+        <div class="lock__low">
+          <div class="pad" id="pad">
+            <span class="pad__body"></span>
+            <span class="pad__ring"></span>
+            <span class="pad__pct" id="pct">0%</span>
+            <svg class="pad__ridges" id="ridges" viewBox="0 0 100 100" aria-hidden="true"></svg>
+            <span class="pad__track"><i class="pad__scan" id="scan"></i></span>
+            <span class="pad__ring2" id="ring2"></span>
+            <button class="pad__btn" id="fp" type="button" aria-label="Scan fingerprint to unlock">
+              <span class="pad__glyph"><i></i><i></i><i></i></span>
+            </button>
+          </div>
+          <span class="lock__hint" id="hint">Touch sensor to unlock</span>
+          <span class="lock__att" id="att">attempt 01 · match —</span>
+        </div>
+
+        <div class="lock__foot">
+          <i class="orb orb--l"></i>
+          <span class="lock__swipe">swipe up to open</span>
+          <i class="orb orb--r"></i>
+        </div>
+      </div>
+
+      <div class="home" id="home">
+        <div class="sb">
+          <b class="sb__t">9:41</b>
+          <span class="sb__r">
+            <i class="sb__sig"><s></s><s></s><s></s><s></s></i>
+            <i class="sb__wifi"></i>
+            <i class="sb__bat"><s></s></i>
+          </span>
+        </div>
+        <div class="home__greet" id="greet">Welcome back</div>
+        <div class="home__widget">
+          <b class="home__big">9:41</b>
+          <span class="home__sub">Tuesday, 24 September</span>
+          <span class="home__bars">
+            <i style="--h:.34"></i><i style="--h:.52"></i><i style="--h:.41"></i><i style="--h:.66"></i>
+            <i style="--h:.48"></i><i style="--h:.74"></i><i style="--h:.58"></i><i style="--h:.38"></i>
+            <i style="--h:.62"></i><i style="--h:.46"></i><i style="--h:.7"></i><i style="--h:.3"></i>
+          </span>
+        </div>
+        <div class="home__grid">
+          <i class="tile"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.4"/><rect x="13" y="4" width="7" height="7" rx="1.4"/><rect x="4" y="13" width="7" height="7" rx="1.4"/><circle cx="16.5" cy="16.5" r="3.5"/></svg></i>
+          <i class="tile"><svg viewBox="0 0 24 24"><path d="M4 18V9M9 18V5M14 18v-7M19 18v-4"/></svg></i>
+          <i class="tile"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5"/><path d="M12 6.5v11M6.5 12h11"/></svg></i>
+          <i class="tile"><svg viewBox="0 0 24 24"><path d="M5 7h14v10H5z"/><path d="M5 11h14M9 7v10"/></svg></i>
+          <i class="tile"><svg viewBox="0 0 24 24"><path d="M6 4v8a6 6 0 0 0 12 0V4"/><rect x="3.5" y="3" width="4" height="6" rx="1.6"/><rect x="16.5" y="3" width="4" height="6" rx="1.6"/></svg></i>
+          <i class="tile"><svg viewBox="0 0 24 24"><path d="M4 16l4-6 3 4 3-7 6 9"/><circle cx="7" cy="6" r="1.6"/></svg></i>
+          <i class="tile"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2.4"/><path d="M8 10h8M8 14h5"/></svg></i>
+          <i class="tile"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.4"/><path d="M12 4v2.4M12 17.6V20M4 12h2.4M17.6 12H20M6.4 6.4l1.7 1.7M15.9 15.9l1.7 1.7M17.6 6.4l-1.7 1.7M8.1 15.9l-1.7 1.7"/></svg></i>
+        </div>
+        <div class="home__card">
+          <b>Unlocked at 9:41</b>
+          <i id="cardSub">attempt 01 · match 99%</i>
+        </div>
+        <i class="home__nav"></i>
+      </div>
+
+      <div class="toast" id="toast"><i></i><b id="toastTx">Unlocked</b></div>
+    </div>
+    <span class="phone__notch" aria-hidden="true"></span>
+  </div>
+</main>
+</body>
+</html>

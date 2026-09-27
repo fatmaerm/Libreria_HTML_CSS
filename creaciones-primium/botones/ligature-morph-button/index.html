@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ligature Morph Button</title>
+<meta name="description" content="A drafting plate where the glyphs of the label AFFIX morph between discrete letterforms and the ffi ligature while dimension lines and callouts mark every part.">
+<meta name="description-es" content="Lámina de dibujo técnico donde los glifos del rótulo AFFIX se transforman entre letras sueltas y la ligadura ffi, mientras las líneas de cota y las llamadas marcan cada parte.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="page">
+  <header class="head">
+    <h1>Ligature Morph Plate</h1>
+    <p>The specimen is the button: the word runs as five separate glyphs, joins into a single ffi ligature, then comes apart again under measured dimension lines.</p>
+  </header>
+
+  <div class="sheet">
+    <span class="frame" aria-hidden="true"></span>
+    <span class="grid-bg" aria-hidden="true"></span>
+    <span class="fig" aria-hidden="true">fig. 1 &middot; specimen, 4:1</span>
+    <span class="fig fig--r" id="figState" aria-hidden="true">letterforms</span>
+    <span class="guide guide--base" aria-hidden="true"></span>
+    <span class="guide guide--x" aria-hidden="true"></span>
+    <span class="guide guide--cap" aria-hidden="true"></span>
+
+    <button class="spec" id="spec" type="button" aria-label="Morph the specimen between letterforms and ligatures">
+      <span class="sp sp--a" id="spA" aria-hidden="true">AFFIX</span>
+      <span class="sp sp--b" id="spB" aria-hidden="true">AFFIX</span>
+      <svg class="dims" id="dims" aria-hidden="true">
+        <defs>
+          <clipPath id="clipParts"><rect id="clipPartsR" x="-600" y="-600" width="0" height="3000"/></clipPath>
+          <clipPath id="clipCalls"><rect id="clipCallsR" x="-600" y="-600" width="0" height="3000"/></clipPath>
+        </defs>
+        <g class="parts" id="parts" clip-path="url(#clipParts)">
+          <rect class="bx" id="bx0" x="0" y="0" width="10" height="10"/>
+          <rect class="bx" id="bx1" x="0" y="0" width="10" height="10"/>
+          <rect class="bx" id="bx2" x="0" y="0" width="10" height="10"/>
+          <rect class="bx" id="bx3" x="0" y="0" width="10" height="10"/>
+          <rect class="bx" id="bx4" x="0" y="0" width="10" height="10"/>
+          <text class="gx" id="gx0" x="0" y="0">A</text>
+          <text class="gx" id="gx1" x="0" y="0">F</text>
+          <text class="gx" id="gx2" x="0" y="0">F</text>
+          <text class="gx" id="gx3" x="0" y="0">I</text>
+          <text class="gx" id="gx4" x="0" y="0">X</text>
+        </g>
+        <path class="dim" id="d0" d="M0 0h0"/>
+        <path class="dim" id="d1" d="M0 0h0"/>
+        <path class="dim" id="d2" d="M0 0h0"/>
+        <path class="dim" id="d3" d="M0 0h0"/>
+        <path class="dim dim--wide" id="dw" d="M0 0h0"/>
+        <path class="lead" id="l0" d="M0 0"/>
+        <path class="lead" id="l1" d="M0 0"/>
+        <path class="lead" id="l2" d="M0 0"/>
+        <path class="lead" id="l3" d="M0 0"/>
+        <path class="brk" id="brk" d="M0 0h0"/>
+        <circle class="joint" id="joint" cx="0" cy="0" r="4"/>
+        <g clip-path="url(#clipCalls)">
+          <text class="call" id="c0" x="0" y="0">bowl</text>
+          <text class="call" id="c1" x="0" y="0">stem</text>
+          <text class="call" id="c2" x="0" y="0">joint &#183; ffi</text>
+          <text class="call" id="c3" x="0" y="0">terminal</text>
+        </g>
+      </svg>
+      <span class="mm" id="mm" aria-hidden="true">advance 0</span>
+    </button>
+
+    <div class="scalebar" aria-hidden="true">
+      <i></i><i></i><i></i><i></i>
+      <span>0</span><span>64</span><span>units</span>
+    </div>
+
+    <div class="block" aria-hidden="true">
+      <span class="block__r">plate 06 &middot; rev c</span>
+      <span class="block__r">face: transitional serif</span>
+      <span class="block__r">feature: liga / clig</span>
+      <span class="block__r">scale 4:1</span>
+    </div>
+  </div>
+</main>
+</body>
+</html>

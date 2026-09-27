@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Terminal Caret Button</title>
+<meta name="description" content="A single terminal key whose monospace label types itself and deletes itself on a loop behind a hard block caret that stops blinking while the keys are being struck.">
+<meta name="description-es" content="Una única tecla de terminal cuya etiqueta monoespaciada se escribe y se borra en bucle tras un cursor de bloque fijo que deja de parpadear mientras se pulsan las teclas.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="stage">
+  <button class="key" id="key" type="button" aria-label="Run the deploy command">
+    <span class="key__face" aria-hidden="true"></span>
+    <span class="key__row">
+      <span class="key__prompt" aria-hidden="true">root@orbx</span>
+      <span class="key__sep" aria-hidden="true">:</span>
+      <span class="key__cwd" aria-hidden="true">~/ship</span>
+      <span class="key__dollar" aria-hidden="true">$</span>
+      <span class="key__text" id="txt" aria-hidden="true"></span>
+      <span class="key__caret" id="caret" aria-hidden="true"></span>
+    </span>
+    <span class="key__status" aria-hidden="true">
+      <i class="key__dot"></i>
+      <span class="key__state" id="state">idle</span>
+    </span>
+    <span class="key__hint" aria-hidden="true">press</span>
+    <span class="key__prog" id="prog" aria-hidden="true"></span>
+    <span class="key__sheen" id="sheen" aria-hidden="true"></span>
+    <span class="key__flash" id="flash" aria-hidden="true"></span>
+  </button>
+</main>
+</body>
+</html>

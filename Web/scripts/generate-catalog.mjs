@@ -230,7 +230,12 @@ async function createComponent(root, pagePath) {
   const description = override.description ?? (descriptionMatch
     ? readAttribute(descriptionMatch[0], "content")
     : `Standalone ${descriptionType} demo from the component collection.`);
-  const descriptionEs = override.descriptionEs ?? null;
+  const descriptionEsMatch = html.match(/<meta\b(?=[^>]*\bname\s*=\s*["']description[-:]es["'])[^>]*>/i)
+    ?? html.match(/<meta\b(?=[^>]*\bname\s*=\s*["']description["'])[^>]*\bhreflang\s*=\s*["']es["'][^>]*>/i)
+    ?? html.match(/<meta\b(?=[^>]*\bname\s*=\s*["']description["'])[^>]*\blang\s*=\s*["']es["'][^>]*>/i);
+  const descriptionEs = override.descriptionEs ?? (descriptionEsMatch
+    ? readAttribute(descriptionEsMatch[0], "content")
+    : null);
   const previewPath = path.relative(repositoryDirectory, pagePath).split(path.sep).join("/");
   const missingReferences = await getMissingReferences(html, pageDirectory, root.directory);
   const files = await collectComponentFiles(pageDirectory, id);

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brushed Anodised Metal Button</title>
+<meta name="description" content="A brushed anodised aluminium key on a machine control panel whose tint follows the panel's colour selector while a specular band travels along the grain.">
+<meta name="description-es" content="Una tecla de aluminio cepillado y anodizado en un panel de control de máquina cuyo tinte sigue el selector de color del panel mientras una banda especular recorre el veteado.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="page">
+  <header class="head">
+    <h1>Cell 04 &middot; Anodising Line</h1>
+    <p>The key is a real piece of brushed, anodised aluminium. Pick a bath colour and the whole panel retints with it, then press the key to run a cycle and watch the channels answer.</p>
+  </header>
+
+  <section class="hmi">
+    <span class="hmi__bezel" aria-hidden="true"></span>
+    <span class="hmi__screw hmi__screw--a" aria-hidden="true"></span>
+    <span class="hmi__screw hmi__screw--b" aria-hidden="true"></span>
+    <span class="hmi__screw hmi__screw--c" aria-hidden="true"></span>
+    <span class="hmi__screw hmi__screw--d" aria-hidden="true"></span>
+
+    <div class="screen">
+      <div class="topline">
+        <span class="topline__id">anodising line 04</span>
+        <span class="topline__mid"><i class="led" id="led"></i><span id="state">ready</span></span>
+        <span class="topline__clk" id="clk">06:41:12</span>
+      </div>
+
+      <div class="keyblock">
+        <div class="housing">
+          <span class="housing__lip" aria-hidden="true"></span>
+          <span class="housing__shadow" aria-hidden="true"></span>
+          <button class="key" id="key" type="button" aria-label="Run an anodising cycle">
+            <span class="key__face" aria-hidden="true">
+              <i class="key__grain"></i>
+              <i class="key__spec"></i>
+              <i class="key__hot"></i>
+              <i class="key__bevel"></i>
+            </span>
+            <span class="key__legend" aria-hidden="true">Run Cycle</span>
+          </button>
+          <span class="housing__glass" aria-hidden="true"></span>
+        </div>
+        <div class="keymeta">
+          <span class="keymeta__row"><b>cycles</b><i id="cycles">0412</i></span>
+          <span class="keymeta__row"><b>finish</b><i id="finish">signal red</i></span>
+        </div>
+        <div class="progress">
+          <span class="progress__lab">cycle</span>
+          <span class="progress__groove"><i class="progress__fill" id="pfill"></i></span>
+        </div>
+        <div class="stack">
+          <span class="stack__lab">layer stack</span>
+          <div class="stack__row">
+            <i class="stack__l stack__l--1"></i>
+            <i class="stack__l stack__l--2"></i>
+            <i class="stack__l stack__l--3"></i>
+          </div>
+          <div class="stack__keys">
+            <span>dye</span><span>oxide</span><span>alu</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="side">
+        <div class="rows">
+          <div class="row">
+            <span class="row__n">bath 01</span>
+            <span class="row__bar"><i class="row__fill" id="b1"></i></span>
+            <span class="row__v" id="v1">21.8</span>
+          </div>
+          <div class="row">
+            <span class="row__n">bath 02</span>
+            <span class="row__bar"><i class="row__fill" id="b2"></i></span>
+            <span class="row__v" id="v2">64.2</span>
+          </div>
+          <div class="row">
+            <span class="row__n">rinse</span>
+            <span class="row__bar"><i class="row__fill" id="b3"></i></span>
+            <span class="row__v" id="v3">18.1</span>
+          </div>
+        </div>
+
+        <div class="picker">
+          <span class="picker__lab">anodise tint</span>
+          <div class="picker__row" id="picker"></div>
+        </div>
+
+        <div class="readout">
+          <span class="readout__cell"><b>grain</b><i>320 grit</i></span>
+          <span class="readout__cell"><b>thickness</b><i id="thick">18 &micro;m</i></span>
+          <span class="readout__cell"><b>lot</b><i id="lot">A-7714</i></span>
+        </div>
+      </div>
+
+      <div class="logbox">
+        <span class="logbox__tag">event log</span>
+        <ul class="logbox__list" id="loglist">
+          <li><b>11:29:58</b> bath 02 stabilised at 64.1 &deg;C</li>
+          <li><b>11:29:31</b> rack 12 loaded &middot; 18 pieces</li>
+          <li><b>11:28:57</b> rinse flow calibrated</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vortex Inhale</title>
+<meta name="description" content="A hardware control panel whose twin knobs and fader drive a live vortex on the button, drawing particles inward until a press slams it shut and it exhales.">
+<meta name="description-es" content="Un panel de control de hardware cuyos dos mandos y su deslizador mueven un remolino vivo sobre el botón, que atrae las partículas hacia dentro hasta que una pulsación lo cierra de golpe y lo exhala.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="rig">
+  <div class="rail rail--l"></div>
+  <div class="rail rail--r"></div>
+  <header class="head">
+    <span class="head__tag">BAY 03 &middot; SUCTION</span>
+    <h1>Vortex Inhale</h1>
+    <p class="head__sub">Two knobs and a fader drive the intake field: spin, reach and particle load. Slam the valve and the vortex is shut in an instant, then bleeds off.</p>
+  </header>
+  <div class="deck">
+    <div class="bay bay--l">
+      <div class="knob" id="k1" role="slider" tabindex="0" aria-label="Spin speed">
+        <span class="knob__dial">
+          <span class="knob__ticks"></span>
+          <span class="knob__body"><span class="knob__grip"></span></span>
+          <span class="knob__led"></span>
+        </span>
+        <span class="knob__cap">SPIN</span>
+        <span class="knob__val" id="v1">62</span>
+      </div>
+      <div class="knob" id="k2" role="slider" tabindex="0" aria-label="Particle load">
+        <span class="knob__dial">
+          <span class="knob__ticks"></span>
+          <span class="knob__body"><span class="knob__grip"></span></span>
+          <span class="knob__led"></span>
+        </span>
+        <span class="knob__cap">LOAD</span>
+        <span class="knob__val" id="v2">48</span>
+      </div>
+    </div>
+    <div class="wellwrap">
+      <div class="well" id="well">
+        <span class="well__ring r1"></span>
+        <span class="well__ring r2"></span>
+        <span class="well__ring r3"></span>
+        <canvas id="cv"></canvas>
+        <div class="well__stack">
+          <button class="valve" id="valve" type="button" aria-label="Slam the vortex shut">
+            <span class="valve__bez"></span>
+            <span class="valve__core">
+              <span class="valve__coil"></span>
+              <span class="valve__glyph"></span>
+            </span>
+            <span class="valve__ring"></span>
+          </button>
+        </div>
+        <span class="well__shock" id="shock"></span>
+        <span class="well__flash" id="flash"></span>
+        <span class="well__veil" id="veil"></span>
+        <div class="well__ticks">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="plate">
+        <span class="plate__l">INTAKE FIELD</span>
+        <span class="plate__m">V-9 &middot; CLASS III</span>
+      </div>
+    </div>
+    <div class="bay bay--r">
+      <div class="fader" id="f1" role="slider" tabindex="0" aria-label="Intake reach">
+        <span class="fader__slot">
+          <span class="fader__fill" id="f1fill"></span>
+          <span class="fader__marks"><i></i><i></i><i></i><i></i><i></i></span>
+          <span class="fader__cap" id="f1cap"><b></b><b></b><b></b></span>
+        </span>
+        <span class="fader__cap2">INTAKE</span>
+        <span class="fader__val" id="v3">55</span>
+      </div>
+      <div class="sw" id="sw1">
+        <span class="sw__lever"></span>
+        <span class="sw__cap">AUTO<br>FEED</span>
+      </div>
+    </div>
+  </div>
+  <footer class="strip">
+    <div class="strip__cell"><span>STATE</span><b id="st" class="ok">INHALING</b></div>
+    <div class="strip__cell"><span>THROAT</span><b id="thr">2.4</b></div>
+    <div class="strip__cell"><span>PARTICLES</span><b id="np">0</b></div>
+    <div class="strip__cell"><span>RAMPS</span><b id="nr">0</b></div>
+    <div class="strip__cell strip__cell--bar"><span>LOAD</span><i class="bar"><u id="bar"></u></i></div>
+  </footer>
+  <div class="bolts" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</main>
+</body>
+</html>

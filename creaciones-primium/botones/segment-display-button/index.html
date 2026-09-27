@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Segment Ghost Contact Sheet</title>
+<meta name="description" content="A contact sheet of exposures where a seven segment readout walks through its states, each frame keeping the classic ghost of the segments that were lit a moment ago.">
+<meta name="description-es" content="Una hoja de contactos de exposiciones donde un visor de siete segmentos recorre sus estados, y cada fotograma conserva el fantasma clásico de los segmentos que se encendieron un instante antes.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="wrap">
+  <header class="lede">
+    <p class="lede__eye">Reel seven \ segment walk \ twelve exposures</p>
+    <h1 class="lede__title">Segment Ghost Sheet</h1>
+    <p class="lede__desc">Every frame on the sheet is the same button face caught at a different moment of the count. The playhead runs the live frame, the segments that switch off stay behind as a ghost, and each frame freezes what it saw.</p>
+  </header>
+
+  <section class="sheet">
+    <div class="sheet__perf sheet__perf--t"></div>
+
+    <div class="sheet__grid" id="grid">
+      <button class="fr" type="button" data-i="0" aria-label="Frame 01, run the segment walk">
+        <span class="fr__num">01</span>
+        <span class="fr__cell">
+          <span class="ro">
+            <span><i class="sg s-a"></i><i class="sg s-b"></i><i class="sg s-c"></i><i class="sg s-d"></i><i class="sg s-e"></i><i class="sg s-f"></i><i class="sg s-g"></i></span>
+            <span><i class="sg s-a"></i><i class="sg s-b"></i><i class="sg s-c"></i><i class="sg s-d"></i><i class="sg s-e"></i><i class="sg s-f"></i><i class="sg s-g"></i></span>
+          </span>
+          <span class="fr__glass"></span>
+          <span class="fr__rec"></span>
+        </span>
+        <span class="fr__cap"><b>t+0.00</b><i>00</i></span>
+      </button>
+
+      <button class="fr" type="button" data-i="1" aria-label="Frame 02, run the segment walk">
+        <span class="fr__num">02</span>
+        <span class="fr__cell">
+          <span class="ro">
+            <span><i class="sg s-a"></i><i class="sg s-b"></i><i class="sg s-c"></i><i class="sg s-d"></i><i class="sg s-e"></i><i class="sg s-f"></i><i class="sg s-g"></i></span>
+            <span><i class="sg s-a"></i><i class="sg s-b"></i><i class="sg s-c"></i><i class="sg s-d"></i><i class="sg s-e"></i><i class="sg s-f"></i><i class="sg s-g"></i></span>
+          </span>
+          <span class="fr__glass"></span>
+          <span class="fr__rec"></span>
+        </span>
+        <span class="fr__cap"><b>t+0.62</b><i>00</i></span>
+      </button>
+
+      <button class="fr" type="button" data-i="2" aria-label="Frame 03, run the segment walk">
+        <span class="fr__num">03</span>
+        <span class="fr__cell">
+          <span class="ro">
+            <span><i class="sg s-a"></i><i class="sg s-b"></i><i class="sg s-c"></i><i class="sg s-d"></i><i class="sg s-e"></i><i class="sg s-f"></i><i class="sg s-g"></i></span>
+            <span><i class="sg s-a"></i><i class="sg s-b"></i><i class="sg s-c"></i><i class="sg s-d"></i><i class="sg s-e"></i><i class="sg s-f"></i><i class="sg s-g"></i></span>
+          </span>
+          <span class="fr__glass"></span>
+          <span class="fr__rec"></span>
+        </span>
+        <span class="fr__cap"><b>t+1.24</b><i>00</i></span>
+      </button>
+
+      <button class="fr" type="button" data-i="3" aria-label="Frame 04, run the segment walk">
+        <span class="fr__num">04</span>
+        <span class="fr__cell">
+          <span class="ro">
+            <span><i class="sg s-a"></i><i class="sg s-b"></i><i class="sg s-c"></i><i class="sg s-d"></i><i class="sg s-e"></i><i class="sg s-f"></i><i class="sg s-g"></i></span>
+            <span><i class="sg s-a"></i><i class="sg s-b"></i><i class="sg s-c"></i><i class="sg s-d"></i><i class="sg s-e"></i><i class="sg s-f"></i><i class="sg s-g"></i></span>
+          </span>
+          <span class="fr__glass"></span>
+          <span class="fr__rec"></span>
+        </span>
+        <span class="fr__cap"><b>t+1.86</b><i>00</i></span>
+      </button>
+
+      <button class="fr" type="button" data-i="4" aria-label="Frame 05, run the segment walk">
+        <span class="fr__num">05</span>
+        <span class="fr__cell">
+          <span class="ro">
+            <span><i class="sg s-a"></i><i class="sg s-b"></i><i class="sg s-c"></i><i class="sg s-d"></i><i class="sg s-e"></i><i class="sg s-f"></i><i class="sg s-g"></i></span>
+            <span><i class="sg s-a"></i><i class="sg s-b"></i><i class="sg s-c"></i><i class="sg s-d"></i><i class="sg s-e"></i><i class="sg s-f"></i><i class="sg s-g"></i></span>
+          </span>
+          <span class="fr__glass"></span>
+          <span class="fr__rec"></span>
+        </span>
+        <span class="fr__cap"><b>t+2.48</b><i>00</i></span>
+      </button>
+
+      <button class="fr" type="button" data-i="5" aria-label="Frame 06, run the segment walk">
+        <span class="fr__num">06</span>
+        <span class="fr__cell">
+          <span class="ro">
+            <span><i class="sg s-a"></i><i class="sg s-b"></i><i class="sg s-c"></i><i class="sg s-d"></i><i class="sg s-e"></i><i class="sg s-f"></i><i class="sg s-g"></i></span>
+            <span><i class="sg s-a"></i><i class="sg s-b"></i><i class="sg s-c"></i><i class="sg s-d"></i><i class="sg s-e"></i><i class="sg s-f"></i><i class="sg s-g"></i></span>
+          </span>
+          <span class="fr__glass"></span>
+          <span class="fr__rec"></span>
+        </span>
+        <span class="fr__cap"><b>t+3.10</b><i>00</i></span>
+      </button>
+    </div>
+
+    <div class="sheet__perf sheet__perf--b"></div>
+
+    <footer class="sheet__edge">
+      <span class="edge__m">seg-7 walk</span>
+      <span class="edge__bar"><i id="prog"></i></span>
+      <span class="edge__m" id="edgeState">playhead \ frame 01</span>
+      <span class="edge__m edge__m--r">daylight 500 \ push two</span>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

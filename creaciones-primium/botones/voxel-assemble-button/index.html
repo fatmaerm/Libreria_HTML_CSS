@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voxel Assemble Button</title>
+<meta name="description" content="An exploded technical view of a button broken into voxel layer plates that fly back together into a solid slab under a live block counter.">
+<meta name="description-es" content="Una vista técnica explosionada de un botón deshecho en placas de capas de vóxeles, que vuelven a volar juntas hasta formar un bloque sólido bajo un contador de bloques en directo.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="page" id="page">
+  <div class="blueprint" aria-hidden="true">
+    <span class="bp-a"></span>
+    <span class="bp-b"></span>
+  </div>
+
+  <h1>Voxel Assembly</h1>
+
+  <div class="view">
+    <div class="stack" id="stack">
+      <div class="mount">
+        <div class="slab" id="slab" aria-hidden="true"></div>
+        <button class="face" id="face" type="button">
+          <span class="fshell" aria-hidden="true"></span>
+        <span class="fsheen" aria-hidden="true"></span>
+          <span class="flabel">
+            <b>Assemble</b>
+            <i class="caret" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+
+      <div class="caps" id="caps" aria-hidden="true">
+        <div class="cap"><span class="cl"></span><b>Cap Plate</b><i>z &minus;34</i></div>
+        <div class="cap"><span class="cl"></span><b>Glyph Plane</b><i>z &nbsp;00</i></div>
+        <div class="cap"><span class="cl"></span><b>Base Plate</b><i>z +34</i></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend" aria-hidden="true">
+    <span class="lg"><b>R1</b> Cap</span>
+    <span class="lg"><b>R2</b> Face</span>
+    <span class="lg"><b>R3</b> Base</span>
+    <span class="lg wide"><b>SEC</b> A&ndash;A</span>
+  </div>
+
+  <div class="console">
+    <div class="cc">
+      <span class="cc-k">Blocks</span>
+      <b class="cc-v" id="cnt">000</b>
+      <i class="cc-t" id="tot">/000</i>
+    </div>
+    <div class="cb"><span id="bar"></span></div>
+    <div class="cc">
+      <b class="cc-v" id="pct">000</b>
+      <i class="cc-t">%</i>
+    </div>
+    <div class="cs" id="st">Standby</div>
+  </div>
+</main>
+</body>
+</html>

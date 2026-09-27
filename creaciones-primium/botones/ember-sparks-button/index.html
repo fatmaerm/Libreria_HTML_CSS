@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ember Sparks Button</title>
+<meta name="description" content="A forge duel where heat banks in the button's core until it vents in a hiss of sparks, and every strike chips the crucible boss bar before it can reach white heat.">
+<meta name="description-es" content="Un duelo en la fragua donde el calor se acumula en el núcleo del botón hasta que lo suelta en un siseo de chispas, y cada golpe astilla la barra del crisol antes de que alcance el blanco.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="game">
+  <div class="scene" aria-hidden="true">
+    <span class="sc-wall"></span>
+    <span class="sc-mouth"></span>
+    <span class="sc-grate"></span>
+    <span class="sc-pillar sc-pillar--l"></span>
+    <span class="sc-pillar sc-pillar--r"></span>
+    <span class="sc-chain sc-chain--l"></span>
+    <span class="sc-chain sc-chain--r"></span>
+    <span class="sc-floor"></span>
+    <span class="sc-haze"></span>
+  </div>
+
+  <header class="top">
+    <div class="intro">
+      <h1 class="intro__title">Ember Forge</h1>
+      <p class="intro__note">Heat banks in the key until it vents. Strike to dump the bank and take a bite out of the crucible before it goes white.</p>
+    </div>
+    <div class="hud">
+      <span class="hud__cell"><b>Score</b><i id="hud-score">0</i></span>
+      <span class="hud__cell"><b>Best</b><i id="hud-best">0</i></span>
+      <span class="hud__cell hud__cell--lives"><b>Lives</b><i class="pips"><s class="on"></s><s class="on"></s><s class="on"></s></i></span>
+    </div>
+  </header>
+
+  <section class="boss" id="boss">
+    <span class="boss__row">
+      <span class="boss__name">The Crucible</span>
+      <span class="boss__state" id="boss-state">Tepid</span>
+    </span>
+    <span class="boss__bar">
+      <span class="boss__fill" id="boss-fill"></span>
+      <span class="boss__segs"></span>
+      <span class="boss__shade"></span>
+    </span>
+  </section>
+
+  <div class="arena">
+    <button class="btn" type="button" id="strike">
+      <span class="btn__plate" aria-hidden="true"></span>
+      <span class="btn__core" aria-hidden="true"></span>
+      <span class="btn__vent" aria-hidden="true"></span>
+      <span class="btn__rivets" aria-hidden="true"></span>
+      <span class="btn__label">Strike</span>
+      <span class="btn__temper" aria-hidden="true"></span>
+      <span class="btn__flare" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <footer class="foot">
+    <span class="foot__gauge">
+      <span class="foot__lbl">Forge</span>
+      <span class="foot__bar"><span class="foot__fill" id="forge-fill"></span></span>
+    </span>
+    <span class="foot__cell"><b>Streak</b><i id="hud-streak">x1</i></span>
+    <span class="foot__cell"><b>Vent</b><i id="hud-vent">1180 C</i></span>
+    <span class="foot__cell foot__cell--hot"><b>Breaks</b><i id="hud-breaks">0</i></span>
+  </footer>
+
+  <div class="banner" id="banner" aria-hidden="true"><span id="banner-tx">Break</span></div>
+  <div class="scrim" id="scrim" aria-hidden="true"></div>
+  <div class="fx" id="fx" aria-hidden="true"></div>
+</main>
+</body>
+</html>

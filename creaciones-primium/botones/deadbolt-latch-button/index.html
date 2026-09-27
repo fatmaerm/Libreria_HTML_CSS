@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Deadbolt Latch Button</title>
+<meta name="description" content="A keypad access panel whose submit button throws a real deadbolt with three rising tumblers and a green lamp, or flashes a red fault and shakes on a wrong code.">
+<meta name="description-es" content="Un panel de acceso con teclado cuyo botón de enviar lanza un cerrojo real con tres palancas ascendentes y una luz verde, o parpadea un fallo en rojo y sacude la carcasa con un código incorrecto.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="page">
+  <header class="head">
+    <h1>Deadbolt Latch</h1>
+    <p>Type the four digit code on the panel keypad, then press Unlock. The correct code lifts the three tumblers and throws the bolt into the strike; anything else trips the red fault and locks the keypad. Demo code 4817.</p>
+  </header>
+  <form class="panel" autocomplete="off">
+    <div class="doorwrap">
+      <div class="door" id="door">
+        <span class="door__grain" aria-hidden="true"></span>
+        <span class="door__rim" aria-hidden="true"></span>
+        <span class="door__mark">vault 04</span>
+        <div class="chan">
+          <span class="chan__case" aria-hidden="true">
+            <span class="case__hole case__hole--a"></span>
+            <span class="case__hole case__hole--b"></span>
+            <span class="case__hole case__hole--c"></span>
+          </span>
+          <span class="chan__slot" aria-hidden="true"></span>
+          <span class="chan__strike" aria-hidden="true"><i></i></span>
+          <span class="bolt" aria-hidden="true">
+            <span class="bolt__bar"></span>
+            <span class="bolt__collar"></span>
+            <span class="bolt__nose"></span>
+          </span>
+        </div>
+        <div class="pins" aria-hidden="true">
+          <span class="pin" data-i="0"><i class="pin__rod"></i><i class="pin__spring"></i></span>
+          <span class="pin" data-i="1"><i class="pin__rod"></i><i class="pin__spring"></i></span>
+          <span class="pin" data-i="2"><i class="pin__rod"></i><i class="pin__spring"></i></span>
+        </div>
+        <span class="door__vents" aria-hidden="true"></span>
+        <span class="door__tag">tumbler 3 × 12 mm</span>
+        <div class="lamps">
+          <span class="lamp lamp--ok"><i></i><b>secure</b></span>
+          <span class="lamp lamp--err"><i></i><b>fault</b></span>
+        </div>
+        <span class="door__gap" aria-hidden="true"></span>
+      </div>
+      <span class="doorwrap__shadow" aria-hidden="true"></span>
+    </div>
+    <div class="console">
+      <div class="lcd">
+        <span class="lcd__digits" id="digits">&#8211; &#8211; &#8211; &#8211;</span>
+        <span class="lcd__scan" aria-hidden="true"></span>
+        <span class="lcd__wave" aria-hidden="true"></span>
+      </div>
+      <div class="keys" id="keys">
+        <button class="key" type="button" data-k="1">1</button>
+        <button class="key" type="button" data-k="2">2</button>
+        <button class="key" type="button" data-k="3">3</button>
+        <button class="key" type="button" data-k="4">4</button>
+        <button class="key" type="button" data-k="5">5</button>
+        <button class="key" type="button" data-k="6">6</button>
+        <button class="key" type="button" data-k="7">7</button>
+        <button class="key" type="button" data-k="8">8</button>
+        <button class="key" type="button" data-k="9">9</button>
+        <button class="key key--fn" type="button" data-k="c">clr</button>
+        <button class="key" type="button" data-k="0">0</button>
+        <button class="key key--fn" type="button" data-k="b">del</button>
+      </div>
+      <div class="acts">
+        <button class="submit" type="submit" id="submit">
+          <span class="submit__glow" aria-hidden="true"></span>
+          <span class="submit__face">Unlock</span>
+          <span class="submit__edge" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="readout">
+        <span class="readout__row"><b>tries</b><i id="tries">00</i></span>
+        <span class="readout__row"><b>state</b><i id="state">armed</i></span>
+        <span class="readout__row"><b>bolt</b><i id="boltstate">open</i></span>
+      </div>
+      <ul class="log" id="log">
+        <li><b>14:02:11</b> panel armed, awaiting code</li>
+      </ul>
+    </div>
+  </form>
+</main>
+</body>
+</html>

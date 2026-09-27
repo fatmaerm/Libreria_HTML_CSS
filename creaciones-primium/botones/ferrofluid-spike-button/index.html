@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ferrofluid Spike Button</title>
+<meta name="description" content="An exploded technical view of a cap over ferrofluid, where a rising magnet grows conical spikes that collapse and regrow inverted when the polarity flips.">
+<meta name="description-es" content="Una vista técnica explosionada de un tapón sobre ferrofluido, donde un imán en ascenso hace crecer picos cónicos que se colapsan y vuelven a crecer invertidos cuando la polaridad se invierte.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="page">
+  <h1>Ferrofluid Spike Press</h1>
+  <div class="rig">
+    <div class="bay bay--core">
+      <div class="art art--core">
+        <span class="core__glow"></span>
+        <span class="core__stack">
+          <span class="core__shaft core__shaft--t"></span>
+          <span class="core__bell core__bell--t"></span>
+          <span class="core__wind"></span>
+          <span class="core__bell core__bell--b"></span>
+          <span class="core__shaft core__shaft--b"></span>
+          <span class="core__pole core__pole--n">N</span>
+          <span class="core__pole core__pole--s">S</span>
+        </span>
+        <span class="core__plate"></span>
+      </div>
+      <span class="lead"><i></i><b>01 magnet core</b></span>
+    </div>
+    <div class="bay bay--flux">
+      <div class="art art--flux">
+        <span class="flux__arc flux__arc--1"></span>
+        <span class="flux__arc flux__arc--2"></span>
+        <span class="flux__arc flux__arc--3"></span>
+        <span class="flux__arc flux__arc--4"></span>
+        <span class="flux__arc flux__arc--5"></span>
+        <span class="flux__arc flux__arc--6"></span>
+        <span class="flux__spine"></span>
+      </div>
+      <span class="lead"><i></i><b>02 flux return</b></span>
+    </div>
+    <div class="bay bay--fluid">
+      <div class="art art--fluid">
+        <span class="fluid__glow"></span>
+        <span class="fluid__spikes"></span>
+        <span class="fluid__mass">
+          <span class="fluid__skin"></span>
+          <span class="fluid__spec"></span>
+        </span>
+        <span class="fluid__field"></span>
+      </div>
+      <span class="lead"><i></i><b>03 fluid body</b></span>
+    </div>
+    <div class="bay bay--cap">
+      <div class="art art--cap">
+        <button class="cap" type="button" aria-label="Press the cap to flip polarity">
+          <span class="cap__ring"></span>
+          <span class="cap__top"></span>
+          <span class="cap__pol"><i class="cap__n">N</i><i class="cap__s">S</i></span>
+          <span class="cap__label">Flip</span>
+          <span class="cap__engrave">ferrofluid · 47%</span>
+          <span class="cap__hit"></span>
+        </button>
+      </div>
+      <span class="lead"><i></i><b>04 pole cap</b></span>
+    </div>
+    <div class="gauge">
+      <span class="gauge__bar"><i></i></span>
+      <span class="gauge__txt">mag 0.00 T</span>
+    </div>
+  </div>
+</main>
+</body>
+</html>

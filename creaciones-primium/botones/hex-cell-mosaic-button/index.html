@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hex Cell Mosaic Matrix</title>
+<meta name="description" content="A control-room matrix of eight hex-cell mosaic buttons holds the same control in idle, tracking, active, loading, disabled, armed, latched and fault states side by side.">
+<meta name="description-es" content="Una matriz de sala de control con ocho botones de celdas hexagonales muestra el mismo control en ocho estados distintos: reposo, seguimiento, activo, cargando, deshabilitado, armado, enclavado y de fallo.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="board">
+  <div class="board__field"></div>
+
+  <header class="board__head">
+    <p class="board__eye">Cell array \ sector 7 \ bank 02</p>
+    <h1 class="board__title">Hex Cell Mosaic</h1>
+    <p class="board__desc">One control, eight conditions. Every tile is the same hex-cell button wired to a different state, so the mosaic tells you at a glance which way the array is holding.</p>
+  </header>
+
+  <div class="board__grid">
+    <div class="slot"><span class="slot__id">A1</span><button class="cell" type="button" data-s="idle"><span class="cell__mx"></span><span class="cell__chip"><span class="cell__type">Arm</span></span><span class="cell__ring"></span></button><span class="slot__st">Idle</span></div>
+    <div class="slot"><span class="slot__id">A2</span><button class="cell" type="button" data-s="track"><span class="cell__mx"></span><span class="cell__chip"><span class="cell__type">Arm</span></span><span class="cell__ring"></span></button><span class="slot__st">Tracking</span></div>
+    <div class="slot"><span class="slot__id">A3</span><button class="cell" type="button" data-s="active"><span class="cell__mx"></span><span class="cell__chip"><span class="cell__type">Arm</span></span><span class="cell__ring"></span></button><span class="slot__st">Active</span></div>
+    <div class="slot"><span class="slot__id">A4</span><button class="cell" type="button" data-s="load"><span class="cell__mx"></span><span class="cell__chip"><span class="cell__type">Arm</span></span><span class="cell__ring"></span></button><span class="slot__st">Loading</span></div>
+    <div class="slot"><span class="slot__id">B1</span><button class="cell" type="button" data-s="off" disabled><span class="cell__mx"></span><span class="cell__chip"><span class="cell__type">Arm</span></span><span class="cell__ring"></span></button><span class="slot__st">Disabled</span></div>
+    <div class="slot"><span class="slot__id">B2</span><button class="cell" type="button" data-s="armed"><span class="cell__mx"></span><span class="cell__chip"><span class="cell__type">Arm</span></span><span class="cell__ring"></span></button><span class="slot__st">Armed</span></div>
+    <div class="slot"><span class="slot__id">B3</span><button class="cell" type="button" data-s="latch"><span class="cell__mx"></span><span class="cell__chip"><span class="cell__type">Arm</span></span><span class="cell__ring"></span></button><span class="slot__st">Latched</span></div>
+    <div class="slot"><span class="slot__id">B4</span><button class="cell" type="button" data-s="fault"><span class="cell__mx"></span><span class="cell__chip"><span class="cell__type">Arm</span></span><span class="cell__ring"></span></button><span class="slot__st">Fault</span></div>
+  </div>
+
+  <footer class="board__foot">
+    <span class="board__state" id="state">Array holding \ 8 of 8 reporting</span>
+    <span class="board__ticks" aria-hidden="true"></span>
+    <span class="board__code" id="code">Fires 000</span>
+  </footer>
+</main>
+</body>
+</html>

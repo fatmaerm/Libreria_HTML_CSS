@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Marquee Ticker Button</title>
+<meta name="description" content="A trading terminal whose tape, quote cells and sparkline all react when the run-tape key is pressed, scrolling the ticker, flashing the quotes and redrawing the chart.">
+<meta name="description-es" content="Terminal de bolsa en el que la cinta, las celdas de cotización y el minigráfico reaccionan al pulsar la tecla de la cinta: el ticker se desplaza, las cotizaciones parpadean y el gráfico se vuelve a trazar.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="app">
+  <header class="top">
+    <div class="top__brand">
+      <span class="top__dot" aria-hidden="true"></span>
+      <span class="top__name">ORBX Terminal</span>
+      <span class="top__seg">seg 04</span>
+    </div>
+    <h1>Marquee Ticker Button</h1>
+    <div class="top__clock"><span id="clock">09:41:02</span><span class="top__tz">UTC</span></div>
+  </header>
+  <p class="note">One key runs the whole board: the tape scrolls, every quote cell flashes its last trade and the sparkline is redrawn from a fresh walk.</p>
+
+  <div class="tape" aria-hidden="true">
+    <div class="tape__row" id="tapeRow"></div>
+    <div class="tape__fade tape__fade--l"></div>
+    <div class="tape__fade tape__fade--r"></div>
+  </div>
+
+  <nav class="tabs" aria-label="Instruments">
+    <span class="tab tab--on">ORBX</span>
+    <span class="tab">NRVN</span>
+    <span class="tab">HLTA</span>
+    <span class="tab">KSTR</span>
+    <span class="tab tab--muted">VLTY</span>
+    <span class="tab__sp"></span>
+    <span class="tab tab--muted">depth 5</span>
+  </nav>
+
+  <section class="quotes">
+    <div class="q" data-q="last"><span class="q__k">last</span><span class="q__v" id="qLast">184.62</span><i class="q__flash"></i></div>
+    <div class="q" data-q="bid"><span class="q__k">bid</span><span class="q__v" id="qBid">184.58</span><i class="q__flash"></i></div>
+    <div class="q" data-q="ask"><span class="q__k">ask</span><span class="q__v" id="qAsk">184.71</span><i class="q__flash"></i></div>
+    <div class="q" data-q="chg"><span class="q__k">chg</span><span class="q__v" id="qChg">+2.14</span><i class="q__flash"></i></div>
+    <div class="q" data-q="vol"><span class="q__k">vol</span><span class="q__v" id="qVol">1.42M</span><i class="q__flash"></i></div>
+    <div class="q q--wide" data-q="siz"><span class="q__k">session</span><span class="q__v" id="qSess">high 185.04 low 181.90</span><i class="q__flash"></i></div>
+  </section>
+
+  <div class="body">
+    <section class="chart">
+      <div class="chart__head">
+        <span class="chart__sym">ORBX &middot; 1m</span>
+        <span class="chart__legend"><i class="key key--up"></i>prints <i class="key key--scan"></i>redraw</span>
+      </div>
+      <div class="chart__stage">
+        <svg class="chart__svg" viewBox="0 0 600 232" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="fillUp" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#3ddc97" stop-opacity=".38"/>
+              <stop offset="1" stop-color="#3ddc97" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="fillDn" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ff5165" stop-opacity=".34"/>
+              <stop offset="1" stop-color="#ff5165" stop-opacity="0"/>
+            </linearGradient>
+            <clipPath id="sweepClip"><rect id="sweepRect" x="0" y="0" width="0" height="232"/></clipPath>
+          </defs>
+          <g class="grid">
+            <path d="M0 46H600M0 92H600M0 138H600M0 184H600"/>
+            <path d="M75 0V232M150 0V232M225 0V232M300 0V232M375 0V232M450 0V232M525 0V232"/>
+          </g>
+          <g class="old" id="oldGrp">
+            <path class="area" id="oldArea" fill="url(#fillUp)"/>
+            <path class="line" id="oldLine"/>
+          </g>
+          <g class="new" id="newGrp" clip-path="url(#sweepClip)">
+            <path class="area" id="newArea" fill="url(#fillUp)"/>
+            <path class="line" id="newLine"/>
+          </g>
+          <g class="mark">
+            <path class="mark__line" id="markLine" d="M0 116H600"/>
+            <circle class="mark__dot" id="markDot" cx="600" cy="116" r="4.5"/>
+          </g>
+          <g class="scan" id="scanG">
+            <rect id="scanBand" x="-40" y="0" width="40" height="232" fill="url(#fillUp)" opacity=".5"/>
+          </g>
+        </svg>
+        <span class="chart__px" id="pxTag">184.62</span>
+        <span class="chart__tick" id="tickTag">09:41</span>
+      </div>
+      <div class="chart__foot">
+        <span class="chart__tag" id="stateTag">stream idle</span>
+        <span class="chart__ticks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      </div>
+    </section>
+
+    <aside class="side">
+      <div class="panel">
+        <span class="panel__t">time &amp; sales</span>
+        <ul class="sales" id="sales">
+          <li><b>184.62</b><i>09:40:58</i><u>42</u></li>
+          <li><b>184.58</b><i>09:40:52</i><u>18</u></li>
+          <li><b>184.71</b><i>09:40:44</i><u>7</u></li>
+          <li><b>184.66</b><i>09:40:31</i><u>25</u></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <span class="panel__t">depth</span>
+        <ul class="ladder" id="ladder">
+          <li class="ask"><b>184.78</b><i>64</i><u style="--w:38%"></u></li>
+          <li class="ask"><b>184.74</b><i>41</i><u style="--w:24%"></u></li>
+          <li class="ask"><b>184.71</b><i>58</i><u style="--w:34%"></u></li>
+          <li class="bid"><b>184.62</b><i>77</i><u style="--w:46%"></u></li>
+          <li class="bid"><b>184.58</b><i>52</i><u style="--w:30%"></u></li>
+          <li class="bid"><b>184.51</b><i>96</i><u style="--w:58%"></u></li>
+        </ul>
+      </div>
+
+      <button class="go" id="go" type="button" aria-label="Run the tape">
+        <span class="go__key">run tape</span>
+        <span class="go__led" aria-hidden="true"></span>
+        <span class="go__arrow" aria-hidden="true"></span>
+        <span class="go__scan" aria-hidden="true"></span>
+      </button>
+      <div class="side__meta"><span id="ticks">0</span> runs &middot; <span id="volSum">1.42M</span> printed</div>
+    </aside>
+  </div>
+</main>
+</body>
+</html>

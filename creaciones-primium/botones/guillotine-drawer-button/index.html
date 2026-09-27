@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guillotine Drawer Button</title>
+<meta name="description" content="A brass pull inside a specimen cabinet that slides a whole labelled tray out of the cabinet face on a press, then eases the drawer shut again by itself.">
+<meta name="description-es" content="Un tirador de latón dentro de una vitrina de especímenes: al pulsarlo desliza hacia fuera una bandeja entera con su etiqueta y después el cajón se cierra solo, despacio.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="page">
+  <h1>Guillotine Drawer</h1>
+  <div class="cab">
+    <div class="cab__case">
+      <span class="case__grain" aria-hidden="true"></span>
+      <span class="case__light" aria-hidden="true"></span>
+      <span class="case__label">specimen cabinet 04</span>
+      <div class="face">
+        <span class="face__rail face__rail--t" aria-hidden="true"></span>
+        <span class="face__rail face__rail--b" aria-hidden="true"></span>
+        <div class="mouth">
+          <span class="mouth__void" aria-hidden="true"></span>
+          <span class="mouth__back" aria-hidden="true"></span>
+          <span class="mouth__rail mouth__rail--l" aria-hidden="true"></span>
+          <span class="mouth__rail mouth__rail--r" aria-hidden="true"></span>
+        </div>
+        <div class="drawer" id="drawer">
+          <span class="drawer__front">
+            <span class="front__grain" aria-hidden="true"></span>
+            <span class="front__bevel" aria-hidden="true"></span>
+            <button class="pull" type="button" id="pull" aria-label="Open the specimen drawer">
+              <span class="pull__plate" aria-hidden="true"></span>
+              <span class="pull__bar" aria-hidden="true"></span>
+              <span class="pull__glow" aria-hidden="true"></span>
+            </button>
+            <span class="front__tag" aria-hidden="true">drawer 04</span>
+          </span>
+          <div class="tray">
+            <span class="tray__floor" aria-hidden="true"></span>
+            <span class="tray__wall tray__wall--l" aria-hidden="true"></span>
+            <span class="tray__wall tray__wall--r" aria-hidden="true"></span>
+            <span class="tray__wall tray__wall--b" aria-hidden="true"></span>
+            <div class="tray__in">
+              <span class="cell" aria-hidden="true">
+                <span class="cell__foil"></span>
+                <span class="cell__gloss"></span>
+              </span>
+              <span class="plate" aria-hidden="true">
+                <b>specimen 12</b>
+                <i>iridium foil 0.4 mm</i>
+              </span>
+              <span class="tray__ticks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="cab__foot" aria-hidden="true"></span>
+    <span class="cab__glow" aria-hidden="true"></span>
+  </div>
+</main>
+</body>
+</html>

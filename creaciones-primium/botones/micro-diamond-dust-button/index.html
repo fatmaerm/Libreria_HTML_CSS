@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Micro Diamond Dust</title>
+<meta name="description" content="Three hand-sketched paper buttons whose faces are dusted with micro diamonds that scintillate as the surface tilts and shake off when pressed.">
+<meta name="description-es" content="Tres botones de papel dibujados a mano, con la cara espolvoreada de microdiamantes que centellean al inclinarse la superficie y se sueltan al pulsarlos.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<svg class="defs" aria-hidden="true">
+  <filter id="roughA" x="-12%" y="-30%" width="124%" height="160%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.038 0.09" numOctaves="3" seed="11" result="n"></feTurbulence>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="3.4" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+  </filter>
+  <filter id="roughB" x="-12%" y="-30%" width="124%" height="160%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.05 0.12" numOctaves="2" seed="29" result="n"></feTurbulence>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+  </filter>
+  <filter id="fib" x="0%" y="0%" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" stitchTiles="stitch" result="f"></feTurbulence>
+    <feColorMatrix in="f" type="saturate" values="0"></feColorMatrix>
+  </filter>
+  <pattern id="hx" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+    <line x1="0" y1="0" x2="0" y2="7" stroke="#33313c" stroke-width="1.2" opacity=".62"></line>
+  </pattern>
+</svg>
+
+<svg class="grain" aria-hidden="true"><rect width="100%" height="100%" filter="url(#fib)"></rect></svg>
+
+<main class="sheet">
+  <div class="mark mark--tl" aria-hidden="true"></div>
+  <div class="mark mark--br" aria-hidden="true"></div>
+
+  <button class="sk sk--a" type="button" aria-label="Grade 180 diamond dust">
+    <span class="sk__tilt">
+      <svg class="sk__art" viewBox="0 0 440 104" preserveAspectRatio="none" aria-hidden="true">
+        <g filter="url(#roughA)">
+          <rect class="ink ink--side" x="7" y="9" width="426" height="90" rx="11"></rect>
+          <rect class="ink ink--face" x="5" y="5" width="426" height="88" rx="11"></rect>
+        </g>
+        <path class="ink__band" d="M7 93 L433 93 L433 101 L11 101 Z"></path>
+        <path class="ink__corner" d="M5 5 L-2 0 M431 5 L438 0 M5 93 L-2 100 M431 93 L438 100"></path>
+      </svg>
+      <i class="sk__face" data-dust="24"></i>
+      <i class="sk__shade"></i>
+      <em class="sk__label">Grade 180</em>
+      <span class="sk__note">light film</span>
+    </span>
+    <i class="sk__puff"></i>
+  </button>
+
+  <button class="sk sk--b" type="button" aria-label="Grade 320 diamond dust">
+    <span class="sk__tilt">
+      <svg class="sk__art" viewBox="0 0 440 104" preserveAspectRatio="none" aria-hidden="true">
+        <g filter="url(#roughB)">
+          <rect class="ink ink--side" x="7" y="9" width="426" height="90" rx="11"></rect>
+          <rect class="ink ink--face" x="5" y="5" width="426" height="88" rx="11"></rect>
+        </g>
+        <path class="ink__band" d="M7 93 L433 93 L433 101 L11 101 Z"></path>
+        <path class="ink__corner" d="M5 5 L-2 0 M431 5 L438 0 M5 93 L-2 100 M431 93 L438 100"></path>
+      </svg>
+      <i class="sk__face" data-dust="34"></i>
+      <i class="sk__shade"></i>
+      <em class="sk__label">Grade 320</em>
+      <span class="sk__note">medium film</span>
+    </span>
+    <i class="sk__puff"></i>
+  </button>
+
+  <button class="sk sk--c" type="button" aria-label="Grade 600 diamond dust">
+    <span class="sk__tilt">
+      <svg class="sk__art" viewBox="0 0 440 104" preserveAspectRatio="none" aria-hidden="true">
+        <g filter="url(#roughA)">
+          <rect class="ink ink--side" x="7" y="9" width="426" height="90" rx="11"></rect>
+          <rect class="ink ink--face" x="5" y="5" width="426" height="88" rx="11"></rect>
+        </g>
+        <path class="ink__band" d="M7 93 L433 93 L433 101 L11 101 Z"></path>
+        <path class="ink__corner" d="M5 5 L-2 0 M431 5 L438 0 M5 93 L-2 100 M431 93 L438 100"></path>
+      </svg>
+      <i class="sk__face" data-dust="46"></i>
+      <i class="sk__shade"></i>
+      <em class="sk__label">Grade 600</em>
+      <span class="sk__note">heavy film</span>
+    </span>
+    <i class="sk__puff"></i>
+  </button>
+
+  <div class="dim" aria-hidden="true">
+    <span class="dim__line"></span>
+    <span class="dim__tick dim__tick--l"></span>
+    <span class="dim__tick dim__tick--r"></span>
+    <b>128 mm</b>
+  </div>
+  <p class="hand">micro-diamond dust, 0.02 mm — tap to shake off</p>
+  <span class="stamp">DUST TEST · 04</span>
+</main>
+</body>
+</html>

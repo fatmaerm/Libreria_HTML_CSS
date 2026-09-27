@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parallax Depth Stack Button</title>
+<meta name="description" content="Three builds of the same button side by side with zero, four and eleven parallax depth layers, with a live layer meter proving how far each layer actually travels.">
+<meta name="description-es" content="Tres versiones del mismo botón en fila, con cero, cuatro y once capas de profundidad en paralaje, y un medidor de capas en vivo que demuestra cuánto se desplaza realmente cada capa.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="cmp">
+  <header class="head">
+    <h1>Parallax Depth Stack</h1>
+    <p>One pointer drives three builds of the same button &mdash; zero, four and eleven depth layers.</p>
+  </header>
+
+  <div class="deck" id="deck">
+    <div class="probe" id="probe" aria-hidden="true">
+      <span class="p-dot"></span>
+      <span class="p-h"></span>
+      <span class="p-v"></span>
+    </div>
+
+    <section class="col" data-amp="0">
+      <div class="chead"><b>A</b><span>Flat</span><i>0 layers</i></div>
+      <div class="pad">
+        <button class="pb flat" type="button" data-col="0">
+          <span class="lface"></span>
+          <span class="ltxt">Transfer</span>
+        </button>
+      </div>
+      <div class="meter" data-col="0"></div>
+      <div class="dread"><b id="d0">0.0</b><i>px max travel</i></div>
+    </section>
+
+    <section class="col" data-amp="0.42">
+      <div class="chead"><b>B</b><span>Relief</span><i>4 layers</i></div>
+      <div class="pad">
+        <button class="pb relief" type="button" data-col="1">
+          <span class="l-glow"></span>
+          <span class="l-face"></span>
+          <span class="l-rim"></span>
+          <span class="l-spec"></span>
+          <span class="l-txt">Transfer</span>
+        </button>
+      </div>
+      <div class="meter" data-col="1"></div>
+      <div class="dread"><b id="d1">0.0</b><i>px max travel</i></div>
+    </section>
+
+    <section class="col" data-amp="1">
+      <div class="chead"><b>C</b><span>Depth</span><i>11 layers</i></div>
+      <div class="pad">
+        <button class="pb depth" type="button" data-col="2">
+          <span class="l-glow"></span>
+          <span class="l-back"></span>
+          <span class="l-grid"></span>
+          <span class="l-face"></span>
+          <span class="l-in"></span>
+          <span class="l-rim"></span>
+          <span class="l-edge"></span>
+          <span class="l-spec"></span>
+          <span class="l-sheen"></span>
+          <span class="l-txt-sh"></span>
+          <span class="l-txt">Transfer</span>
+        </button>
+      </div>
+      <div class="meter" data-col="2"></div>
+      <div class="dread"><b id="d2">0.0</b><i>px max travel</i></div>
+    </section>
+  </div>
+
+  <footer class="foot">
+    <span class="tag" id="mode">Auto sweep</span>
+    <span class="amp">Amplitude <b id="ampv">14</b> px &middot; pointer <b id="pv">0.00 / 0.00</b></span>
+  </footer>
+</main>
+</body>
+</html>

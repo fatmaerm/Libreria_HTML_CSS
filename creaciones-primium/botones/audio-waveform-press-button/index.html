@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Audio Waveform Press Button</title>
+<meta name="description" content="A channel strip button on a mixing console where holding it compresses the waveform, rides the gain fader up and drives the meters, bus readout and gain reduction meter.">
+<meta name="description-es" content="Un botón de canal en una mesa de mezclas donde mantenerlo pulsado comprime la forma de onda, sube el fader de ganancia y arrastra los vúmetros, la lectura del bus y el medidor de reducción de ganancia.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="console">
+  <header class="head">
+    <h1>Arm · Channel Strip</h1>
+    <p class="lede">Hold the arm pad and the strip ducks its own waveform, rides the gain fader into the compressor and pushes the bus meters with it.</p>
+  </header>
+
+  <div class="panel" id="panel">
+    <span class="panel__screw panel__screw--a"></span>
+    <span class="panel__screw panel__screw--b"></span>
+    <span class="panel__screw panel__screw--c"></span>
+    <span class="panel__screw panel__screw--d"></span>
+
+    <section class="master">
+      <div class="master__id">
+        <span class="master__lbl">master bus</span>
+        <span class="master__sub">stereo sum · comp on</span>
+      </div>
+      <div class="ladder" data-seg="18"></div>
+      <div class="gr">
+        <span class="gr__lbl">gr</span>
+        <span class="gr__track"><i class="gr__bar" id="grBar"></i></span>
+        <b class="gr__val" id="grVal">0.0</b>
+      </div>
+      <div class="out">
+        <b class="out__val" id="outVal">-18.4</b>
+        <span class="out__u">dbfs</span>
+        <i class="out__clip" id="clip"></i>
+      </div>
+    </section>
+
+    <section class="strips">
+      <article class="strip" data-seed="1">
+        <header class="strip__top"><b>ch 1</b><i>mono</i></header>
+        <div class="knob knob--sm" data-val="0.62" data-min="-100" data-max="100" data-unit="" data-lbl="pan">
+          <span class="knob__dial"><i></i></span>
+          <span class="knob__lbl">pan</span>
+          <b class="knob__val">24L</b>
+        </div>
+        <div class="scope scope--aux" data-bar="11" data-seed="1"></div>
+        <div class="meter" data-seg="10"></div>
+        <div class="fader fader--aux"><span class="fader__track"><i class="fader__fill" style="transform:scaleY(.62)"></i></span><span class="fader__cap"></span></div>
+        <span class="strip__tag">aux</span>
+      </article>
+
+      <article class="strip" data-seed="2">
+        <header class="strip__top"><b>ch 2</b><i>mono</i></header>
+        <div class="knob knob--sm" data-val="0.38" data-min="-100" data-max="100" data-unit="" data-lbl="pan">
+          <span class="knob__dial"><i></i></span>
+          <span class="knob__lbl">pan</span>
+          <b class="knob__val">24R</b>
+        </div>
+        <div class="scope scope--aux" data-bar="11" data-seed="2"></div>
+        <div class="meter" data-seg="10"></div>
+        <div class="fader fader--aux"><span class="fader__track"><i class="fader__fill" style="transform:scaleY(.48)"></i></span><span class="fader__cap"></span></div>
+        <span class="strip__tag">aux</span>
+      </article>
+
+      <article class="strip strip--main" id="mainStrip">
+        <header class="strip__top"><b>ch 8</b><i>arm · rec</i></header>
+        <div class="scope scope--main" data-bar="26" data-seed="8"></div>
+        <div class="strip__meterrow">
+          <div class="meter meter--tall" data-seg="12" id="mainMeter"></div>
+          <div class="rec">
+            <i class="rec__led" id="recLed"></i>
+            <b class="rec__tc" id="recTc">00:00:00:00</b>
+            <span class="rec__lbl" id="recLbl">idle</span>
+          </div>
+        </div>
+        <button class="arm" id="arm" type="button" aria-pressed="false" aria-label="Arm the channel strip and hold">
+          <span class="arm__well"></span>
+          <span class="arm__face"></span>
+          <span class="arm__spec"></span>
+          <span class="arm__glyph">
+            <i></i><i></i><i></i>
+          </span>
+          <span class="arm__lbl" id="armLbl">arm</span>
+          <span class="arm__ticks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        </button>
+        <div class="fader fader--big">
+          <span class="fader__track"><i class="fader__fill" id="faderFill"></i></span>
+          <span class="fader__scale"><i></i><i></i><i></i><i></i><i></i></span>
+          <span class="fader__travel" id="faderTravel"><span class="fader__cap"></span></span>
+        </div>
+        <span class="fader__db" id="faderDb">-42.0</span>
+        <span class="strip__tag strip__tag--main">main</span>
+      </article>
+
+      <article class="strip" data-seed="3">
+        <header class="strip__top"><b>ch 9</b><i>stereo</i></header>
+        <div class="knob knob--sm" data-val="0.5" data-min="-100" data-max="100" data-unit="" data-lbl="pan">
+          <span class="knob__dial"><i></i></span>
+          <span class="knob__lbl">pan</span>
+          <b class="knob__val">c</b>
+        </div>
+        <div class="scope scope--aux" data-bar="11" data-seed="3"></div>
+        <div class="meter" data-seg="10"></div>
+        <div class="fader fader--aux"><span class="fader__track"><i class="fader__fill" style="transform:scaleY(.55)"></i></span><span class="fader__cap"></span></div>
+        <span class="strip__tag">aux</span>
+      </article>
+    </section>
+
+    <section class="mods">
+      <div class="mod">
+        <div class="knob" data-mod="drive" data-val="0.55" data-min="0" data-max="24" data-unit=" db" data-lbl="drive">
+          <span class="knob__dial"><i></i></span>
+          <span class="knob__ring"></span>
+          <b class="knob__val">6.0</b>
+        </div>
+        <span class="mod__lbl">drive</span>
+      </div>
+      <div class="mod">
+        <div class="knob" data-mod="thresh" data-val="0.42" data-min="-24" data-max="0" data-unit=" db" data-lbl="thresh">
+          <span class="knob__dial"><i></i></span>
+          <span class="knob__ring"></span>
+          <b class="knob__val">-14.0</b>
+        </div>
+        <span class="mod__lbl">thresh</span>
+      </div>
+      <div class="mod mod--wide">
+        <div class="slide" data-mod="rate" data-val="0.55" data-min="20" data-max="400" data-unit=" ms" data-lbl="ride">
+          <span class="slide__rail">
+            <i class="slide__fill"></i>
+            <span class="slide__ticks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="slide__travel"><span class="slide__cap"></span></span>
+          </span>
+          <b class="slide__val">226 ms</b>
+        </div>
+        <span class="mod__lbl">gain ride</span>
+      </div>
+      <div class="mod">
+        <button class="sw" id="glue" type="button" role="switch" aria-checked="true">
+          <span class="sw__track"><i class="sw__cap"></i></span>
+          <span class="sw__lbl">glue</span>
+        </button>
+        <span class="mod__lbl mod__lbl--b">soft clip</span>
+      </div>
+    </section>
+
+    <p class="panel__foot">drive sets how hard the strip ducks · ride sets fader speed · glue adds 4 db of soft clip</p>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Surface Tension Snap</title>
+<meta name="description" content="Four vial buttons each hold a droplet at a different strain, the surface tension necks the drop until it snaps back with a recoil wobble, every vial out of phase.">
+<meta name="description-es" content="Cuatro pulsadores de vial, cada uno con una gota sometida a un estiramiento distinto: la tensión superficial estrecha el cuello de la gota hasta que salta hacia atrás con un temblor de rebote, y cada vial va desfasado respecto a los demás.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="rack">
+  <div class="rail"></div>
+  <div class="halo"></div>
+  <div class="col">
+    <span class="frame f1"></span>
+    <span class="frame f2"></span>
+    <div class="unit" style="--off:0px">
+      <div class="lbl">
+        <span class="lbl__t">VIAL 01</span>
+        <b class="eps">0.31</b>
+        <span class="ph">HOLD</span>
+      </div>
+      <span class="unit__gauge"><i></i></span>
+      <div class="vial">
+        <span class="vial__glass"></span>
+        <span class="vial__neck"></span>
+        <span class="drop">
+          <span class="drop__body"></span>
+          <span class="drop__tail"></span>
+          <span class="drop__tip"></span>
+        </span>
+        <span class="drop drop--fly"><span class="drop__body"></span></span>
+        <span class="snap"></span>
+        <span class="vial__base"></span>
+      </div>
+      <button class="btn" type="button" aria-label="Vial one seal">
+        <span class="btn__ring"></span>
+        <span class="btn__cap"><span class="btn__label">01</span><span class="btn__sub">SEAL</span></span>
+      </button>
+    </div>
+    <div class="unit" style="--off:30px">
+      <div class="lbl">
+        <span class="lbl__t">VIAL 02</span>
+        <b class="eps">0.47</b>
+        <span class="ph">HOLD</span>
+      </div>
+      <span class="unit__gauge"><i></i></span>
+      <div class="vial">
+        <span class="vial__glass"></span>
+        <span class="vial__neck"></span>
+        <span class="drop">
+          <span class="drop__body"></span>
+          <span class="drop__tail"></span>
+          <span class="drop__tip"></span>
+        </span>
+        <span class="drop drop--fly"><span class="drop__body"></span></span>
+        <span class="snap"></span>
+        <span class="vial__base"></span>
+      </div>
+      <button class="btn" type="button" aria-label="Vial two seal">
+        <span class="btn__ring"></span>
+        <span class="btn__cap"><span class="btn__label">02</span><span class="btn__sub">SEAL</span></span>
+      </button>
+    </div>
+    <div class="unit" style="--off:-18px">
+      <div class="lbl">
+        <span class="lbl__t">VIAL 03</span>
+        <b class="eps">0.62</b>
+        <span class="ph">HOLD</span>
+      </div>
+      <span class="unit__gauge"><i></i></span>
+      <div class="vial">
+        <span class="vial__glass"></span>
+        <span class="vial__neck"></span>
+        <span class="drop">
+          <span class="drop__body"></span>
+          <span class="drop__tail"></span>
+          <span class="drop__tip"></span>
+        </span>
+        <span class="drop drop--fly"><span class="drop__body"></span></span>
+        <span class="snap"></span>
+        <span class="vial__base"></span>
+      </div>
+      <button class="btn" type="button" aria-label="Vial three seal">
+        <span class="btn__ring"></span>
+        <span class="btn__cap"><span class="btn__label">03</span><span class="btn__sub">SEAL</span></span>
+      </button>
+    </div>
+    <div class="unit" style="--off:44px">
+      <div class="lbl">
+        <span class="lbl__t">VIAL 04</span>
+        <b class="eps">0.78</b>
+        <span class="ph">HOLD</span>
+      </div>
+      <span class="unit__gauge"><i></i></span>
+      <div class="vial">
+        <span class="vial__glass"></span>
+        <span class="vial__neck"></span>
+        <span class="drop">
+          <span class="drop__body"></span>
+          <span class="drop__tail"></span>
+          <span class="drop__tip"></span>
+        </span>
+        <span class="drop drop--fly"><span class="drop__body"></span></span>
+        <span class="snap"></span>
+        <span class="vial__base"></span>
+      </div>
+      <button class="btn" type="button" aria-label="Vial four seal">
+        <span class="btn__ring"></span>
+        <span class="btn__cap"><span class="btn__label">04</span><span class="btn__sub">SEAL</span></span>
+      </button>
+    </div>
+  </div>
+  <div class="base"></div>
+  <div class="pipes"><i></i><i></i><i></i><i></i></div>
+</main>
+</body>
+</html>

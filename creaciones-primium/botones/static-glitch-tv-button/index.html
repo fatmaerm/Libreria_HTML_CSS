@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Snow Static Transmitter</title>
+<meta name="description" content="A snowy night broadcast seen through an analogue receiver where the transmit switch throws the carrier, tears the picture into rolling interference and burns a running timecode into the snow.">
+<meta name="description-es" content="Una emisión nocturna con nieve vista en un receptor analógico: el interruptor de emisión lanza la portadora, destroza la imagen en interferencias rodantes y graba un código de tiempo en marcha sobre la nieve.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="pic" id="pic">
+  <span class="sky"></span>
+  <span class="moon"></span>
+  <span class="aur"></span>
+  <span class="aur aur--b"></span>
+  <span class="ridge ridge--b"></span>
+  <span class="ridge ridge--m"></span>
+  <span class="trees trees--f"></span>
+  <span class="field"></span>
+  <span class="field__streak"></span>
+  <span class="drift drift--a"></span>
+  <span class="drift drift--b"></span>
+  <span class="drift drift--c"></span>
+  <span class="trees trees--n"></span>
+  <span class="tower">
+    <i class="tower__rail"></i>
+    <i class="tower__brace"></i>
+    <i class="tower__head"></i>
+    <i class="tower__lamp"></i>
+    <i class="tower__wire tower__wire--l"></i>
+    <i class="tower__wire tower__wire--r"></i>
+    <i class="tower__foot"></i>
+  </span>
+  <span class="flakes" id="flakes"></span>
+  <span class="haze"></span>
+
+  <span class="art art--a"></span>
+  <span class="art art--b"></span>
+  <span class="art art--c"></span>
+  <span class="roll"></span>
+  <span class="track"></span>
+  <span class="chroma"></span>
+  <span class="lines"></span>
+  <span class="fold"></span>
+  <span class="vign"></span>
+  <span class="glass"></span>
+</div>
+
+<div class="burn">
+  <span class="burn__tc" id="tc">00:00:00:00</span>
+  <span class="burn__ch">ch 04 &nbsp;\&nbsp; nordlys</span>
+  <span class="burn__air" id="air"><i></i>on air</span>
+</div>
+
+<div class="chyron">
+  <span class="chyron__bar"></span>
+  <span class="chyron__tx">
+    <h1 class="chyron__t">Snow Static Relay</h1>
+    <span class="chyron__s">tx switch \ nordlys mast \ 118.35 mhz</span>
+  </span>
+</div>
+
+<div class="deck">
+  <span class="deck__lamp" id="lamp"></span>
+  <span class="deck__lbl">Transmitter</span>
+  <button class="tx" id="tx" type="button" aria-label="Throw the transmitter carrier">
+    <span class="tx__guard"></span>
+    <span class="tx__bezel"></span>
+    <span class="tx__lens"><i>TX</i></span>
+    <span class="tx__plate">Transmit</span>
+  </button>
+  <span class="deck__row">
+    <span class="deck__st" id="txState">standby</span>
+    <span class="deck__sig" id="sig">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </span>
+  </span>
+</div>
+</body>
+</html>

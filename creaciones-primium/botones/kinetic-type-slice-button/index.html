@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kinetic Type Slice Button</title>
+<meta name="description" content="A contact sheet of eight frames in which the label SLICE is cut into horizontal strips that slide out of register and spring back, every frame catching a different stage of the same cycle.">
+<meta name="description-es" content="Hoja de contactos de ocho fotogramas en la que el rótulo SLICE aparece cortado en tiras horizontales que se salen del registro y rebotan de vuelta, y cada fotograma captura una fase distinta del mismo ciclo.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="page">
+  <header class="head">
+    <h1>Kinetic Type Slice</h1>
+    <p>Nine horizontal strips per frame, each on its own spring. Hold any frame and the whole sheet stops dead on that instant of the cycle.</p>
+  </header>
+
+  <div class="sheet" id="sheet">
+    <div class="rail" aria-hidden="true"></div>
+
+    <div class="grid" id="grid">
+      <button class="fr" type="button" style="--f:0" aria-label="Frame 01">
+        <span class="fr__num">01</span>
+        <span class="fr__stack">
+          <span class="sl" style="--i:0">SLICE</span><span class="sl" style="--i:1">SLICE</span><span class="sl" style="--i:2">SLICE</span><span class="sl" style="--i:3">SLICE</span><span class="sl" style="--i:4">SLICE</span><span class="sl" style="--i:5">SLICE</span><span class="sl" style="--i:6">SLICE</span><span class="sl" style="--i:7">SLICE</span><span class="sl" style="--i:8">SLICE</span>
+        </span>
+        <span class="fr__edge" aria-hidden="true"></span>
+      </button>
+      <button class="fr" type="button" style="--f:1" aria-label="Frame 02">
+        <span class="fr__num">02</span>
+        <span class="fr__stack">
+          <span class="sl" style="--i:0">SLICE</span><span class="sl" style="--i:1">SLICE</span><span class="sl" style="--i:2">SLICE</span><span class="sl" style="--i:3">SLICE</span><span class="sl" style="--i:4">SLICE</span><span class="sl" style="--i:5">SLICE</span><span class="sl" style="--i:6">SLICE</span><span class="sl" style="--i:7">SLICE</span><span class="sl" style="--i:8">SLICE</span>
+        </span>
+        <span class="fr__edge" aria-hidden="true"></span>
+      </button>
+      <button class="fr" type="button" style="--f:2" aria-label="Frame 03">
+        <span class="fr__num">03</span>
+        <span class="fr__stack">
+          <span class="sl" style="--i:0">SLICE</span><span class="sl" style="--i:1">SLICE</span><span class="sl" style="--i:2">SLICE</span><span class="sl" style="--i:3">SLICE</span><span class="sl" style="--i:4">SLICE</span><span class="sl" style="--i:5">SLICE</span><span class="sl" style="--i:6">SLICE</span><span class="sl" style="--i:7">SLICE</span><span class="sl" style="--i:8">SLICE</span>
+        </span>
+        <span class="fr__edge" aria-hidden="true"></span>
+      </button>
+      <button class="fr" type="button" style="--f:3" aria-label="Frame 04">
+        <span class="fr__num">04</span>
+        <span class="fr__stack">
+          <span class="sl" style="--i:0">SLICE</span><span class="sl" style="--i:1">SLICE</span><span class="sl" style="--i:2">SLICE</span><span class="sl" style="--i:3">SLICE</span><span class="sl" style="--i:4">SLICE</span><span class="sl" style="--i:5">SLICE</span><span class="sl" style="--i:6">SLICE</span><span class="sl" style="--i:7">SLICE</span><span class="sl" style="--i:8">SLICE</span>
+        </span>
+        <span class="fr__edge" aria-hidden="true"></span>
+      </button>
+      <button class="fr" type="button" style="--f:4" aria-label="Frame 05">
+        <span class="fr__num">05</span>
+        <span class="fr__stack">
+          <span class="sl" style="--i:0">SLICE</span><span class="sl" style="--i:1">SLICE</span><span class="sl" style="--i:2">SLICE</span><span class="sl" style="--i:3">SLICE</span><span class="sl" style="--i:4">SLICE</span><span class="sl" style="--i:5">SLICE</span><span class="sl" style="--i:6">SLICE</span><span class="sl" style="--i:7">SLICE</span><span class="sl" style="--i:8">SLICE</span>
+        </span>
+        <span class="fr__edge" aria-hidden="true"></span>
+      </button>
+      <button class="fr" type="button" style="--f:5" aria-label="Frame 06">
+        <span class="fr__num">06</span>
+        <span class="fr__stack">
+          <span class="sl" style="--i:0">SLICE</span><span class="sl" style="--i:1">SLICE</span><span class="sl" style="--i:2">SLICE</span><span class="sl" style="--i:3">SLICE</span><span class="sl" style="--i:4">SLICE</span><span class="sl" style="--i:5">SLICE</span><span class="sl" style="--i:6">SLICE</span><span class="sl" style="--i:7">SLICE</span><span class="sl" style="--i:8">SLICE</span>
+        </span>
+        <span class="fr__edge" aria-hidden="true"></span>
+      </button>
+      <button class="fr" type="button" style="--f:6" aria-label="Frame 07">
+        <span class="fr__num">07</span>
+        <span class="fr__stack">
+          <span class="sl" style="--i:0">SLICE</span><span class="sl" style="--i:1">SLICE</span><span class="sl" style="--i:2">SLICE</span><span class="sl" style="--i:3">SLICE</span><span class="sl" style="--i:4">SLICE</span><span class="sl" style="--i:5">SLICE</span><span class="sl" style="--i:6">SLICE</span><span class="sl" style="--i:7">SLICE</span><span class="sl" style="--i:8">SLICE</span>
+        </span>
+        <span class="fr__edge" aria-hidden="true"></span>
+      </button>
+      <button class="fr" type="button" style="--f:7" aria-label="Frame 08">
+        <span class="fr__num">08</span>
+        <span class="fr__stack">
+          <span class="sl" style="--i:0">SLICE</span><span class="sl" style="--i:1">SLICE</span><span class="sl" style="--i:2">SLICE</span><span class="sl" style="--i:3">SLICE</span><span class="sl" style="--i:4">SLICE</span><span class="sl" style="--i:5">SLICE</span><span class="sl" style="--i:6">SLICE</span><span class="sl" style="--i:7">SLICE</span><span class="sl" style="--i:8">SLICE</span>
+        </span>
+        <span class="fr__edge" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <div class="rail" aria-hidden="true"></div>
+    <span class="leak" aria-hidden="true"></span>
+    <span class="grain" aria-hidden="true"></span>
+  </div>
+
+  <footer class="cap">
+    <span class="cap__code">KTC&#8209;04</span>
+    <span class="cap__bar" aria-hidden="true"><i></i></span>
+    <span class="cap__txt" id="cap">8 frames &middot; 24 fps &middot; cycle 1.60 s &middot; running</span>
+    <span class="cap__dot" aria-hidden="true"></span>
+  </footer>
+</main>
+</body>
+</html>

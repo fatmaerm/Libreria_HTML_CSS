@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Variable Weight Morph Button</title>
+<meta name="description" content="A display-scale word rendered edge to edge whose variable weight breathes from a hairline to solid black and slams to maximum the instant it is pressed.">
+<meta name="description-es" content="Una palabra a tamaño de titular, dibujada de borde a borde, cuyo grosor variable respira desde un filete hasta el negro sólido y se dispara al máximo en el instante en que se pulsa.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="stage">
+  <span class="reg reg--tl" aria-hidden="true"></span>
+  <span class="reg reg--tr" aria-hidden="true"></span>
+  <span class="reg reg--bl" aria-hidden="true"></span>
+  <span class="reg reg--br" aria-hidden="true"></span>
+
+  <div class="ruler ruler--top" aria-hidden="true"></div>
+  <div class="ruler ruler--bot" aria-hidden="true"></div>
+
+  <header class="head">
+    <h1>Variable Weight Morph</h1>
+    <div class="axis">
+      <span class="axis__cap">wght</span>
+      <span class="axis__bar"><i class="axis__fill" id="fill"></i><i class="axis__over"></i></span>
+      <span class="axis__num" id="num"></span>
+      <span class="over">over 900</span>
+    </div>
+  </header>
+
+  <div class="fit" id="fit">
+    <span class="ghost" id="ghost" aria-hidden="true">MORPH</span>
+    <button class="press" id="press" type="button" aria-label="Press to slam the weight axis to maximum">
+      <span class="press__word" id="word">MORPH</span>
+      <span class="seam" id="seam" aria-hidden="true"></span>
+      <span class="press__bold" aria-hidden="true">MORPH</span>
+      <span class="press__ring" id="ring" aria-hidden="true"></span>
+      <span class="press__sheen" aria-hidden="true"></span>
+    </button>
+    <span class="speck speck--a" aria-hidden="true"></span>
+    <span class="speck speck--b" aria-hidden="true"></span>
+    <span class="speck speck--c" aria-hidden="true"></span>
+  </div>
+
+  <div class="scale" aria-hidden="true">
+    <span class="scale__cap">hairline</span>
+    <span class="scale__line"><i class="scale__mark"></i></span>
+    <span class="scale__cap">maximum</span>
+  </div>
+</main>
+</body>
+</html>

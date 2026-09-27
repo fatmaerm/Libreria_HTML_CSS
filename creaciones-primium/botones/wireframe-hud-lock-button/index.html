@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wireframe Target Lock Button</title>
+<meta name="description" content="A targeting heads-up display where sweep brackets and a reticle acquire a button control, converge with live range and bearing readouts and snap into a hard lock.">
+<meta name="description-es" content="Un visor de puntería en modo alámbrico, donde unos corchetes de barrido y una mira localizan un botón, convergen con lecturas de distancia y rumbo en directo y quedan fijados con un bloqueo seco.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="hud" id="hud">
+  <div class="bg" aria-hidden="true">
+    <span class="bg-grid"></span>
+    <span class="bg-vig"></span>
+    <span class="bg-sweep"></span>
+  </div>
+  <div class="scan" aria-hidden="true"></div>
+
+  <span class="cnr c1" aria-hidden="true"></span>
+  <span class="cnr c2" aria-hidden="true"></span>
+  <span class="cnr c3" aria-hidden="true"></span>
+  <span class="cnr c4" aria-hidden="true"></span>
+
+  <header class="head">
+    <div class="head-l">
+      <h1>Wireframe Target Lock</h1>
+      <p>Sweep brackets acquire the control, converge and snap into a hard lock.</p>
+    </div>
+    <div class="head-r">
+      <span class="chip" id="mode">MODE AUTO</span>
+      <span class="chip alt" id="clock">T 00.00</span>
+    </div>
+  </header>
+
+  <div class="mid">
+    <aside class="tele" aria-hidden="true">
+      <div class="tele-h">TELEMETRY</div>
+      <div class="row"><span>RNG</span><b id="vRange">0000</b><i>m</i></div>
+      <div class="row"><span>BRG</span><b id="vBrg">000.0</b><i>&deg;</i></div>
+      <div class="row"><span>ELE</span><b id="vEle">+00.0</b><i>&deg;</i></div>
+      <div class="row"><span>DRF</span><b id="vDrf">+0.00</b><i>&deg;/s</i></div>
+      <div class="row"><span>VEL</span><b id="vVel">000</b><i>m/s</i></div>
+      <div class="row"><span>SNR</span><b id="vSnr">00.0</b><i>dB</i></div>
+      <div class="bars">
+        <span class="bar"><i id="b1"></i></span>
+        <span class="bar"><i id="b2"></i></span>
+        <span class="bar"><i id="b3"></i></span>
+        <span class="bar"><i id="b4"></i></span>
+        <span class="bar"><i id="b5"></i></span>
+      </div>
+      <div class="warn">WARN&nbsp;TICKS</div>
+      <div class="ticks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </aside>
+
+    <div class="stage" id="stage">
+      <div class="tape" aria-hidden="true">
+        <span class="tape-ticks"></span>
+        <span class="tape-labels"><b>330</b><b>000</b><b>030</b><b>060</b><b>090</b><b>120</b><b>150</b><b>180</b></span>
+        <span class="tape-index"></span>
+      </div>
+
+      <div class="ring" id="ring" aria-hidden="true"></div>
+      <div class="ring2" id="ring2" aria-hidden="true"></div>
+      <div class="ping" id="ping" aria-hidden="true"></div>
+
+      <div class="brk b-tl" id="bk0" aria-hidden="true"><em>1</em></div>
+      <div class="brk b-tr" id="bk1" aria-hidden="true"><em>2</em></div>
+      <div class="brk b-br" id="bk2" aria-hidden="true"><em>3</em></div>
+      <div class="brk b-bl" id="bk3" aria-hidden="true"><em>4</em></div>
+
+      <div class="cross" aria-hidden="true">
+        <span class="cx-t"></span><span class="cx-b"></span>
+        <span class="cx-l"></span><span class="cx-r"></span>
+        <span class="cx-o"></span>
+      </div>
+
+      <button class="target" id="target" type="button">
+        <span class="t-node n1" aria-hidden="true"></span>
+        <span class="t-node n2" aria-hidden="true"></span>
+        <span class="t-node n3" aria-hidden="true"></span>
+        <span class="t-node n4" aria-hidden="true"></span>
+        <span class="t-label">Engage</span>
+      </button>
+
+      <div class="tag" id="tag" aria-hidden="true">Lock</div>
+      <div class="flash" id="flash" aria-hidden="true"></div>
+    </div>
+
+    <aside class="dial" aria-hidden="true">
+      <div class="dial-h">ACQ GAIN</div>
+      <div class="dial-face">
+        <span class="dial-ticks"></span>
+        <span class="dial-arc" id="dialArc"></span>
+        <span class="dial-needle" id="dialNeedle"></span>
+        <span class="dial-hub"></span>
+      </div>
+      <div class="dial-v"><b id="vGain">00</b><i>%</i></div>
+      <div class="dial-scale"><span>0</span><span>50</span><span>100</span></div>
+    </aside>
+  </div>
+
+  <footer class="foot">
+    <div class="status" id="status">Searching</div>
+    <div class="trace" aria-hidden="true">
+      <i style="--d:0s"></i><i style="--d:.06s"></i><i style="--d:.12s"></i><i style="--d:.18s"></i>
+      <i style="--d:.24s"></i><i style="--d:.3s"></i><i style="--d:.36s"></i><i style="--d:.42s"></i>
+      <i style="--d:.48s"></i><i style="--d:.54s"></i><i style="--d:.6s"></i><i style="--d:.66s"></i>
+      <i style="--d:.72s"></i><i style="--d:.78s"></i><i style="--d:.84s"></i><i style="--d:.9s"></i>
+    </div>
+    <div class="tone" id="tone" aria-hidden="true">
+      <span>TONE</span><b>1180 Hz</b>
+      <em><i></i><i></i><i></i><i></i><i></i><i></i><i></i></em>
+    </div>
+  </footer>
+</main>
+</body>
+</html>

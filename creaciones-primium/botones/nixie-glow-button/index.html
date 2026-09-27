@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nixie Glow Cathode Bench</title>
+<meta name="description" content="A laboratory bench rig where pressing a glass nixie tube strikes a blue-hot ignition, slides the cathode bloom between digits and spikes the oscilloscope trace on channel one.">
+<meta name="description-es" content="Montaje de banco de laboratorio donde al pulsar un tubo nixie de vidrio se enciende una ignición azul, el halo del cátodo se desliza de un dígito a otro y la traza del osciloscopio se dispara en el canal uno.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="rig">
+  <header class="lede">
+    <p class="lede__eye">Tube lab \ bay four \ anode supply</p>
+    <h1 class="lede__title">Nixie Glow Cathode</h1>
+    <p class="lede__desc">The button is the instrument. Press it and the strike circuit dumps blue-white charge into the tube, the warm cathode bloom slides one position and the digit crossfades while the trace on channel one spikes.</p>
+    <dl class="spec">
+      <div><dt>Tube</dt><dd>IN-12 side view</dd></div>
+      <div><dt>Anode</dt><dd id="anode">170 V</dd></div>
+      <div><dt>Cathode</dt><dd id="cathodeV">-3 V</dd></div>
+      <div><dt>State</dt><dd id="state">Armed</dd></div>
+    </dl>
+  </header>
+
+  <section class="bench">
+    <div class="scope" aria-hidden="true">
+      <div class="scope__case">
+        <div class="scope__brand">TEK 401 \ ch1 ch2</div>
+        <div class="scope__screen">
+          <span class="scope__grid"></span>
+          <span class="scope__trigger"></span>
+          <div class="scope__track" id="track">
+            <div class="scope__seg">
+              <svg viewBox="0 0 200 100" preserveAspectRatio="none">
+                <path class="scope__line scope__line--ghost" d="M0 78 L16 78 L20 74 L24 80 L28 74 L32 80 L36 78 L48 78 L50 46 L52 78 L58 78 L60 70 L62 82 L64 70 L66 78 L78 78 L86 76 L94 78 L102 76 L110 78 L118 76 L126 78 L134 76 L142 78 L152 78 L154 60 L156 78 L162 78 L164 73 L166 81 L168 73 L170 78 L182 78 L188 77 L194 78 L200 78"/>
+                <path class="scope__line" d="M0 64 L10 64 L14 61 L18 67 L22 61 L26 67 L30 61 L34 64 L44 64 L46 26 L48 64 L52 64 L54 58 L56 66 L58 58 L60 66 L62 64 L72 64 L78 62 L84 64 L90 61 L96 64 L102 62 L108 64 L114 61 L120 64 L130 64 L132 40 L134 64 L140 64 L142 60 L144 66 L146 60 L148 64 L158 64 L164 63 L170 64 L176 62 L182 64 L188 63 L194 64 L200 64"/>
+              </svg>
+            </div>
+            <div class="scope__seg">
+              <svg viewBox="0 0 200 100" preserveAspectRatio="none">
+                <path class="scope__line scope__line--ghost" d="M0 78 L16 78 L20 74 L24 80 L28 74 L32 80 L36 78 L48 78 L50 46 L52 78 L58 78 L60 70 L62 82 L64 70 L66 78 L78 78 L86 76 L94 78 L102 76 L110 78 L118 76 L126 78 L134 76 L142 78 L152 78 L154 60 L156 78 L162 78 L164 73 L166 81 L168 73 L170 78 L182 78 L188 77 L194 78 L200 78"/>
+                <path class="scope__line" d="M0 64 L10 64 L14 61 L18 67 L22 61 L26 67 L30 61 L34 64 L44 64 L46 26 L48 64 L52 64 L54 58 L56 66 L58 58 L60 66 L62 64 L72 64 L78 62 L84 64 L90 61 L96 64 L102 62 L108 64 L114 61 L120 64 L130 64 L132 40 L134 64 L140 64 L142 60 L144 66 L146 60 L148 64 L158 64 L164 63 L170 64 L176 62 L182 64 L188 63 L194 64 L200 64"/>
+              </svg>
+            </div>
+          </div>
+          <span class="scope__sweep"></span>
+          <span class="scope__read">2.00 V<span>/div</span></span>
+        </div>
+        <span class="scope__knob"></span>
+      </div>
+    </div>
+
+    <div class="tags" aria-hidden="true">
+      <span class="tag tag--a"><i></i>Ch 1 \ anode +<b id="tAnode">170</b>V</span>
+      <span class="tag tag--c"><i></i>Ch 2 \ cathode <b id="tCath">-3</b>V</span>
+    </div>
+
+    <div class="wires" aria-hidden="true">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path class="wire wire--a" vector-effect="non-scaling-stroke" d="M36 -3 C36 18, 40 34, 44 52 C46.4 63, 47.3 72, 47.9 79"/>
+        <path class="wire wire--h" vector-effect="non-scaling-stroke" d="M37.2 -3 C37.2 18, 41 34, 44.7 52 C47 63, 47.8 72, 48.3 79"/>
+        <path class="wire wire--b" vector-effect="non-scaling-stroke" d="M64 -3 C64 18, 60 34, 56 52 C53.6 63, 52.7 73, 52.1 83"/>
+        <path class="wire wire--h wire--h2" vector-effect="non-scaling-stroke" d="M62.8 -3 C62.8 18, 59 34, 55.3 52 C53 63, 52.2 73, 51.7 83"/>
+      </svg>
+    </div>
+    <span class="clip clip--r" aria-hidden="true"></span>
+    <span class="clip clip--b" aria-hidden="true"></span>
+
+    <button class="tube" id="tube" type="button" aria-label="Strike the nixie tube and advance the digit">
+      <span class="tube__glass">
+        <span class="tube__cathode" id="cathode"></span>
+        <span class="tube__stack">
+          <b class="seg" style="--i:0">0</b>
+          <b class="seg" style="--i:1">1</b>
+          <b class="seg" style="--i:2">2</b>
+          <b class="seg" style="--i:3">3</b>
+          <b class="seg" style="--i:4">4</b>
+          <b class="seg" style="--i:5">5</b>
+          <b class="seg" style="--i:6">6</b>
+          <b class="seg" style="--i:7">7</b>
+          <b class="seg" style="--i:8">8</b>
+          <b class="seg" style="--i:9">9</b>
+        </span>
+        <span class="tube__mesh"></span>
+        <span class="tube__spec"></span>
+        <span class="tube__strike"></span>
+      </span>
+      <span class="tube__halo"></span>
+      <span class="tube__collar"><i class="tube__mark">IN-12</i><i class="tube__volt">170 V</i></span>
+      <span class="tube__foot">
+        <i class="tube__pin" style="--p:0"></i><i class="tube__pin" style="--p:1"></i><i class="tube__pin" style="--p:2"></i><i class="tube__pin" style="--p:3"></i><i class="tube__pin" style="--p:4"></i><i class="tube__pin" style="--p:5"></i><i class="tube__pin" style="--p:6"></i><i class="tube__pin" style="--p:7"></i>
+      </span>
+      <span class="tube__pool"></span>
+    </button>
+
+    <div class="log" aria-hidden="true">
+      <span class="log__hd">strike log</span>
+      <span class="log__row" id="logRow">0001 &nbsp;+000.0s &nbsp;168 V &nbsp;ok</span>
+      <span class="log__row log__row--old">0000 &nbsp;+000.0s &nbsp;171 V &nbsp;ok</span>
+      <span class="log__row log__row--old">---- &nbsp;+000.0s &nbsp;--- V &nbsp;--</span>
+    </div>
+
+    <div class="rule" aria-hidden="true">
+      <span class="rule__tape">
+        <i class="rule__tick" style="--t:0"></i><i class="rule__tick" style="--t:1"></i><i class="rule__tick" style="--t:2"></i><i class="rule__tick" style="--t:3"></i><i class="rule__tick" style="--t:4"></i><i class="rule__tick" style="--t:5"></i><i class="rule__tick" style="--t:6"></i><i class="rule__tick" style="--t:7"></i><i class="rule__tick" style="--t:8"></i><i class="rule__tick" style="--t:9"></i><i class="rule__tick" style="--t:10"></i><i class="rule__tick" style="--t:11"></i><i class="rule__tick" style="--t:12"></i><i class="rule__tick" style="--t:13"></i><i class="rule__tick" style="--t:14"></i><i class="rule__tick" style="--t:15"></i><i class="rule__tick" style="--t:16"></i><i class="rule__tick" style="--t:17"></i><i class="rule__tick" style="--t:18"></i><i class="rule__tick" style="--t:19"></i><i class="rule__tick" style="--t:20"></i><i class="rule__tick" style="--t:21"></i><i class="rule__tick" style="--t:22"></i><i class="rule__tick" style="--t:23"></i><i class="rule__tick" style="--t:24"></i>
+      </span>
+      <span class="rule__nums"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></span>
+      <span class="rule__cal">cal 12.40</span>
+    </div>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Velvet Sheen Button</title>
+<meta name="description" content="A cursor avatar combs its way across a velvet field on a loop, laying the nap flat so it flares under the raking light, and crushes the pile of the button every time it passes over it.">
+<meta name="description-es" content="Un avatar de cursor peina una y otra vez un campo de terciopelo en bucle, aplastando el pelo del tejido hasta que brilla bajo la luz rasante, y hunde el pelo del botón cada vez que pasa por encima.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="page">
+  <header class="head">
+    <h1>Velvet Nap Bench</h1>
+    <p>An agent combs the field on a loop. Watch the pile change direction, catch the raking light, and spring back where the pile was crushed.</p>
+  </header>
+
+  <section class="field" id="field">
+    <span class="field__base" aria-hidden="true"></span>
+    <span class="nap" id="nap" aria-hidden="true"><i class="nap__pile"></i><i class="nap__sheen"></i></span>
+    <span class="drags" id="drags" aria-hidden="true"></span>
+    <span class="rake" id="rake" aria-hidden="true"></span>
+    <span class="field__vign" aria-hidden="true"></span>
+
+    <button class="pad" id="pad" type="button" aria-label="The velvet pad">
+      <span class="pad__piping" aria-hidden="true"></span>
+      <span class="nap nap--pad" id="napPad" aria-hidden="true"><i class="nap__pile"></i><i class="nap__sheen"></i></span>
+      <span class="pad__crush" id="crush" aria-hidden="true"></span>
+      <span class="plate" aria-hidden="true">
+        <b>Press</b>
+        <s>velvet pile</s>
+      </span>
+    </button>
+
+    <span class="cursor" id="cursor" aria-hidden="true">
+      <svg class="cursor__svg" viewBox="0 0 24 30" focusable="false">
+        <path d="M2.5 2.5 L2.5 25.4 L8.2 19.9 L12.4 28 L17.2 25.6 L12.9 17.8 L21 17.2 Z"></path>
+      </svg>
+      <i class="cursor__ring"></i>
+    </span>
+  </section>
+
+  <div class="meters">
+    <span class="meter"><b>nap</b><i id="mNap">000&deg;</i></span>
+    <span class="meter"><b>rake</b><i id="mRake">000&deg;</i></span>
+    <span class="meter"><b>pile</b><i id="mPile">1.00</i></span>
+    <span class="meter"><b>passes</b><i id="mCount">0000</i></span>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Entropy Decay Button</title>
+<meta name="description" content="A four frame contact sheet runs the same button through its corrosion cycle, each gate caught at a different phase of oxide, flaking and reverse-time reassembly.">
+<meta name="description-es" content="Una hoja de contactos de cuatro fotogramas pasa el mismo botón por su ciclo de corrosión, con cada fotograma atrapado en una fase distinta de óxido, descascarillado y reensamblaje en tiempo inverso.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="sheet">
+  <div class="table" aria-hidden="true">
+    <span class="table__glow"></span>
+    <span class="table__grain"></span>
+  </div>
+
+  <header class="head">
+    <div class="head__left">
+      <h1 class="head__title">Entropy Decay</h1>
+      <p class="head__note">Four gates, one cycle. The glyphs are eaten by oxide and verdigris, flake into the dark, then reassemble from the outside in.</p>
+    </div>
+    <div class="head__right">
+      <span class="head__cell"><b>Roll</b><i>04A</i></span>
+      <span class="head__cell"><b>Rate</b><i>24 fps</i></span>
+      <span class="head__cell"><b>Exp</b><i>1/8</i></span>
+    </div>
+  </header>
+
+  <div class="strip">
+    <span class="strip__perf strip__perf--t" aria-hidden="true"></span>
+    <span class="strip__perf strip__perf--b" aria-hidden="true"></span>
+    <span class="strip__edge strip__edge--l" aria-hidden="true">Entropy 04 &middot; Safety Stock &middot; Entropy 04</span>
+    <span class="strip__edge strip__edge--r" aria-hidden="true">Safety Stock &middot; Entropy 04 &middot; Frame 04A</span>
+
+    <div class="frames">
+      <figure class="frame">
+        <div class="frame__win">
+          <button class="btn" type="button">
+            <span class="btn__label">Corrode</span>
+            <span class="btn__read">S 0.99</span>
+          </button>
+        </div>
+        <figcaption class="frame__cap">
+          <span class="frame__no">F01</span>
+          <span class="frame__txt">Intact</span>
+          <span class="frame__tc" data-tc>00:00:00</span>
+        </figcaption>
+      </figure>
+
+      <figure class="frame">
+        <div class="frame__win">
+          <button class="btn" type="button">
+            <span class="btn__label">Corrode</span>
+            <span class="btn__read">S 0.99</span>
+          </button>
+        </div>
+        <figcaption class="frame__cap">
+          <span class="frame__no">F02</span>
+          <span class="frame__txt">Oxide bloom</span>
+          <span class="frame__tc" data-tc>00:00:00</span>
+        </figcaption>
+      </figure>
+
+      <figure class="frame">
+        <div class="frame__win">
+          <button class="btn" type="button">
+            <span class="btn__label">Corrode</span>
+            <span class="btn__read">S 0.99</span>
+          </button>
+        </div>
+        <figcaption class="frame__cap">
+          <span class="frame__no">F03</span>
+          <span class="frame__txt">Flaking</span>
+          <span class="frame__tc" data-tc>00:00:00</span>
+        </figcaption>
+      </figure>
+
+      <figure class="frame">
+        <div class="frame__win">
+          <button class="btn" type="button">
+            <span class="btn__label">Corrode</span>
+            <span class="btn__read">S 0.99</span>
+          </button>
+        </div>
+        <figcaption class="frame__cap">
+          <span class="frame__no">F04</span>
+          <span class="frame__txt">Reverse</span>
+          <span class="frame__tc" data-tc>00:00:00</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <span class="foot__cell"><b>Cycle</b><i id="ft-cycle">6.20 s</i></span>
+    <span class="foot__rule"></span>
+    <span class="foot__cell"><b>Entropy</b><i id="ft-s">0.99</i></span>
+    <span class="foot__rule"></span>
+    <span class="foot__cell foot__cell--hot"><b>Reversals</b><i id="ft-n">0</i></span>
+    <span class="foot__rule"></span>
+    <span class="foot__cell"><b>Oxide</b><i>2 layers</i></span>
+  </footer>
+</main>
+</body>
+</html>

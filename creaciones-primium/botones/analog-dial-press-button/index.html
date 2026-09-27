@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Analog Dial Press Button</title>
+<meta name="description" content="A cockpit gauge whose needle is the button, sweeping an arc scale with real damping and overshoot while the telemetry around it reacts to the reading.">
+<meta name="description-es" content="Un indicador de cabina cuya aguja es el propio botón: barre una escala de arco con amortiguación real y sobreoscilación, mientras la telemetría que lo rodea reacciona a la lectura.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<main class="page">
+  <header class="head">
+    <h1>Analog Dial Press</h1>
+    <p>Press the hub to kick the needle to a new setpoint. It overshoots, settles and bounces back like a real moving coil, and the telemetry, warning band and trace all follow the reading.</p>
+  </header>
+  <section class="hud">
+    <span class="hud__scan" aria-hidden="true"></span>
+    <span class="hud__vig" aria-hidden="true"></span>
+    <span class="bracket bracket--tl" aria-hidden="true"></span>
+    <span class="bracket bracket--tr" aria-hidden="true"></span>
+    <span class="bracket bracket--bl" aria-hidden="true"></span>
+    <span class="bracket bracket--br" aria-hidden="true"></span>
+    <div class="gauge" id="gauge">
+      <svg class="gauge__svg" viewBox="0 0 200 200" focusable="false" aria-hidden="true">
+        <defs>
+          <linearGradient id="hz" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#7dfff0"></stop>
+            <stop offset="1" stop-color="#2ad0ff"></stop>
+          </linearGradient>
+        </defs>
+        <circle class="gz__ring" cx="100" cy="100" r="88"></circle>
+        <circle class="gz__ring2" cx="100" cy="100" r="78"></circle>
+        <path class="gz__arc" id="arc" d=""></path>
+        <path class="gz__zone" id="zone" d=""></path>
+        <g class="gz__ticks" id="ticks"></g>
+      </svg>
+      <span class="needle" id="needle" aria-hidden="true">
+        <i class="needle__blade"></i>
+        <i class="needle__tail"></i>
+      </span>
+      <button class="hub" id="hub" type="button" aria-label="Kick the needle to a new setpoint">
+        <span class="hub__ring" aria-hidden="true"></span>
+        <span class="hub__face" aria-hidden="true">
+          <span class="hub__set">0.00</span>
+          <span class="hub__unit">bar</span>
+        </span>
+        <span class="hub__pulse" aria-hidden="true"></span>
+      </button>
+      <span class="reticle" aria-hidden="true"></span>
+      <span class="glass" aria-hidden="true"></span>
+    </div>
+    <div class="tel">
+      <span class="tel__cell"><b>set</b><i id="tSet">0.00</i></span>
+      <span class="tel__cell"><b>act</b><i id="tAct">0.00</i></span>
+      <span class="tel__cell"><b>dev</b><i id="tDev">+0.00</i></span>
+      <span class="tel__cell tel__cell--warn"><b>flux</b><i id="tFlux">0.0</i></span>
+    </div>
+    <div class="scope">
+      <span class="scope__tag">trace</span>
+      <svg class="scope__svg" viewBox="0 0 240 40" preserveAspectRatio="none" focusable="false" aria-hidden="true">
+        <polyline class="scope__grid" points="0,20 240,20"></polyline>
+        <polyline class="scope__line" id="trace" points=""></polyline>
+      </svg>
+      <span class="scope__bar"><i id="devbar"></i></span>
+    </div>
+  </section>
+</main>
+</body>
+</html>

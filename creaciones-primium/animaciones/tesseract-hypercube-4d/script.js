@@ -119,8 +119,12 @@
     const cw = canvas.clientWidth || window.innerWidth;
     const ch = canvas.clientHeight || window.innerHeight;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = Math.max(1, Math.round(cw * dpr));
-    canvas.height = Math.max(1, Math.round(ch * dpr));
+    const nw = Math.max(1, Math.round(cw * dpr));
+    const nh = Math.max(1, Math.round(ch * dpr));
+    if (canvas.width !== nw || canvas.height !== nh) {
+      canvas.width = nw;
+      canvas.height = nh;
+    }
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     W = cw;
     H = ch;

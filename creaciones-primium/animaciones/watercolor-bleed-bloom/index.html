@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Watercolor Bleed Bloom</title>
-<meta name="description" content="Pigment washes bloom and bleed across cotton rag paper through SVG turbulence, displacement and blur filters in a staggered seamless loop.">
+<meta name="description" content="Pigment blooms soaking into cotton rag: a wet front spreading outward, a darker rim where pigment pools, granulation settling as the wash dries, all built from SVG turbulence and displacement filters in a staggered loop.">
 <link rel="stylesheet" href="styles.css">
 <script defer src="script.js"></script>
 </head>
@@ -12,46 +12,33 @@
 
 <svg class="defs" aria-hidden="true" focusable="false">
   <defs>
-    <filter id="wcBleed" x="-48%" y="-48%" width="196%" height="196%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.009 0.013" numOctaves="3" seed="17" result="turb"/>
-      <feDisplacementMap in="SourceGraphic" in2="turb" scale="72" xChannelSelector="R" yChannelSelector="G" result="disp"/>
-      <feGaussianBlur in="disp" stdDeviation="2.1" result="soft"/>
-      <feColorMatrix in="soft" type="matrix" values="1.16 0 0 0 -0.05  0 1.06 0 0 0.01  0 0 0.94 0 0.03  0 0 0 1.4 0" result="wet"/>
-      <feBlend in="wet" in2="disp" mode="multiply"/>
+    <filter id="wcMass" x="-32%" y="-32%" width="164%" height="164%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="3" seed="17" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="46" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="1.6"/>
     </filter>
-    <filter id="wcLobe" x="-55%" y="-55%" width="210%" height="210%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.026" numOctaves="3" seed="5" result="t"/>
-      <feDisplacementMap in="SourceGraphic" in2="t" scale="42" xChannelSelector="R" yChannelSelector="G" result="d"/>
-      <feGaussianBlur in="d" stdDeviation="1.1"/>
+    <filter id="wcRim" x="-38%" y="-38%" width="176%" height="176%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028 0.04" numOctaves="3" seed="5" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="30" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="0.5"/>
     </filter>
-    <filter id="wcFibre" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.82" numOctaves="2" seed="23" stitchTiles="stitch" result="n"/>
-      <feColorMatrix in="n" type="saturate" values="0"/>
-      <feComponentTransfer>
-        <feFuncA type="linear" slope="0.44" intercept="0"/>
-      </feComponentTransfer>
-    </filter>
-    <filter id="wcGran" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.07 0.062" numOctaves="3" seed="41" stitchTiles="stitch" result="n"/>
-      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.34  0 0 0 0 0.26  0 0 0 0 0.19  0 0 0 0.72 0"/>
+    <filter id="wcTooth" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.34 0.4" numOctaves="3" seed="41" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.44  0 0 0 0 0.37  0 0 0 0 0.28  0.8 0 0 0 -0.24"/>
     </filter>
     <filter id="wcWash" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.0022 0.0042" numOctaves="2" seed="67" stitchTiles="stitch" result="n"/>
-      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.5  0 0 0 0 0.44  0 0 0 0 0.34  0 0 0 0.3 0"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.0026 0.0042" numOctaves="2" seed="67" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.55  0 0 0 0 0.47  0 0 0 0 0.36  0 0 0 0.36 0"/>
     </filter>
-    <filter id="wcGrain" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.94" numOctaves="2" seed="61" stitchTiles="stitch" result="n"/>
+    <filter id="wcFibre" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.76 0.9" numOctaves="2" seed="23" stitchTiles="stitch" result="n"/>
       <feColorMatrix in="n" type="saturate" values="0"/>
       <feComponentTransfer>
-        <feFuncA type="linear" slope="0.38" intercept="0"/>
+        <feFuncA type="linear" slope="0.5" intercept="0"/>
       </feComponentTransfer>
     </filter>
   </defs>
 </svg>
-
-<div class="grain" aria-hidden="true">
-  <svg><rect width="100%" height="100%" filter="url(#wcGrain)"/></svg>
-</div>
 
 <div class="studio" aria-hidden="true">
   <div class="studio__key"></div>
@@ -65,38 +52,89 @@
     <h1 class="title">Watercolor Bleed Bloom</h1>
     <p class="lede">Cold-press pigment soaking into 300&nbsp;gsm cotton rag</p>
     <ul class="spec">
-      <li>feTurbulence fractalNoise 0.009</li>
-      <li>feDisplacementMap scale 72</li>
-      <li>feGaussianBlur 2.1</li>
-      <li>wet edge multiply accumulation</li>
+      <li>feTurbulence fractal 0.008</li>
+      <li>feDisplacementMap scale 46</li>
+      <li>feGaussianBlur 1.6</li>
+      <li>wet rim darkens as it dries</li>
+      <li id="wetLabel">blooms wet 0</li>
     </ul>
     <p class="hint">Press and drag on the sheet to wet the paper</p>
   </div>
 
-  <section class="sheet" aria-label="Watercolor blooms on cotton rag paper">
+  <section class="sheet" aria-label="Watercolor blooms soaking into cotton rag paper">
     <div class="paper" aria-hidden="true"></div>
     <div class="laid" aria-hidden="true"></div>
 
     <div class="bloom-field" id="bloomField">
-      <div class="bloom" style="--x:20%;--y:27%;--size:38%;--c1:rgba(186,97,58,.95);--c2:rgba(150,71,50,0);--c3:rgba(214,140,96,.9);--c4:rgba(214,140,96,0);--c5:rgba(158,74,52,.85);--c6:rgba(158,74,52,0);--dur:19s;--delay:-2.4s"><span class="bloom-form"></span></div>
-      <div class="bloom" style="--x:53%;--y:20%;--size:28%;--c1:rgba(74,94,148,.88);--c2:rgba(52,68,112,0);--c3:rgba(126,146,196,.85);--c4:rgba(126,146,196,0);--c5:rgba(60,78,128,.8);--c6:rgba(60,78,128,0);--dur:24s;--delay:-9.1s"><span class="bloom-form"></span></div>
-      <div class="bloom" style="--x:74%;--y:45%;--size:32%;--c1:rgba(199,147,58,.92);--c2:rgba(160,113,36,0);--c3:rgba(226,186,112,.85);--c4:rgba(226,186,112,0);--c5:rgba(172,120,42,.82);--c6:rgba(172,120,42,0);--dur:21s;--delay:-14.6s"><span class="bloom-form"></span></div>
-      <div class="bloom" style="--x:37%;--y:63%;--size:26%;--c1:rgba(172,74,68,.9);--c2:rgba(131,50,50,0);--c3:rgba(214,132,124,.85);--c4:rgba(214,132,124,0);--c5:rgba(142,58,58,.8);--c6:rgba(142,58,58,0);--dur:26s;--delay:-5.3s"><span class="bloom-form"></span></div>
-      <div class="bloom" style="--x:62%;--y:79%;--size:22%;--c1:rgba(114,138,98,.9);--c2:rgba(84,106,71,0);--c3:rgba(160,182,138,.85);--c4:rgba(160,182,138,0);--c5:rgba(96,120,82,.8);--c6:rgba(96,120,82,0);--dur:17.5s;--delay:-11.8s"><span class="bloom-form"></span></div>
-      <div class="bloom" style="--x:12%;--y:73%;--size:18%;--c1:rgba(60,74,110,.82);--c2:rgba(41,52,80,0);--c3:rgba(112,132,178,.8);--c4:rgba(112,132,178,0);--c5:rgba(50,62,94,.76);--c6:rgba(50,62,94,0);--dur:29s;--delay:-19.2s"><span class="bloom-form"></span></div>
-      <div class="bloom" style="--x:45%;--y:42%;--size:15%;--c1:rgba(196,110,66,.85);--c2:rgba(154,78,46,0);--c3:rgba(224,164,124,.8);--c4:rgba(224,164,124,0);--c5:rgba(168,84,50,.78);--c6:rgba(168,84,50,0);--dur:31s;--delay:-23.4s"><span class="bloom-form"></span></div>
-      <div class="bloom" style="--x:84%;--y:23%;--size:14%;--c1:rgba(146,96,140,.82);--c2:rgba(108,66,108,0);--c3:rgba(190,152,186,.8);--c4:rgba(190,152,186,0);--c5:rgba(122,74,122,.78);--c6:rgba(122,74,122,0);--dur:33s;--delay:-27.7s"><span class="bloom-form"></span></div>
+      <div class="veil" aria-hidden="true"><span class="veil-in"></span></div>
+      <div class="bloom" data-dur="23" data-off="0" data-sq="1.04,0.94" data-rot="-14" style="--x:27%;--y:29%;--w:35%;--ar:1.06;--c1:rgba(72,94,150,.86);--c2:rgba(48,64,110,0);--c3:rgba(126,150,200,.5);--c4:rgba(126,150,200,0);--c5:rgba(44,58,100,.6);--c6:rgba(44,58,100,0)">
+        <span class="wet"></span>
+        <span class="rim"><i></i></span>
+        <span class="mass"><i></i></span>
+        <span class="sed"></span>
+        <span class="flick"><i></i></span>
+      </div>
+
+      <div class="bloom" data-dur="31" data-off="11.4" data-sq="0.92,1.08" data-rot="22" style="--x:60%;--y:20%;--w:23%;--ar:0.94;--c1:rgba(198,146,54,.88);--c2:rgba(158,110,32,0);--c3:rgba(230,192,120,.5);--c4:rgba(230,192,120,0);--c5:rgba(150,102,26,.6);--c6:rgba(150,102,26,0)">
+        <span class="wet"></span>
+        <span class="rim"><i></i></span>
+        <span class="mass"><i></i></span>
+        <span class="sed"></span>
+        <span class="flick"><i></i></span>
+      </div>
+
+      <div class="bloom" data-dur="27" data-off="6.2" data-sq="1.1,0.9" data-rot="-8" style="--x:73%;--y:54%;--w:31%;--ar:1.02;--c1:rgba(184,92,54,.88);--c2:rgba(146,66,42,0);--c3:rgba(216,148,104,.5);--c4:rgba(216,148,104,0);--c5:rgba(132,58,36,.62);--c6:rgba(132,58,36,0)">
+        <span class="wet"></span>
+        <span class="rim"><i></i></span>
+        <span class="mass"><i></i></span>
+        <span class="sed"></span>
+        <span class="flick"><i></i></span>
+      </div>
+
+      <div class="bloom" data-dur="25" data-off="17.9" data-sq="0.96,1.04" data-rot="34" style="--x:39%;--y:64%;--w:26%;--ar:1;--c1:rgba(170,72,66,.86);--c2:rgba(128,46,46,0);--c3:rgba(212,134,126,.48);--c4:rgba(212,134,126,0);--c5:rgba(118,40,44,.6);--c6:rgba(118,40,44,0)">
+        <span class="wet"></span>
+        <span class="rim"><i></i></span>
+        <span class="mass"><i></i></span>
+        <span class="sed"></span>
+        <span class="flick"><i></i></span>
+      </div>
+
+      <div class="bloom" data-dur="29" data-off="3.3" data-sq="1.08,0.92" data-rot="11" style="--x:17%;--y:70%;--w:20%;--ar:1.08;--c1:rgba(112,138,96,.84);--c2:rgba(80,102,68,0);--c3:rgba(160,184,138,.46);--c4:rgba(160,184,138,0);--c5:rgba(76,96,66,.58);--c6:rgba(76,96,66,0)">
+        <span class="wet"></span>
+        <span class="rim"><i></i></span>
+        <span class="mass"><i></i></span>
+        <span class="sed"></span>
+        <span class="flick"><i></i></span>
+      </div>
+
+      <div class="bloom" data-dur="21" data-off="14.6" data-sq="1.02,0.98" data-rot="-26" style="--x:88%;--y:24%;--w:14%;--ar:1.1;--c1:rgba(146,96,140,.8);--c2:rgba(104,62,104,0);--c3:rgba(190,152,186,.44);--c4:rgba(190,152,186,0);--c5:rgba(96,58,96,.56);--c6:rgba(96,58,96,0)">
+        <span class="wet"></span>
+        <span class="rim"><i></i></span>
+        <span class="mass"><i></i></span>
+        <span class="sed"></span>
+        <span class="flick"><i></i></span>
+      </div>
+
+      <div class="bloom" data-dur="19" data-off="9.1" data-sq="0.94,1.06" data-rot="18" style="--x:49%;--y:41%;--w:15%;--ar:0.96;--c1:rgba(196,110,66,.82);--c2:rgba(150,74,44,0);--c3:rgba(226,166,126,.44);--c4:rgba(226,166,126,0);--c5:rgba(146,72,44,.56);--c6:rgba(146,72,44,0)">
+        <span class="wet"></span>
+        <span class="rim"><i></i></span>
+        <span class="mass"><i></i></span>
+        <span class="sed"></span>
+        <span class="flick"><i></i></span>
+      </div>
+
+      <div class="bloom" data-dur="33" data-off="21.7" data-sq="1.12,0.88" data-rot="-19" style="--x:30%;--y:88%;--w:13%;--ar:1.12;--c1:rgba(58,72,108,.8);--c2:rgba(38,48,78,0);--c3:rgba(110,132,178,.42);--c4:rgba(110,132,178,0);--c5:rgba(34,44,72,.56);--c6:rgba(34,44,72,0)">
+        <span class="wet"></span>
+        <span class="rim"><i></i></span>
+        <span class="mass"><i></i></span>
+        <span class="sed"></span>
+        <span class="flick"><i></i></span>
+      </div>
     </div>
 
-    <div class="gran" aria-hidden="true">
-      <svg><rect width="100%" height="100%" filter="url(#wcGran)"/></svg>
-    </div>
-    <div class="wash" aria-hidden="true">
-      <svg><rect width="100%" height="100%" filter="url(#wcWash)"/></svg>
-    </div>
-    <div class="fibre" aria-hidden="true">
-      <svg><rect width="100%" height="100%" filter="url(#wcFibre)"/></svg>
-    </div>
+    <div class="wash" aria-hidden="true"><svg><rect width="100%" height="100%" filter="url(#wcWash)"/></svg></div>
+    <div class="tooth" aria-hidden="true"><svg><rect width="100%" height="100%" filter="url(#wcTooth)"/></svg></div>
+    <div class="fibre" aria-hidden="true"><svg><rect width="100%" height="100%" filter="url(#wcFibre)"/></svg></div>
     <div class="glaze" aria-hidden="true"></div>
     <div class="edge" aria-hidden="true"></div>
   </section>

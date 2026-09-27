@@ -11,6 +11,9 @@ Web/data/catalog.js
 # Dependencias (el proyecto no las usa, por seguridad)
 node_modules/
 
+# Editor: launch.json lleva rutas absolutas de la maquina del autor
+.vscode/
+
 # Sistema
 Thumbs.db
 .DS_Store

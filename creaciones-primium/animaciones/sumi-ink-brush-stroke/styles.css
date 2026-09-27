@@ -3,8 +3,8 @@
 :root{
   --font-ui:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  --ink:#111319;
-  --ink-soft:#1c2029;
+  --ink:#0f1116;
+  --ink-soft:#15181f;
   --bleed:#3d4c63;
   --paper-1:#f6f0e2;
   --paper-2:#ece1cc;
@@ -15,7 +15,7 @@
   --ui-faint:rgba(240,231,217,.26);
   --rule:rgba(240,231,217,.15);
   --mount:clamp(6px,.95vmin,15px);
-  --cycle:13s;
+  --cycle:15s;
 }
 
 html,body{height:100%}
@@ -61,7 +61,6 @@ body{
 .caption{
   display:grid;
   justify-items:center;
-  gap:0;
   text-align:center;
   max-width:46ch;
 }
@@ -126,43 +125,87 @@ body{
   overflow:visible;
 }
 
-.ink{opacity:0;animation:ink-fade var(--cycle) linear infinite}
+.pigment{mix-blend-mode:multiply;opacity:1}
+.wet{mix-blend-mode:screen}
 
-.halo,.spine,.tail,.swipe,.fine{
+.wipe{
   fill:none;
-  stroke-linecap:butt;
-  stroke-linejoin:round;
-  stroke-dasharray:var(--len,1600);
-  stroke-dashoffset:var(--len,1600);
-}
-
-.halo--far{stroke:var(--bleed);stroke-width:76;opacity:0;filter:url(#inkBleedFar);animation:halo-far var(--cycle) linear infinite}
-.halo--near{stroke:var(--bleed);stroke-width:52;opacity:0;filter:url(#inkBleedNear);animation:halo-near var(--cycle) linear infinite}
-.spine{stroke:var(--ink);stroke-width:36;animation:draw-spine var(--cycle) cubic-bezier(.42,.02,.24,1) infinite}
-.tail{stroke:var(--ink-soft);stroke-width:36;animation:draw-tail var(--cycle) cubic-bezier(.4,.02,.2,1) infinite}
-.swipe{stroke:var(--ink-soft);stroke-width:16;stroke-dasharray:var(--len2,520);stroke-dashoffset:var(--len2,520);animation:draw-swipe var(--cycle) cubic-bezier(.4,.02,.24,1) infinite}
-.fine{stroke:var(--ink-soft);stroke-width:7;stroke-dasharray:var(--len3,480);stroke-dashoffset:var(--len3,480);animation:draw-fine var(--cycle) cubic-bezier(.4,.02,.24,1) infinite}
-
-.wisps path{
-  fill:none;
-  stroke:var(--ink);
-  stroke-width:2;
+  stroke:#fff;
   stroke-linecap:round;
-  stroke-dasharray:var(--len4,90);
-  stroke-dashoffset:var(--len4,90);
-  opacity:0;
-  animation:draw-wisp var(--cycle) cubic-bezier(.3,.1,.2,1) infinite;
+  stroke-dasharray:1;
+  stroke-dashoffset:0;
+}
+.w-body{stroke-width:210}
+.w-tail{stroke-width:120}
+.w-flick{stroke-width:40}
+.w-wick{stroke-width:26}
+.w-fan{stroke-width:34}
+.w-swipe{stroke-width:44}
+.w-fine{stroke-width:26}
+
+.halo{
+  transform-box:fill-box;
+  transform-origin:50% 50%;
+}
+.halo--far{opacity:.19;transform:scale(1.05)}
+.halo--near{opacity:.3;transform:scale(1.04)}
+
+.ground{
+  transform-box:fill-box;
+  transform-origin:50% 50%;
+  opacity:.46;
+  transform:scale(1.04);
+}
+.ground-wash{mix-blend-mode:multiply}
+
+.fine{opacity:.74}
+.swipe{opacity:.66}
+
+.body-rim{opacity:.9}
+.body-grain{opacity:.72}
+.body-speck{opacity:.42}
+.belly{mix-blend-mode:screen;opacity:.42}
+
+.flicker path{
+  fill:none;
+  stroke:#0a0c11;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.wickings{opacity:.5}
+.flicker{opacity:.8}
+
+.pool-press{
+  transform-box:fill-box;
+  transform-origin:50% 50%;
+  opacity:.9;
+  transform:scale(1.01);
 }
 
-.blot{opacity:0;transform-origin:906px 300px;animation:blot-bloom var(--cycle) cubic-bezier(.3,.7,.24,1) infinite}
-.blot__halo{fill:#1a202b;opacity:.2;filter:url(#inkBleedFar)}
-.blot__feather{fill:#1a202b;opacity:.32;filter:url(#inkBleedNear)}
-.blot__pool{fill:var(--ink);filter:url(#inkBlot)}
-.blot__bead{fill:var(--ink);filter:url(#inkBlot)}
+.blot{
+  transform-box:fill-box;
+  transform-origin:50% 50%;
+  opacity:.95;
+}
+.tendrils{opacity:.66}
+.beads{
+  transform-box:fill-box;
+  transform-origin:50% 50%;
+  opacity:.9;
+  fill:#06080c;
+}
 
-.seal{opacity:0;transform-origin:873px 497px;mix-blend-mode:multiply;animation:seal-set var(--cycle) cubic-bezier(.2,.9,.2,1) infinite}
-.seal__block{fill:var(--seal);filter:url(#sealRough)}
-.seal__glyph{fill:#f7f2e7}
+.sheen{
+  opacity:0;
+  transform:translate3d(1180px,0,0);
+  will-change:transform,opacity;
+}
+
+.seal{
+  transform-box:fill-box;
+  transform-origin:50% 50%;
+  opacity:.84;
+}
 
 .rinse{
   position:absolute;
@@ -171,7 +214,7 @@ body{
   opacity:0;
   mix-blend-mode:screen;
   pointer-events:none;
-  animation:rinse-sweep var(--cycle) cubic-bezier(.5,0,.5,1) infinite;
+  transform:translate3d(34%,0,0);
 }
 
 .fibre,
@@ -181,8 +224,8 @@ body{
   mix-blend-mode:multiply;
   pointer-events:none;
 }
-.fibre{opacity:.34}
-.cloud{opacity:.4}
+.fibre{opacity:.26}
+.cloud{opacity:.34}
 .fibre svg,
 .cloud svg{position:absolute;inset:0;width:100%;height:100%}
 
@@ -200,7 +243,7 @@ body{
     radial-gradient(68% 54% at 20% 10%,rgba(255,244,218,.22),rgba(255,244,218,0) 70%);
   mix-blend-mode:soft-light;
   pointer-events:none;
-  animation:light-drift 28s ease-in-out infinite alternate;
+  transform:translate3d(-2%,-1%,0) scale(1.02);
 }
 .sheet-shadow{
   position:absolute;
@@ -285,88 +328,6 @@ body{
   text-shadow:0 1px 14px rgba(0,0,0,.7);
 }
 
-@keyframes ink-fade{
-  0%,3%{opacity:0}
-  13%{opacity:1}
-  70%{opacity:1}
-  83%,100%{opacity:0}
-}
-
-@keyframes draw-spine{
-  0%,4%{stroke-dashoffset:var(--len,1600)}
-  27%,78%{stroke-dashoffset:0}
-  86%,100%{stroke-dashoffset:var(--len,1600)}
-}
-
-@keyframes draw-tail{
-  0%,25%{stroke-dashoffset:var(--len,1600)}
-  39%,78%{stroke-dashoffset:0}
-  86%,100%{stroke-dashoffset:var(--len,1600)}
-}
-
-@keyframes draw-swipe{
-  0%,40%{stroke-dashoffset:var(--len2,520)}
-  53%,78%{stroke-dashoffset:0}
-  86%,100%{stroke-dashoffset:var(--len2,520)}
-}
-
-@keyframes draw-fine{
-  0%,45%{stroke-dashoffset:var(--len3,480)}
-  57%,78%{stroke-dashoffset:0}
-  86%,100%{stroke-dashoffset:var(--len3,480)}
-}
-
-@keyframes halo-near{
-  0%,6%{stroke-dashoffset:var(--len,1600);opacity:0}
-  28%{opacity:.34}
-  45%{stroke-dashoffset:0;opacity:.3}
-  72%{stroke-dashoffset:0;opacity:.46}
-  85%,100%{stroke-dashoffset:var(--len,1600);opacity:0}
-}
-
-@keyframes halo-far{
-  0%,13%{stroke-dashoffset:var(--len,1600);opacity:0}
-  44%{stroke-dashoffset:0;opacity:.11}
-  72%{stroke-dashoffset:0;opacity:.24}
-  85%,100%{stroke-dashoffset:var(--len,1600);opacity:0}
-}
-
-@keyframes draw-wisp{
-  0%,34%{stroke-dashoffset:var(--len4,90);opacity:0}
-  41%{opacity:.6}
-  50%{stroke-dashoffset:0;opacity:.5}
-  78%{stroke-dashoffset:0;opacity:.44}
-  86%,100%{stroke-dashoffset:var(--len4,90);opacity:0}
-}
-
-@keyframes blot-bloom{
-  0%,30%{opacity:0;transform:scale(.2) rotate(-6deg)}
-  42%{opacity:1;transform:scale(1.08) rotate(2deg)}
-  53%{opacity:.95;transform:scale(.94) rotate(-1deg)}
-  70%{opacity:.92;transform:scale(1) rotate(0deg)}
-  83%,100%{opacity:0;transform:scale(1.03) rotate(1deg)}
-}
-
-@keyframes seal-set{
-  0%,44%{opacity:0;transform:scale(1.32) rotate(-6deg)}
-  52%{opacity:.92;transform:scale(.98) rotate(.5deg)}
-  57%{opacity:.88;transform:scale(1) rotate(0deg)}
-  78%{opacity:.84;transform:scale(1) rotate(0deg)}
-  85%,100%{opacity:0;transform:scale(1) rotate(0deg)}
-}
-
-@keyframes rinse-sweep{
-  0%,66%{opacity:0;transform:translate3d(-34%,0,0)}
-  70%{opacity:.66}
-  84%{opacity:.58;transform:translate3d(34%,0,0)}
-  88%,100%{opacity:0;transform:translate3d(34%,0,0)}
-}
-
-@keyframes light-drift{
-  0%{transform:translate3d(-2%,-1%,0) scale(1.02)}
-  100%{transform:translate3d(3%,2%,0) scale(1.08)}
-}
-
 @media (min-width:900px){
   .stage{
     grid-template-columns:minmax(240px,min(28vw,320px)) minmax(0,1fr);
@@ -388,17 +349,29 @@ body{
 }
 
 @media (max-width:899px){
-  .scroll{max-height:none}
+  .scroll{max-height:calc(100svh - clamp(230px,40svh,300px))}
 }
 
 @media (prefers-reduced-motion:reduce){
-  .ink{animation:none;opacity:1}
-  .halo--near{animation:none;stroke-dashoffset:0;opacity:.28}
-  .halo--far{animation:none;stroke-dashoffset:0;opacity:.12}
-  .spine,.tail,.swipe,.fine{animation:none;stroke-dashoffset:0}
-  .wisps path{animation:none;stroke-dashoffset:0;opacity:.5}
-  .blot{animation:none;opacity:.92;transform:none}
-  .seal{animation:none;opacity:.86;transform:none}
-  .rinse{animation:none;opacity:0}
-  .paper-light{animation:none}
+  .pigment{opacity:1}
+  .wipe{stroke-dashoffset:0}
+  .halo--far{opacity:.19;transform:scale(1.05)}
+  .halo--near{opacity:.3;transform:scale(1.04)}
+  .ground{opacity:.46;transform:scale(1.04)}
+  .fine{opacity:.74}
+  .swipe{opacity:.66}
+  .body-rim{opacity:.9}
+  .body-grain{opacity:.72}
+  .body-speck{opacity:.42}
+  .belly{opacity:.42}
+  .wickings{opacity:.5}
+  .flicker{opacity:.8}
+  .pool-press{opacity:.9;transform:scale(1.01)}
+  .blot{opacity:.95;transform:none}
+  .tendrils{opacity:.66}
+  .beads{opacity:.9;transform:none}
+  .sheen{opacity:0;transform:translate3d(1180px,0,0)}
+  .seal{opacity:.84;transform:none}
+  .rinse{opacity:0;transform:translate3d(34%,0,0)}
+  .paper-light{transform:translate3d(-2%,-1%,0) scale(1.02)}
 }

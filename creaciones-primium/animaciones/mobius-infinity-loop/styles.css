@@ -332,3 +332,7 @@ body{
   .lede{font-size:12px;max-width:28ch}
   .stage{padding:clamp(74px,16vh,140px) 12px clamp(96px,20vh,170px)}
 }
+
+.surf{pointer-events:none}
+.surf path{stroke:none;shape-rendering:crispEdges}
+

@@ -160,12 +160,14 @@ body{
   width:calc(var(--r) * 2);
   height:calc(var(--r) * 2);
   translate:-50% -50%;
-  clip-path:polygon(50% 50%,79% 30.4%,100% 31.8%,100% 68.2%,79% 69.6%);
-  transform:rotate(calc(var(--i) * 40deg + var(--ro,0deg))) translateX(calc(var(--r) * (0.7 + 0.3 * clamp(0, var(--open) - var(--lag,0), 1))));
+  clip-path:polygon(78% 21.7%,100% 30.2%,100% 69.8%,78% 78.3%);
+  transform:rotate(calc(var(--i) * 40deg + var(--ro,0deg)));
   background:
+    linear-gradient(90deg,rgba(196,224,255,.30) 0%,rgba(196,224,255,0) 9%),
     radial-gradient(150% 72% at 50% 50%,rgba(158,190,224,.3) 0%,rgba(158,190,224,0) 26%),
     conic-gradient(from -20deg at 50% 50%,rgba(162,196,228,.5) 0deg,rgba(30,40,54,.95) 4deg,rgba(8,11,17,.99) 20deg,rgba(22,30,42,.97) 33deg,rgba(124,156,190,.4) 40deg);
-  will-change:transform;
+  filter:drop-shadow(0 0 7px rgba(150,200,255,.22));
+  will-change:clip-path;
 }
 .blade:nth-child(1){--i:0;--ro:.3deg;--lag:0;z-index:20}
 .blade:nth-child(2){--i:1;--ro:-.22deg;--lag:.006;z-index:19}

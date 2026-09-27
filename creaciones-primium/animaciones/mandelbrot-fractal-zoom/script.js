@@ -98,12 +98,12 @@ function renderRow(row){
     const cre=reBase+j*colStep;
     let zr=0,zi=0,pr=0,pi=0,n=0;
     for(n=0;n<iters;n++){
-      pr=zr;
-      pi=zi;
       const zr2=zr*zr;
       const zi2=zi*zi;
       const m=zr2+zi2;
       if(m>BAIL2) break;
+      pr=zr;
+      pi=zi;
       zi=2*zr*zi+cim;
       zr=zr2-zi2+cre;
     }
@@ -154,11 +154,11 @@ let probe=-1,probeX=0,probeY=0,probeOn=false,probeIt=0;
 function sampleAt(cx,ci,maxIter,eps){
   let zr=0,zi=0,pr=0,pi=0,n=0;
   for(n=0;n<maxIter;n++){
-    pr=zr;
-    pi=zi;
     const zr2=zr*zr;
     const zi2=zi*zi;
     if(zr2+zi2>BAIL2) break;
+    pr=zr;
+    pi=zi;
     zi=2*zr*zi+ci;
     zr=zr2-zi2+cx;
   }

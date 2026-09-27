@@ -5,17 +5,29 @@ var ring=scene.querySelector('.sakura__ring');
 var mq=window.matchMedia('(prefers-reduced-motion: reduce)');
 
 var TAU=Math.PI*2;
-var COLORS=[
- ['#ffd0e2','#ff8fb8'],
- ['#ffe6ee','#ffb3cd'],
- ['#fff7f9','#ffc2d8'],
- ['#ffdce8','#f78fb4'],
- ['#fff0f4','#ff9ec2'],
- ['#ffe8f0','#ffa8c6'],
- ['#ffc0d6','#e8709f'],
- ['#ffeef4','#ffa9c4']
+var HAZE=[
+  ['#fff3f8','#ffd2e3','#f0a0c0'],
+  ['#fff7fa','#ffdde9','#f4aec9'],
+  ['#ffeef4','#ffc7dc','#eb90b5'],
+  ['#fff1f6','#ffd4e4','#f2a2c1'],
+  ['#fff6fa','#ffdcea','#f6b2cd']
 ];
-var pets=[],raf=0,last=0,time=0,startTime=0,live=false;
+var BOLD=[
+  ['#fff8fb','#ffa9c8','#cf3f78'],
+  ['#fff3f8','#ff9cc0','#b02c66'],
+  ['#fffbfc','#ffc2d8','#dc5b8e'],
+  ['#ffe7f0','#f87cab','#8f2257'],
+  ['#ffffff','#ffbdd5','#c23a76'],
+  ['#fdecf3','#ee6da0','#7a1b4b'],
+  ['#fff5f9','#ffa3c3','#a82a5e'],
+  ['#ffeaf2','#ffb8d2','#c34b81']
+];
+var TIER=[
+  {share:.36,pal:HAZE,w:[5,13],d:[19,32],sw:[5.4,9.2],sa:[.6,2.2],a:[.42,.64],sk:[.1,.24]},
+  {share:.4,pal:BOLD,w:[14,32],d:[12,21],sw:[3.6,6.2],sa:[1.4,4.2],a:[.74,.92],sk:[.24,.5]},
+  {share:.24,pal:BOLD,w:[36,86],d:[7,13.5],sw:[2.6,4.6],sa:[2.2,6.4],a:[.9,1],sk:[.6,.95]}
+];
+var pets=[],raf=0,last=0,time=0,startTime=0;
 var W=1,H=1,VR=180,scale=1;
 var ptr={x:-1e4,y:-1e4,age:9,act:false};
 var strength=0,ringOn=false;
@@ -24,23 +36,31 @@ function cl(v,a,b){return v<a?a:(v>b?b:v);}
 function rn(a,b){return a+Math.random()*(b-a);}
 function setP(el,k,v){el.style.setProperty(k,v);}
 
+function pick(){
+  var r=Math.random(),a=0,i;
+  for(i=0;i<TIER.length;i++){a+=TIER[i].share;if(r<a)return i;}
+  return 1;
+}
+
 function build(){
-  var n=cl(Math.round(W*H/34000)+10,16,44),i;
+  var n=cl(Math.round(W*H/11000)+20,48,132),i;
   field.textContent='';
   pets.length=0;
-  scale=cl(W/1440,0.74,1.3);
+  scale=cl(Math.min(W/1180,H/760),.66,1.5);
   for(i=0;i<n;i++){
-    var p={};
-    p.x0=rn(-7,101);
-    p.xd=rn(-17,17);
-    p.d=rn(8.5,21);
+    var t=TIER[pick()],p={};
+    p.x0=rn(-8,104);
+    p.xd=rn(-19,19);
+    p.d=rn(t.d[0],t.d[1]);
     p.ph=rn(0,p.d);
-    p.sa=rn(1.2,6.4);
-    p.sw=rn(2,4.8);
+    p.sa=rn(t.sa[0],t.sa[1]);
+    p.sw=rn(t.sw[0],t.sw[1]);
     p.swp=Math.random();
-    p.t=rn(4.6,11.5);
-    p.w=rn(8,19)*scale;
-    p.c=COLORS[(Math.random()*COLORS.length)|0];
+    p.t=rn(3.6,9.5);
+    p.w=rn(t.w[0],t.w[1])*scale;
+    p.a=rn(t.a[0],t.a[1]);
+    p.streak=rn(t.sk[0],t.sk[1])*p.a;
+    p.c=t.pal[(Math.random()*t.pal.length)|0];
     p.rate=Math.random();
     p.wob=rn(0,TAU);
     p.k=0;
@@ -51,9 +71,12 @@ function build(){
     f.className='fall';
     var s=document.createElement('div');
     s.className='sway';
+    var g=document.createElement('div');
+    g.className='tilt';
     var b=document.createElement('div');
-    b.className='spin';
-    s.appendChild(b);
+    b.className=p.w>t.w[1]*scale*.84?'spin spin--soft':'spin';
+    g.appendChild(b);
+    s.appendChild(g);
     f.appendChild(s);
     el.appendChild(f);
     field.appendChild(el);
@@ -66,12 +89,15 @@ function build(){
     setP(el,'--sw',p.sw.toFixed(2)+'s');
     setP(el,'--swd',(-p.sw*p.swp).toFixed(2)+'s');
     setP(el,'--w',p.w.toFixed(1)+'px');
+    setP(el,'--a',p.a.toFixed(3));
+    setP(el,'--streak',p.streak.toFixed(3));
     setP(el,'--t',p.t.toFixed(2)+'s');
     setP(el,'--c1',p.c[0]);
     setP(el,'--c2',p.c[1]);
-    setP(el,'--y0',rn(3,97).toFixed(1)+'vh');
+    setP(el,'--c3',p.c[2]);
+    setP(el,'--y0',rn(4,96).toFixed(1)+'vh');
     setP(el,'--r0',rn(0,360).toFixed(1)+'deg');
-    setP(el,'--ry0',rn(-68,68).toFixed(1)+'deg');
+    setP(el,'--ry0',rn(-74,74).toFixed(1)+'deg');
     pets.push(p);
   }
   startTime=performance.now();
@@ -124,7 +150,7 @@ function loop(ts){
     p=pets[i];
     var pr=(time+p.ph)%p.d/p.d;
     var x=(p.x0+p.xd*pr)*0.01*W;
-    var y=(-14+128*pr)*0.01*H;
+    var y=(-16+132*pr)*0.01*H;
     x+=Math.sin(TAU*(time/p.sw+p.swp))*(p.sa*0.01*W);
     var k=0;
     if(strength>0.002){
@@ -141,7 +167,7 @@ function loop(ts){
       var dx2=x-px,dy2=y-py;
       var d2=Math.sqrt(dx2*dx2+dy2*dy2)||1;
       var tx=-dy2/d2,ty=dx2/d2;
-      var sp=(78+p.rate*26)*p.k;
+      var sp=(84+p.rate*28)*p.k*(p.w>28?1.5:1);
       sp+=Math.sin(time*3.1+p.wob)*11*p.k;
       var pull=54*p.k;
       setP(p.el,'--wx',(tx*sp-dx2/d2*pull).toFixed(1)+'px');

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Tornado Vortex Debris</title>
-<meta name="description" content="A leaning storm funnel sweeps dust, grit and torn debris along spiralling paths while lightning flickers inside the column.">
+<meta name="description" content="A leaning storm funnel sweeps dust, grit and torn debris along spiralling paths while lightning flickers inside the column over a scarred plain.">
 <link rel="stylesheet" href="styles.css">
 <script defer src="script.js"></script>
 </head>
@@ -15,12 +15,18 @@
   <div class="storm__shelf storm__shelf--b" aria-hidden="true"></div>
   <div class="storm__shelf storm__shelf--c" aria-hidden="true"></div>
   <div class="storm__rain storm__rain--back" aria-hidden="true"><i></i></div>
+  <div class="storm__ground" aria-hidden="true"></div>
   <canvas class="storm__fx" id="fx" aria-hidden="true"></canvas>
   <div class="storm__flash" id="flash" aria-hidden="true"></div>
-  <div class="storm__ground" aria-hidden="true"></div>
   <div class="storm__rain storm__rain--front" aria-hidden="true"><i></i></div>
   <div class="storm__vignette" aria-hidden="true"></div>
   <div class="storm__grain" aria-hidden="true"></div>
+  <div class="hud" aria-hidden="true">
+    <span class="hud__i"><span class="hud__k">Rating</span><span class="hud__v" id="hud-ef">EF3</span></span>
+    <span class="hud__i"><span class="hud__k">Peak</span><span class="hud__v" id="hud-wind">0 km/h</span></span>
+    <span class="hud__i"><span class="hud__k">Mesocyclone</span><span class="hud__v" id="hud-meso">0.00</span></span>
+    <span class="hud__i"><span class="hud__k">Debris</span><span class="hud__v" id="hud-debris">0</span></span>
+  </div>
   <div class="plate">
     <p class="plate__eyebrow">Supercell Tracking</p>
     <h1 class="plate__title">Tornado Vortex Debris</h1>

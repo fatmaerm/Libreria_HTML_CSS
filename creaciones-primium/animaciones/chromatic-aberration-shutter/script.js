@@ -80,9 +80,32 @@ function steer(ev){
   try_ = ((ev.clientY - r.top) / r.height - 0.5) * 9;
 }
 
+const BLADES = Array.prototype.slice.call(document.querySelectorAll('.blade'));
+const LAGS = [0, 0.007, 0.015, 0.023, 0.032, 0.041, 0.05, 0.059, 0.068];
+const TAIL = BLADES.length > 1 ? LAGS[BLADES.length - 1] : 0;
+const OPEN_MAX = 0.58;
+const OPEN_MIN = 0.015;
+let lastK = -1;
+
+function paintIris(open){
+  const q = Math.round(open * 500) / 500;
+  if (q === lastK) return;
+  lastK = q;
+  for (let i = 0; i < BLADES.length; i++){
+    let o = (q - LAGS[i]) / (1 - TAIL);
+    if (o < 0) o = 0;
+    if (o > 1) o = 1;
+    const k = OPEN_MIN + (OPEN_MAX - OPEN_MIN) * o;
+    const ix = 50 + 50 * k;
+    const iy = 50 * k * 0.36397;
+    BLADES[i].style.clipPath = 'polygon(' + ix.toFixed(2) + '% ' + (50 - iy).toFixed(2) + '%,100% 30.2%,100% 69.8%,' + ix.toFixed(2) + '% ' + (50 + iy).toFixed(2) + '%)';
+  }
+}
+
 function applyState(open, blur, ca, rack){
   const s = view.style;
   const q = Math.round(open * 400) / 400;
+  paintIris(q);
   if (q !== lastOpen){
     lastOpen = q;
     s.setProperty('--open', String(q));

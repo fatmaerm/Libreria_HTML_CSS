@@ -14,6 +14,28 @@ const translations = {
     navHome: "Home",
     navComponents: "Components",
     navCategories: "Categories",
+    navGitHub: "GitHub",
+    navDonations: "Donations",
+    navTeamCore: "Team Core",
+    marqueeLabel: "Featured strip",
+    pageComponents: "Components",
+    pageTeamCore: "Team Core",
+    teamCoreEyebrow: "TEAM CORE",
+    teamCoreTitle: "The people behind the library",
+    teamCoreLead: "A small independent group building and maintaining every demo in this collection.",
+    teamRosterEyebrow: "THE ROSTER",
+    teamRosterTitle: "Who maintains it",
+    teamRosterNote: "Four accounts, one library.",
+    roleFounder: "Founder & Lead Developer",
+    roleCoreContributor: "Core Contributor",
+    roleMaintainer: "Maintainer & Designer",
+    roleExternalContributor: "External Contributor",
+    teamViewProfile: "View profile ↗",
+    donationsEyebrow: "DONATIONS",
+    donationsTitle: "Support the library",
+    donationsNote: "Every demo stays free and open source.",
+    donationsText: "If this library saves you time, a small contribution keeps the demos maintained, documented, and free for everyone.",
+    donateNow: "Donate",
     switchToLight: "Switch to light theme",
     switchToDark: "Switch to dark theme",
     switchTheme: "Switch theme",
@@ -21,12 +43,8 @@ const translations = {
     dark: "Dark",
     heroTitleFirst: "HTML & CSS",
     heroTitleSecond: "Library",
-    publicationTitle: "Distribution review in progress.",
-    publicationText: "This published build includes only demos with verified redistribution rights. No component is cleared for release yet.",
-    publicationZipTitle: "ZIP downloads pending verification.",
-    publicationZipText: "You can browse, preview, and copy the source of every demo. ZIP downloads stay disabled until each component's redistribution rights are verified.",
-    heroEyebrow: "A working library of web experiments",
-    heroDescription: "A growing index of interface components, visual effects, and small experiments. Browse the original demos, inspect their source, and take the patterns into your next project.",
+    heroEyebrow: "One demo, one file. Read it, and if you like it, it's yours, free.",
+    heroDescription: "Browse the original demos: each one ships with its source code, ready to copy and adapt. Interface components and effects in HTML and CSS, animations, navigation, forms, and loading states.",
     exploreComponents: "Explore components",
     viewGitHub: "View on GitHub",
     librarySummary: "Library summary",
@@ -108,6 +126,28 @@ const translations = {
     navHome: "Inicio",
     navComponents: "Componentes",
     navCategories: "Categorías",
+    navGitHub: "GitHub",
+    navDonations: "Donaciones",
+    navTeamCore: "Team Core",
+    marqueeLabel: "Cinta destacada",
+    pageComponents: "Componentes",
+    pageTeamCore: "Núcleo del equipo",
+    teamCoreEyebrow: "NÚCLEO DEL EQUIPO",
+    teamCoreTitle: "Quién está detrás de la biblioteca",
+    teamCoreLead: "Un grupo independiente y pequeño que construye y mantiene cada demo de esta colección.",
+    teamRosterEyebrow: "LA PLANTILLA",
+    teamRosterTitle: "Quién lo mantiene",
+    teamRosterNote: "Cuatro cuentas, una biblioteca.",
+    roleFounder: "Fundador y desarrollador principal",
+    roleCoreContributor: "Contribuidor del núcleo",
+    roleMaintainer: "Mantenedor y diseñador",
+    roleExternalContributor: "Contribuidor externo",
+    teamViewProfile: "Ver perfil ↗",
+    donationsEyebrow: "DONACIONES",
+    donationsTitle: "Apoya la biblioteca",
+    donationsNote: "Cada demo se mantiene gratis y de código abierto.",
+    donationsText: "Si esta biblioteca te ahorra tiempo, una pequeña aportación mantiene los demos actualizados, documentados y disponibles para todos.",
+    donateNow: "Donar",
     switchToLight: "Cambiar al tema claro",
     switchToDark: "Cambiar al tema oscuro",
     switchTheme: "Cambiar tema",
@@ -115,12 +155,8 @@ const translations = {
     dark: "Oscuro",
     heroTitleFirst: "Biblioteca",
     heroTitleSecond: "HTML y CSS",
-    publicationTitle: "Revisión de distribución en curso.",
-    publicationText: "Esta versión publicada solo incluye demos con derechos de redistribución verificados. Todavía no hay componentes autorizados.",
-    publicationZipTitle: "Descargas ZIP pendientes de verificación.",
-    publicationZipText: "Puedes explorar, previsualizar y copiar el código de cada demo. Las descargas ZIP siguen deshabilitadas hasta verificar los derechos de redistribución de cada componente.",
-    heroEyebrow: "Una biblioteca activa de experimentos web",
-    heroDescription: "Un índice en crecimiento de componentes de interfaz, efectos visuales y pequeños experimentos. Explora los demos originales, consulta su código y adapta sus ideas a tu próximo proyecto.",
+    heroEyebrow: "Una demo, un archivo. Léelo y si te gusta es tuyo totalmente gratis.",
+    heroDescription: "Explora los demos originales: cada uno trae su código fuente listo para copiar y adaptar. Componentes y efectos de interfaz en HTML y CSS, animaciones, navegación, formularios y estados de carga.",
     exploreComponents: "Explorar componentes",
     viewGitHub: "Ver en GitHub",
     librarySummary: "Resumen de la biblioteca",
@@ -206,7 +242,6 @@ const state = {
 const elements = {
   catalogView: document.querySelector("#catalog-view"),
   detailView: document.querySelector("#component-detail"),
-  publicationNotice: document.querySelector("#publication-notice"),
   featuredGrid: document.querySelector("#featured-grid"),
   search: document.querySelector("#component-search"),
   filters: document.querySelector("#category-filters"),
@@ -230,9 +265,128 @@ function getCategoryLabel(category) {
   return translations[state.language]?.categories[category] ?? category;
 }
 
+// Maquina de escribir (CSS Typewriter Line). El original lleva el numero de
+// caracteres y el ancho finales metidos a mano en el CSS (steps(26) y 26ch), asi
+// que con otro texto se corta. Aqui los dos valores se miden del texto real, que
+// cambia con el idioma y con la fuente que termine cargando.
+const typewriterCycleMs = 20000;
+const typewriterMsPerChar = 65;
+let typewriterKeyframes = null;
+
+function applyTypewriterMetrics() {
+  const elements = [...document.querySelectorAll("[data-typewriter]")];
+  if (!elements.length) return;
+  const longest = Math.max(...elements.map((el) => [...el.textContent.trim()].length));
+  if (!longest) return;
+
+  // El keyframe no puede usar var() en sus topes, y el ciclo es fijo, asi que los
+  // porcentajes se calculan aqui y se inyectan en una regla propia. El ciclo es
+  // escribir, quedarse quieto, borrar y volver a empezar; escribir y borrar ocupan
+  // el mismo tiempo, asi que la espera es lo que sobra del ciclo.
+  if (!typewriterKeyframes) {
+    typewriterKeyframes = document.createElement("style");
+    // Ojo: este atributo no puede ser data-typewriter, o el propio <style> entra
+    // en el querySelectorAll de arriba y se cuenta como un tecleo mas.
+    typewriterKeyframes.dataset.generated = "typewriter-cycle";
+    document.head.append(typewriterKeyframes);
+  }
+  const typeMs = Math.min(longest * typewriterMsPerChar, (typewriterCycleMs - 600) / 2);
+  const holdMs = Math.max(400, typewriterCycleMs - 2 * typeMs - 200);
+  const pct = (ms) => `${((ms / typewriterCycleMs) * 100).toFixed(2)}%`;
+  typewriterKeyframes.textContent = `@keyframes type-cycle {
+  0% { width: 0; }
+  ${pct(typeMs)} { width: var(--type-width); }
+  ${pct(typeMs + holdMs)} { width: var(--type-width); }
+  ${pct(typeMs + holdMs + typeMs)} { width: 0; }
+  100% { width: 0; }
+}`;
+
+  for (const element of elements) {
+    const chars = [...element.textContent.trim()].length;
+    if (!chars) continue;
+    element.style.setProperty("--type-chars", String(chars));
+    element.style.setProperty("--type-cycle", `${typewriterCycleMs}ms`);
+    // +3px: el caret va como borde y el box-sizing es border-box.
+    element.style.setProperty("--type-width", `${element.scrollWidth + 3}px`);
+  }
+}
+
+// Reinicia la animacion: quitar y volver a poner la propiedad obliga al motor a
+// recalcularla, porque si solo se cambia el texto se veria el cambio en seco.
+function restartTypewriter() {
+  for (const element of document.querySelectorAll("[data-typewriter]")) {
+    element.style.animation = "none";
+    void element.offsetWidth;
+    element.style.removeProperty("animation");
+  }
+}
+
 function getComponentDescription(component) {
   if (state.language === "en") return component.description;
   return component.descriptionEs || component.description;
+}
+
+// La cinta necesita texto real y, sobre todo, que se clone hasta tapar dos veces
+// el ancho de la ventana: el bucle usa translateX(-50%), asi que si la mitad no
+// llega a cubrir la pantalla aparece un hueco al final del recorrido.
+function getMarqueeItems() {
+  return state.language === "es"
+    ? [
+      "HTML + CSS sin dependencias",
+      "Sin paso de compilación",
+      "Lee el código original de cada demo",
+      "Copia y adapta los patrones a tu proyecto",
+      "Abierto a contribuciones PR",
+    ]
+    : [
+      "Standalone HTML + CSS",
+      "No build step",
+      "Read the original source of every demo",
+      "Copy and adapt the patterns into your project",
+      "Open to PR contributions",
+    ];
+}
+
+// Velocidad de la cinta en pixeles por segundo. El bucle es translateX(-50%), o
+// sea que en cada ciclo recorre la MITAD del ancho del track, y el track ademas
+// se clona segun el ancho de la pantalla. Por eso la duracion se calcula aqui en
+// vez de fijarse en CSS: si no, en pantallas anchas correria mas rapido.
+// Sube este numero para ir mas rapido, bajalo para ir mas lento.
+const marqueeSpeed = 40;
+
+function renderMarquee() {
+  const track = document.querySelector(".skew-marquee-track");
+  if (!track) return;
+  const phrase = `${getMarqueeItems().join("  ·  ")}  ·`;
+  // Se mide un item suelto para calcular cuantos hacen falta.
+  const probe = createElement("span", "skew-marquee-item", phrase);
+  track.replaceChildren(probe);
+  const itemWidth = probe.getBoundingClientRect().width;
+  if (!itemWidth) {
+    track.replaceChildren();
+    return;
+  }
+  const needed = Math.max(2, Math.ceil((window.innerWidth * 1.2) / itemWidth));
+  const half = Array.from({ length: needed }, () => createElement("span", "skew-marquee-item", phrase));
+  const secondHalf = half.map((item) => {
+    const clone = item.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    return clone;
+  });
+  track.replaceChildren(...half, ...secondHalf);
+  const trackWidth = track.getBoundingClientRect().width;
+  // -50% por ciclo: el recorrido real es la mitad del track.
+  if (trackWidth) track.style.animationDuration = `${((trackWidth / 2) / marqueeSpeed).toFixed(1)}s`;
+}
+
+function initializeMarquee() {
+  if (!document.querySelector(".skew-marquee")) return;
+  renderMarquee();
+  let resizeTimer = null;
+  window.addEventListener("resize", () => {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(renderMarquee, 180);
+  });
 }
 
 function applyStaticTranslations() {
@@ -246,25 +400,11 @@ function applyStaticTranslations() {
     element.setAttribute("aria-label", t(element.dataset.i18nAriaLabel));
   }
   document.documentElement.lang = state.language;
-  if (elements.detailView.hidden) updateLocalizedMetadata();
+  if (elements.detailView?.hidden) updateLocalizedMetadata();
   for (const button of elements.languageButtons) {
     button.setAttribute("aria-pressed", String(button.dataset.language === state.language));
   }
-}
-
-function updatePublicationNotice() {
-  if (!state.catalogLoaded) return;
-  const hasComponents = state.components.length > 0;
-  const allCleared = hasComponents && state.components.every((entry) => entry.downloadable === true);
-  elements.publicationNotice.hidden = allCleared;
-  const [title, text] = elements.publicationNotice.querySelectorAll("[data-i18n]");
-  const keys = hasComponents
-    ? ["publicationZipTitle", "publicationZipText"]
-    : ["publicationTitle", "publicationText"];
-  title.dataset.i18n = keys[0];
-  text.dataset.i18n = keys[1];
-  title.textContent = t(keys[0]);
-  text.textContent = t(keys[1]);
+  applyTypewriterMetrics();
 }
 
 function normalizeText(value) {
@@ -301,6 +441,7 @@ function getFilteredComponents() {
 }
 
 function renderFilters() {
+  if (!elements.filters) return;
   elements.filters.replaceChildren();
   for (const category of ["All", ...getCategories()]) {
     const button = createElement("button", "filter-button", getCategoryLabel(category));
@@ -375,6 +516,10 @@ function createPreview(component, className) {
   return preview;
 }
 
+function componentDetailUrl(componentId) {
+  return `./components.html?component=${encodeURIComponent(componentId)}`;
+}
+
 function createComponentCard(component, index) {
   const article = createElement("article", "component-card");
   article.append(createPreview(component, "card-preview"));
@@ -391,7 +536,7 @@ function createComponentCard(component, index) {
   const heading = createElement("h3", "", component.name);
   const description = createElement("p", "", getComponentDescription(component));
   const link = createElement("a", "card-link", t("viewComponent"));
-  link.href = `?component=${encodeURIComponent(component.id)}`;
+  link.href = componentDetailUrl(component.id);
   const arrow = createElement("span", "", "→");
   arrow.setAttribute("aria-hidden", "true");
   link.append(arrow);
@@ -401,6 +546,7 @@ function createComponentCard(component, index) {
 }
 
 function renderComponents() {
+  if (!elements.grid) return;
   const filteredComponents = getFilteredComponents();
   const visibleComponents = filteredComponents.slice(0, state.visibleCount);
   elements.grid.replaceChildren(...visibleComponents.map((component, index) => createComponentCard(component, index)));
@@ -412,6 +558,7 @@ function renderComponents() {
 }
 
 function renderFeaturedComponents() {
+  if (!elements.featuredGrid) return;
   const featuredComponents = state.components.filter((component) => component.featured);
   elements.featuredGrid.replaceChildren(...featuredComponents.map((component, index) => createComponentCard(component, index)));
   elements.featuredGrid.closest(".featured-section").hidden = featuredComponents.length === 0;
@@ -419,6 +566,7 @@ function renderFeaturedComponents() {
 }
 
 function renderCategories() {
+  if (!elements.categoryGrid) return;
   const counts = new Map();
   for (const component of state.components) {
     counts.set(component.category, (counts.get(component.category) ?? 0) + 1);
@@ -426,22 +574,17 @@ function renderCategories() {
 
   elements.categoryGrid.replaceChildren();
   for (const category of getCategories()) {
-    const button = createElement("button", "category-card");
-    button.type = "button";
     const translatedCategory = getCategoryLabel(category);
-    button.setAttribute("aria-label", t("browseCategory", { category: translatedCategory }));
-    button.append(
+    // Las categorias viven en Inicio, asi que enlazan a la pagina de la coleccion
+    // llevando la categoria elegida en la query.
+    const link = createElement("a", "category-card");
+    link.href = `./components.html?category=${encodeURIComponent(category)}`;
+    link.setAttribute("aria-label", t("browseCategory", { category: translatedCategory }));
+    link.append(
       createElement("span", "category-card-name", translatedCategory),
       createElement("span", "category-card-count", `${counts.get(category)} ${counts.get(category) === 1 ? t("component") : t("components")}`),
     );
-    button.addEventListener("click", () => {
-      state.category = category;
-      state.visibleCount = pageSize;
-      renderFilters();
-      renderComponents();
-      document.querySelector("#components").scrollIntoView({ behavior: "smooth" });
-    });
-    elements.categoryGrid.append(button);
+    elements.categoryGrid.append(link);
   }
 }
 
@@ -666,10 +809,15 @@ function createMissingReferencesNote(component) {
 }
 
 const siteOrigin = "https://libreria-html-css.vercel.app";
-const sitePath = "/Web/";
+const componentsPath = "/Web/components.html";
+// Cada pagina declara su propia canonical, asi que esa es la ruta de la pagina actual.
+const sitePath = new URL(
+  document.querySelector('link[rel="canonical"]')?.getAttribute("href") ?? document.baseURI,
+  document.baseURI,
+).pathname;
 const defaultMetadata = {
   description: document.querySelector('meta[name="description"]')?.getAttribute("content") ?? "",
-  image: `${siteOrigin}${sitePath}og-image.png`,
+  image: `${siteOrigin}/Web/og-image.png`,
 };
 
 function setMetaContent(selector, content) {
@@ -694,7 +842,9 @@ function updateDocumentMetadata({ title, description, url, robots = "index, foll
 
 function updateLocalizedMetadata() {
   updateDocumentMetadata({
-    title: t("libraryTitle"),
+    title: document.body.dataset.pageTitle
+      ? `${t(document.body.dataset.pageTitle)} · ${t("libraryTitle")}`
+      : t("libraryTitle"),
     description: t("heroDescription"),
     url: `${siteOrigin}${sitePath}`,
   });
@@ -707,18 +857,24 @@ async function renderDetail(component) {
   updateDocumentMetadata({
     title: `${component.name} · ${t("libraryTitle")}`,
     description: getComponentDescription(component),
-    url: `${siteOrigin}${sitePath}?component=${encodeURIComponent(component.id)}`,
+    url: `${siteOrigin}${componentsPath}?component=${encodeURIComponent(component.id)}`,
     robots: "noindex, follow",
   });
 
+  // El detalle vive en components.html; si se abre desde otra pagina, "volver"
+  // tiene que llevar ahi en vez de a un ancla que no existe.
   const backLink = createElement("a", "detail-back", t("backToComponents"));
-  backLink.href = "#components";
-  backLink.addEventListener("click", (event) => {
-    event.preventDefault();
-    window.history.pushState({}, "", `${window.location.pathname}#components`);
-    renderRoute();
-    document.querySelector("#components")?.scrollIntoView({ behavior: "smooth" });
-  });
+  if (elements.catalogView.querySelector("#components")) {
+    backLink.href = "#components";
+    backLink.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.history.pushState({}, "", `${window.location.pathname}#components`);
+      renderRoute();
+      document.querySelector("#components")?.scrollIntoView({ behavior: "smooth" });
+    });
+  } else {
+    backLink.href = "./components.html";
+  }
 
   const previewPanel = createElement("section", "preview-panel");
   const previewHeader = createElement("div", "preview-panel-header");
@@ -780,7 +936,7 @@ function renderRoute() {
     return;
   }
 
-  elements.detailView.hidden = true;
+  if (elements.detailView) elements.detailView.hidden = true;
   elements.catalogView.hidden = false;
   updateLocalizedMetadata();
   renderComponents();
@@ -795,16 +951,19 @@ function updateThemeControls() {
 }
 
 function applyLanguage(language, rerender = true) {
-  state.language = language === "es" ? "es" : "en";
+  const changed = language === "es" ? "es" : "en";
+  const isNewLanguage = changed !== state.language;
+  state.language = changed;
   applyStaticTranslations();
   updateThemeControls();
-  updatePublicationNotice();
   try {
     localStorage.setItem("component-field-language", state.language);
   } catch {
     if (rerender) showToast(t("languageNotSaved"));
   }
+  if (isNewLanguage) restartTypewriter();
   if (rerender && state.components.length > 0) {
+    renderMarquee();
     renderFeaturedComponents();
     renderFilters();
     renderCategories();
@@ -875,6 +1034,7 @@ function initializeNavigation() {
 }
 
 function initializeSearch() {
+  if (!elements.search) return;
   elements.search.addEventListener("input", () => {
     state.query = elements.search.value;
     state.visibleCount = pageSize;
@@ -898,26 +1058,47 @@ function initializeSearch() {
   });
 }
 
+// Las tarjetas de categoria de Inicio llegan aqui como ?category=Botones
+function applyCategoryFromUrl() {
+  const requested = new URLSearchParams(window.location.search).get("category");
+  if (!requested) return;
+  const known = ["All", ...getCategories()];
+  state.category = known.includes(requested) ? requested : "All";
+}
+
 async function initializeApp() {
   initializeLanguage();
   initializeTheme();
   initializeNavigation();
   initializeSearch();
+  initializeMarquee();
   document.querySelector("#footer-year").textContent = String(new Date().getFullYear());
+
+  // El ancho medido depende de la fuente; si DM Mono llegase tarde, el texto
+  // mediria mas de lo que se calculo y la maquina de escribir lo cortaria.
+  document.fonts?.ready.then(() => {
+    applyTypewriterMetrics();
+    restartTypewriter();
+  }).catch(() => {});
 
   try {
     state.components = await loadCatalog();
     state.catalogLoaded = true;
-    updatePublicationNotice();
-    document.querySelector("#stat-components").textContent = String(state.components.length);
-    document.querySelector("#stat-categories").textContent = String(getCategories().length);
+    const statComponents = document.querySelector("#stat-components");
+    const statCategories = document.querySelector("#stat-categories");
+    if (statComponents) statComponents.textContent = String(state.components.length);
+    if (statCategories) statCategories.textContent = String(getCategories().length);
+    applyCategoryFromUrl();
+    renderMarquee();
     renderFeaturedComponents();
     renderFilters();
     renderCategories();
     renderRoute();
   } catch (error) {
-    elements.resultsCount.textContent = t("catalogUnavailable");
-    elements.grid.replaceChildren(createElement("p", "error-message", t("catalogLoadError", { message: error.message })));
+    if (elements.resultsCount) elements.resultsCount.textContent = t("catalogUnavailable");
+    if (elements.grid) {
+      elements.grid.replaceChildren(createElement("p", "error-message", t("catalogLoadError", { message: error.message })));
+    }
   }
 }
 

@@ -1,6 +1,10 @@
 # Artefactos de build (se regeneran con Web/scripts/build-site.mjs)
 .github-pages-*
 
+# Catálogo completo: solo lo usa la apertura con file://, nunca en HTTP.
+# Se regenera con Web/scripts/generate-catalog.mjs
+Web/data/catalog.js
+
 # Despliegue
 .vercel/
 

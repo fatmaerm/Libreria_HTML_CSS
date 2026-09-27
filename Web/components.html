@@ -6,22 +6,22 @@
     <meta name="theme-color" content="#101311">
     <meta name="description" content="A searchable collection of standalone HTML and CSS components, effects, and interface experiments.">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://libreria-html-css.vercel.app/Web/">
-    <title>HTML &amp; CSS Library</title>
+    <link rel="canonical" href="https://libreria-html-css.vercel.app/Web/components.html">
+    <title>Components · HTML &amp; CSS Library</title>
 
     <link rel="icon" href="./favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="./favicon.svg">
     <meta name="color-scheme" content="dark light">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="HTML &amp; CSS Library">
-    <meta property="og:title" content="HTML &amp; CSS Library">
+    <meta property="og:title" content="Components · HTML &amp; CSS Library">
     <meta property="og:description" content="A searchable collection of standalone HTML and CSS components, effects, and interface experiments.">
-    <meta property="og:url" content="https://libreria-html-css.vercel.app/Web/">
+    <meta property="og:url" content="https://libreria-html-css.vercel.app/Web/components.html">
     <meta property="og:image" content="https://libreria-html-css.vercel.app/Web/og-image.png">
     <meta property="og:locale" content="en">
     <meta property="og:locale:alternate" content="es">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="HTML &amp; CSS Library">
+    <meta name="twitter:title" content="Components · HTML &amp; CSS Library">
     <meta name="twitter:description" content="A searchable collection of standalone HTML and CSS components, effects, and interface experiments.">
     <meta name="twitter:image" content="https://libreria-html-css.vercel.app/Web/og-image.png">
 
@@ -32,7 +32,7 @@
     <script defer src="./scripts/zip.js?v=20260927-16543210"></script>
     <script defer src="./scripts/app.js?v=20260927-16543210"></script>
   </head>
-  <body>
+  <body data-page-title="pageComponents">
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <a class="brand" href="./" aria-label="HTML and CSS Library home" data-i18n-aria-label="brandHome">
@@ -64,46 +64,35 @@
           <div class="skew-marquee-strip">
             <div class="skew-marquee-track"></div>
           </div>
+
         </aside>
-        <section class="hero section-wrap" id="home" aria-labelledby="hero-title">
-          <div class="hero-copy">
-            <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> <span class="typewriter" data-typewriter data-i18n="heroEyebrow">One demo, one file. Read it, and if you like it, it's yours, free.</span></p>
-            <h1 id="hero-title"><span data-i18n="heroTitleFirst">HTML &amp; CSS</span><br><span data-i18n="heroTitleSecond">Library</span></h1>
-            <p class="hero-description" data-i18n="heroDescription">Browse the original demos: each one ships with its source code, ready to copy and adapt. Interface components and effects in HTML and CSS, animations, navigation, forms, and loading states.</p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="./components.html"><span data-i18n="exploreComponents">Explore components</span> <span aria-hidden="true">↓</span></a>
-              <a class="button button-secondary" href="https://github.com/kindred-98/Libreria_HTML_CSS" target="_blank" rel="noreferrer"><span data-i18n="viewGitHub">View on GitHub</span> <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-          <div class="hero-aside" aria-label="Library summary" data-i18n-aria-label="librarySummary">
-            <span class="hero-aside-edge" data-side="top" aria-hidden="true"></span>
-            <span class="hero-aside-edge" data-side="bottom" aria-hidden="true"></span>
-            <span class="hero-aside-edge" data-side="left" aria-hidden="true"></span>
-            <span class="hero-aside-edge" data-side="right" aria-hidden="true"></span>
-            <div class="hero-aside-top"><span data-i18n="collectionIndex">COLLECTION INDEX</span><span>01 — 26</span></div>
-            <p class="hero-aside-title"><span data-i18n="heroAsideLineOne">Small pieces.</span><br><span data-i18n="heroAsideLineTwo">Useful details.</span></p>
-            <div class="stat-grid">
-              <div><strong id="stat-components">—</strong><span data-i18n="experiments">experiments</span></div>
-              <div><strong id="stat-categories">—</strong><span data-i18n="categoriesLabel">categories</span></div>
-            </div>
-            <span class="hero-aside-foot">HTML <i>+</i> CSS <i>+</i> JS</span>
-          </div>
-        </section>
 
-        <section class="featured-section section-wrap" id="featured" aria-labelledby="featured-title">
+        <section class="library-section section-wrap" id="components" aria-labelledby="library-title">
           <div class="section-heading">
-            <div><p class="eyebrow" data-i18n="selectedComponents">SELECTED COMPONENTS</p><h2 id="featured-title" data-i18n="featuredTitle">A few to explore</h2></div>
-            <p class="section-note" data-i18n="featuredNote">Real demos from the collection, selected for a quick first look.</p>
+            <div>
+              <p class="eyebrow" data-i18n="collectionEyebrow">THE COLLECTION</p>
+              <h2 id="library-title" data-i18n="browseComponents">Browse components</h2>
+            </div>
+            <p class="section-note" data-i18n="libraryNote">Search the details. Open a demo. Make it yours.</p>
           </div>
-          <div class="component-grid" id="featured-grid"></div>
-        </section>
-
-        <section class="category-section section-wrap" id="categories" aria-labelledby="categories-title">
-          <div class="section-heading">
-            <div><p class="eyebrow" data-i18n="findStartingPoint">FIND A STARTING POINT</p><h2 id="categories-title" data-i18n="categoriesTitle">Categories</h2></div>
-            <p class="section-note" data-i18n="categoriesNote">Grouped from the component names and folders.</p>
+          <div class="library-toolbar">
+            <label class="search-box" for="component-search">
+              <span class="search-icon" aria-hidden="true">⌕</span>
+              <input id="component-search" type="search" placeholder="Search buttons, cards, effects..." data-i18n-placeholder="searchPlaceholder" autocomplete="off">
+              <kbd>/</kbd>
+            </label>
+            <p class="results-count" id="results-count" aria-live="polite" data-i18n="loadingCollection">Loading collection...</p>
           </div>
-          <div class="category-grid" id="category-grid"></div>
+          <fieldset class="category-filters" id="category-filters">
+            <legend class="visually-hidden" data-i18n="filterByCategory">Filter by category</legend>
+          </fieldset>
+          <div class="component-grid" id="component-grid" aria-live="polite"></div>
+          <div class="empty-state" id="empty-state" hidden>
+            <span class="empty-mark" aria-hidden="true">∅</span>
+            <h3 data-i18n="noComponents">No components found</h3>
+            <p data-i18n="noComponentsHint">Try another search or choose a different category.</p>
+          </div>
+          <div class="load-more-wrap"><button class="button button-secondary" id="load-more" type="button" data-i18n="loadMore" hidden>Load more</button></div>
         </section>
       </div>
 

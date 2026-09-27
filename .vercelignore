@@ -12,6 +12,10 @@ CHANGELOG.md
 # Artefactos de build de GitHub Pages (regenerados en cada despliegue).
 .github-pages-*
 
+# El catálogo completo solo se carga al abrir con file://; en HTTP se usa
+# catalog.json. Se regenera con Web/scripts/generate-catalog.mjs.
+Web/data/catalog.js
+
 # Sistema
 Thumbs.db
 .DS_Store

@@ -37,6 +37,7 @@
 
 * {
   box-sizing: border-box;
+  align-items: center;
 }
 
 html {
@@ -126,15 +127,15 @@ input:focus-visible {
   flex: 0 0 auto;
   align-items: center;
   gap: 10px;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 800;
   letter-spacing: 0;
 }
 
 .brand-mark {
   display: grid;
-  width: 31px;
-  height: 31px;
+  width: 40px;
+  height: 40px;
   place-items: center;
   border: 1px solid var(--line);
   color: var(--accent);
@@ -151,7 +152,7 @@ input:focus-visible {
   align-items: center;
   gap: 30px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -168,6 +169,23 @@ input:focus-visible {
 
 .main-nav a span {
   color: var(--accent);
+}
+
+.nav-github {
+  display: inline-flex;
+  align-items: center;
+  color: var(--muted);
+  transition: color 150ms ease, transform 150ms ease;
+}
+
+.nav-github:hover {
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.nav-github svg {
+  display: block;
+  fill: currentcolor;
 }
 
 .theme-toggle {
@@ -223,20 +241,200 @@ input:focus-visible {
   margin-inline: auto;
 }
 
-.publication-notice {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px 12px;
-  padding: 12px max(28px, calc((100vw - 1320px) / 2));
-  border-bottom: 1px solid var(--line);
-  background: var(--surface);
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.6;
+/* Skew Marquee Strip: cinta diagonal que recorre el ancho entre el header y el hero.
+   El sesgo desplaza la cinta (W/2) * tan(2deg) en vertical por cada lado, asi que
+   el padding tiene que crecer con el ancho: 50vw * 0.03492 = 1.746vw. */
+.skew-marquee {
+  --marquee-skew-pad: 1.746vw;
+  overflow: hidden;
+  padding-block: var(--marquee-skew-pad);
+  background: var(--page);
 }
 
-.publication-notice strong {
-  color: var(--coral);
+.skew-marquee-strip {
+  padding: 15px 0;
+  background: var(--accent);
+  box-shadow: 0 10px 26px rgb(0 0 0 / 18%);
+  transform: skewY(0deg);
+}
+
+.skew-marquee-track {
+  display: flex;
+  width: max-content;
+  color: var(--accent-ink);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+  animation: skew-marquee-scroll 22s linear infinite;
+  will-change: transform;
+}
+
+.skew-marquee-item {
+  flex: 0 0 auto;
+  padding-right: 1.4rem;
+  white-space: nowrap;
+}
+
+.skew-marquee:hover .skew-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes skew-marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pagina Team Core */
+.team-hero {
+  padding-block: 72px 56px;
+  border-bottom: 1px solid var(--line);
+}
+
+.team-hero h1 {
+  max-width: 20ch;
+  margin-top: 14px;
+  font-size: clamp(38px, 5.2vw, 64px);
+  line-height: 1.03;
+  letter-spacing: -0.03em;
+}
+
+.team-lead {
+  max-width: 62ch;
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.donations-section {
+  padding-block: 76px 82px;
+}
+
+/* Roster de Team Core: tarjeta con brillo que la recorre al pasar el raton. */
+.team-section {
+  padding-block: 76px 0;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.team-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  transition: border-color 200ms ease, transform 220ms ease, box-shadow 220ms ease;
+}
+
+.team-card:hover,
+.team-card:focus-within {
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
+  transform: translateY(-4px);
+  box-shadow: 0 20px 44px rgb(0 0 0 / 24%);
+}
+
+/* Barrido diagonal: la banda sale por la izquierda y cruza hasta la derecha. */
+.team-card::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 36%,
+    color-mix(in srgb, var(--accent) 28%, transparent) 50%,
+    transparent 64%
+  );
+  content: "";
+  pointer-events: none;
+  transform: translateX(-100%);
+  transition: transform 700ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.team-card:hover::before,
+.team-card:focus-within::before {
+  transform: translateX(100%);
+}
+
+.team-card-link {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 5px;
+  justify-items: start;
+  padding: 26px 22px 22px;
+}
+
+.team-avatar {
+  display: block;
+  width: 66px;
+  height: 66px;
+  margin-bottom: 13px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface-raised);
+}
+
+.team-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-name {
+  font-family: "DM Mono", monospace;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.team-role {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.team-handle {
+  margin-top: 9px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  transition: color 150ms ease;
+}
+
+.team-card:hover .team-handle,
+.team-card:focus-within .team-handle {
+  color: var(--text);
+}
+
+.donations-card {
+  display: grid;
+  gap: 26px;
+  max-width: 720px;
+  padding: 30px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.donations-card p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.donations-card .hero-actions {
+  margin-top: 0;
 }
 
 .hero {
@@ -262,7 +460,7 @@ input:focus-visible {
 .footer-meta,
 .category-card-count {
   font-family: "DM Mono", "Courier New", monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0;
   text-transform: uppercase;
 }
@@ -273,6 +471,35 @@ input:focus-visible {
   gap: 10px;
   margin: 0 0 22px;
   color: var(--muted);
+}
+
+/* CSS Typewriter Line. Los valores por defecto solo estan por si el JS no llega a
+   medirlos; applyTypewriterMetrics() los sobreescribe con los del texto real. */
+/* CSS Typewriter Line, en bucle. Los valores por defecto solo estan por si el JS no
+   llega a medirlos; applyTypewriterMetrics() los sobreescribe con los del texto.
+   El ciclo dura --type-cycle: escribir, quedarse quieto un momento, borrar y
+   volver a empezar. Los topes del keyframe los injecta el JS, porque una variable
+   CSS no se puede usar dentro del selector de un @keyframes. */
+.typewriter {
+  --type-chars: 28;
+  --type-width: 18ch;
+  --type-cycle: 10s;
+  display: block;
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  border-right: 2px solid var(--accent);
+  animation:
+    type-cycle var(--type-cycle) steps(var(--type-chars), end) infinite,
+    type-caret 0.75s step-end infinite;
+}
+
+@keyframes type-caret {
+  50% {
+    border-color: transparent;
+  }
 }
 
 .status-dot {
@@ -363,6 +590,7 @@ input:focus-visible {
   border: 1px solid var(--line);
   background: var(--surface);
   box-shadow: var(--shadow);
+  transition: border-color 400ms ease;
 }
 
 .hero-aside::before,
@@ -384,10 +612,87 @@ input:focus-visible {
   bottom: -4px;
 }
 
+/* Marco de Social Media Icons Animation Part 01, sin iconos: al pasar el raton
+   las dos lineas verticales se dibujan de dentro hacia fuera y las dos
+   horizontales se retraen. Los cuatro lados entran desde su origen opuesto. */
+.hero-aside-edge {
+  position: absolute;
+  z-index: 2;
+  background: var(--accent);
+  pointer-events: none;
+  transition: transform 500ms ease;
+}
+
+.hero-aside-edge[data-side="top"],
+.hero-aside-edge[data-side="bottom"] {
+  right: 0;
+  left: 0;
+  height: 2px;
+}
+
+.hero-aside-edge[data-side="left"],
+.hero-aside-edge[data-side="right"] {
+  top: 0;
+  bottom: 0;
+  width: 2px;
+}
+
+.hero-aside-edge[data-side="top"] {
+  top: -1px;
+  transform: scaleX(1);
+  transform-origin: right;
+}
+
+.hero-aside-edge[data-side="bottom"] {
+  bottom: -1px;
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.hero-aside-edge[data-side="left"] {
+  left: -1px;
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.hero-aside-edge[data-side="right"] {
+  right: -1px;
+  transform: scaleY(0);
+  transform-origin: bottom;
+}
+
+.hero-aside:hover .hero-aside-edge[data-side="top"] {
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.hero-aside:hover .hero-aside-edge[data-side="bottom"] {
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+.hero-aside:hover .hero-aside-edge[data-side="left"] {
+  transform: scaleY(1);
+  transform-origin: top;
+}
+
+.hero-aside:hover .hero-aside-edge[data-side="right"] {
+  transform: scaleY(1);
+  transform-origin: bottom;
+}
+
+.hero-aside:hover {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+}
+
 .hero-aside-top {
   display: flex;
   justify-content: space-between;
   color: var(--quiet);
+}
+
+.hero-aside-top [data-i18n="collectionIndex"] {
+  color: var(--accent);
 }
 
 .hero-aside-title {
@@ -430,7 +735,8 @@ input:focus-visible {
 .hero-aside-foot {
   display: block;
   margin-top: 18px;
-  color: var(--quiet);
+  color: var(--accent);
+  text-align: center;
 }
 
 .hero-aside-foot i {
@@ -1031,6 +1337,10 @@ input:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .category-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1076,10 +1386,33 @@ input:focus-visible {
   .main-nav {
     order: 3;
     width: 100%;
+    flex-wrap: wrap;
     justify-content: space-between;
-    gap: 12px;
+    gap: 8px 10px;
     padding-block: 11px;
     font-size: 10px;
+  }
+
+  .skew-marquee-track {
+    font-size: 12px;
+  }
+
+  .team-hero {
+    padding-block: 48px 40px;
+  }
+
+  .team-lead {
+    margin-top: 16px;
+    font-size: 15px;
+  }
+
+  .donations-section {
+    padding-block: 52px 58px;
+  }
+
+  .donations-card {
+    gap: 20px;
+    padding: 22px;
   }
 
   .section-wrap,
@@ -1157,6 +1490,33 @@ input:focus-visible {
     gap: 12px;
   }
 
+  .team-section {
+    padding-block: 52px 0;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .team-card-link {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: 15px;
+    padding: 18px;
+  }
+
+  .team-avatar {
+    width: 54px;
+    height: 54px;
+    margin-bottom: 0;
+    grid-row: span 3;
+  }
+
+  .team-handle {
+    margin-top: 2px;
+  }
+
   .card-preview {
     height: 210px;
   }
@@ -1230,5 +1590,18 @@ input:focus-visible {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  /* La cinta se queda quieta en lugar de quedarse corrida a -50%. */
+  .skew-marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  /* Sin maquina de escribir: el texto se ve entero y sin caret. */
+  .typewriter {
+    width: auto !important;
+    border-right: none !important;
+    animation: none !important;
   }
 }

@@ -1,0 +1,15 @@
+{
+  "name": "libreria-html-css",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Catalogo estatico de demos independientes de HTML, CSS y JavaScript.",
+  "type": "module",
+  "scripts": {
+    "catalogo": "node Web/scripts/generate-catalog.mjs",
+    "catalogo:watch": "node --watch-path=./BibliotecaDeHtml_CSS --watch-path=./CreacionesNuevas --watch-path=./creaciones-primium Web/scripts/generate-catalog.mjs",
+    "servidor": "node Web/scripts/serve.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

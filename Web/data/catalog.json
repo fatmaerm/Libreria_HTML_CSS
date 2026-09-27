@@ -11253,6 +11253,101 @@
     "scripts": []
   },
   {
+    "id": "animaciones-bokeh-depth-of-field",
+    "name": "Bokeh Depth Of Field",
+    "category": "Animations",
+    "featured": false,
+    "description": "Night city lights float through eight depth planes as out-of-focus bokeh discs, and moving the pointer racks the focus plane to blur or sharpen each layer.",
+    "tags": [
+      "animations",
+      "bokeh",
+      "depth",
+      "of",
+      "field"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/bokeh-depth-of-field",
+    "preview": "../creaciones-primium/animaciones/bokeh-depth-of-field/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/bokeh-depth-of-field/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/bokeh-depth-of-field/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-chromatic-aberration-shutter",
+    "name": "Chromatic Aberration Shutter",
+    "category": "Animations",
+    "featured": false,
+    "description": "Nine aperture blades stop down and reopen while RGB channel fringing splits the edges of a faceted subject and the focus racks as the iris closes.",
+    "tags": [
+      "animations",
+      "chromatic",
+      "aberration",
+      "shutter"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/chromatic-aberration-shutter",
+    "preview": "../creaciones-primium/animaciones/chromatic-aberration-shutter/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/chromatic-aberration-shutter/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/chromatic-aberration-shutter/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-cloud-drift-parallax",
+    "name": "Cloud Drift Parallax",
+    "category": "Animations",
+    "featured": false,
+    "description": "Four parallax cloud decks built from layered radial gradients drifting across a warm dusk sky with a low sun bloom.",
+    "tags": [
+      "animations",
+      "cloud",
+      "drift",
+      "parallax"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/cloud-drift-parallax",
+    "preview": "../creaciones-primium/animaciones/cloud-drift-parallax/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/cloud-drift-parallax/styles.css"
+      }
+    ],
+    "scripts": []
+  },
+  {
     "id": "animaciones-cymatics-chladni-figure",
     "name": "Cymatics Chladni Figure",
     "category": "Animations",
@@ -11267,9 +11362,7 @@
     "root": "creaciones-primium",
     "folder": "animaciones/cymatics-chladni-figure",
     "preview": "../creaciones-primium/animaciones/cymatics-chladni-figure/index.html",
-    "missingReferences": [
-      "script.js"
-    ],
+    "missingReferences": [],
     "license": "Unverified",
     "source": "Unverified",
     "licenseFile": null,
@@ -11280,7 +11373,45 @@
         "path": "../creaciones-primium/animaciones/cymatics-chladni-figure/styles.css"
       }
     ],
-    "scripts": []
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/cymatics-chladni-figure/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-ecg-heartbeat-pulse",
+    "name": "ECG Heartbeat Pulse",
+    "category": "Animations",
+    "featured": false,
+    "description": "A PQRST electrocardiogram trace sweeps across medical grid paper with a glowing sweep line, live BPM readout and a heart pulse locked to the R spike.",
+    "tags": [
+      "animations",
+      "ecg",
+      "heartbeat",
+      "pulse"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/ecg-heartbeat-pulse",
+    "preview": "../creaciones-primium/animaciones/ecg-heartbeat-pulse/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/ecg-heartbeat-pulse/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/ecg-heartbeat-pulse/script.js"
+      }
+    ]
   },
   {
     "id": "animaciones-ferrofluid-spike-crown",
@@ -11312,6 +11443,40 @@
       {
         "name": "script.js",
         "path": "../creaciones-primium/animaciones/ferrofluid-spike-crown/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-fiber-optic-light-stream",
+    "name": "Fiber Optic Light Stream",
+    "category": "Animations",
+    "featured": false,
+    "description": "Pulses of light enter a branching fibre bundle, split at every junction and bloom where each strand ends.",
+    "tags": [
+      "animations",
+      "fiber",
+      "optic",
+      "light",
+      "stream"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/fiber-optic-light-stream",
+    "preview": "../creaciones-primium/animaciones/fiber-optic-light-stream/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/fiber-optic-light-stream/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/fiber-optic-light-stream/script.js"
       }
     ]
   },
@@ -11385,7 +11550,7 @@
     "name": "Koi Pond Ripple Trail",
     "category": "Animations",
     "featured": false,
-    "description": "Amber and cream koi steer beneath a dark reflective pond surface, trailing fading ripple rings through drifting caustic light.",
+    "description": "Amber and cream koi steer beneath a dark reflective pond surface, bodies undulating in travelling waves and trailing concentric ripple rings through drifting caustic light.",
     "tags": [
       "animations",
       "koi",
@@ -11444,6 +11609,71 @@
       {
         "name": "script.js",
         "path": "../creaciones-primium/animaciones/lens-flare-anamorphic/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-lissajous-harmonograph",
+    "name": "Lissajous Harmonograph",
+    "category": "Animations",
+    "featured": false,
+    "description": "Two damped pendulums of drifting phase superpose their motion to ink Lissajous figures that reveal themselves through an animated stroke dash.",
+    "tags": [
+      "animations",
+      "lissajous",
+      "harmonograph"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/lissajous-harmonograph",
+    "preview": "../creaciones-primium/animaciones/lissajous-harmonograph/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/lissajous-harmonograph/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/lissajous-harmonograph/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-mandelbrot-fractal-zoom",
+    "name": "Mandelbrot Fractal Zoom",
+    "category": "Animations",
+    "featured": false,
+    "description": "An uninterrupted dive into the Mandelbrot boundary, shaded by escape time on a low resolution buffer that is upscaled smoothly to hold a steady frame rate.",
+    "tags": [
+      "animations",
+      "mandelbrot",
+      "fractal",
+      "zoom"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/mandelbrot-fractal-zoom",
+    "preview": "../creaciones-primium/animaciones/mandelbrot-fractal-zoom/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/mandelbrot-fractal-zoom/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/mandelbrot-fractal-zoom/script.js"
       }
     ]
   },
@@ -11604,6 +11834,72 @@
     ]
   },
   {
+    "id": "animaciones-sakura-petal-vortex",
+    "name": "Sakura Petal Vortex",
+    "category": "Animations",
+    "featured": false,
+    "description": "Cherry blossom petals tumble in three dimensions across a blurred grove, drifting from hazy far depths to large motion-streaked near petals, and gather into a swirling vortex around the pointer.",
+    "tags": [
+      "animations",
+      "sakura",
+      "petal",
+      "vortex"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/sakura-petal-vortex",
+    "preview": "../creaciones-primium/animaciones/sakura-petal-vortex/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/sakura-petal-vortex/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/sakura-petal-vortex/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-sierpinski-fractal-growth",
+    "name": "Sierpinski Fractal Growth",
+    "category": "Animations",
+    "featured": false,
+    "description": "A Sierpinski triangle assembles itself one recursive generation at a time, glowing edges fading into the depths before the whole structure collapses back to a single cell.",
+    "tags": [
+      "animations",
+      "sierpinski",
+      "fractal",
+      "growth"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/sierpinski-fractal-growth",
+    "preview": "../creaciones-primium/animaciones/sierpinski-fractal-growth/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/sierpinski-fractal-growth/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/sierpinski-fractal-growth/script.js"
+      }
+    ]
+  },
+  {
     "id": "animaciones-silk-ribbon-flow",
     "name": "Silk Ribbon Flow",
     "category": "Animations",
@@ -11627,6 +11923,34 @@
       {
         "name": "styles.css",
         "path": "../creaciones-primium/animaciones/silk-ribbon-flow/styles.css"
+      }
+    ],
+    "scripts": []
+  },
+  {
+    "id": "animaciones-snow-glacier-cascade",
+    "name": "Snow Glacier Cascade",
+    "category": "Animations",
+    "featured": false,
+    "description": "Four parallax layers of cascading snowfall drifting over a cold blue glacier wall and still meltwater lagoon in pure CSS.",
+    "tags": [
+      "animations",
+      "snow",
+      "glacier",
+      "cascade"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/snow-glacier-cascade",
+    "preview": "../creaciones-primium/animaciones/snow-glacier-cascade/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/snow-glacier-cascade/styles.css"
       }
     ],
     "scripts": []
@@ -11670,7 +11994,7 @@
     "name": "Sumi Ink Brush Stroke",
     "category": "Animations",
     "featured": false,
-    "description": "A Japanese sumi-e brush stroke drawn by SVG stroke-dashoffset with an absorbing ink blot, capillary tendrils and a dry-brush tail on washi paper.",
+    "description": "A single pine-soot sumi-e pass on hand-torn kozo washi: a tapered ink ribbon revealed by a dash-offset wipe, with capillary bleed, pigment granulation, a pooled blot with wicking tendrils and a dry-brush tail.",
     "tags": [
       "animations",
       "sumi",
@@ -11733,6 +12057,39 @@
     ]
   },
   {
+    "id": "animaciones-tornado-vortex-debris",
+    "name": "Tornado Vortex Debris",
+    "category": "Animations",
+    "featured": false,
+    "description": "A leaning storm funnel sweeps dust, grit and torn debris along spiralling paths while lightning flickers inside the column over a scarred plain.",
+    "tags": [
+      "animations",
+      "tornado",
+      "vortex",
+      "debris"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/tornado-vortex-debris",
+    "preview": "../creaciones-primium/animaciones/tornado-vortex-debris/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/tornado-vortex-debris/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/tornado-vortex-debris/script.js"
+      }
+    ]
+  },
+  {
     "id": "animaciones-truchet-tile-morph",
     "name": "Truchet Tile Morph",
     "category": "Animations",
@@ -11747,16 +12104,23 @@
     "root": "creaciones-primium",
     "folder": "animaciones/truchet-tile-morph",
     "preview": "../creaciones-primium/animaciones/truchet-tile-morph/index.html",
-    "missingReferences": [
-      "styles.css",
-      "script.js"
-    ],
+    "missingReferences": [],
     "license": "Unverified",
     "source": "Unverified",
     "licenseFile": null,
     "downloadable": false,
-    "stylesheets": [],
-    "scripts": []
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/truchet-tile-morph/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/truchet-tile-morph/script.js"
+      }
+    ]
   },
   {
     "id": "animaciones-voronoi-glass-shatter",
@@ -11829,7 +12193,7 @@
     "name": "Watercolor Bleed Bloom",
     "category": "Animations",
     "featured": false,
-    "description": "Pigment washes bloom and bleed across cotton rag paper through SVG turbulence, displacement and blur filters in a staggered seamless loop.",
+    "description": "Pigment blooms soaking into cotton rag: a wet front spreading outward, a darker rim where pigment pools, granulation settling as the wash dries, all built from SVG turbulence and displacement filters in a staggered loop.",
     "tags": [
       "animations",
       "watercolor",
@@ -11888,6 +12252,40 @@
       {
         "name": "script.js",
         "path": "../creaciones-primium/animaciones/waving-flag-cloth-sim/script.js"
+      }
+    ]
+  },
+  {
+    "id": "animaciones-wind-swept-grass-field",
+    "name": "Wind Swept Grass Field",
+    "category": "Animations",
+    "featured": false,
+    "description": "A canvas grass field where thousands of blades bend under traveling wind waves and rolling gust fronts that cross the whole scene.",
+    "tags": [
+      "animations",
+      "wind",
+      "swept",
+      "grass",
+      "field"
+    ],
+    "root": "creaciones-primium",
+    "folder": "animaciones/wind-swept-grass-field",
+    "preview": "../creaciones-primium/animaciones/wind-swept-grass-field/index.html",
+    "missingReferences": [],
+    "license": "Unverified",
+    "source": "Unverified",
+    "licenseFile": null,
+    "downloadable": false,
+    "stylesheets": [
+      {
+        "name": "styles.css",
+        "path": "../creaciones-primium/animaciones/wind-swept-grass-field/styles.css"
+      }
+    ],
+    "scripts": [
+      {
+        "name": "script.js",
+        "path": "../creaciones-primium/animaciones/wind-swept-grass-field/script.js"
       }
     ]
   }
